@@ -2440,6 +2440,11 @@
 <a href="#2367" id="2367">2367</a>
 <a href="#2368" id="2368">2368</a>
 <a href="#2369" id="2369">2369</a>
+<a href="#2370" id="2370">2370</a>
+<a href="#2371" id="2371">2371</a>
+<a href="#2372" id="2372">2372</a>
+<a href="#2373" id="2373">2373</a>
+<a href="#2374" id="2374">2374</a>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 </span><span class="kw">use </span>std::{char::CharTryFromError, convert::TryFrom, ffi::CStr};
@@ -3597,6 +3602,11 @@
             default_value,
         }
     }
+
+    <span class="kw">pub fn </span>default_value(<span class="kw-2">mut </span><span class="self">self</span>, default: T) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.default_value = default;
+        <span class="self">self
+    </span>}
 
     <span class="attr">#[must_use]
     </span><span class="kw">pub fn </span>build(<span class="self">self</span>) -&gt; ParamSpec {
@@ -4810,4 +4820,4 @@
     }
 }
 </code></pre></div>
-</section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (bd39bbb4b 2023-02-07)" data-search-js="search-28136cea55c34037.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
+</section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (ef934d9b6 2023-02-08)" data-search-js="search-28136cea55c34037.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>

@@ -1562,6 +1562,21 @@
 <a href="#1489" id="1489">1489</a>
 <a href="#1490" id="1490">1490</a>
 <a href="#1491" id="1491">1491</a>
+<a href="#1492" id="1492">1492</a>
+<a href="#1493" id="1493">1493</a>
+<a href="#1494" id="1494">1494</a>
+<a href="#1495" id="1495">1495</a>
+<a href="#1496" id="1496">1496</a>
+<a href="#1497" id="1497">1497</a>
+<a href="#1498" id="1498">1498</a>
+<a href="#1499" id="1499">1499</a>
+<a href="#1500" id="1500">1500</a>
+<a href="#1501" id="1501">1501</a>
+<a href="#1502" id="1502">1502</a>
+<a href="#1503" id="1503">1503</a>
+<a href="#1504" id="1504">1504</a>
+<a href="#1505" id="1505">1505</a>
+<a href="#1506" id="1506">1506</a>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 // rustdoc-stripper-ignore-next
@@ -2181,6 +2196,21 @@
 
     <span class="comment">// rustdoc-stripper-ignore-next
     </span><span class="doccomment">/// Tries to transform the value into a value of the target type
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// Tries to cast the contents of `self` into a type appropriate
+    /// to store in `dest_value`, e.g. to transform a `G_TYPE_INT` value
+    /// into a `G_TYPE_FLOAT` value. Performing transformations between
+    /// value types might incur precision lossage. Especially
+    /// transformations into strings might reveal seemingly arbitrary
+    /// results and shouldn&#39;t be relied upon for production code (such
+    /// as rcfile value or object property serialization).
+    /// ## `dest_value`
+    /// Target value.
+    ///
+    /// # Returns
+    ///
+    /// Whether a transformation rule was found and could be applied.
+    ///  Upon failing transformations, `dest_value` is left untouched.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_value_transform&quot;</span>)]
     </span><span class="kw">pub fn </span>transform&lt;T: ValueType&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;Value, <span class="kw">crate</span>::BoolError&gt; {
         <span class="self">self</span>.transform_with_type(T::Type::static_type())
@@ -3054,4 +3084,4 @@
     }
 }
 </code></pre></div>
-</section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (bd39bbb4b 2023-02-07)" data-search-js="search-28136cea55c34037.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
+</section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (ef934d9b6 2023-02-08)" data-search-js="search-28136cea55c34037.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
