@@ -197,6 +197,12 @@
 <a href="#124" id="124">124</a>
 <a href="#125" id="125">125</a>
 <a href="#126" id="126">126</a>
+<a href="#127" id="127">127</a>
+<a href="#128" id="128">128</a>
+<a href="#129" id="129">129</a>
+<a href="#130" id="130">130</a>
+<a href="#131" id="131">131</a>
+<a href="#132" id="132">132</a>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 </span><span class="kw">use </span>std::fmt;
@@ -321,6 +327,12 @@
             .field(<span class="string">&quot;z&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.z())
             .field(<span class="string">&quot;w&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.w())
             .finish()
+    }
+}
+
+<span class="kw">impl </span>Default <span class="kw">for </span>Vec4 {
+    <span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{
+        <span class="self">Self</span>::zero()
     }
 }
 </code></pre></div>
