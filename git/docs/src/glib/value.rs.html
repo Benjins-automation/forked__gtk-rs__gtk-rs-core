@@ -1566,6 +1566,31 @@
 <a href="#1493" id="1493">1493</a>
 <a href="#1494" id="1494">1494</a>
 <a href="#1495" id="1495">1495</a>
+<a href="#1496" id="1496">1496</a>
+<a href="#1497" id="1497">1497</a>
+<a href="#1498" id="1498">1498</a>
+<a href="#1499" id="1499">1499</a>
+<a href="#1500" id="1500">1500</a>
+<a href="#1501" id="1501">1501</a>
+<a href="#1502" id="1502">1502</a>
+<a href="#1503" id="1503">1503</a>
+<a href="#1504" id="1504">1504</a>
+<a href="#1505" id="1505">1505</a>
+<a href="#1506" id="1506">1506</a>
+<a href="#1507" id="1507">1507</a>
+<a href="#1508" id="1508">1508</a>
+<a href="#1509" id="1509">1509</a>
+<a href="#1510" id="1510">1510</a>
+<a href="#1511" id="1511">1511</a>
+<a href="#1512" id="1512">1512</a>
+<a href="#1513" id="1513">1513</a>
+<a href="#1514" id="1514">1514</a>
+<a href="#1515" id="1515">1515</a>
+<a href="#1516" id="1516">1516</a>
+<a href="#1517" id="1517">1517</a>
+<a href="#1518" id="1518">1518</a>
+<a href="#1519" id="1519">1519</a>
+<a href="#1520" id="1520">1520</a>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 // rustdoc-stripper-ignore-next
@@ -2045,6 +2070,17 @@
     /// used instead.
     ///
     /// See the [module documentation](index.html) for more details.
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// An opaque structure used to hold different types of values.
+    ///
+    /// The data within the structure has protected scope: it is accessible only
+    /// to functions within a `GTypeValueTable` structure, or implementations of
+    /// the g_value_*() API. That is, code portions which implement new fundamental
+    /// types.
+    ///
+    /// [`Value`][crate::Value] users cannot make any assumptions about how data is stored
+    /// within the 2 element `data` union, and the `g_type` member should
+    /// only be accessed through the G_VALUE_TYPE() macro.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;GValue&quot;</span>)]
     </span><span class="kw">pub struct </span>Value(BoxedInline&lt;gobject_ffi::GValue&gt;);
 
@@ -2162,6 +2198,20 @@
     /// # Returns
     ///
     /// [`true`] if the transformation is possible, [`false`] otherwise.
+    /// will be a non-empty array if this function returns
+    /// successfully.
+    ///
+    /// Free the returned vector with `g_strfreev()`.
+    /// ## `command_line`
+    /// command line to parse
+    ///
+    /// # Returns
+    ///
+    /// [`true`] on success, [`false`] if error set
+    ///
+    /// ## `argvp`
+    ///
+    ///  return location for array of args
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_value_type_transformable&quot;</span>)]
     </span><span class="kw">pub fn </span>type_transformable(src: Type, dst: Type) -&gt; bool {
         <span class="kw">unsafe </span>{
