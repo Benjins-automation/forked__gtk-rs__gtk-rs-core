@@ -1032,6 +1032,8 @@
 <a href="#959" id="959">959</a>
 <a href="#960" id="960">960</a>
 <a href="#961" id="961">961</a>
+<a href="#962" id="962">962</a>
+<a href="#963" id="963">963</a>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 </span><span class="kw">mod </span>boxed_derive;
@@ -1884,24 +1886,31 @@
 
 <span class="doccomment">/// This macro enables you to derive object properties in a quick way.
 ///
-/// # Getters and setters
-/// By default, they are generated for you.
-/// You can use a custom getter/setter by assigning an expression to `get`/`set`.
-/// Example: `#[property(get = |_| 2, set)]`.
+/// # Generated wrapper methods
+/// The following methods are generated on the wrapper type specified on `#[properties(wrapper_type = ...)]`:
+/// * `$property()`, when the property is readable
+/// * `set_$property()`, when the property is writable and not construct-only
+/// * `connect_$property_notify()`
+/// * `notify_$property()`
 ///
-/// The macro will always generate, on the wrapper type, the corresponding `$property()` and
-/// `set_$property()` methods.
-/// Notice: you can&#39;t reimplement the generated methods on the wrapper type, but you can change their
-/// behavior using a custom getter/setter.
+/// Notice: You can&#39;t reimplement the generated methods on the wrapper type,
+/// but you can change their behavior using a custom internal getter/setter.
+///
+/// # Internal getters and setters
+/// By default, they are generated for you. However, you can use a custom getter/setter
+/// by assigning an expression to `get`/`set`: `#[property(get = |_| 2, set)]` or `#[property(get, set = custom_setter_func)]`.
 ///
 /// # Supported types
 /// Every type implementing the trait `Property` is supported.
+///
 /// If you want to support a custom type, you should consider implementing `Property` and
 /// `PropertyGet`. If your type supports interior mutability, you should implement also
 /// `PropertySet` and `PropertySetNested` if possible.
+///
 /// The type `Option&lt;T&gt;` is supported as a property only if `Option&lt;T&gt;` implements `ToValueOptional`.
 /// If your type doesn&#39;t support `PropertySet`, you can&#39;t use the generated setter, but you can
 /// always define a custom one.
+///
 /// If you want to support a custom type with a custom `ParamSpec`, you should implement the trait
 /// `HasParamSpec` instead of `Property`.
 ///
@@ -1950,16 +1959,11 @@
 ///         fn properties() -&gt; &amp;&#39;static [ParamSpec] {
 ///             Self::derived_properties()
 ///         }
-///         fn set_property(
-///             &amp;self,
-///             _id: usize,
-///             _value: &amp;Value,
-///             _pspec: &amp;ParamSpec,
-///         ) {
-///             Self::derived_set_property(self, _id, _value, _pspec)
+///         fn set_property(&amp;self, id: usize, value: &amp;Value, pspec: &amp;ParamSpec) {
+///             self.derived_set_property(id, value, pspec)
 ///         }
-///         fn property(&amp;self, _id: usize, _pspec: &amp;ParamSpec) -&gt; Value {
-///             Self::derived_property(self, _id, _pspec)
+///         fn property(&amp;self, id: usize, pspec: &amp;ParamSpec) -&gt; Value {
+///             self.derived_property(id, pspec)
 ///         }
 ///     }
 ///
