@@ -710,6 +710,7 @@
 <a href="#637" id="637">637</a>
 <a href="#638" id="638">638</a>
 <a href="#639" id="639">639</a>
+<a href="#640" id="640">640</a>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 </span><span class="kw">use </span><span class="kw">crate</span>::utils::crate_ident_new;
@@ -1340,7 +1341,8 @@
             #fn_set_property
         }
 
-        <span class="kw">impl </span>#wrapper_type {
+        <span class="attr">#[allow(dead_code)]
+        </span><span class="kw">impl </span>#wrapper_type {
             #getset_properties
             #connect_prop_notify
             #notify_prop
