@@ -72,9 +72,9 @@
 
 
 <nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="logo-container" href="../pango/index.html"><img class="rust-logo" src="../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2></h2></nav><nav class="sidebar"><a class="logo-container" href="../pango/index.html"><img class="rust-logo" src="../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><div class="sidebar-elems"><h2><a href="index.html">In pango</a></h2></div></nav><main><div class="width-limiter"><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="main-heading"><h1>Function <a href="index.html">pango</a>::<wbr><a class="fn" href="#">shape</a><button id="copy-path" title="Copy item path to clipboard"><img src="../static.files/clipboard-7571035ce49a181d.svg" width="19" height="18" alt="Copy item path"></button></h1><span class="out-of-band"><a class="srclink" href="../src/pango/auto/functions.rs.html#551-561">source</a> · <button id="toggle-all-docs" title="collapse all docs">[<span>&#x2212;</span>]</button></span></div><pre class="rust item-decl"><code>pub fn shape(text: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, analysis: &amp;<a class="struct" href="struct.Analysis.html" title="struct pango::Analysis">Analysis</a>, glyphs: &amp;mut <a class="struct" href="struct.GlyphString.html" title="struct pango::GlyphString">GlyphString</a>)</code></pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Convert the characters in @text into glyphs.</p>
-<p>Given a segment of text and the corresponding <a href="struct.Analysis.html" title="crate::Analysis"><code>Analysis</code></a> structure
-returned from <a href="fn.itemize.html" title="crate::itemize()"><code>itemize()</code></a>, convert the characters into glyphs. You
-may also pass in only a substring of the item from <a href="fn.itemize.html" title="crate::itemize()"><code>itemize()</code></a>.</p>
+<p>Given a segment of text and the corresponding <a href="struct.Analysis.html" title="struct pango::Analysis"><code>Analysis</code></a> structure
+returned from <a href="fn.itemize.html" title="fn pango::itemize"><code>itemize()</code></a>, convert the characters into glyphs. You
+may also pass in only a substring of the item from <a href="fn.itemize.html" title="fn pango::itemize"><code>itemize()</code></a>.</p>
 <p>It is recommended that you use <code>shape_full()</code> instead, since
 that API allows for shaping interaction happening across text item
 boundaries.</p>
@@ -82,15 +82,15 @@ boundaries.</p>
 capitalization) require log attrs, and thus can only be handled by
 <code>shape_item()</code>.</p>
 <p>Note that the extra attributes in the @analyis that is returned from
-<a href="fn.itemize.html" title="crate::itemize()"><code>itemize()</code></a> have indices that are relative to the entire paragraph,
+<a href="fn.itemize.html" title="fn pango::itemize"><code>itemize()</code></a> have indices that are relative to the entire paragraph,
 so you need to subtract the item offset from their indices before
-calling <a href="fn.shape.html" title="crate::shape()"><code>shape()</code></a>.</p>
+calling <a href="fn.shape.html" title="fn pango::shape"><code>shape()</code></a>.</p>
 <h3 id="text"><a href="#text"><code>text</code></a></h3>
 <p>the text to process</p>
 <h3 id="length"><a href="#length"><code>length</code></a></h3>
 <p>the length (in bytes) of @text</p>
 <h3 id="analysis"><a href="#analysis"><code>analysis</code></a></h3>
-<p><a href="struct.Analysis.html" title="crate::Analysis"><code>Analysis</code></a> structure from <a href="fn.itemize.html" title="crate::itemize()"><code>itemize()</code></a></p>
+<p><a href="struct.Analysis.html" title="struct pango::Analysis"><code>Analysis</code></a> structure from <a href="fn.itemize.html" title="fn pango::itemize"><code>itemize()</code></a></p>
 <h3 id="glyphs"><a href="#glyphs"><code>glyphs</code></a></h3>
 <p>glyph string in which to store results</p>
-</div></details></section></div></main><div id="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="pango" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (065852def 2023-02-13)" data-search-js="search-abe1d547ad11c273.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
+</div></details></section></div></main><div id="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="pango" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (0416b1a6f 2023-02-14)" data-search-js="search-14421e1532aead08.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>

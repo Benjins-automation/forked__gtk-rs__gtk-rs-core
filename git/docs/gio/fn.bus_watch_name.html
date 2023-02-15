@@ -91,7 +91,7 @@ call <code>g_bus_unwatch_name()</code> with the watcher id this function
 returns.</p>
 <p>If the name vanishes or appears (for example the application owning
 the name could restart), the handlers are also invoked. If the
-<a href="struct.DBusConnection.html" title="crate::DBusConnection"><code>DBusConnection</code></a> that is used for watching the name disconnects, then
+<a href="struct.DBusConnection.html" title="struct gio::DBusConnection"><code>DBusConnection</code></a> that is used for watching the name disconnects, then
 <code>name_vanished_handler</code> is invoked since it is no longer
 possible to access the name.</p>
 <p>Another guarantee is that invocations of <code>name_appeared_handler</code>
@@ -109,12 +109,12 @@ Basically, the application should create object proxies in
 <h3 id="name"><a href="#name"><code>name</code></a></h3>
 <p>The name (well-known or unique) to watch.</p>
 <h3 id="flags"><a href="#flags"><code>flags</code></a></h3>
-<p>Flags from the <a href="struct.BusNameWatcherFlags.html" title="crate::BusNameWatcherFlags"><code>BusNameWatcherFlags</code></a> enumeration.</p>
+<p>Flags from the <a href="struct.BusNameWatcherFlags.html" title="struct gio::BusNameWatcherFlags"><code>BusNameWatcherFlags</code></a> enumeration.</p>
 <h3 id="name_appeared_handler"><a href="#name_appeared_handler"><code>name_appeared_handler</code></a></h3>
-<p>Handler to invoke when <code>name</code> is known to exist or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>.</p>
+<p>Handler to invoke when <code>name</code> is known to exist or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="variant core::option::Option::None"><code>None</code></a>.</p>
 <h3 id="name_vanished_handler"><a href="#name_vanished_handler"><code>name_vanished_handler</code></a></h3>
-<p>Handler to invoke when <code>name</code> is known to not exist or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>.</p>
+<p>Handler to invoke when <code>name</code> is known to not exist or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="variant core::option::Option::None"><code>None</code></a>.</p>
 <h2 id="returns"><a href="#returns">Returns</a></h2>
 <p>An identifier (never 0) that can be used with
 <code>g_bus_unwatch_name()</code> to stop watching the name.</p>
-</div></details></section></div></main><div id="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (065852def 2023-02-13)" data-search-js="search-abe1d547ad11c273.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
+</div></details></section></div></main><div id="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (0416b1a6f 2023-02-14)" data-search-js="search-14421e1532aead08.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>

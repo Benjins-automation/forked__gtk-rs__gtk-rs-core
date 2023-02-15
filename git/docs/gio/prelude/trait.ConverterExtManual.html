@@ -78,13 +78,13 @@
         inbuf: IN,
         outbuf: OUT,
         flags: <a class="struct" href="../struct.ConverterFlags.html" title="struct gio::ConverterFlags">ConverterFlags</a>
-    ) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;(<a class="enum" href="../enum.ConverterResult.html" title="enum gio::ConverterResult">ConverterResult</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>), <a class="struct" href="../../glib/error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;;
+    ) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;(<a class="enum" href="../enum.ConverterResult.html" title="enum gio::ConverterResult">ConverterResult</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>), <a class="struct" href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;;
 }</code></pre><h2 id="required-methods" class="small-section-header">Required Methods<a href="#required-methods" class="anchor">§</a></h2><div class="methods"><details class="toggle method-toggle" open><summary><section id="tymethod.convert" class="method"><a class="srclink rightside" href="../../src/gio/converter.rs.html#111-116">source</a><h4 class="code-header">fn <a href="#tymethod.convert" class="fn">convert</a>&lt;IN: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html" title="trait core::convert::AsRef">AsRef</a>&lt;[<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>]&gt;, OUT: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.AsMut.html" title="trait core::convert::AsMut">AsMut</a>&lt;[<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>]&gt;&gt;(
     &amp;self,
     inbuf: IN,
     outbuf: OUT,
     flags: <a class="struct" href="../struct.ConverterFlags.html" title="struct gio::ConverterFlags">ConverterFlags</a>
-) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;(<a class="enum" href="../enum.ConverterResult.html" title="enum gio::ConverterResult">ConverterResult</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>), <a class="struct" href="../../glib/error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></section></summary><div class="docblock"><p>This is the main operation used when converting data. It is to be called
+) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;(<a class="enum" href="../enum.ConverterResult.html" title="enum gio::ConverterResult">ConverterResult</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>), <a class="struct" href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></section></summary><div class="docblock"><p>This is the main operation used when converting data. It is to be called
 multiple times in a loop, and each time it will do some work, i.e.
 producing some output (in <code>outbuf</code>) or consuming some input (from <code>inbuf</code>) or
 both. If its not possible to do any work an error is returned.</p>
@@ -96,27 +96,27 @@ only the successful conversion is reported and the error is returned on the
 next call.</p>
 <p>A full conversion loop involves calling this method repeatedly, each time
 giving it new input and space output space. When there is no more input
-data after the data in <code>inbuf</code>, the flag <a href="../struct.ConverterFlags.html#associatedconstant.INPUT_AT_END" title="crate::ConverterFlags::INPUT_AT_END"><code>ConverterFlags::INPUT_AT_END</code></a> must be set.
-The loop will be (unless some error happens) returning <a href="../enum.ConverterResult.html#variant.Converted" title="crate::ConverterResult::Converted"><code>ConverterResult::Converted</code></a>
+data after the data in <code>inbuf</code>, the flag <a href="../struct.ConverterFlags.html#associatedconstant.INPUT_AT_END" title="associated constant gio::ConverterFlags::INPUT_AT_END"><code>ConverterFlags::INPUT_AT_END</code></a> must be set.
+The loop will be (unless some error happens) returning <a href="../enum.ConverterResult.html#variant.Converted" title="variant gio::ConverterResult::Converted"><code>ConverterResult::Converted</code></a>
 each time until all data is consumed and all output is produced, then
-<a href="../enum.ConverterResult.html#variant.Finished" title="crate::ConverterResult::Finished"><code>ConverterResult::Finished</code></a> is returned instead. Note, that <a href="../enum.ConverterResult.html#variant.Finished" title="crate::ConverterResult::Finished"><code>ConverterResult::Finished</code></a>
-may be returned even if <a href="../struct.ConverterFlags.html#associatedconstant.INPUT_AT_END" title="crate::ConverterFlags::INPUT_AT_END"><code>ConverterFlags::INPUT_AT_END</code></a> is not set, for instance
+<a href="../enum.ConverterResult.html#variant.Finished" title="variant gio::ConverterResult::Finished"><code>ConverterResult::Finished</code></a> is returned instead. Note, that <a href="../enum.ConverterResult.html#variant.Finished" title="variant gio::ConverterResult::Finished"><code>ConverterResult::Finished</code></a>
+may be returned even if <a href="../struct.ConverterFlags.html#associatedconstant.INPUT_AT_END" title="associated constant gio::ConverterFlags::INPUT_AT_END"><code>ConverterFlags::INPUT_AT_END</code></a> is not set, for instance
 in a decompression converter where the end of data is detectable from the
 data (and there might even be other data after the end of the compressed data).</p>
 <p>When some data has successfully been converted <code>bytes_read</code> and is set to
 the number of bytes read from <code>inbuf</code>, and <code>bytes_written</code> is set to indicate
 how many bytes was written to <code>outbuf</code>. If there are more data to output
-or consume (i.e. unless the <a href="../struct.ConverterFlags.html#associatedconstant.INPUT_AT_END" title="crate::ConverterFlags::INPUT_AT_END"><code>ConverterFlags::INPUT_AT_END</code></a> is specified) then
-<a href="../enum.ConverterResult.html#variant.Converted" title="crate::ConverterResult::Converted"><code>ConverterResult::Converted</code></a> is returned, and if no more data is to be output
-then <a href="../enum.ConverterResult.html#variant.Finished" title="crate::ConverterResult::Finished"><code>ConverterResult::Finished</code></a> is returned.</p>
-<p>On error <a href="../enum.ConverterResult.html#variant.Error" title="crate::ConverterResult::Error"><code>ConverterResult::Error</code></a> is returned and <code>error</code> is set accordingly.
+or consume (i.e. unless the <a href="../struct.ConverterFlags.html#associatedconstant.INPUT_AT_END" title="associated constant gio::ConverterFlags::INPUT_AT_END"><code>ConverterFlags::INPUT_AT_END</code></a> is specified) then
+<a href="../enum.ConverterResult.html#variant.Converted" title="variant gio::ConverterResult::Converted"><code>ConverterResult::Converted</code></a> is returned, and if no more data is to be output
+then <a href="../enum.ConverterResult.html#variant.Finished" title="variant gio::ConverterResult::Finished"><code>ConverterResult::Finished</code></a> is returned.</p>
+<p>On error <a href="../enum.ConverterResult.html#variant.Error" title="variant gio::ConverterResult::Error"><code>ConverterResult::Error</code></a> is returned and <code>error</code> is set accordingly.
 Some errors need special handling:</p>
-<p><a href="../enum.IOErrorEnum.html#variant.NoSpace" title="crate::IOErrorEnum::NoSpace"><code>IOErrorEnum::NoSpace</code></a> is returned if there is not enough space
+<p><a href="../enum.IOErrorEnum.html#variant.NoSpace" title="variant gio::IOErrorEnum::NoSpace"><code>IOErrorEnum::NoSpace</code></a> is returned if there is not enough space
 to write the resulting converted data, the application should
 call the function again with a larger <code>outbuf</code> to continue.</p>
-<p><a href="../enum.IOErrorEnum.html#variant.PartialInput" title="crate::IOErrorEnum::PartialInput"><code>IOErrorEnum::PartialInput</code></a> is returned if there is not enough
+<p><a href="../enum.IOErrorEnum.html#variant.PartialInput" title="variant gio::IOErrorEnum::PartialInput"><code>IOErrorEnum::PartialInput</code></a> is returned if there is not enough
 input to fully determine what the conversion should produce,
-and the <a href="../struct.ConverterFlags.html#associatedconstant.INPUT_AT_END" title="crate::ConverterFlags::INPUT_AT_END"><code>ConverterFlags::INPUT_AT_END</code></a> flag is not set. This happens for
+and the <a href="../struct.ConverterFlags.html#associatedconstant.INPUT_AT_END" title="associated constant gio::ConverterFlags::INPUT_AT_END"><code>ConverterFlags::INPUT_AT_END</code></a> flag is not set. This happens for
 example with an incomplete multibyte sequence when converting text,
 or when a regexp matches up to the end of the input (and may match
 further input). It may also happen when <code>inbuf_size</code> is zero and
@@ -124,21 +124,21 @@ there is no more data to produce.</p>
 <p>When this happens the application should read more input and then
 call the function again. If further input shows that there is no
 more data call the function again with the same data but with
-the <a href="../struct.ConverterFlags.html#associatedconstant.INPUT_AT_END" title="crate::ConverterFlags::INPUT_AT_END"><code>ConverterFlags::INPUT_AT_END</code></a> flag set. This may cause the conversion
+the <a href="../struct.ConverterFlags.html#associatedconstant.INPUT_AT_END" title="associated constant gio::ConverterFlags::INPUT_AT_END"><code>ConverterFlags::INPUT_AT_END</code></a> flag set. This may cause the conversion
 to finish as e.g. in the regexp match case (or, to fail again with
-<a href="../enum.IOErrorEnum.html#variant.PartialInput" title="crate::IOErrorEnum::PartialInput"><code>IOErrorEnum::PartialInput</code></a> in e.g. a charset conversion where the
+<a href="../enum.IOErrorEnum.html#variant.PartialInput" title="variant gio::IOErrorEnum::PartialInput"><code>IOErrorEnum::PartialInput</code></a> in e.g. a charset conversion where the
 input is actually partial).</p>
-<p>After <a href="trait.ConverterExtManual.html#tymethod.convert" title="crate::prelude::ConverterExtManual::convert()"><code>ConverterExtManual::convert()</code></a> has returned <a href="../enum.ConverterResult.html#variant.Finished" title="crate::ConverterResult::Finished"><code>ConverterResult::Finished</code></a> the
+<p>After <a href="trait.ConverterExtManual.html#tymethod.convert" title="associated function gio::prelude::ConverterExtManual::convert"><code>ConverterExtManual::convert()</code></a> has returned <a href="../enum.ConverterResult.html#variant.Finished" title="variant gio::ConverterResult::Finished"><code>ConverterResult::Finished</code></a> the
 converter object is in an invalid state where its not allowed
-to call <a href="trait.ConverterExtManual.html#tymethod.convert" title="crate::prelude::ConverterExtManual::convert()"><code>ConverterExtManual::convert()</code></a> anymore. At this time you can only
-free the object or call <a href="trait.ConverterExt.html#tymethod.reset" title="crate::prelude::ConverterExt::reset()"><code>ConverterExt::reset()</code></a> to reset it to the
+to call <a href="trait.ConverterExtManual.html#tymethod.convert" title="associated function gio::prelude::ConverterExtManual::convert"><code>ConverterExtManual::convert()</code></a> anymore. At this time you can only
+free the object or call <a href="trait.ConverterExt.html#tymethod.reset" title="associated function gio::prelude::ConverterExt::reset"><code>ConverterExt::reset()</code></a> to reset it to the
 initial state.</p>
-<p>If the flag <a href="../struct.ConverterFlags.html#associatedconstant.FLUSH" title="crate::ConverterFlags::FLUSH"><code>ConverterFlags::FLUSH</code></a> is set then conversion is modified
+<p>If the flag <a href="../struct.ConverterFlags.html#associatedconstant.FLUSH" title="associated constant gio::ConverterFlags::FLUSH"><code>ConverterFlags::FLUSH</code></a> is set then conversion is modified
 to try to write out all internal state to the output. The application
 has to call the function multiple times with the flag set, and when
 the available input has been consumed and all internal state has
-been produced then <a href="../enum.ConverterResult.html#variant.Flushed" title="crate::ConverterResult::Flushed"><code>ConverterResult::Flushed</code></a> (or <a href="../enum.ConverterResult.html#variant.Finished" title="crate::ConverterResult::Finished"><code>ConverterResult::Finished</code></a> if
-really at the end) is returned instead of <a href="../enum.ConverterResult.html#variant.Converted" title="crate::ConverterResult::Converted"><code>ConverterResult::Converted</code></a>.
+been produced then <a href="../enum.ConverterResult.html#variant.Flushed" title="variant gio::ConverterResult::Flushed"><code>ConverterResult::Flushed</code></a> (or <a href="../enum.ConverterResult.html#variant.Finished" title="variant gio::ConverterResult::Finished"><code>ConverterResult::Finished</code></a> if
+really at the end) is returned instead of <a href="../enum.ConverterResult.html#variant.Converted" title="variant gio::ConverterResult::Converted"><code>ConverterResult::Converted</code></a>.
 This is somewhat similar to what happens at the end of the input stream,
 but done in the middle of the data.</p>
 <p>This has different meanings for different conversions. For instance
@@ -153,7 +153,7 @@ treat this as the end of input and do the match.</p>
 <p>Flushing is not always possible (like if a charset converter flushes
 at a partial multibyte sequence). Converters are supposed to try
 to produce as much output as possible and then return an error
-(typically <a href="../enum.IOErrorEnum.html#variant.PartialInput" title="crate::IOErrorEnum::PartialInput"><code>IOErrorEnum::PartialInput</code></a>).</p>
+(typically <a href="../enum.IOErrorEnum.html#variant.PartialInput" title="variant gio::IOErrorEnum::PartialInput"><code>IOErrorEnum::PartialInput</code></a>).</p>
 <h6 id="inbuf"><a href="#inbuf"><code>inbuf</code></a></h6>
 <p>the buffer
 containing the data to convert.</p>
@@ -161,11 +161,11 @@ containing the data to convert.</p>
 <p>a buffer to write
 converted data in.</p>
 <h6 id="flags"><a href="#flags"><code>flags</code></a></h6>
-<p>a <a href="../struct.ConverterFlags.html" title="crate::ConverterFlags"><code>ConverterFlags</code></a> controlling the conversion details</p>
+<p>a <a href="../struct.ConverterFlags.html" title="struct gio::ConverterFlags"><code>ConverterFlags</code></a> controlling the conversion details</p>
 <h5 id="returns"><a href="#returns">Returns</a></h5>
-<p>a <a href="../enum.ConverterResult.html" title="crate::ConverterResult"><code>ConverterResult</code></a>, <a href="../enum.ConverterResult.html#variant.Error" title="crate::ConverterResult::Error"><code>ConverterResult::Error</code></a> on error.</p>
+<p>a <a href="../enum.ConverterResult.html" title="enum gio::ConverterResult"><code>ConverterResult</code></a>, <a href="../enum.ConverterResult.html#variant.Error" title="variant gio::ConverterResult::Error"><code>ConverterResult::Error</code></a> on error.</p>
 <h6 id="bytes_read"><a href="#bytes_read"><code>bytes_read</code></a></h6>
 <p>will be set to the number of bytes read from <code>inbuf</code> on success</p>
 <h6 id="bytes_written"><a href="#bytes_written"><code>bytes_written</code></a></h6>
 <p>will be set to the number of bytes written to <code>outbuf</code> on success</p>
-</div></details></div><h2 id="implementors" class="small-section-header">Implementors<a href="#implementors" class="anchor">§</a></h2><div id="implementors-list"><section id="impl-ConverterExtManual-for-O" class="impl"><a class="srclink rightside" href="../../src/gio/converter.rs.html#119-163">source</a><a href="#impl-ConverterExtManual-for-O" class="anchor">§</a><h3 class="code-header">impl&lt;O: <a class="trait" href="../../glib/object/trait.IsA.html" title="trait glib::object::IsA">IsA</a>&lt;<a class="struct" href="../struct.Converter.html" title="struct gio::Converter">Converter</a>&gt;&gt; <a class="trait" href="trait.ConverterExtManual.html" title="trait gio::prelude::ConverterExtManual">ConverterExtManual</a> for O</h3></section></div><script src="../../implementors/gio/converter/trait.ConverterExtManual.js" async></script></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (065852def 2023-02-13)" data-search-js="search-abe1d547ad11c273.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
+</div></details></div><h2 id="implementors" class="small-section-header">Implementors<a href="#implementors" class="anchor">§</a></h2><div id="implementors-list"><section id="impl-ConverterExtManual-for-O" class="impl"><a class="srclink rightside" href="../../src/gio/converter.rs.html#119-163">source</a><a href="#impl-ConverterExtManual-for-O" class="anchor">§</a><h3 class="code-header">impl&lt;O: <a class="trait" href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/object/trait.IsA.html" title="trait glib::object::IsA">IsA</a>&lt;<a class="struct" href="../struct.Converter.html" title="struct gio::Converter">Converter</a>&gt;&gt; <a class="trait" href="trait.ConverterExtManual.html" title="trait gio::prelude::ConverterExtManual">ConverterExtManual</a> for O</h3></section></div><script src="../../implementors/gio/converter/trait.ConverterExtManual.js" async></script></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (0416b1a6f 2023-02-14)" data-search-js="search-14421e1532aead08.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>

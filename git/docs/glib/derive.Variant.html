@@ -111,13 +111,13 @@ for enums:</p>
 <code>#[repr]</code> attribute must also be specified on the enum with a sized integer type, and the type
 must implement <code>Copy</code>.</li>
 <li><code>#[variant_enum(enum)]</code> uses <a href="../glib/struct.EnumClass.html"><code>EnumClass</code></a> to serialize/deserialize as nicks. Meant for use
-with <a href="derive.Enum.html"><code>glib::Enum</code></a>.</li>
+with <a href="derive.Enum.html" title="derive glib::Enum"><code>glib::Enum</code></a>.</li>
 <li><code>#[variant_enum(flags)]</code> uses <a href="../glib/struct.FlagsClass.html"><code>FlagsClass</code></a> to serialize/deserialize as nicks. Meant for use
-with <a href="attr.flags.html"><code>glib::flags</code></a>.</li>
-<li><code>#[variant_enum(enum, repr)]</code> serializes as <code>i32</code>. Meant for use with <a href="derive.Enum.html"><code>glib::Enum</code></a>.
+with <a href="attr.flags.html" title="attr glib::flags"><code>glib::flags</code></a>.</li>
+<li><code>#[variant_enum(enum, repr)]</code> serializes as <code>i32</code>. Meant for use with <a href="derive.Enum.html" title="derive glib::Enum"><code>glib::Enum</code></a>.
 The type must also implement <code>Copy</code>.</li>
 <li><code>#[variant_enum(flags, repr)]</code> serializes as <code>u32</code>. Meant for use with
-<a href="attr.flags.html"><code>glib::flags</code></a>.</li>
+<a href="attr.flags.html" title="attr glib::flags"><code>glib::flags</code></a>.</li>
 </ul>
 <h2 id="example-2"><a href="#example-2">Example</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>glib::prelude::<span class="kw-2">*</span>;
@@ -163,4 +163,4 @@ The type must also implement <code>Copy</code>.</li>
 <span class="kw">let </span>var = v.to_variant();
 <span class="macro">assert_eq!</span>(var.str(), <span class="prelude-val">Some</span>(<span class="string">&quot;other&quot;</span>));
 <span class="macro">assert_eq!</span>(var.get::&lt;MyEnum&gt;(), <span class="prelude-val">Some</span>(v));</code></pre></div>
-</div></details></section></div></main><div id="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (065852def 2023-02-13)" data-search-js="search-abe1d547ad11c273.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
+</div></details></section></div></main><div id="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (0416b1a6f 2023-02-14)" data-search-js="search-14421e1532aead08.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>

@@ -91,7 +91,7 @@ callbacks will be invoked after calling this function - there are three
 possible cases:</p>
 <ul>
 <li>
-<p><code>name_lost_handler</code> with a <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> connection (if a connection to the bus
+<p><code>name_lost_handler</code> with a <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="variant core::option::Option::None"><code>None</code></a> connection (if a connection to the bus
 can’t be made).</p>
 </li>
 <li>
@@ -108,7 +108,7 @@ with the owner id this function returns.</p>
 <p>If the name is acquired or lost (for example another application
 could acquire the name if you allow replacement or the application
 currently owning the name exits), the handlers are also invoked.
-If the <a href="struct.DBusConnection.html" title="crate::DBusConnection"><code>DBusConnection</code></a> that is used for attempting to own the name
+If the <a href="struct.DBusConnection.html" title="struct gio::DBusConnection"><code>DBusConnection</code></a> that is used for attempting to own the name
 closes, then <code>name_lost_handler</code> is invoked since it is no longer
 possible for other processes to access the process.</p>
 <p>You cannot use <code>g_bus_own_name()</code> several times for the same name (unless
@@ -133,14 +133,14 @@ unregister the objects (if any) in <code>name_lost_handler</code>.</p>
 <h3 id="name"><a href="#name"><code>name</code></a></h3>
 <p>the well-known name to own</p>
 <h3 id="flags"><a href="#flags"><code>flags</code></a></h3>
-<p>a set of flags from the <a href="struct.BusNameOwnerFlags.html" title="crate::BusNameOwnerFlags"><code>BusNameOwnerFlags</code></a> enumeration</p>
+<p>a set of flags from the <a href="struct.BusNameOwnerFlags.html" title="struct gio::BusNameOwnerFlags"><code>BusNameOwnerFlags</code></a> enumeration</p>
 <h3 id="bus_acquired_handler"><a href="#bus_acquired_handler"><code>bus_acquired_handler</code></a></h3>
-<p>handler to invoke when connected to the bus of type <code>bus_type</code> or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
+<p>handler to invoke when connected to the bus of type <code>bus_type</code> or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="variant core::option::Option::None"><code>None</code></a></p>
 <h3 id="name_acquired_handler"><a href="#name_acquired_handler"><code>name_acquired_handler</code></a></h3>
-<p>handler to invoke when <code>name</code> is acquired or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
+<p>handler to invoke when <code>name</code> is acquired or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="variant core::option::Option::None"><code>None</code></a></p>
 <h3 id="name_lost_handler"><a href="#name_lost_handler"><code>name_lost_handler</code></a></h3>
-<p>handler to invoke when <code>name</code> is lost or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
+<p>handler to invoke when <code>name</code> is lost or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="variant core::option::Option::None"><code>None</code></a></p>
 <h2 id="returns"><a href="#returns">Returns</a></h2>
 <p>an identifier (never 0) that can be used with
 <code>g_bus_unown_name()</code> to stop owning the name.</p>
-</div></details></section></div></main><div id="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (065852def 2023-02-13)" data-search-js="search-abe1d547ad11c273.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
+</div></details></section></div></main><div id="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (0416b1a6f 2023-02-14)" data-search-js="search-14421e1532aead08.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
