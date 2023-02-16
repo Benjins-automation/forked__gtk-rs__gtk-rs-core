@@ -1535,11 +1535,24 @@
 <a href="#1462" id="1462">1462</a>
 <a href="#1463" id="1463">1463</a>
 <a href="#1464" id="1464">1464</a>
+<a href="#1465" id="1465">1465</a>
+<a href="#1466" id="1466">1466</a>
+<a href="#1467" id="1467">1467</a>
+<a href="#1468" id="1468">1468</a>
+<a href="#1469" id="1469">1469</a>
+<a href="#1470" id="1470">1470</a>
+<a href="#1471" id="1471">1471</a>
+<a href="#1472" id="1472">1472</a>
+<a href="#1473" id="1473">1473</a>
+<a href="#1474" id="1474">1474</a>
+<a href="#1475" id="1475">1475</a>
+<a href="#1476" id="1476">1476</a>
+<a href="#1477" id="1477">1477</a>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 </span><span class="kw">use </span>std::{ffi::c_char, fmt, marker::PhantomData, mem, ptr};
 
-<span class="kw">use crate</span>::{translate::<span class="kw-2">*</span>, GStr, GString, GStringPtr};
+<span class="kw">use crate</span>::{translate::<span class="kw-2">*</span>, GStr, GString, GStringPtr, IntoGStr, IntoOptionalGStr};
 
 <span class="comment">// rustdoc-stripper-ignore-next
 </span><span class="doccomment">/// Minimum size of the `StrV` allocation.
@@ -2388,6 +2401,19 @@
             }
         }
     }
+
+    <span class="comment">// rustdoc-stripper-ignore-next
+    </span><span class="doccomment">/// Joins the strings into a longer string, with an optional separator
+    </span><span class="attr">#[inline]
+    #[doc(alias = <span class="string">&quot;g_strjoinv&quot;</span>)]
+    </span><span class="kw">pub fn </span>join(<span class="self">self</span>, separator: <span class="prelude-ty">Option</span>&lt;<span class="kw">impl </span>IntoGStr&gt;) -&gt; GString {
+        separator.run_with_gstr(|separator| <span class="kw">unsafe </span>{
+            from_glib_full(ffi::g_strjoinv(
+                separator.to_glib_none().<span class="number">0</span>,
+                <span class="self">self</span>.ptr.as_ptr(),
+            ))
+        })
+    }
 }
 
 <span class="kw">impl </span>FromGlibContainer&lt;<span class="kw-2">*mut </span>c_char, <span class="kw-2">*mut *mut </span>c_char&gt; <span class="kw">for </span>StrV {
@@ -3000,4 +3026,4 @@
     }
 }
 </code></pre></div>
-</section></main><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (0416b1a6f 2023-02-14)" data-search-js="search-14421e1532aead08.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
+</section></main><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (2d14db321 2023-02-15)" data-search-js="search-14421e1532aead08.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>

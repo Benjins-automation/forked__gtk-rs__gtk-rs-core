@@ -1551,46 +1551,6 @@
 <a href="#1478" id="1478">1478</a>
 <a href="#1479" id="1479">1479</a>
 <a href="#1480" id="1480">1480</a>
-<a href="#1481" id="1481">1481</a>
-<a href="#1482" id="1482">1482</a>
-<a href="#1483" id="1483">1483</a>
-<a href="#1484" id="1484">1484</a>
-<a href="#1485" id="1485">1485</a>
-<a href="#1486" id="1486">1486</a>
-<a href="#1487" id="1487">1487</a>
-<a href="#1488" id="1488">1488</a>
-<a href="#1489" id="1489">1489</a>
-<a href="#1490" id="1490">1490</a>
-<a href="#1491" id="1491">1491</a>
-<a href="#1492" id="1492">1492</a>
-<a href="#1493" id="1493">1493</a>
-<a href="#1494" id="1494">1494</a>
-<a href="#1495" id="1495">1495</a>
-<a href="#1496" id="1496">1496</a>
-<a href="#1497" id="1497">1497</a>
-<a href="#1498" id="1498">1498</a>
-<a href="#1499" id="1499">1499</a>
-<a href="#1500" id="1500">1500</a>
-<a href="#1501" id="1501">1501</a>
-<a href="#1502" id="1502">1502</a>
-<a href="#1503" id="1503">1503</a>
-<a href="#1504" id="1504">1504</a>
-<a href="#1505" id="1505">1505</a>
-<a href="#1506" id="1506">1506</a>
-<a href="#1507" id="1507">1507</a>
-<a href="#1508" id="1508">1508</a>
-<a href="#1509" id="1509">1509</a>
-<a href="#1510" id="1510">1510</a>
-<a href="#1511" id="1511">1511</a>
-<a href="#1512" id="1512">1512</a>
-<a href="#1513" id="1513">1513</a>
-<a href="#1514" id="1514">1514</a>
-<a href="#1515" id="1515">1515</a>
-<a href="#1516" id="1516">1516</a>
-<a href="#1517" id="1517">1517</a>
-<a href="#1518" id="1518">1518</a>
-<a href="#1519" id="1519">1519</a>
-<a href="#1520" id="1520">1520</a>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 // rustdoc-stripper-ignore-next
@@ -2070,17 +2030,6 @@
     /// used instead.
     ///
     /// See the [module documentation](index.html) for more details.
-    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
-    </span><span class="doccomment">/// An opaque structure used to hold different types of values.
-    ///
-    /// The data within the structure has protected scope: it is accessible only
-    /// to functions within a `GTypeValueTable` structure, or implementations of
-    /// the g_value_*() API. That is, code portions which implement new fundamental
-    /// types.
-    ///
-    /// [`Value`][crate::Value] users cannot make any assumptions about how data is stored
-    /// within the 2 element `data` union, and the `g_type` member should
-    /// only be accessed through the G_VALUE_TYPE() macro.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;GValue&quot;</span>)]
     </span><span class="kw">pub struct </span>Value(BoxedInline&lt;gobject_ffi::GValue&gt;);
 
@@ -2198,20 +2147,6 @@
     /// # Returns
     ///
     /// [`true`] if the transformation is possible, [`false`] otherwise.
-    /// will be a non-empty array if this function returns
-    /// successfully.
-    ///
-    /// Free the returned vector with `g_strfreev()`.
-    /// ## `command_line`
-    /// command line to parse
-    ///
-    /// # Returns
-    ///
-    /// [`true`] on success, [`false`] if error set
-    ///
-    /// ## `argvp`
-    ///
-    ///  return location for array of args
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_value_type_transformable&quot;</span>)]
     </span><span class="kw">pub fn </span>type_transformable(src: Type, dst: Type) -&gt; bool {
         <span class="kw">unsafe </span>{
@@ -2224,21 +2159,6 @@
 
     <span class="comment">// rustdoc-stripper-ignore-next
     </span><span class="doccomment">/// Tries to transform the value into a value of the target type
-    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
-    </span><span class="doccomment">/// Tries to cast the contents of `self` into a type appropriate
-    /// to store in `dest_value`, e.g. to transform a `G_TYPE_INT` value
-    /// into a `G_TYPE_FLOAT` value. Performing transformations between
-    /// value types might incur precision lossage. Especially
-    /// transformations into strings might reveal seemingly arbitrary
-    /// results and shouldn&#39;t be relied upon for production code (such
-    /// as rcfile value or object property serialization).
-    /// ## `dest_value`
-    /// Target value.
-    ///
-    /// # Returns
-    ///
-    /// Whether a transformation rule was found and could be applied.
-    ///  Upon failing transformations, `dest_value` is left untouched.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_value_transform&quot;</span>)]
     </span><span class="kw">pub fn </span>transform&lt;T: ValueType&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;Value, <span class="kw">crate</span>::BoolError&gt; {
         <span class="self">self</span>.transform_with_type(T::Type::static_type())
@@ -3112,4 +3032,4 @@
     }
 }
 </code></pre></div>
-</section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (0416b1a6f 2023-02-14)" data-search-js="search-14421e1532aead08.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
+</section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (2d14db321 2023-02-15)" data-search-js="search-14421e1532aead08.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
