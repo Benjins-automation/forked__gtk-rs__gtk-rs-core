@@ -175,7 +175,7 @@ handlers for the <a href="struct.SimpleAction.html#activate" title="struct gio::
 </div></details><details class="toggle method-toggle" open><summary><section id="method.new_stateful" class="method"><a class="srclink rightside" href="../src/gio/auto/simple_action.rs.html#212-224">source</a><h4 class="code-header">pub fn <a href="#method.new_stateful" class="fn">new_stateful</a>(
     name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
     parameter_type: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="struct" href="../glib/variant_type/struct.VariantTy.html" title="struct glib::variant_type::VariantTy">VariantTy</a>&gt;,
-    state: <a class="struct" href="../glib/variant/struct.Variant.html" title="struct glib::variant::Variant">Variant</a>
+    state: &amp;<a class="struct" href="../glib/variant/struct.Variant.html" title="struct glib::variant::Variant">Variant</a>
 ) -&gt; <a class="struct" href="struct.SimpleAction.html" title="struct gio::SimpleAction">SimpleAction</a></h4></section></summary><div class="docblock"><p>Creates a new stateful action.</p>
 <p>All future state values must have the same <a href="../glib/variant_type/struct.VariantType.html" title="struct glib::variant_type::VariantType"><code>glib::VariantType</code></a> as the initial
 <code>state</code>.</p>
@@ -196,7 +196,7 @@ have its state changed from outside callers.</p>
 of the action should not attempt to modify its enabled flag.</p>
 <h6 id="enabled-2"><a href="#enabled-2"><code>enabled</code></a></h6>
 <p>whether the action is enabled</p>
-</div></details><details class="toggle method-toggle" open><summary><section id="method.set_state" class="method"><a class="srclink rightside" href="../src/gio/auto/simple_action.rs.html#255-259">source</a><h4 class="code-header">pub fn <a href="#method.set_state" class="fn">set_state</a>(&amp;self, value: <a class="struct" href="../glib/variant/struct.Variant.html" title="struct glib::variant::Variant">Variant</a>)</h4></section></summary><div class="docblock"><p>Sets the state of the action.</p>
+</div></details><details class="toggle method-toggle" open><summary><section id="method.set_state" class="method"><a class="srclink rightside" href="../src/gio/auto/simple_action.rs.html#255-259">source</a><h4 class="code-header">pub fn <a href="#method.set_state" class="fn">set_state</a>(&amp;self, value: &amp;<a class="struct" href="../glib/variant/struct.Variant.html" title="struct glib::variant::Variant">Variant</a>)</h4></section></summary><div class="docblock"><p>Sets the state of the action.</p>
 <p>This directly updates the ‘state’ property to the given value.</p>
 <p>This should only be called by the implementor of the action. Users
 of the action should not attempt to directly modify the ‘state’
@@ -205,7 +205,7 @@ request the change.</p>
 <p>If the <code>value</code> GVariant is floating, it is consumed.</p>
 <h6 id="value"><a href="#value"><code>value</code></a></h6>
 <p>the new <a href="../glib/variant/struct.Variant.html" title="struct glib::variant::Variant"><code>glib::Variant</code></a> for the state</p>
-</div></details><details class="toggle method-toggle" open><summary><section id="method.set_state_hint" class="method"><a class="srclink rightside" href="../src/gio/auto/simple_action.rs.html#268-272">source</a><h4 class="code-header">pub fn <a href="#method.set_state_hint" class="fn">set_state_hint</a>(&amp;self, state_hint: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../glib/variant/struct.Variant.html" title="struct glib::variant::Variant">Variant</a>&gt;)</h4></section></summary><div class="docblock"><p>Sets the state hint for the action.</p>
+</div></details><details class="toggle method-toggle" open><summary><section id="method.set_state_hint" class="method"><a class="srclink rightside" href="../src/gio/auto/simple_action.rs.html#268-272">source</a><h4 class="code-header">pub fn <a href="#method.set_state_hint" class="fn">set_state_hint</a>(&amp;self, state_hint: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="struct" href="../glib/variant/struct.Variant.html" title="struct glib::variant::Variant">Variant</a>&gt;)</h4></section></summary><div class="docblock"><p>Sets the state hint for the action.</p>
 <p>See <a href="prelude/trait.ActionExt.html#tymethod.state_hint" title="associated function gio::prelude::ActionExt::state_hint"><code>ActionExt::state_hint()</code></a> for more information about
 action state hints.</p>
 <h6 id="state_hint"><a href="#state_hint"><code>state_hint</code></a></h6>

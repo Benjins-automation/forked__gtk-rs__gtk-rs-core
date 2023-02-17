@@ -1562,10 +1562,6 @@
 <a href="#1489" id="1489">1489</a>
 <a href="#1490" id="1490">1490</a>
 <a href="#1491" id="1491">1491</a>
-<a href="#1492" id="1492">1492</a>
-<a href="#1493" id="1493">1493</a>
-<a href="#1494" id="1494">1494</a>
-<a href="#1495" id="1495">1495</a>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 // rustdoc-stripper-ignore-next
@@ -2045,6 +2041,17 @@
     /// used instead.
     ///
     /// See the [module documentation](index.html) for more details.
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// An opaque structure used to hold different types of values.
+    ///
+    /// The data within the structure has protected scope: it is accessible only
+    /// to functions within a `GTypeValueTable` structure, or implementations of
+    /// the g_value_*() API. That is, code portions which implement new fundamental
+    /// types.
+    ///
+    /// [`Value`][crate::Value] users cannot make any assumptions about how data is stored
+    /// within the 2 element `data` union, and the `g_type` member should
+    /// only be accessed through the G_VALUE_TYPE() macro.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;GValue&quot;</span>)]
     </span><span class="kw">pub struct </span>Value(BoxedInline&lt;gobject_ffi::GValue&gt;);
 
@@ -2174,21 +2181,6 @@
 
     <span class="comment">// rustdoc-stripper-ignore-next
     </span><span class="doccomment">/// Tries to transform the value into a value of the target type
-    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
-    </span><span class="doccomment">/// Tries to cast the contents of `self` into a type appropriate
-    /// to store in `dest_value`, e.g. to transform a `G_TYPE_INT` value
-    /// into a `G_TYPE_FLOAT` value. Performing transformations between
-    /// value types might incur precision lossage. Especially
-    /// transformations into strings might reveal seemingly arbitrary
-    /// results and shouldn&#39;t be relied upon for production code (such
-    /// as rcfile value or object property serialization).
-    /// ## `dest_value`
-    /// Target value.
-    ///
-    /// # Returns
-    ///
-    /// Whether a transformation rule was found and could be applied.
-    ///  Upon failing transformations, `dest_value` is left untouched.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_value_transform&quot;</span>)]
     </span><span class="kw">pub fn </span>transform&lt;T: ValueType&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;Value, <span class="kw">crate</span>::BoolError&gt; {
         <span class="self">self</span>.transform_with_type(T::Type::static_type())

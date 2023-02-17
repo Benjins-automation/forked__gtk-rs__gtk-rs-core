@@ -685,13 +685,13 @@
     </span><span class="kw">pub fn </span>new_stateful(
         name: <span class="kw-2">&amp;</span>str,
         parameter_type: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>glib::VariantTy&gt;,
-        state: glib::Variant,
+        state: <span class="kw-2">&amp;</span>glib::Variant,
     ) -&gt; SimpleAction {
         <span class="kw">unsafe </span>{
             from_glib_full(ffi::g_simple_action_new_stateful(
                 name.to_glib_none().<span class="number">0</span>,
                 parameter_type.to_glib_none().<span class="number">0</span>,
-                state.into_glib_ptr(),
+                state.to_glib_none().<span class="number">0</span>,
             ))
         }
     }
@@ -725,9 +725,9 @@
     /// ## `value`
     /// the new [`glib::Variant`][struct@crate::glib::Variant] for the state
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_simple_action_set_state&quot;</span>)]
-    </span><span class="kw">pub fn </span>set_state(<span class="kw-2">&amp;</span><span class="self">self</span>, value: glib::Variant) {
+    </span><span class="kw">pub fn </span>set_state(<span class="kw-2">&amp;</span><span class="self">self</span>, value: <span class="kw-2">&amp;</span>glib::Variant) {
         <span class="kw">unsafe </span>{
-            ffi::g_simple_action_set_state(<span class="self">self</span>.to_glib_none().<span class="number">0</span>, value.into_glib_ptr());
+            ffi::g_simple_action_set_state(<span class="self">self</span>.to_glib_none().<span class="number">0</span>, value.to_glib_none().<span class="number">0</span>);
         }
     }
 
@@ -738,9 +738,9 @@
     /// ## `state_hint`
     /// a [`glib::Variant`][struct@crate::glib::Variant] representing the state hint
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_simple_action_set_state_hint&quot;</span>)]
-    </span><span class="kw">pub fn </span>set_state_hint(<span class="kw-2">&amp;</span><span class="self">self</span>, state_hint: <span class="prelude-ty">Option</span>&lt;glib::Variant&gt;) {
+    </span><span class="kw">pub fn </span>set_state_hint(<span class="kw-2">&amp;</span><span class="self">self</span>, state_hint: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>glib::Variant&gt;) {
         <span class="kw">unsafe </span>{
-            ffi::g_simple_action_set_state_hint(<span class="self">self</span>.to_glib_none().<span class="number">0</span>, state_hint.into_glib_ptr());
+            ffi::g_simple_action_set_state_hint(<span class="self">self</span>.to_glib_none().<span class="number">0</span>, state_hint.to_glib_none().<span class="number">0</span>);
         }
     }
 
