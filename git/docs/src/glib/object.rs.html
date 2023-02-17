@@ -4706,10 +4706,9 @@
     /// Returns `Ok(T)` if the object is an instance of `T` and `Err(self)`
     /// otherwise.
     ///
-    /// *NOTE*: This statically checks at compile-time if casting is possible. It is not always
-    /// known at compile-time, whether a specific object implements an interface or not, in which case
-    /// `upcast` would fail to compile. `dynamic_cast` can be used in these circumstances, which
-    /// is checking the types at runtime.
+    /// *NOTE*: This will check at compile-time if `T` is lower down the
+    /// inheritance tree of `Self`, but also check at runtime if downcasting
+    /// is indeed possible.
     ///
     /// # Example
     ///
@@ -4721,7 +4720,7 @@
     </span><span class="attr">#[inline]
     </span><span class="kw">fn </span>downcast&lt;T: ObjectType&gt;(<span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;T, <span class="self">Self</span>&gt;
     <span class="kw">where
-        </span><span class="self">Self</span>: CanDowncast&lt;T&gt;,
+        </span><span class="self">Self</span>: MayDowncastTo&lt;T&gt;,
     {
         <span class="kw">if </span><span class="self">self</span>.is::&lt;T&gt;() {
             <span class="prelude-val">Ok</span>(<span class="kw">unsafe </span>{ <span class="self">self</span>.unsafe_cast() })
@@ -4736,10 +4735,9 @@
     /// Returns `Some(T)` if the object is an instance of `T` and `None`
     /// otherwise.
     ///
-    /// *NOTE*: This statically checks at compile-time if casting is possible. It is not always
-    /// known at compile-time, whether a specific object implements an interface or not, in which case
-    /// `upcast` would fail to compile. `dynamic_cast` can be used in these circumstances, which
-    /// is checking the types at runtime.
+    /// *NOTE*: This will check at compile-time if `T` is lower down the
+    /// inheritance tree of `Self`, but also check at runtime if downcasting
+    /// is indeed possible.
     ///
     /// # Example
     ///
@@ -4751,7 +4749,7 @@
     </span><span class="attr">#[inline]
     </span><span class="kw">fn </span>downcast_ref&lt;T: ObjectType&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>T&gt;
     <span class="kw">where
-        </span><span class="self">Self</span>: CanDowncast&lt;T&gt;,
+        </span><span class="self">Self</span>: MayDowncastTo&lt;T&gt;,
     {
         <span class="kw">if </span><span class="self">self</span>.is::&lt;T&gt;() {
             <span class="prelude-val">Some</span>(<span class="kw">unsafe </span>{ <span class="self">self</span>.unsafe_cast_ref() })
@@ -4763,7 +4761,9 @@
     <span class="comment">// rustdoc-stripper-ignore-next
     </span><span class="doccomment">/// Tries to cast to an object of type `T`. This handles upcasting, downcasting
     /// and casting between interface and interface implementors. All checks are performed at
-    /// runtime, while `downcast` and `upcast` will do many checks at compile-time already.
+    /// runtime, while `upcast` will do many checks at compile-time already. `downcast` will
+    /// perform the same checks at runtime as `dynamic_cast`, but will also ensure some amount of
+    /// compile-time safety.
     ///
     /// It is not always known at compile-time, whether a specific object implements an interface or
     /// not, and checking has to be performed at runtime.
@@ -4887,10 +4887,10 @@
     <span class="kw">type </span>Inner;
     <span class="kw">fn </span>and_downcast&lt;T: ObjectType&gt;(<span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;T&gt;
     <span class="kw">where
-        </span><span class="self">Self</span>::Inner: CanDowncast&lt;T&gt;;
+        </span><span class="self">Self</span>::Inner: MayDowncastTo&lt;T&gt;;
     <span class="kw">fn </span>and_downcast_ref&lt;T: ObjectType&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>T&gt;
     <span class="kw">where
-        </span><span class="self">Self</span>::Inner: CanDowncast&lt;T&gt;;
+        </span><span class="self">Self</span>::Inner: MayDowncastTo&lt;T&gt;;
     <span class="kw">fn </span>and_upcast&lt;T: ObjectType&gt;(<span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;T&gt;
     <span class="kw">where
         </span><span class="self">Self</span>::Inner: IsA&lt;T&gt;;
@@ -4906,7 +4906,7 @@
     <span class="attr">#[inline]
     </span><span class="kw">fn </span>and_downcast&lt;T: ObjectType&gt;(<span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;T&gt;
     <span class="kw">where
-        </span><span class="self">Self</span>::Inner: CanDowncast&lt;T&gt;,
+        </span><span class="self">Self</span>::Inner: MayDowncastTo&lt;T&gt;,
     {
         <span class="self">self</span>.and_then(|i| i.downcast().ok())
     }
@@ -4914,7 +4914,7 @@
     <span class="attr">#[inline]
     </span><span class="kw">fn </span>and_downcast_ref&lt;T: ObjectType&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>T&gt;
     <span class="kw">where
-        </span><span class="self">Self</span>::Inner: CanDowncast&lt;T&gt;,
+        </span><span class="self">Self</span>::Inner: MayDowncastTo&lt;T&gt;,
     {
         <span class="self">self</span>.as_ref().and_then(|i| i.downcast_ref())
     }
@@ -4949,9 +4949,9 @@
 
 <span class="comment">// rustdoc-stripper-ignore-next
 </span><span class="doccomment">/// Marker trait for the statically known possibility of downcasting from `Self` to `T`.
-</span><span class="kw">pub trait </span>CanDowncast&lt;T&gt; {}
+</span><span class="kw">pub trait </span>MayDowncastTo&lt;T&gt; {}
 
-<span class="kw">impl</span>&lt;Super: IsA&lt;Super&gt;, Sub: IsA&lt;Super&gt;&gt; CanDowncast&lt;Sub&gt; <span class="kw">for </span>Super {}
+<span class="kw">impl</span>&lt;Super: IsA&lt;Super&gt;, Sub: IsA&lt;Super&gt;&gt; MayDowncastTo&lt;Sub&gt; <span class="kw">for </span>Super {}
 
 <span class="comment">// Manual implementation of glib_shared_wrapper! because of special cases
 </span><span class="attr">#[repr(transparent)]
@@ -9094,4 +9094,4 @@
     }
 }
 </code></pre></div>
-</section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (2d14db321 2023-02-15)" data-search-js="search-14421e1532aead08.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
+</section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (9a7cc6c32 2023-02-16)" data-search-js="search-14421e1532aead08.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>

@@ -1551,6 +1551,17 @@
 <a href="#1478" id="1478">1478</a>
 <a href="#1479" id="1479">1479</a>
 <a href="#1480" id="1480">1480</a>
+<a href="#1481" id="1481">1481</a>
+<a href="#1482" id="1482">1482</a>
+<a href="#1483" id="1483">1483</a>
+<a href="#1484" id="1484">1484</a>
+<a href="#1485" id="1485">1485</a>
+<a href="#1486" id="1486">1486</a>
+<a href="#1487" id="1487">1487</a>
+<a href="#1488" id="1488">1488</a>
+<a href="#1489" id="1489">1489</a>
+<a href="#1490" id="1490">1490</a>
+<a href="#1491" id="1491">1491</a>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 // rustdoc-stripper-ignore-next
@@ -2030,6 +2041,17 @@
     /// used instead.
     ///
     /// See the [module documentation](index.html) for more details.
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// An opaque structure used to hold different types of values.
+    ///
+    /// The data within the structure has protected scope: it is accessible only
+    /// to functions within a `GTypeValueTable` structure, or implementations of
+    /// the g_value_*() API. That is, code portions which implement new fundamental
+    /// types.
+    ///
+    /// [`Value`][crate::Value] users cannot make any assumptions about how data is stored
+    /// within the 2 element `data` union, and the `g_type` member should
+    /// only be accessed through the G_VALUE_TYPE() macro.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;GValue&quot;</span>)]
     </span><span class="kw">pub struct </span>Value(BoxedInline&lt;gobject_ffi::GValue&gt;);
 
@@ -3032,4 +3054,4 @@
     }
 }
 </code></pre></div>
-</section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (2d14db321 2023-02-15)" data-search-js="search-14421e1532aead08.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
+</section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (9a7cc6c32 2023-02-16)" data-search-js="search-14421e1532aead08.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
