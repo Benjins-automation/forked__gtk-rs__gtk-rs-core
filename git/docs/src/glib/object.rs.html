@@ -4582,6 +4582,27 @@
 <a href="#4509" id="4509">4509</a>
 <a href="#4510" id="4510">4510</a>
 <a href="#4511" id="4511">4511</a>
+<a href="#4512" id="4512">4512</a>
+<a href="#4513" id="4513">4513</a>
+<a href="#4514" id="4514">4514</a>
+<a href="#4515" id="4515">4515</a>
+<a href="#4516" id="4516">4516</a>
+<a href="#4517" id="4517">4517</a>
+<a href="#4518" id="4518">4518</a>
+<a href="#4519" id="4519">4519</a>
+<a href="#4520" id="4520">4520</a>
+<a href="#4521" id="4521">4521</a>
+<a href="#4522" id="4522">4522</a>
+<a href="#4523" id="4523">4523</a>
+<a href="#4524" id="4524">4524</a>
+<a href="#4525" id="4525">4525</a>
+<a href="#4526" id="4526">4526</a>
+<a href="#4527" id="4527">4527</a>
+<a href="#4528" id="4528">4528</a>
+<a href="#4529" id="4529">4529</a>
+<a href="#4530" id="4530">4530</a>
+<a href="#4531" id="4531">4531</a>
+<a href="#4532" id="4532">4532</a>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 // rustdoc-stripper-ignore-next
@@ -8037,6 +8058,27 @@
 
 <span class="kw">unsafe impl</span>&lt;T: ObjectType + Sync + Sync&gt; Sync <span class="kw">for </span>WeakRef&lt;T&gt; {}
 <span class="kw">unsafe impl</span>&lt;T: ObjectType + Send + Sync&gt; Send <span class="kw">for </span>WeakRef&lt;T&gt; {}
+
+<span class="kw">impl</span>&lt;T: ObjectType&gt; PartialEq <span class="kw">for </span>WeakRef&lt;T&gt; {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>eq(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span><span class="self">Self</span>) -&gt; bool {
+        <span class="kw">unsafe </span>{ <span class="self">self</span>.<span class="number">0</span>.priv_.p == other.<span class="number">0</span>.priv_.p }
+    }
+}
+
+<span class="kw">impl</span>&lt;T: ObjectType&gt; PartialEq&lt;T&gt; <span class="kw">for </span>WeakRef&lt;T&gt; {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>eq(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>T) -&gt; bool {
+        <span class="kw">unsafe </span>{ <span class="self">self</span>.<span class="number">0</span>.priv_.p == other.as_ptr() <span class="kw">as </span><span class="kw-2">*mut </span>std::os::raw::c_void }
+    }
+}
+
+<span class="kw">impl</span>&lt;T: ObjectType&gt; PartialOrd <span class="kw">for </span>WeakRef&lt;T&gt; {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>partial_cmp(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span><span class="self">Self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;cmp::Ordering&gt; {
+        <span class="kw">unsafe </span>{ <span class="self">self</span>.<span class="number">0</span>.priv_.p.partial_cmp(<span class="kw-2">&amp;</span>other.<span class="number">0</span>.priv_.p) }
+    }
+}
 
 <span class="comment">// rustdoc-stripper-ignore-next
 </span><span class="doccomment">/// A weak reference to the object it was created for that can be sent to

@@ -1564,6 +1564,8 @@
 <a href="#1491" id="1491">1491</a>
 <a href="#1492" id="1492">1492</a>
 <a href="#1493" id="1493">1493</a>
+<a href="#1494" id="1494">1494</a>
+<a href="#1495" id="1495">1495</a>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 // rustdoc-stripper-ignore-next
@@ -2043,17 +2045,6 @@
     /// used instead.
     ///
     /// See the [module documentation](index.html) for more details.
-    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
-    </span><span class="doccomment">/// An opaque structure used to hold different types of values.
-    ///
-    /// The data within the structure has protected scope: it is accessible only
-    /// to functions within a `GTypeValueTable` structure, or implementations of
-    /// the g_value_*() API. That is, code portions which implement new fundamental
-    /// types.
-    ///
-    /// [`Value`][crate::Value] users cannot make any assumptions about how data is stored
-    /// within the 2 element `data` union, and the `g_type` member should
-    /// only be accessed through the G_VALUE_TYPE() macro.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;GValue&quot;</span>)]
     </span><span class="kw">pub struct </span>Value(BoxedInline&lt;gobject_ffi::GValue&gt;);
 
@@ -2158,6 +2149,19 @@
 
     <span class="comment">// rustdoc-stripper-ignore-next
     </span><span class="doccomment">/// Returns whether `Value`s of type `src` can be transformed to type `dst`.
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// Check whether [`transform()`][Self::transform()] is able to transform values
+    /// of type `src_type` into values of type `dest_type`. Note that for
+    /// the types to be transformable, they must be compatible or a
+    /// transformation function must be registered.
+    /// ## `src_type`
+    /// Source type.
+    /// ## `dest_type`
+    /// Target type.
+    ///
+    /// # Returns
+    ///
+    /// [`true`] if the transformation is possible, [`false`] otherwise.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_value_type_transformable&quot;</span>)]
     </span><span class="kw">pub fn </span>type_transformable(src: Type, dst: Type) -&gt; bool {
         <span class="kw">unsafe </span>{
