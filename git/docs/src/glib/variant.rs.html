@@ -2891,68 +2891,6 @@
 <a href="#2818" id="2818">2818</a>
 <a href="#2819" id="2819">2819</a>
 <a href="#2820" id="2820">2820</a>
-<a href="#2821" id="2821">2821</a>
-<a href="#2822" id="2822">2822</a>
-<a href="#2823" id="2823">2823</a>
-<a href="#2824" id="2824">2824</a>
-<a href="#2825" id="2825">2825</a>
-<a href="#2826" id="2826">2826</a>
-<a href="#2827" id="2827">2827</a>
-<a href="#2828" id="2828">2828</a>
-<a href="#2829" id="2829">2829</a>
-<a href="#2830" id="2830">2830</a>
-<a href="#2831" id="2831">2831</a>
-<a href="#2832" id="2832">2832</a>
-<a href="#2833" id="2833">2833</a>
-<a href="#2834" id="2834">2834</a>
-<a href="#2835" id="2835">2835</a>
-<a href="#2836" id="2836">2836</a>
-<a href="#2837" id="2837">2837</a>
-<a href="#2838" id="2838">2838</a>
-<a href="#2839" id="2839">2839</a>
-<a href="#2840" id="2840">2840</a>
-<a href="#2841" id="2841">2841</a>
-<a href="#2842" id="2842">2842</a>
-<a href="#2843" id="2843">2843</a>
-<a href="#2844" id="2844">2844</a>
-<a href="#2845" id="2845">2845</a>
-<a href="#2846" id="2846">2846</a>
-<a href="#2847" id="2847">2847</a>
-<a href="#2848" id="2848">2848</a>
-<a href="#2849" id="2849">2849</a>
-<a href="#2850" id="2850">2850</a>
-<a href="#2851" id="2851">2851</a>
-<a href="#2852" id="2852">2852</a>
-<a href="#2853" id="2853">2853</a>
-<a href="#2854" id="2854">2854</a>
-<a href="#2855" id="2855">2855</a>
-<a href="#2856" id="2856">2856</a>
-<a href="#2857" id="2857">2857</a>
-<a href="#2858" id="2858">2858</a>
-<a href="#2859" id="2859">2859</a>
-<a href="#2860" id="2860">2860</a>
-<a href="#2861" id="2861">2861</a>
-<a href="#2862" id="2862">2862</a>
-<a href="#2863" id="2863">2863</a>
-<a href="#2864" id="2864">2864</a>
-<a href="#2865" id="2865">2865</a>
-<a href="#2866" id="2866">2866</a>
-<a href="#2867" id="2867">2867</a>
-<a href="#2868" id="2868">2868</a>
-<a href="#2869" id="2869">2869</a>
-<a href="#2870" id="2870">2870</a>
-<a href="#2871" id="2871">2871</a>
-<a href="#2872" id="2872">2872</a>
-<a href="#2873" id="2873">2873</a>
-<a href="#2874" id="2874">2874</a>
-<a href="#2875" id="2875">2875</a>
-<a href="#2876" id="2876">2876</a>
-<a href="#2877" id="2877">2877</a>
-<a href="#2878" id="2878">2878</a>
-<a href="#2879" id="2879">2879</a>
-<a href="#2880" id="2880">2880</a>
-<a href="#2881" id="2881">2881</a>
-<a href="#2882" id="2882">2882</a>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 // rustdoc-stripper-ignore-next
@@ -3665,26 +3603,6 @@
 
     <span class="comment">// rustdoc-stripper-ignore-next
     </span><span class="doccomment">/// Constructs a new serialized-mode GVariant instance.
-    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
-    </span><span class="doccomment">/// Constructs a new serialized-mode [`Variant`][struct@crate::Variant] instance. This is the
-    /// inner interface for creation of new serialized values that gets
-    /// called from various functions in gvariant.c.
-    ///
-    /// A reference is taken on `bytes`.
-    ///
-    /// The data in `bytes` must be aligned appropriately for the `type_` being loaded.
-    /// Otherwise this function will internally create a copy of the memory (since
-    /// GLib 2.60) or (in older versions) fail and exit the process.
-    /// ## `type_`
-    /// a [`VariantType`][crate::VariantType]
-    /// ## `bytes`
-    /// a [`Bytes`][crate::Bytes]
-    /// ## `trusted`
-    /// if the contents of `bytes` are trusted
-    ///
-    /// # Returns
-    ///
-    /// a new [`Variant`][struct@crate::Variant] with a floating reference
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_variant_new_from_bytes&quot;</span>)]
     </span><span class="kw">pub fn </span>from_bytes&lt;T: StaticVariantType&gt;(bytes: <span class="kw-2">&amp;</span>Bytes) -&gt; <span class="self">Self </span>{
         Variant::from_bytes_with_type(bytes, <span class="kw-2">&amp;</span>T::static_variant_type())
@@ -3709,48 +3627,6 @@
 
     <span class="comment">// rustdoc-stripper-ignore-next
     </span><span class="doccomment">/// Constructs a new serialized-mode GVariant instance.
-    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
-    </span><span class="doccomment">/// Creates a new [`Variant`][struct@crate::Variant] instance from serialized data.
-    ///
-    /// `type_` is the type of [`Variant`][struct@crate::Variant] instance that will be constructed.
-    /// The interpretation of `data` depends on knowing the type.
-    ///
-    /// `data` is not modified by this function and must remain valid with an
-    /// unchanging value until such a time as `notify` is called with
-    /// `user_data`. If the contents of `data` change before that time then
-    /// the result is undefined.
-    ///
-    /// If `data` is trusted to be serialized data in normal form then
-    /// `trusted` should be [`true`]. This applies to serialized data created
-    /// within this process or read from a trusted location on the disk (such
-    /// as a file installed in /usr/lib alongside your application). You
-    /// should set trusted to [`false`] if `data` is read from the network, a
-    /// file in the user&#39;s home directory, etc.
-    ///
-    /// If `data` was not stored in this machine&#39;s native endianness, any multi-byte
-    /// numeric values in the returned variant will also be in non-native
-    /// endianness. [`byteswap()`][Self::byteswap()] can be used to recover the original values.
-    ///
-    /// `notify` will be called with `user_data` when `data` is no longer
-    /// needed. The exact time of this call is unspecified and might even be
-    /// before this function returns.
-    ///
-    /// Note: `data` must be backed by memory that is aligned appropriately for the
-    /// `type_` being loaded. Otherwise this function will internally create a copy of
-    /// the memory (since GLib 2.60) or (in older versions) fail and exit the
-    /// process.
-    /// ## `type_`
-    /// a definite [`VariantType`][crate::VariantType]
-    /// ## `data`
-    /// the serialized data
-    /// ## `trusted`
-    /// [`true`] if `data` is definitely in normal form
-    /// ## `notify`
-    /// function to call when `data` is no longer needed
-    ///
-    /// # Returns
-    ///
-    /// a new floating [`Variant`][struct@crate::Variant] of type `type_`
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_variant_new_from_data&quot;</span>)]
     </span><span class="kw">pub fn </span>from_data&lt;T: StaticVariantType, A: AsRef&lt;[u8]&gt;&gt;(data: A) -&gt; <span class="self">Self </span>{
         Variant::from_data_with_type(data, <span class="kw-2">&amp;</span>T::static_variant_type())
