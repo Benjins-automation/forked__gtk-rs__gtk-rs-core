@@ -234,6 +234,8 @@
 <a href="#161" id="161">161</a>
 <a href="#162" id="162">162</a>
 <a href="#163" id="163">163</a>
+<a href="#164" id="164">164</a>
+<a href="#165" id="165">165</a>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 </span><span class="kw">use </span>std::{mem, ptr};
@@ -329,8 +331,8 @@
     /// the buffer
     ///  containing the data to convert.
     /// ## `outbuf`
-    /// a buffer to write
-    ///  converted data in.
+    /// a
+    ///  buffer to write converted data in.
     /// ## `flags`
     /// a [`ConverterFlags`][crate::ConverterFlags] controlling the conversion details
     ///
@@ -339,10 +341,12 @@
     /// a [`ConverterResult`][crate::ConverterResult], [`ConverterResult::Error`][crate::ConverterResult::Error] on error.
     ///
     /// ## `bytes_read`
-    /// will be set to the number of bytes read from `inbuf` on success
+    /// will be set to the number of bytes read
+    ///  from `inbuf` on success
     ///
     /// ## `bytes_written`
-    /// will be set to the number of bytes written to `outbuf` on success
+    /// will be set to the number of bytes
+    ///  written to `outbuf` on success
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_converter_convert&quot;</span>)]
     </span><span class="kw">fn </span>convert&lt;IN: AsRef&lt;[u8]&gt;, OUT: AsMut&lt;[u8]&gt;&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
@@ -398,4 +402,4 @@
     }
 }
 </code></pre></div>
-</section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (9a7cc6c32 2023-02-16)" data-search-js="search-14421e1532aead08.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
+</section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (4507fdaaa 2023-02-18)" data-search-js="search-14421e1532aead08.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
