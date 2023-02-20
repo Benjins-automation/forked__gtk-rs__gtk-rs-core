@@ -2580,8 +2580,6 @@
 <a href="#2507" id="2507">2507</a>
 <a href="#2508" id="2508">2508</a>
 <a href="#2509" id="2509">2509</a>
-<a href="#2510" id="2510">2510</a>
-<a href="#2511" id="2511">2511</a>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 </span><span class="kw">use </span>std::{
@@ -4901,12 +4899,10 @@
 
 <span class="kw">impl </span>IntoGStr <span class="kw">for </span>String {
     <span class="attr">#[inline]
-    </span><span class="kw">fn </span>run_with_gstr&lt;T, F: FnOnce(<span class="kw-2">&amp;</span>GStr) -&gt; T&gt;(<span class="self">self</span>, f: F) -&gt; T {
-        <span class="kw">if </span><span class="self">self</span>.len() &lt; MAX_STACK_ALLOCATION {
-            <span class="self">self</span>.as_str().run_with_gstr(f)
-        } <span class="kw">else </span>{
-            f(GString::from(<span class="self">self</span>).as_gstr())
-        }
+    </span><span class="kw">fn </span>run_with_gstr&lt;T, F: FnOnce(<span class="kw-2">&amp;</span>GStr) -&gt; T&gt;(<span class="kw-2">mut </span><span class="self">self</span>, f: F) -&gt; T {
+        <span class="self">self</span>.push(<span class="string">&#39;\0&#39;</span>);
+        <span class="kw">let </span>gs = <span class="kw">unsafe </span>{ GStr::from_utf8_with_nul_unchecked(<span class="self">self</span>.as_bytes()) };
+        f(gs)
     }
 }
 
