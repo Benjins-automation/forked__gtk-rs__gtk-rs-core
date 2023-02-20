@@ -4603,6 +4603,16 @@
 <a href="#4530" id="4530">4530</a>
 <a href="#4531" id="4531">4531</a>
 <a href="#4532" id="4532">4532</a>
+<a href="#4533" id="4533">4533</a>
+<a href="#4534" id="4534">4534</a>
+<a href="#4535" id="4535">4535</a>
+<a href="#4536" id="4536">4536</a>
+<a href="#4537" id="4537">4537</a>
+<a href="#4538" id="4538">4538</a>
+<a href="#4539" id="4539">4539</a>
+<a href="#4540" id="4540">4540</a>
+<a href="#4541" id="4541">4541</a>
+<a href="#4542" id="4542">4542</a>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 // rustdoc-stripper-ignore-next
@@ -7719,6 +7729,16 @@
     }
     <span class="kw">fn </span>watch_closure(<span class="kw-2">&amp;</span><span class="self">self</span>, closure: <span class="kw-2">&amp;</span><span class="kw">impl </span>AsRef&lt;Closure&gt;) {
         ObjectExt::watch_closure(<span class="self">self</span>, closure)
+    }
+}
+
+<span class="attr">#[doc(hidden)]
+</span><span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>, T: ObjectType&gt; Watchable&lt;T&gt; <span class="kw">for </span>BorrowedObject&lt;<span class="lifetime">&#39;a</span>, T&gt; {
+    <span class="kw">fn </span>watched_object(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; WatchedObject&lt;T&gt; {
+        WatchedObject::new(<span class="self">self</span>)
+    }
+    <span class="kw">fn </span>watch_closure(<span class="kw-2">&amp;</span><span class="self">self</span>, closure: <span class="kw-2">&amp;</span><span class="kw">impl </span>AsRef&lt;Closure&gt;) {
+        ObjectExt::watch_closure(<span class="kw-2">&amp;**</span><span class="self">self</span>, closure)
     }
 }
 
