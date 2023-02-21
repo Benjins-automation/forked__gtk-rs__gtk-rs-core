@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib-macros/src/lib.rs`."><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-0ef3deca4ed45ad8.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../static.files/light-f501212b8b071243.css"><link rel="stylesheet" disabled href="../../static.files/dark-e92fc12c34ff89d3.css"><link rel="stylesheet" disabled href="../../static.files/ayu-a0090c8b1ced384f.css"><script src="../../static.files/storage-3891ce972e3a2bf8.js"></script><script defer src="../../static.files/source-script-ea63cb6500f71309.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-bfa4087bf2db080e.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib-macros/src/lib.rs`."><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-e5308b57e507db71.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../static.files/light-d59023bfa12059d2.css"><link rel="stylesheet" disabled href="../../static.files/dark-1ca41bb1e10af075.css"><link rel="stylesheet" disabled href="../../static.files/ayu-18b4181a2f3fb862.css"><script src="../../static.files/storage-3891ce972e3a2bf8.js"></script><script defer src="../../static.files/source-script-ea63cb6500f71309.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-98a684e84ae5b08b.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -1032,6 +1032,8 @@
 <a href="#959" id="959">959</a>
 <a href="#960" id="960">960</a>
 <a href="#961" id="961">961</a>
+<a href="#962" id="962">962</a>
+<a href="#963" id="963">963</a>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 </span><span class="kw">mod </span>boxed_derive;
@@ -1884,24 +1886,31 @@
 
 <span class="doccomment">/// This macro enables you to derive object properties in a quick way.
 ///
-/// # Getters and setters
-/// By default, they are generated for you.
-/// You can use a custom getter/setter by assigning an expression to `get`/`set`.
-/// Example: `#[property(get = |_| 2, set)]`.
+/// # Generated wrapper methods
+/// The following methods are generated on the wrapper type specified on `#[properties(wrapper_type = ...)]`:
+/// * `$property()`, when the property is readable
+/// * `set_$property()`, when the property is writable and not construct-only
+/// * `connect_$property_notify()`
+/// * `notify_$property()`
 ///
-/// The macro will always generate, on the wrapper type, the corresponding `$property()` and
-/// `set_$property()` methods.
-/// Notice: you can&#39;t reimplement the generated methods on the wrapper type, but you can change their
-/// behavior using a custom getter/setter.
+/// Notice: You can&#39;t reimplement the generated methods on the wrapper type,
+/// but you can change their behavior using a custom internal getter/setter.
+///
+/// # Internal getters and setters
+/// By default, they are generated for you. However, you can use a custom getter/setter
+/// by assigning an expression to `get`/`set`: `#[property(get = |_| 2, set)]` or `#[property(get, set = custom_setter_func)]`.
 ///
 /// # Supported types
 /// Every type implementing the trait `Property` is supported.
+///
 /// If you want to support a custom type, you should consider implementing `Property` and
 /// `PropertyGet`. If your type supports interior mutability, you should implement also
 /// `PropertySet` and `PropertySetNested` if possible.
+///
 /// The type `Option&lt;T&gt;` is supported as a property only if `Option&lt;T&gt;` implements `ToValueOptional`.
 /// If your type doesn&#39;t support `PropertySet`, you can&#39;t use the generated setter, but you can
 /// always define a custom one.
+///
 /// If you want to support a custom type with a custom `ParamSpec`, you should implement the trait
 /// `HasParamSpec` instead of `Property`.
 ///
@@ -1950,16 +1959,11 @@
 ///         fn properties() -&gt; &amp;&#39;static [ParamSpec] {
 ///             Self::derived_properties()
 ///         }
-///         fn set_property(
-///             &amp;self,
-///             _id: usize,
-///             _value: &amp;Value,
-///             _pspec: &amp;ParamSpec,
-///         ) {
-///             Self::derived_set_property(self, _id, _value, _pspec)
+///         fn set_property(&amp;self, id: usize, value: &amp;Value, pspec: &amp;ParamSpec) {
+///             self.derived_set_property(id, value, pspec)
 ///         }
-///         fn property(&amp;self, _id: usize, _pspec: &amp;ParamSpec) -&gt; Value {
-///             Self::derived_property(self, _id, _pspec)
+///         fn property(&amp;self, id: usize, pspec: &amp;ParamSpec) -&gt; Value {
+///             self.derived_property(id, pspec)
 ///         }
 ///     }
 ///
@@ -1994,4 +1998,4 @@
     properties::impl_derive_props(input)
 }
 </code></pre></div>
-</section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="glib_macros" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (5b8f28453 2023-02-12)" data-search-js="search-28136cea55c34037.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
+</section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="glib_macros" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (5243ea5c2 2023-02-20)" data-search-js="search-14421e1532aead08.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
