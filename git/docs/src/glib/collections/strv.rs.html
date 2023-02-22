@@ -2449,7 +2449,7 @@
         separator.run_with_gstr(|separator| <span class="kw">unsafe </span>{
             from_glib_full(ffi::g_strjoinv(
                 separator.to_glib_none().<span class="number">0</span>,
-                <span class="self">self</span>.ptr.as_ptr(),
+                <span class="self">self</span>.as_ptr() <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>,
             ))
         })
     }
@@ -2461,7 +2461,7 @@
     </span><span class="kw">pub fn </span>contains(<span class="kw-2">&amp;</span><span class="self">self</span>, s: <span class="kw">impl </span>IntoGStr) -&gt; bool {
         s.run_with_gstr(|s| <span class="kw">unsafe </span>{
             from_glib(ffi::g_strv_contains(
-                <span class="self">self</span>.ptr.as_ptr() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>,
+                <span class="self">self</span>.as_ptr() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>,
                 s.to_glib_none().<span class="number">0</span>,
             ))
         })
