@@ -124,7 +124,7 @@ falls to zero, at which point 0 is returned.</p>
 run for as much as 10 seconds with a use count of zero while waiting
 for the message that caused the activation to arrive. After that,
 if the use count falls to zero the application will exit immediately,
-except in the case that <a href="trait.ApplicationExt.html#tymethod.set_inactivity_timeout" title="associated function gio::prelude::ApplicationExt::set_inactivity_timeout"><code>ApplicationExt::set_inactivity_timeout()</code></a> is in
+except in the case that <a href="trait.ApplicationExt.html#tymethod.set_inactivity_timeout" title="method gio::prelude::ApplicationExt::set_inactivity_timeout"><code>ApplicationExt::set_inactivity_timeout()</code></a> is in
 use.</p>
 <p>This function sets the prgname (<code>g_set_prgname()</code>), if not already set,
 to the basename of argv[0].</p>
@@ -154,14 +154,14 @@ what their exit status will be.</p>
     &amp;self,
     f: F
 ) -&gt; <a class="struct" href="../../glib/signal/struct.SignalHandlerId.html" title="struct glib::signal::SignalHandlerId">SignalHandlerId</a></h4></section></summary><div class="docblock"><p>The ::open signal is emitted on the primary instance when there are
-files to open. See <a href="trait.ApplicationExt.html#tymethod.open" title="associated function gio::prelude::ApplicationExt::open"><code>ApplicationExt::open()</code></a> for more information.</p>
+files to open. See <a href="trait.ApplicationExt.html#tymethod.open" title="method gio::prelude::ApplicationExt::open"><code>ApplicationExt::open()</code></a> for more information.</p>
 <h6 id="files"><a href="#files"><code>files</code></a></h6>
 <p>an array of <code>GFiles</code></p>
 <h6 id="hint"><a href="#hint"><code>hint</code></a></h6>
 <p>a hint provided by the calling instance</p>
 </div></details><details class="toggle method-toggle" open><summary><section id="tymethod.hold" class="method"><a class="srclink rightside" href="../../src/gio/application.rs.html#117">source</a><h4 class="code-header">fn <a href="#tymethod.hold" class="fn">hold</a>(&amp;self) -&gt; <a class="struct" href="struct.ApplicationHoldGuard.html" title="struct gio::prelude::ApplicationHoldGuard">ApplicationHoldGuard</a></h4></section></summary><div class="docblock"><p>Increases the use count of <code>self</code>.</p>
 <p>Use this function to indicate that the application has a reason to
-continue to run. For example, <a href="trait.ApplicationExtManual.html#tymethod.hold" title="associated function gio::prelude::ApplicationExtManual::hold"><code>ApplicationExtManual::hold()</code></a> is called by GTK+
+continue to run. For example, <a href="trait.ApplicationExtManual.html#tymethod.hold" title="method gio::prelude::ApplicationExtManual::hold"><code>ApplicationExtManual::hold()</code></a> is called by GTK+
 when a toplevel window is on the screen.</p>
 <p>To cancel the hold, call [<code>ApplicationExtManual::release()</code>][crate::prelude::ApplicationExtManual::release()].</p>
 </div></details><details class="toggle method-toggle" open><summary><section id="tymethod.mark_busy" class="method"><a class="srclink rightside" href="../../src/gio/application.rs.html#132">source</a><h4 class="code-header">fn <a href="#tymethod.mark_busy" class="fn">mark_busy</a>(&amp;self) -&gt; <a class="struct" href="struct.ApplicationBusyGuard.html" title="struct gio::prelude::ApplicationBusyGuard">ApplicationBusyGuard</a></h4></section></summary><div class="docblock"><p>Increases the busy count of <code>self</code>.</p>
@@ -172,4 +172,4 @@ use that information to indicate the state to the user (e.g. with a
 spinner).</p>
 <p>To cancel the busy indication, use [<code>ApplicationExtManual::unmark_busy()</code>][crate::prelude::ApplicationExtManual::unmark_busy()].</p>
 <p>The application must be registered before calling this function.</p>
-</div></details></div><h2 id="implementors" class="small-section-header">Implementors<a href="#implementors" class="anchor">§</a></h2><div id="implementors-list"><section id="impl-ApplicationExtManual-for-O" class="impl"><a class="srclink rightside" href="../../src/gio/application.rs.html#135-193">source</a><a href="#impl-ApplicationExtManual-for-O" class="anchor">§</a><h3 class="code-header">impl&lt;O: <a class="trait" href="../../glib/object/trait.IsA.html" title="trait glib::object::IsA">IsA</a>&lt;<a class="struct" href="../struct.Application.html" title="struct gio::Application">Application</a>&gt;&gt; <a class="trait" href="trait.ApplicationExtManual.html" title="trait gio::prelude::ApplicationExtManual">ApplicationExtManual</a> for O</h3></section></div><script src="../../implementors/gio/application/trait.ApplicationExtManual.js" async></script></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (246eae2fa 2023-02-21)" data-search-js="search-14421e1532aead08.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
+</div></details></div><h2 id="implementors" class="small-section-header">Implementors<a href="#implementors" class="anchor">§</a></h2><div id="implementors-list"><section id="impl-ApplicationExtManual-for-O" class="impl"><a class="srclink rightside" href="../../src/gio/application.rs.html#135-193">source</a><a href="#impl-ApplicationExtManual-for-O" class="anchor">§</a><h3 class="code-header">impl&lt;O: <a class="trait" href="../../glib/object/trait.IsA.html" title="trait glib::object::IsA">IsA</a>&lt;<a class="struct" href="../struct.Application.html" title="struct gio::Application">Application</a>&gt;&gt; <a class="trait" href="trait.ApplicationExtManual.html" title="trait gio::prelude::ApplicationExtManual">ApplicationExtManual</a> for O</h3></section></div><script src="../../implementors/gio/application/trait.ApplicationExtManual.js" async></script></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (07c993eba 2023-02-23)" data-search-js="search-14421e1532aead08.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
