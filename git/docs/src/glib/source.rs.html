@@ -1159,27 +1159,6 @@
 <a href="#1086" id="1086">1086</a>
 <a href="#1087" id="1087">1087</a>
 <a href="#1088" id="1088">1088</a>
-<a href="#1089" id="1089">1089</a>
-<a href="#1090" id="1090">1090</a>
-<a href="#1091" id="1091">1091</a>
-<a href="#1092" id="1092">1092</a>
-<a href="#1093" id="1093">1093</a>
-<a href="#1094" id="1094">1094</a>
-<a href="#1095" id="1095">1095</a>
-<a href="#1096" id="1096">1096</a>
-<a href="#1097" id="1097">1097</a>
-<a href="#1098" id="1098">1098</a>
-<a href="#1099" id="1099">1099</a>
-<a href="#1100" id="1100">1100</a>
-<a href="#1101" id="1101">1101</a>
-<a href="#1102" id="1102">1102</a>
-<a href="#1103" id="1103">1103</a>
-<a href="#1104" id="1104">1104</a>
-<a href="#1105" id="1105">1105</a>
-<a href="#1106" id="1106">1106</a>
-<a href="#1107" id="1107">1107</a>
-<a href="#1108" id="1108">1108</a>
-<a href="#1109" id="1109">1109</a>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 </span><span class="attr">#[cfg(unix)]
@@ -2036,36 +2015,15 @@
     }
 }
 
-<span class="doccomment">/// Use this for high priority event sources.
-///
-/// It is not used within GLib or GTK+.
-</span><span class="attr">#[doc(alias = <span class="string">&quot;G_PRIORITY_HIGH&quot;</span>)]
+<span class="attr">#[doc(alias = <span class="string">&quot;G_PRIORITY_HIGH&quot;</span>)]
 </span><span class="kw">pub const </span>PRIORITY_HIGH: Priority = Priority(ffi::G_PRIORITY_HIGH);
-<span class="doccomment">/// Use this for default priority event sources.
-///
-/// In GLib this priority is used when adding timeout functions
-/// with `g_timeout_add()`. In GDK this priority is used for events
-/// from the X server.
-</span><span class="attr">#[doc(alias = <span class="string">&quot;G_PRIORITY_DEFAULT&quot;</span>)]
+<span class="attr">#[doc(alias = <span class="string">&quot;G_PRIORITY_DEFAULT&quot;</span>)]
 </span><span class="kw">pub const </span>PRIORITY_DEFAULT: Priority = Priority(ffi::G_PRIORITY_DEFAULT);
-<span class="doccomment">/// Use this for high priority idle functions.
-///
-/// GTK+ uses `G_PRIORITY_HIGH_IDLE` + 10 for resizing operations,
-/// and `G_PRIORITY_HIGH_IDLE` + 20 for redrawing operations. (This is
-/// done to ensure that any pending resizes are processed before any
-/// pending redraws, so that widgets are not redrawn twice unnecessarily.)
-</span><span class="attr">#[doc(alias = <span class="string">&quot;G_PRIORITY_HIGH_IDLE&quot;</span>)]
+<span class="attr">#[doc(alias = <span class="string">&quot;G_PRIORITY_HIGH_IDLE&quot;</span>)]
 </span><span class="kw">pub const </span>PRIORITY_HIGH_IDLE: Priority = Priority(ffi::G_PRIORITY_HIGH_IDLE);
-<span class="doccomment">/// Use this for default priority idle functions.
-///
-/// In GLib this priority is used when adding idle functions with
-/// `g_idle_add()`.
-</span><span class="attr">#[doc(alias = <span class="string">&quot;G_PRIORITY_DEFAULT_IDLE&quot;</span>)]
+<span class="attr">#[doc(alias = <span class="string">&quot;G_PRIORITY_DEFAULT_IDLE&quot;</span>)]
 </span><span class="kw">pub const </span>PRIORITY_DEFAULT_IDLE: Priority = Priority(ffi::G_PRIORITY_DEFAULT_IDLE);
-<span class="doccomment">/// Use this for very low priority background tasks.
-///
-/// It is not used within GLib or GTK+.
-</span><span class="attr">#[doc(alias = <span class="string">&quot;G_PRIORITY_LOW&quot;</span>)]
+<span class="attr">#[doc(alias = <span class="string">&quot;G_PRIORITY_LOW&quot;</span>)]
 </span><span class="kw">pub const </span>PRIORITY_LOW: Priority = Priority(ffi::G_PRIORITY_LOW);
 
 <span class="comment">// rustdoc-stripper-ignore-next
@@ -2290,4 +2248,4 @@
     }
 }
 </code></pre></div>
-</section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (07c993eba 2023-02-23)" data-search-js="search-14421e1532aead08.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
+</section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (c5c7d2b37 2023-02-24)" data-search-js="search-14421e1532aead08.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
