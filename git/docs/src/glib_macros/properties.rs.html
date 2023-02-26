@@ -711,6 +711,30 @@
 <a href="#638" id="638">638</a>
 <a href="#639" id="639">639</a>
 <a href="#640" id="640">640</a>
+<a href="#641" id="641">641</a>
+<a href="#642" id="642">642</a>
+<a href="#643" id="643">643</a>
+<a href="#644" id="644">644</a>
+<a href="#645" id="645">645</a>
+<a href="#646" id="646">646</a>
+<a href="#647" id="647">647</a>
+<a href="#648" id="648">648</a>
+<a href="#649" id="649">649</a>
+<a href="#650" id="650">650</a>
+<a href="#651" id="651">651</a>
+<a href="#652" id="652">652</a>
+<a href="#653" id="653">653</a>
+<a href="#654" id="654">654</a>
+<a href="#655" id="655">655</a>
+<a href="#656" id="656">656</a>
+<a href="#657" id="657">657</a>
+<a href="#658" id="658">658</a>
+<a href="#659" id="659">659</a>
+<a href="#660" id="660">660</a>
+<a href="#661" id="661">661</a>
+<a href="#662" id="662">662</a>
+<a href="#663" id="663">663</a>
+<a href="#664" id="664">664</a>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 </span><span class="kw">use </span><span class="kw">crate</span>::utils::crate_ident_new;
@@ -799,6 +823,9 @@
     // Builder(Punctuated(required_params), Optionals(TokenStream))
     </span>Builder(Punctuated&lt;syn::Expr, <span class="macro">Token!</span>[,]&gt;, TokenStream2),
 
+    <span class="comment">// ident
+    </span>Nullable,
+
     <span class="comment">// ident [= expr]
     </span>Get(<span class="prelude-ty">Option</span>&lt;syn::Expr&gt;),
     Set(<span class="prelude-ty">Option</span>&lt;syn::Expr&gt;),
@@ -864,6 +891,7 @@
         } <span class="kw">else </span>{
             <span class="comment">// attributes with only the identifier name
             </span><span class="kw">match </span><span class="kw-2">&amp;*</span>name_str {
+                <span class="string">&quot;nullable&quot; </span>=&gt; PropAttr::Nullable,
                 <span class="string">&quot;get&quot; </span>=&gt; PropAttr::Get(<span class="prelude-val">None</span>),
                 <span class="string">&quot;set&quot; </span>=&gt; PropAttr::Set(<span class="prelude-val">None</span>),
                 <span class="string">&quot;readwrite&quot; </span>| <span class="string">&quot;read_only&quot; </span>| <span class="string">&quot;write_only&quot; </span>=&gt; {
@@ -884,6 +912,7 @@
 
 <span class="attr">#[derive(Default)]
 </span><span class="kw">struct </span>ReceivedAttrs {
+    nullable: bool,
     get: <span class="prelude-ty">Option</span>&lt;MaybeCustomFn&gt;,
     set: <span class="prelude-ty">Option</span>&lt;MaybeCustomFn&gt;,
     override_class: <span class="prelude-ty">Option</span>&lt;syn::Type&gt;,
@@ -910,6 +939,7 @@
 <span class="kw">impl </span>ReceivedAttrs {
     <span class="kw">fn </span>set_from_attr(<span class="kw-2">&amp;mut </span><span class="self">self</span>, attr: PropAttr) {
         <span class="kw">match </span>attr {
+            PropAttr::Nullable =&gt; <span class="self">self</span>.nullable = <span class="bool-val">true</span>,
             PropAttr::Get(some_fn) =&gt; <span class="self">self</span>.get = <span class="prelude-val">Some</span>(some_fn.into()),
             PropAttr::Set(some_fn) =&gt; <span class="self">self</span>.set = <span class="prelude-val">Some</span>(some_fn.into()),
             PropAttr::Name(lit) =&gt; <span class="self">self</span>.name = <span class="prelude-val">Some</span>(lit),
@@ -936,6 +966,7 @@
     name: syn::LitStr,
     override_class: <span class="prelude-ty">Option</span>&lt;syn::Type&gt;,
     override_interface: <span class="prelude-ty">Option</span>&lt;syn::Type&gt;,
+    nullable: bool,
     get: <span class="prelude-ty">Option</span>&lt;MaybeCustomFn&gt;,
     set: <span class="prelude-ty">Option</span>&lt;MaybeCustomFn&gt;,
     member: <span class="prelude-ty">Option</span>&lt;syn::Ident&gt;,
@@ -951,6 +982,7 @@
         attrs: ReceivedAttrs,
     ) -&gt; syn::Result&lt;<span class="self">Self</span>&gt; {
         <span class="kw">let </span>ReceivedAttrs {
+            nullable,
             get,
             set,
             override_class,
@@ -993,6 +1025,7 @@
             name,
             override_class,
             override_interface,
+            nullable,
             get,
             set,
             member,
@@ -1227,8 +1260,23 @@
         <span class="kw">let </span>is_construct_only = p.builder_fields.iter().any(|(k, <span class="kw">_</span>)| <span class="kw-2">*</span>k == <span class="string">&quot;construct_only&quot;</span>);
         <span class="kw">let </span>setter = (p.set.is_some() &amp;&amp; !is_construct_only).then(|| {
             <span class="kw">let </span>ident = <span class="macro">format_ident!</span>(<span class="string">&quot;set_{}&quot;</span>, ident);
-            <span class="macro">quote!</span>(<span class="kw">pub fn </span>#ident&lt;<span class="lifetime">&#39;a</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, value: <span class="kw">impl </span>std::borrow::Borrow&lt;&lt;&lt;#ty <span class="kw">as </span>#crate_ident::Property&gt;::Value <span class="kw">as </span>#crate_ident::HasParamSpec&gt;::SetValue&gt;) {
-                <span class="self">self</span>.set_property_from_value(#name, <span class="kw-2">&amp;</span>::std::convert::From::from(std::borrow::Borrow::borrow(<span class="kw-2">&amp;</span>value)))
+            <span class="kw">let </span>target_ty = <span class="macro">quote!</span>(&lt;&lt;#ty <span class="kw">as </span>#crate_ident::Property&gt;::Value <span class="kw">as </span>#crate_ident::HasParamSpec&gt;::SetValue);
+            <span class="kw">let </span>set_ty = <span class="kw">if </span>p.nullable {
+               <span class="macro">quote!</span>(<span class="prelude-ty">Option</span>&lt;<span class="kw">impl </span>std::borrow::Borrow&lt;#target_ty&gt;&gt;)
+            } <span class="kw">else </span>{
+               <span class="macro">quote!</span>(<span class="kw">impl </span>std::borrow::Borrow&lt;#target_ty&gt;)
+            };
+            <span class="kw">let </span>upcasted_borrowed_value = <span class="kw">if </span>p.nullable {
+                <span class="macro">quote!</span>(
+                    value.as_ref().map(|v| std::borrow::Borrow::borrow(v))
+                )
+            } <span class="kw">else </span>{
+                <span class="macro">quote!</span>(
+                    std::borrow::Borrow::borrow(<span class="kw-2">&amp;</span>value)
+                )
+            };
+            <span class="macro">quote!</span>(<span class="kw">pub fn </span>#ident&lt;<span class="lifetime">&#39;a</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, value: #set_ty) {
+                <span class="self">self</span>.set_property_from_value(#name, <span class="kw-2">&amp;</span>::std::convert::From::from(#upcasted_borrowed_value))
             })
         });
         <span class="kw">let </span>span = p.attrs_span;
@@ -1352,4 +1400,4 @@
     proc_macro::TokenStream::from(expanded)
 }
 </code></pre></div>
-</section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="glib_macros" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (c5c7d2b37 2023-02-24)" data-search-js="search-14421e1532aead08.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
+</section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="glib_macros" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (34e6673a0 2023-02-25)" data-search-js="search-14421e1532aead08.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>

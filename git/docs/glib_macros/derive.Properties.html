@@ -71,7 +71,7 @@
 </script>
 
 
-<nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="logo-container" href="../glib_macros/index.html"><img class="rust-logo" src="../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2></h2></nav><nav class="sidebar"><a class="logo-container" href="../glib_macros/index.html"><img class="rust-logo" src="../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><div class="sidebar-elems"><h2><a href="index.html">In glib_macros</a></h2></div></nav><main><div class="width-limiter"><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="main-heading"><h1>Derive Macro <a href="index.html">glib_macros</a>::<wbr><a class="derive" href="#">Properties</a><button id="copy-path" title="Copy item path to clipboard"><img src="../static.files/clipboard-7571035ce49a181d.svg" width="19" height="18" alt="Copy item path"></button></h1><span class="out-of-band"><a class="srclink" href="../src/glib_macros/lib.rs.html#960-963">source</a> · <button id="toggle-all-docs" title="collapse all docs">[<span>&#x2212;</span>]</button></span></div><pre class="rust item-decl"><code>#[derive(Properties)]
+<nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="logo-container" href="../glib_macros/index.html"><img class="rust-logo" src="../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2></h2></nav><nav class="sidebar"><a class="logo-container" href="../glib_macros/index.html"><img class="rust-logo" src="../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><div class="sidebar-elems"><h2><a href="index.html">In glib_macros</a></h2></div></nav><main><div class="width-limiter"><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="main-heading"><h1>Derive Macro <a href="index.html">glib_macros</a>::<wbr><a class="derive" href="#">Properties</a><button id="copy-path" title="Copy item path to clipboard"><img src="../static.files/clipboard-7571035ce49a181d.svg" width="19" height="18" alt="Copy item path"></button></h1><span class="out-of-band"><a class="srclink" href="../src/glib_macros/lib.rs.html#962-965">source</a> · <button id="toggle-all-docs" title="collapse all docs">[<span>&#x2212;</span>]</button></span></div><pre class="rust item-decl"><code>#[derive(Properties)]
 {
     // Attributes available to this derive:
     #[properties]
@@ -97,6 +97,8 @@ by assigning an expression to <code>get</code>/<code>set</code>: <code>#[propert
 <code>PropertyGet</code>. If your type supports interior mutability, you should implement also
 <code>PropertySet</code> and <code>PropertySetNested</code> if possible.</p>
 <p>The type <code>Option&lt;T&gt;</code> is supported as a property only if <code>Option&lt;T&gt;</code> implements <code>ToValueOptional</code>.
+Optional types also require the <code>nullable</code> attribute: without it, the generated setter on the wrapper type
+will take <code>T</code> instead of <code>Option&lt;T&gt;</code>, preventing the user from ever calling the setter with a <code>None</code> value.
 If your type doesn’t support <code>PropertySet</code>, you can’t use the generated setter, but you can
 always define a custom one.</p>
 <p>If you want to support a custom type with a custom <code>ParamSpec</code>, you should implement the trait
@@ -135,7 +137,7 @@ always define a custom one.</p>
         </span>numeric_builder: RefCell&lt;u32&gt;,
         <span class="attr">#[property(get, set, builder(<span class="string">&#39;c&#39;</span>))]
         </span>builder_with_required_param: RefCell&lt;char&gt;,
-        <span class="attr">#[property(get, set)]
+        <span class="attr">#[property(get, set, nullable)]
         </span>optional: RefCell&lt;<span class="prelude-ty">Option</span>&lt;String&gt;&gt;,
         <span class="attr">#[property(get, set)]
         </span>smart_pointer: Rc&lt;RefCell&lt;String&gt;&gt;,
@@ -176,4 +178,4 @@ always define a custom one.</p>
   myfoo.set_fizz(<span class="string">&quot;test value&quot;</span>);
   <span class="macro">assert_eq!</span>(myfoo.fizz(), <span class="string">&quot;custom set: test value&quot;</span>.to_string());
 }</code></pre></div>
-</div></details></section></div></main><div id="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="glib_macros" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (c5c7d2b37 2023-02-24)" data-search-js="search-14421e1532aead08.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
+</div></details></section></div></main><div id="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="glib_macros" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (34e6673a0 2023-02-25)" data-search-js="search-14421e1532aead08.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
