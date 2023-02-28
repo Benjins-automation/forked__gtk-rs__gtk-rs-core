@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"attr":["flags","object_interface","object_subclass"],"derive":["Boxed","Downgrade","Enum","ErrorDomain","Properties","SharedBoxed","Variant"],"macro":["clone","closure","closure_local","cstr_bytes"]};
+window.SIDEBAR_ITEMS = {"attr":["flags","object_interface","object_subclass"],"derive":["Boxed","Downgrade","Enum","ErrorDomain","Properties","SharedBoxed","ValueDelegate","Variant"],"macro":["clone","closure","closure_local","cstr_bytes"]};
