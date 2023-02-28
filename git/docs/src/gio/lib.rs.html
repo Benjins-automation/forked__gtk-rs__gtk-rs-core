@@ -218,6 +218,7 @@
 <a href="#145" id="145">145</a>
 <a href="#146" id="146">146</a>
 <a href="#147" id="147">147</a>
+<a href="#148" id="148">148</a>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 </span><span class="attr">#![cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, feature(doc_cfg))]
@@ -268,6 +269,7 @@
 <span class="attr">#[cfg(any(unix, feature = <span class="string">&quot;dox&quot;</span>))]
 </span><span class="kw">pub use </span>file_descriptor_based::FileDescriptorBased;
 <span class="kw">mod </span>file_enumerator;
+<span class="kw">pub use </span><span class="kw">crate</span>::file_enumerator::FileEnumeratorStream;
 <span class="kw">mod </span>file_info;
 <span class="kw">mod </span>flags;
 <span class="kw">mod </span>inet_address;
