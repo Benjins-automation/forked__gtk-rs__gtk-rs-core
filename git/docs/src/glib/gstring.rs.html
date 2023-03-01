@@ -2580,6 +2580,14 @@
 <a href="#2507" id="2507">2507</a>
 <a href="#2508" id="2508">2508</a>
 <a href="#2509" id="2509">2509</a>
+<a href="#2510" id="2510">2510</a>
+<a href="#2511" id="2511">2511</a>
+<a href="#2512" id="2512">2512</a>
+<a href="#2513" id="2513">2513</a>
+<a href="#2514" id="2514">2514</a>
+<a href="#2515" id="2515">2515</a>
+<a href="#2516" id="2516">2516</a>
+<a href="#2517" id="2517">2517</a>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 </span><span class="kw">use </span>std::{
@@ -4900,9 +4908,17 @@
 <span class="kw">impl </span>IntoGStr <span class="kw">for </span>String {
     <span class="attr">#[inline]
     </span><span class="kw">fn </span>run_with_gstr&lt;T, F: FnOnce(<span class="kw-2">&amp;</span>GStr) -&gt; T&gt;(<span class="kw-2">mut </span><span class="self">self</span>, f: F) -&gt; T {
-        <span class="self">self</span>.push(<span class="string">&#39;\0&#39;</span>);
-        <span class="kw">let </span>gs = <span class="kw">unsafe </span>{ GStr::from_utf8_with_nul_unchecked(<span class="self">self</span>.as_bytes()) };
-        f(gs)
+        <span class="kw">let </span>len = <span class="self">self</span>.len();
+        <span class="kw">if </span>len &lt; <span class="self">self</span>.capacity() {
+            <span class="self">self</span>.reserve_exact(<span class="number">1</span>);
+            <span class="self">self</span>.push(<span class="string">&#39;\0&#39;</span>);
+            <span class="kw">let </span>gs = <span class="kw">unsafe </span>{ GStr::from_utf8_with_nul_unchecked(<span class="self">self</span>.as_bytes()) };
+            f(gs)
+        } <span class="kw">else if </span>len &lt; MAX_STACK_ALLOCATION {
+            <span class="self">self</span>.as_str().run_with_gstr(f)
+        } <span class="kw">else </span>{
+            f(GString::from(<span class="self">self</span>).as_gstr())
+        }
     }
 }
 
@@ -5090,4 +5106,4 @@
     }
 }
 </code></pre></div>
-</section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (7281249a1 2023-02-27)" data-search-js="search-d5a6cd8418084717.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
+</section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (31f858d9a 2023-02-28)" data-search-js="search-d5a6cd8418084717.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
