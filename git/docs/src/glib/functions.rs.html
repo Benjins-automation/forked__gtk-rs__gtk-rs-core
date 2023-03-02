@@ -332,22 +332,6 @@
 <a href="#259" id="259">259</a>
 <a href="#260" id="260">260</a>
 <a href="#261" id="261">261</a>
-<a href="#262" id="262">262</a>
-<a href="#263" id="263">263</a>
-<a href="#264" id="264">264</a>
-<a href="#265" id="265">265</a>
-<a href="#266" id="266">266</a>
-<a href="#267" id="267">267</a>
-<a href="#268" id="268">268</a>
-<a href="#269" id="269">269</a>
-<a href="#270" id="270">270</a>
-<a href="#271" id="271">271</a>
-<a href="#272" id="272">272</a>
-<a href="#273" id="273">273</a>
-<a href="#274" id="274">274</a>
-<a href="#275" id="275">275</a>
-<a href="#276" id="276">276</a>
-<a href="#277" id="277">277</a>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 </span><span class="attr">#[cfg(not(windows))]
@@ -571,23 +555,7 @@
     }
 }
 
-<span class="doccomment">/// Similar to the UNIX `pipe()` call, but on modern systems like Linux
-/// uses the `pipe2()` system call, which atomically creates a pipe with
-/// the configured flags. The only supported flag currently is
-/// `FD_CLOEXEC`. If for example you want to configure `O_NONBLOCK`, that
-/// must still be done separately with `fcntl()`.
-///
-/// This function does not take `O_CLOEXEC`, it takes `FD_CLOEXEC` as if
-/// for `fcntl()`; these are different on Linux/glibc.
-/// ## `fds`
-/// Array of two integers
-/// ## `flags`
-/// Bitfield of file descriptor flags, as for `fcntl()`
-///
-/// # Returns
-///
-/// [`true`] on success, [`false`] if not (and errno will be set).
-</span><span class="attr">#[cfg(unix)]
+<span class="attr">#[cfg(unix)]
 #[doc(alias = <span class="string">&quot;g_unix_open_pipe&quot;</span>)]
 </span><span class="kw">pub fn </span>unix_open_pipe(flags: i32) -&gt; <span class="prelude-ty">Result</span>&lt;(RawFd, RawFd), Error&gt; {
     <span class="kw">unsafe </span>{
@@ -626,4 +594,4 @@
     }
 }
 </code></pre></div>
-</section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (31f858d9a 2023-02-28)" data-search-js="search-d5a6cd8418084717.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
+</section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (f77bfb733 2023-03-01)" data-search-js="search-2cde8914278f97ed.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
