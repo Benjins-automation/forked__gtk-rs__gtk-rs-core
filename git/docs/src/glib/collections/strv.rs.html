@@ -2656,7 +2656,7 @@
 <span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; IntoStrV <span class="kw">for </span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>StrV {
     <span class="attr">#[inline]
     </span><span class="kw">fn </span>run_with_strv&lt;R, F: FnOnce(<span class="kw-2">&amp;</span>[<span class="kw-2">*mut </span>c_char]) -&gt; R&gt;(<span class="self">self</span>, f: F) -&gt; R {
-        f(<span class="kw">unsafe </span>{ std::slice::from_raw_parts(<span class="self">self</span>.as_ptr(), <span class="self">self</span>.len() + <span class="number">1</span>) })
+        f(<span class="kw">unsafe </span>{ std::slice::from_raw_parts(<span class="self">self</span>.as_ptr(), <span class="self">self</span>.len()) })
     }
 }
 
@@ -2723,7 +2723,7 @@
                 }
                 <span class="kw-2">*</span>ptrs.add(<span class="self">self</span>.len()) = ptr::null_mut();
 
-                f(std::slice::from_raw_parts(ptrs, <span class="self">self</span>.len() + <span class="number">1</span>))
+                f(std::slice::from_raw_parts(ptrs, <span class="self">self</span>.len()))
             }
         } <span class="kw">else </span>{
             <span class="kw">let </span><span class="kw-2">mut </span>s = StrV::with_capacity(<span class="self">self</span>.len());
@@ -2748,7 +2748,7 @@
                 }
                 <span class="kw-2">*</span>ptrs.add(<span class="self">self</span>.len()) = ptr::null_mut();
 
-                f(std::slice::from_raw_parts(ptrs, <span class="self">self</span>.len() + <span class="number">1</span>))
+                f(std::slice::from_raw_parts(ptrs, <span class="self">self</span>.len()))
             }
         } <span class="kw">else </span>{
             <span class="kw">let </span><span class="kw-2">mut </span>s = StrV::with_capacity(<span class="self">self</span>.len());
@@ -2773,7 +2773,7 @@
                 }
                 <span class="kw-2">*</span>ptrs.add(<span class="self">self</span>.len()) = ptr::null_mut();
 
-                f(std::slice::from_raw_parts(ptrs, <span class="self">self</span>.len() + <span class="number">1</span>))
+                f(std::slice::from_raw_parts(ptrs, <span class="self">self</span>.len()))
             }
         } <span class="kw">else </span>{
             <span class="kw">let </span><span class="kw-2">mut </span>s = StrV::with_capacity(<span class="self">self</span>.len());
@@ -2803,7 +2803,7 @@
                 }
                 <span class="kw-2">*</span>ptrs.add(<span class="self">self</span>.len()) = ptr::null_mut();
 
-                f(std::slice::from_raw_parts(ptrs, <span class="self">self</span>.len() + <span class="number">1</span>))
+                f(std::slice::from_raw_parts(ptrs, <span class="self">self</span>.len()))
             }
         } <span class="kw">else </span>{
             <span class="kw">let </span><span class="kw-2">mut </span>s = StrV::with_capacity(<span class="self">self</span>.len());
@@ -2833,7 +2833,7 @@
                 }
                 <span class="kw-2">*</span>ptrs.add(<span class="self">self</span>.len()) = ptr::null_mut();
 
-                f(std::slice::from_raw_parts(ptrs, <span class="self">self</span>.len() + <span class="number">1</span>))
+                f(std::slice::from_raw_parts(ptrs, <span class="self">self</span>.len()))
             }
         } <span class="kw">else </span>{
             <span class="kw">let </span><span class="kw-2">mut </span>s = StrV::with_capacity(<span class="self">self</span>.len());
@@ -2863,7 +2863,7 @@
                 }
                 <span class="kw-2">*</span>ptrs.add(<span class="self">self</span>.len()) = ptr::null_mut();
 
-                f(std::slice::from_raw_parts(ptrs, <span class="self">self</span>.len() + <span class="number">1</span>))
+                f(std::slice::from_raw_parts(ptrs, <span class="self">self</span>.len()))
             }
         } <span class="kw">else </span>{
             <span class="kw">let </span><span class="kw-2">mut </span>s = StrV::with_capacity(<span class="self">self</span>.len());
@@ -3040,38 +3040,38 @@
         <span class="kw">let </span>items = [<span class="string">&quot;str1&quot;</span>, <span class="string">&quot;str2&quot;</span>, <span class="string">&quot;str3&quot;</span>, <span class="string">&quot;str4&quot;</span>];
 
         items[..].run_with_strv(|s| <span class="kw">unsafe </span>{
-            <span class="macro">assert!</span>(s[<span class="number">4</span>].is_null());
-            <span class="macro">assert_eq!</span>(s.len(), items.len() + <span class="number">1</span>);
+            <span class="macro">assert!</span>(s.get_unchecked(<span class="number">4</span>).is_null());
+            <span class="macro">assert_eq!</span>(s.len(), items.len());
             <span class="kw">let </span>s = StrV::from_glib_borrow(s.as_ptr() <span class="kw">as </span><span class="kw-2">*const *const </span>c_char);
             <span class="macro">assert_eq!</span>(s, items);
         });
 
         Vec::from(<span class="kw-2">&amp;</span>items[..]).run_with_strv(|s| <span class="kw">unsafe </span>{
-            <span class="macro">assert!</span>(s[<span class="number">4</span>].is_null());
-            <span class="macro">assert_eq!</span>(s.len(), items.len() + <span class="number">1</span>);
+            <span class="macro">assert!</span>(s.get_unchecked(<span class="number">4</span>).is_null());
+            <span class="macro">assert_eq!</span>(s.len(), items.len());
             <span class="kw">let </span>s = StrV::from_glib_borrow(s.as_ptr() <span class="kw">as </span><span class="kw-2">*const *const </span>c_char);
             <span class="macro">assert_eq!</span>(s, items);
         });
 
         StrV::from(<span class="kw-2">&amp;</span>items[..]).run_with_strv(|s| <span class="kw">unsafe </span>{
-            <span class="macro">assert!</span>(s[<span class="number">4</span>].is_null());
-            <span class="macro">assert_eq!</span>(s.len(), items.len() + <span class="number">1</span>);
+            <span class="macro">assert!</span>(s.get_unchecked(<span class="number">4</span>).is_null());
+            <span class="macro">assert_eq!</span>(s.len(), items.len());
             <span class="kw">let </span>s = StrV::from_glib_borrow(s.as_ptr() <span class="kw">as </span><span class="kw-2">*const *const </span>c_char);
             <span class="macro">assert_eq!</span>(s, items);
         });
 
         <span class="kw">let </span>v = items.iter().copied().map(String::from).collect::&lt;Vec&lt;<span class="kw">_</span>&gt;&gt;();
         items.run_with_strv(|s| <span class="kw">unsafe </span>{
-            <span class="macro">assert!</span>(s[<span class="number">4</span>].is_null());
-            <span class="macro">assert_eq!</span>(s.len(), v.len() + <span class="number">1</span>);
+            <span class="macro">assert!</span>(s.get_unchecked(<span class="number">4</span>).is_null());
+            <span class="macro">assert_eq!</span>(s.len(), v.len());
             <span class="kw">let </span>s = StrV::from_glib_borrow(s.as_ptr() <span class="kw">as </span><span class="kw-2">*const *const </span>c_char);
             <span class="macro">assert_eq!</span>(s, items);
         });
 
         <span class="kw">let </span>v = items.iter().copied().map(GString::from).collect::&lt;Vec&lt;<span class="kw">_</span>&gt;&gt;();
         items.run_with_strv(|s| <span class="kw">unsafe </span>{
-            <span class="macro">assert!</span>(s[<span class="number">4</span>].is_null());
-            <span class="macro">assert_eq!</span>(s.len(), v.len() + <span class="number">1</span>);
+            <span class="macro">assert!</span>(s.get_unchecked(<span class="number">4</span>).is_null());
+            <span class="macro">assert_eq!</span>(s.len(), v.len());
             <span class="kw">let </span>s = StrV::from_glib_borrow(s.as_ptr() <span class="kw">as </span><span class="kw-2">*const *const </span>c_char);
             <span class="macro">assert_eq!</span>(s, items);
         });
@@ -3104,4 +3104,4 @@
     }
 }
 </code></pre></div>
-</section></main><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (f77bfb733 2023-03-01)" data-search-js="search-2cde8914278f97ed.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
+</section></main><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (13471d3b2 2023-03-02)" data-search-js="search-2cde8914278f97ed.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
