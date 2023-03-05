@@ -5854,10 +5854,10 @@
         // gives us useful results
         </span><span class="kw">let </span>dir_1 = tmp_dir.join(<span class="string">&quot;abcd&quot;</span>);
         fs::create_dir(<span class="kw-2">&amp;</span>dir_1).unwrap();
-        <span class="macro">assert_eq!</span>(<span class="kw">crate</span>::path_get_basename(<span class="kw-2">&amp;</span>dir_1), Path::from(<span class="string">&quot;abcd&quot;</span>));
+        <span class="macro">assert_eq!</span>(<span class="kw">crate</span>::path_get_basename(<span class="kw-2">&amp;</span>dir_1), Path::new(<span class="string">&quot;abcd&quot;</span>));
         <span class="macro">assert_eq!</span>(
             <span class="kw">crate</span>::path_get_basename(dir_1.canonicalize().unwrap()),
-            Path::from(<span class="string">&quot;abcd&quot;</span>)
+            Path::new(<span class="string">&quot;abcd&quot;</span>)
         );
         <span class="macro">assert_eq!</span>(
             <span class="kw">crate</span>::path_get_dirname(dir_1.canonicalize().unwrap()),
