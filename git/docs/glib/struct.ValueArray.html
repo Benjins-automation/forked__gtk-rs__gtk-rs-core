@@ -81,45 +81,32 @@
 </div></details></div></details><details class="toggle implementors-toggle" open><summary><section id="impl-ValueArray-1" class="impl"><a class="srclink rightside" href="../src/glib/value_array.rs.html#25-110">source</a><a href="#impl-ValueArray-1" class="anchor">§</a><h3 class="code-header">impl <a class="struct" href="struct.ValueArray.html" title="struct glib::ValueArray">ValueArray</a></h3></section></summary><div class="impl-items"><section id="method.new" class="method"><a class="srclink rightside" href="../src/glib/value_array.rs.html#27-29">source</a><h4 class="code-header">pub fn <a href="#method.new" class="fn">new</a>(n_prealloced: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a class="struct" href="struct.ValueArray.html" title="struct glib::ValueArray">ValueArray</a></h4></section><section id="method.append" class="method"><a class="srclink rightside" href="../src/glib/value_array.rs.html#32-37">source</a><h4 class="code-header">pub fn <a href="#method.append" class="fn">append</a>(&amp;mut self, value: &amp;<a class="struct" href="value/struct.Value.html" title="struct glib::value::Value">Value</a>)</h4></section><section id="method.is_empty" class="method"><a class="srclink rightside" href="../src/glib/value_array.rs.html#40-42">source</a><h4 class="code-header">pub fn <a href="#method.is_empty" class="fn">is_empty</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></h4></section><section id="method.len" class="method"><a class="srclink rightside" href="../src/glib/value_array.rs.html#45-47">source</a><h4 class="code-header">pub fn <a href="#method.len" class="fn">len</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a></h4></section><section id="method.nth" class="method"><a class="srclink rightside" href="../src/glib/value_array.rs.html#51-58">source</a><h4 class="code-header">pub fn <a href="#method.nth" class="fn">nth</a>(&amp;self, index_: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="value/struct.Value.html" title="struct glib::value::Value">Value</a>&gt;</h4></section><section id="method.insert" class="method"><a class="srclink rightside" href="../src/glib/value_array.rs.html#61-66">source</a><h4 class="code-header">pub fn <a href="#method.insert" class="fn">insert</a>(&amp;mut self, index_: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>, value: &amp;<a class="struct" href="value/struct.Value.html" title="struct glib::value::Value">Value</a>)</h4></section><section id="method.prepend" class="method"><a class="srclink rightside" href="../src/glib/value_array.rs.html#69-74">source</a><h4 class="code-header">pub fn <a href="#method.prepend" class="fn">prepend</a>(&amp;mut self, value: &amp;<a class="struct" href="value/struct.Value.html" title="struct glib::value::Value">Value</a>)</h4></section><section id="method.remove" class="method"><a class="srclink rightside" href="../src/glib/value_array.rs.html#77-81">source</a><h4 class="code-header">pub fn <a href="#method.remove" class="fn">remove</a>(&amp;mut self, index_: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>)</h4></section><section id="method.sort_with_data" class="method"><a class="srclink rightside" href="../src/glib/value_array.rs.html#84-109">source</a><h4 class="code-header">pub fn <a href="#method.sort_with_data" class="fn">sort_with_data</a>&lt;F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.FnMut.html" title="trait core::ops::function::FnMut">FnMut</a>(&amp;<a class="struct" href="value/struct.Value.html" title="struct glib::value::Value">Value</a>, &amp;<a class="struct" href="value/struct.Value.html" title="struct glib::value::Value">Value</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/cmp/enum.Ordering.html" title="enum core::cmp::Ordering">Ordering</a>&gt;(
     &amp;mut self,
     compare_func: F
-)</h4></section></div></details></div><h2 id="deref-methods-%5BValue%5D" class="small-section-header"><span>Methods from <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/deref/trait.Deref.html" title="trait core::ops::deref::Deref">Deref</a>&lt;Target = [<a class="struct" href="value/struct.Value.html" title="struct glib::value::Value">Value</a>]&gt;</span><a href="#deref-methods-%5BValue%5D" class="anchor">§</a></h2><div id="deref-methods-%5BValue%5D-1"><div class="impl-items"><details class="toggle method-toggle" open><summary><section id="method.flatten" class="method"><a class="srclink rightside" href="https://doc.rust-lang.org/nightly/src/core/slice/mod.rs.html#4259">source</a><h4 class="code-header">pub fn <a href="#method.flatten" class="fn">flatten</a>(&amp;self) -&gt; &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">[T]</a> <a href="#" class="tooltip" data-notable-ty="&amp;[T]">ⓘ</a></h4></section><span class="item-info"><div class="stab unstable"><span class="emoji">🔬</span><span>This is a nightly-only experimental API. (<code>slice_flatten</code>)</span></div></span></summary><div class="docblock"><p>Takes a <code>&amp;[[T; N]]</code>, and flattens it to a <code>&amp;[T]</code>.</p>
-<h5 id="panics"><a href="#panics">Panics</a></h5>
-<p>This panics if the length of the resulting slice would overflow a <code>usize</code>.</p>
-<p>This is only possible when flattening a slice of arrays of zero-sized
-types, and thus tends to be irrelevant in practice. If
-<code>size_of::&lt;T&gt;() &gt; 0</code>, this will never panic.</p>
+)</h4></section></div></details></div><h2 id="deref-methods-%5BValue%5D" class="small-section-header"><span>Methods from <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/deref/trait.Deref.html" title="trait core::ops::deref::Deref">Deref</a>&lt;Target = [<a class="struct" href="value/struct.Value.html" title="struct glib::value::Value">Value</a>]&gt;</span><a href="#deref-methods-%5BValue%5D" class="anchor">§</a></h2><div id="deref-methods-%5BValue%5D-1"><div class="impl-items"><details class="toggle method-toggle" open><summary><section id="method.sort_floats" class="method"><a class="srclink rightside" href="https://doc.rust-lang.org/nightly/src/core/slice/mod.rs.html#4363">source</a><h4 class="code-header">pub fn <a href="#method.sort_floats" class="fn">sort_floats</a>(&amp;mut self)</h4></section><span class="item-info"><div class="stab unstable"><span class="emoji">🔬</span><span>This is a nightly-only experimental API. (<code>sort_floats</code>)</span></div></span></summary><div class="docblock"><p>Sorts the slice of floats.</p>
+<p>This sort is in-place (i.e. does not allocate), <em>O</em>(<em>n</em> * log(<em>n</em>)) worst-case, and uses
+the ordering defined by <a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html#method.total_cmp" title="method std::f64::total_cmp"><code>f64::total_cmp</code></a>.</p>
+<h5 id="current-implementation"><a href="#current-implementation">Current implementation</a></h5>
+<p>This uses the same sorting algorithm as <a href="https://doc.rust-lang.org/nightly/std/primitive.slice.html#method.sort_unstable_by" title="method std::slice::sort_unstable_by"><code>sort_unstable_by</code></a>.</p>
 <h5 id="examples"><a href="#examples">Examples</a></h5>
-<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#![feature(slice_flatten)]
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#![feature(sort_floats)]
+</span><span class="kw">let </span><span class="kw-2">mut </span>v = [<span class="number">2.6</span>, -<span class="number">5e-8</span>, f64::NAN, <span class="number">8.29</span>, f64::INFINITY, -<span class="number">1.0</span>, <span class="number">0.0</span>, -f64::INFINITY, -<span class="number">0.0</span>];
 
-</span><span class="macro">assert_eq!</span>([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]].flatten(), <span class="kw-2">&amp;</span>[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]);
-
-<span class="macro">assert_eq!</span>(
-    [[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]].flatten(),
-    [[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">4</span>], [<span class="number">5</span>, <span class="number">6</span>]].flatten(),
-);
-
-<span class="kw">let </span>slice_of_empty_arrays: <span class="kw-2">&amp;</span>[[i32; <span class="number">0</span>]] = <span class="kw-2">&amp;</span>[[], [], [], [], []];
-<span class="macro">assert!</span>(slice_of_empty_arrays.flatten().is_empty());
-
-<span class="kw">let </span>empty_slice_of_arrays: <span class="kw-2">&amp;</span>[[u32; <span class="number">10</span>]] = <span class="kw-2">&amp;</span>[];
-<span class="macro">assert!</span>(empty_slice_of_arrays.flatten().is_empty());</code></pre></div>
-</div></details><details class="toggle method-toggle" open><summary><section id="method.flatten_mut" class="method"><a class="srclink rightside" href="https://doc.rust-lang.org/nightly/src/core/slice/mod.rs.html#4297">source</a><h4 class="code-header">pub fn <a href="#method.flatten_mut" class="fn">flatten_mut</a>(&amp;mut self) -&gt; &amp;mut <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">[T]</a> <a href="#" class="tooltip" data-notable-ty="&amp;mut [T]">ⓘ</a></h4></section><span class="item-info"><div class="stab unstable"><span class="emoji">🔬</span><span>This is a nightly-only experimental API. (<code>slice_flatten</code>)</span></div></span></summary><div class="docblock"><p>Takes a <code>&amp;mut [[T; N]]</code>, and flattens it to a <code>&amp;mut [T]</code>.</p>
-<h5 id="panics-1"><a href="#panics-1">Panics</a></h5>
-<p>This panics if the length of the resulting slice would overflow a <code>usize</code>.</p>
-<p>This is only possible when flattening a slice of arrays of zero-sized
-types, and thus tends to be irrelevant in practice. If
-<code>size_of::&lt;T&gt;() &gt; 0</code>, this will never panic.</p>
+v.sort_floats();
+<span class="kw">let </span>sorted = [-f64::INFINITY, -<span class="number">1.0</span>, -<span class="number">5e-8</span>, -<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">2.6</span>, <span class="number">8.29</span>, f64::INFINITY, f64::NAN];
+<span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span>v[..<span class="number">8</span>], <span class="kw-2">&amp;</span>sorted[..<span class="number">8</span>]);
+<span class="macro">assert!</span>(v[<span class="number">8</span>].is_nan());</code></pre></div>
+</div></details></div><div class="impl-items"><details class="toggle method-toggle" open><summary><section id="method.sort_floats-1" class="method"><a class="srclink rightside" href="https://doc.rust-lang.org/nightly/src/core/slice/mod.rs.html#4334">source</a><h4 class="code-header">pub fn <a href="#method.sort_floats-1" class="fn">sort_floats</a>(&amp;mut self)</h4></section><span class="item-info"><div class="stab unstable"><span class="emoji">🔬</span><span>This is a nightly-only experimental API. (<code>sort_floats</code>)</span></div></span></summary><div class="docblock"><p>Sorts the slice of floats.</p>
+<p>This sort is in-place (i.e. does not allocate), <em>O</em>(<em>n</em> * log(<em>n</em>)) worst-case, and uses
+the ordering defined by <a href="https://doc.rust-lang.org/nightly/std/primitive.f32.html#method.total_cmp" title="method std::f32::total_cmp"><code>f32::total_cmp</code></a>.</p>
+<h5 id="current-implementation-1"><a href="#current-implementation-1">Current implementation</a></h5>
+<p>This uses the same sorting algorithm as <a href="https://doc.rust-lang.org/nightly/std/primitive.slice.html#method.sort_unstable_by" title="method std::slice::sort_unstable_by"><code>sort_unstable_by</code></a>.</p>
 <h5 id="examples-1"><a href="#examples-1">Examples</a></h5>
-<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#![feature(slice_flatten)]
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#![feature(sort_floats)]
+</span><span class="kw">let </span><span class="kw-2">mut </span>v = [<span class="number">2.6</span>, -<span class="number">5e-8</span>, f32::NAN, <span class="number">8.29</span>, f32::INFINITY, -<span class="number">1.0</span>, <span class="number">0.0</span>, -f32::INFINITY, -<span class="number">0.0</span>];
 
-</span><span class="kw">fn </span>add_5_to_all(slice: <span class="kw-2">&amp;mut </span>[i32]) {
-    <span class="kw">for </span>i <span class="kw">in </span>slice {
-        <span class="kw-2">*</span>i += <span class="number">5</span>;
-    }
-}
-
-<span class="kw">let </span><span class="kw-2">mut </span>array = [[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]];
-add_5_to_all(array.flatten_mut());
-<span class="macro">assert_eq!</span>(array, [[<span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>], [<span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>], [<span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>]]);</code></pre></div>
+v.sort_floats();
+<span class="kw">let </span>sorted = [-f32::INFINITY, -<span class="number">1.0</span>, -<span class="number">5e-8</span>, -<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">2.6</span>, <span class="number">8.29</span>, f32::INFINITY, f32::NAN];
+<span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span>v[..<span class="number">8</span>], <span class="kw-2">&amp;</span>sorted[..<span class="number">8</span>]);
+<span class="macro">assert!</span>(v[<span class="number">8</span>].is_nan());</code></pre></div>
 </div></details></div><div class="impl-items"><details class="toggle method-toggle" open><summary><section id="method.len-1" class="method"><span class="rightside"><span class="since" title="Stable since Rust version 1.0.0">1.0.0</span> · <a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/slice/mod.rs.html#136">source</a></span><h4 class="code-header">pub fn <a href="#method.len-1" class="fn">len</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a></h4></section></summary><div class="docblock"><p>Returns the number of elements in the slice.</p>
 <h5 id="examples-2"><a href="#examples-2">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];
@@ -325,7 +312,7 @@ common in C++.</p>
 <li>a - The index of the first element</li>
 <li>b - The index of the second element</li>
 </ul>
-<h5 id="panics-2"><a href="#panics-2">Panics</a></h5>
+<h5 id="panics"><a href="#panics">Panics</a></h5>
 <p>Panics if <code>a</code> or <code>b</code> are out of bounds.</p>
 <h5 id="examples-18"><a href="#examples-18">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span><span class="kw-2">mut </span>v = [<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>, <span class="string">&quot;d&quot;</span>, <span class="string">&quot;e&quot;</span>];
@@ -374,7 +361,7 @@ v.reverse();
 </div></details><details class="toggle method-toggle" open><summary><section id="method.windows" class="method"><span class="rightside"><span class="since" title="Stable since Rust version 1.0.0">1.0.0</span> · <a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/slice/mod.rs.html#809">source</a></span><h4 class="code-header">pub fn <a href="#method.windows" class="fn">windows</a>(&amp;self, size: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/core/slice/iter/struct.Windows.html" title="struct core::slice::iter::Windows">Windows</a>&lt;'_, T&gt;</h4></section></summary><div class="docblock"><p>Returns an iterator over all contiguous windows of length
 <code>size</code>. The windows overlap. If the slice is shorter than
 <code>size</code>, the iterator returns no values.</p>
-<h5 id="panics-3"><a href="#panics-3">Panics</a></h5>
+<h5 id="panics-1"><a href="#panics-1">Panics</a></h5>
 <p>Panics if <code>size</code> is 0.</p>
 <h5 id="examples-23"><a href="#examples-23">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>slice = [<span class="string">&#39;r&#39;</span>, <span class="string">&#39;u&#39;</span>, <span class="string">&#39;s&#39;</span>, <span class="string">&#39;t&#39;</span>];
@@ -409,7 +396,7 @@ slice, then the last chunk will not have length <code>chunk_size</code>.</p>
 <p>See <a href="https://doc.rust-lang.org/nightly/std/primitive.slice.html#method.chunks_exact" title="method std::slice::chunks_exact"><code>chunks_exact</code></a> for a variant of this iterator that returns chunks of always exactly
 <code>chunk_size</code> elements, and <a href="https://doc.rust-lang.org/nightly/std/primitive.slice.html#method.rchunks" title="method std::slice::rchunks"><code>rchunks</code></a> for the same iterator but starting at the end of the
 slice.</p>
-<h5 id="panics-4"><a href="#panics-4">Panics</a></h5>
+<h5 id="panics-2"><a href="#panics-2">Panics</a></h5>
 <p>Panics if <code>chunk_size</code> is 0.</p>
 <h5 id="examples-24"><a href="#examples-24">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>slice = [<span class="string">&#39;l&#39;</span>, <span class="string">&#39;o&#39;</span>, <span class="string">&#39;r&#39;</span>, <span class="string">&#39;e&#39;</span>, <span class="string">&#39;m&#39;</span>];
@@ -425,7 +412,7 @@ length of the slice, then the last chunk will not have length <code>chunk_size</
 <p>See <a href="https://doc.rust-lang.org/nightly/std/primitive.slice.html#method.chunks_exact_mut" title="method std::slice::chunks_exact_mut"><code>chunks_exact_mut</code></a> for a variant of this iterator that returns chunks of always
 exactly <code>chunk_size</code> elements, and <a href="https://doc.rust-lang.org/nightly/std/primitive.slice.html#method.rchunks_mut" title="method std::slice::rchunks_mut"><code>rchunks_mut</code></a> for the same iterator but starting at
 the end of the slice.</p>
-<h5 id="panics-5"><a href="#panics-5">Panics</a></h5>
+<h5 id="panics-3"><a href="#panics-3">Panics</a></h5>
 <p>Panics if <code>chunk_size</code> is 0.</p>
 <h5 id="examples-25"><a href="#examples-25">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>v = <span class="kw-2">&amp;mut </span>[<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>];
@@ -447,7 +434,7 @@ from the <code>remainder</code> function of the iterator.</p>
 resulting code better than in the case of <a href="https://doc.rust-lang.org/nightly/std/primitive.slice.html#method.chunks" title="method std::slice::chunks"><code>chunks</code></a>.</p>
 <p>See <a href="https://doc.rust-lang.org/nightly/std/primitive.slice.html#method.chunks" title="method std::slice::chunks"><code>chunks</code></a> for a variant of this iterator that also returns the remainder as a smaller
 chunk, and <a href="https://doc.rust-lang.org/nightly/std/primitive.slice.html#method.rchunks_exact" title="method std::slice::rchunks_exact"><code>rchunks_exact</code></a> for the same iterator but starting at the end of the slice.</p>
-<h5 id="panics-6"><a href="#panics-6">Panics</a></h5>
+<h5 id="panics-4"><a href="#panics-4">Panics</a></h5>
 <p>Panics if <code>chunk_size</code> is 0.</p>
 <h5 id="examples-26"><a href="#examples-26">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>slice = [<span class="string">&#39;l&#39;</span>, <span class="string">&#39;o&#39;</span>, <span class="string">&#39;r&#39;</span>, <span class="string">&#39;e&#39;</span>, <span class="string">&#39;m&#39;</span>];
@@ -466,7 +453,7 @@ resulting code better than in the case of <a href="https://doc.rust-lang.org/nig
 <p>See <a href="https://doc.rust-lang.org/nightly/std/primitive.slice.html#method.chunks_mut" title="method std::slice::chunks_mut"><code>chunks_mut</code></a> for a variant of this iterator that also returns the remainder as a
 smaller chunk, and <a href="https://doc.rust-lang.org/nightly/std/primitive.slice.html#method.rchunks_exact_mut" title="method std::slice::rchunks_exact_mut"><code>rchunks_exact_mut</code></a> for the same iterator but starting at the end of
 the slice.</p>
-<h5 id="panics-7"><a href="#panics-7">Panics</a></h5>
+<h5 id="panics-5"><a href="#panics-5">Panics</a></h5>
 <p>Panics if <code>chunk_size</code> is 0.</p>
 <h5 id="examples-27"><a href="#examples-27">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>v = <span class="kw-2">&amp;mut </span>[<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>];
@@ -505,7 +492,7 @@ assuming that there’s no remainder.</p>
 </div></details><details class="toggle method-toggle" open><summary><section id="method.as_chunks" class="method"><a class="srclink rightside" href="https://doc.rust-lang.org/nightly/src/core/slice/mod.rs.html#1047">source</a><h4 class="code-header">pub fn <a href="#method.as_chunks" class="fn">as_chunks</a>&lt;const N: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>&gt;(&amp;self) -&gt; (&amp;[<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[T; N]</a>], &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">[T]</a>)</h4></section><span class="item-info"><div class="stab unstable"><span class="emoji">🔬</span><span>This is a nightly-only experimental API. (<code>slice_as_chunks</code>)</span></div></span></summary><div class="docblock"><p>Splits the slice into a slice of <code>N</code>-element arrays,
 starting at the beginning of the slice,
 and a remainder slice with length strictly less than <code>N</code>.</p>
-<h5 id="panics-8"><a href="#panics-8">Panics</a></h5>
+<h5 id="panics-6"><a href="#panics-6">Panics</a></h5>
 <p>Panics if <code>N</code> is 0. This check will most probably get changed to a compile time
 error before this method gets stabilized.</p>
 <h5 id="examples-29"><a href="#examples-29">Examples</a></h5>
@@ -526,7 +513,7 @@ error before this method gets stabilized.</p>
 </div></details><details class="toggle method-toggle" open><summary><section id="method.as_rchunks" class="method"><a class="srclink rightside" href="https://doc.rust-lang.org/nightly/src/core/slice/mod.rs.html#1079">source</a><h4 class="code-header">pub fn <a href="#method.as_rchunks" class="fn">as_rchunks</a>&lt;const N: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>&gt;(&amp;self) -&gt; (&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">[T]</a>, &amp;[<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[T; N]</a>])</h4></section><span class="item-info"><div class="stab unstable"><span class="emoji">🔬</span><span>This is a nightly-only experimental API. (<code>slice_as_chunks</code>)</span></div></span></summary><div class="docblock"><p>Splits the slice into a slice of <code>N</code>-element arrays,
 starting at the end of the slice,
 and a remainder slice with length strictly less than <code>N</code>.</p>
-<h5 id="panics-9"><a href="#panics-9">Panics</a></h5>
+<h5 id="panics-7"><a href="#panics-7">Panics</a></h5>
 <p>Panics if <code>N</code> is 0. This check will most probably get changed to a compile time
 error before this method gets stabilized.</p>
 <h5 id="examples-30"><a href="#examples-30">Examples</a></h5>
@@ -541,7 +528,7 @@ beginning of the slice.</p>
 length of the slice, then the last up to <code>N-1</code> elements will be omitted and can be
 retrieved from the <code>remainder</code> function of the iterator.</p>
 <p>This method is the const generic equivalent of <a href="https://doc.rust-lang.org/nightly/std/primitive.slice.html#method.chunks_exact" title="method std::slice::chunks_exact"><code>chunks_exact</code></a>.</p>
-<h5 id="panics-10"><a href="#panics-10">Panics</a></h5>
+<h5 id="panics-8"><a href="#panics-8">Panics</a></h5>
 <p>Panics if <code>N</code> is 0. This check will most probably get changed to a compile time
 error before this method gets stabilized.</p>
 <h5 id="examples-31"><a href="#examples-31">Examples</a></h5>
@@ -582,7 +569,7 @@ chunks[<span class="number">1</span>] = [<span class="string">&#39;a&#39;</span>
 </div></details><details class="toggle method-toggle" open><summary><section id="method.as_chunks_mut" class="method"><a class="srclink rightside" href="https://doc.rust-lang.org/nightly/src/core/slice/mod.rs.html#1199">source</a><h4 class="code-header">pub fn <a href="#method.as_chunks_mut" class="fn">as_chunks_mut</a>&lt;const N: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>&gt;(&amp;mut self) -&gt; (&amp;mut [<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[T; N]</a>], &amp;mut <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">[T]</a>)</h4></section><span class="item-info"><div class="stab unstable"><span class="emoji">🔬</span><span>This is a nightly-only experimental API. (<code>slice_as_chunks</code>)</span></div></span></summary><div class="docblock"><p>Splits the slice into a slice of <code>N</code>-element arrays,
 starting at the beginning of the slice,
 and a remainder slice with length strictly less than <code>N</code>.</p>
-<h5 id="panics-11"><a href="#panics-11">Panics</a></h5>
+<h5 id="panics-9"><a href="#panics-9">Panics</a></h5>
 <p>Panics if <code>N</code> is 0. This check will most probably get changed to a compile time
 error before this method gets stabilized.</p>
 <h5 id="examples-33"><a href="#examples-33">Examples</a></h5>
@@ -600,7 +587,7 @@ remainder[<span class="number">0</span>] = <span class="number">9</span>;
 </div></details><details class="toggle method-toggle" open><summary><section id="method.as_rchunks_mut" class="method"><a class="srclink rightside" href="https://doc.rust-lang.org/nightly/src/core/slice/mod.rs.html#1237">source</a><h4 class="code-header">pub fn <a href="#method.as_rchunks_mut" class="fn">as_rchunks_mut</a>&lt;const N: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>&gt;(&amp;mut self) -&gt; (&amp;mut <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">[T]</a>, &amp;mut [<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[T; N]</a>])</h4></section><span class="item-info"><div class="stab unstable"><span class="emoji">🔬</span><span>This is a nightly-only experimental API. (<code>slice_as_chunks</code>)</span></div></span></summary><div class="docblock"><p>Splits the slice into a slice of <code>N</code>-element arrays,
 starting at the end of the slice,
 and a remainder slice with length strictly less than <code>N</code>.</p>
-<h5 id="panics-12"><a href="#panics-12">Panics</a></h5>
+<h5 id="panics-10"><a href="#panics-10">Panics</a></h5>
 <p>Panics if <code>N</code> is 0. This check will most probably get changed to a compile time
 error before this method gets stabilized.</p>
 <h5 id="examples-34"><a href="#examples-34">Examples</a></h5>
@@ -621,7 +608,7 @@ beginning of the slice.</p>
 the length of the slice, then the last up to <code>N-1</code> elements will be omitted and
 can be retrieved from the <code>into_remainder</code> function of the iterator.</p>
 <p>This method is the const generic equivalent of <a href="https://doc.rust-lang.org/nightly/std/primitive.slice.html#method.chunks_exact_mut" title="method std::slice::chunks_exact_mut"><code>chunks_exact_mut</code></a>.</p>
-<h5 id="panics-13"><a href="#panics-13">Panics</a></h5>
+<h5 id="panics-11"><a href="#panics-11">Panics</a></h5>
 <p>Panics if <code>N</code> is 0. This check will most probably get changed to a compile time
 error before this method gets stabilized.</p>
 <h5 id="examples-35"><a href="#examples-35">Examples</a></h5>
@@ -638,7 +625,7 @@ error before this method gets stabilized.</p>
 starting at the beginning of the slice.</p>
 <p>This is the const generic equivalent of <a href="https://doc.rust-lang.org/nightly/std/primitive.slice.html#method.windows" title="method std::slice::windows"><code>windows</code></a>.</p>
 <p>If <code>N</code> is greater than the size of the slice, it will return no windows.</p>
-<h5 id="panics-14"><a href="#panics-14">Panics</a></h5>
+<h5 id="panics-12"><a href="#panics-12">Panics</a></h5>
 <p>Panics if <code>N</code> is 0. This check will most probably get changed to a compile time
 error before this method gets stabilized.</p>
 <h5 id="examples-36"><a href="#examples-36">Examples</a></h5>
@@ -656,7 +643,7 @@ slice, then the last chunk will not have length <code>chunk_size</code>.</p>
 <p>See <a href="https://doc.rust-lang.org/nightly/std/primitive.slice.html#method.rchunks_exact" title="method std::slice::rchunks_exact"><code>rchunks_exact</code></a> for a variant of this iterator that returns chunks of always exactly
 <code>chunk_size</code> elements, and <a href="https://doc.rust-lang.org/nightly/std/primitive.slice.html#method.chunks" title="method std::slice::chunks"><code>chunks</code></a> for the same iterator but starting at the beginning
 of the slice.</p>
-<h5 id="panics-15"><a href="#panics-15">Panics</a></h5>
+<h5 id="panics-13"><a href="#panics-13">Panics</a></h5>
 <p>Panics if <code>chunk_size</code> is 0.</p>
 <h5 id="examples-37"><a href="#examples-37">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>slice = [<span class="string">&#39;l&#39;</span>, <span class="string">&#39;o&#39;</span>, <span class="string">&#39;r&#39;</span>, <span class="string">&#39;e&#39;</span>, <span class="string">&#39;m&#39;</span>];
@@ -672,7 +659,7 @@ length of the slice, then the last chunk will not have length <code>chunk_size</
 <p>See <a href="https://doc.rust-lang.org/nightly/std/primitive.slice.html#method.rchunks_exact_mut" title="method std::slice::rchunks_exact_mut"><code>rchunks_exact_mut</code></a> for a variant of this iterator that returns chunks of always
 exactly <code>chunk_size</code> elements, and <a href="https://doc.rust-lang.org/nightly/std/primitive.slice.html#method.chunks_mut" title="method std::slice::chunks_mut"><code>chunks_mut</code></a> for the same iterator but starting at the
 beginning of the slice.</p>
-<h5 id="panics-16"><a href="#panics-16">Panics</a></h5>
+<h5 id="panics-14"><a href="#panics-14">Panics</a></h5>
 <p>Panics if <code>chunk_size</code> is 0.</p>
 <h5 id="examples-38"><a href="#examples-38">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>v = <span class="kw-2">&amp;mut </span>[<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>];
@@ -695,7 +682,7 @@ resulting code better than in the case of <a href="https://doc.rust-lang.org/nig
 <p>See <a href="https://doc.rust-lang.org/nightly/std/primitive.slice.html#method.rchunks" title="method std::slice::rchunks"><code>rchunks</code></a> for a variant of this iterator that also returns the remainder as a smaller
 chunk, and <a href="https://doc.rust-lang.org/nightly/std/primitive.slice.html#method.chunks_exact" title="method std::slice::chunks_exact"><code>chunks_exact</code></a> for the same iterator but starting at the beginning of the
 slice.</p>
-<h5 id="panics-17"><a href="#panics-17">Panics</a></h5>
+<h5 id="panics-15"><a href="#panics-15">Panics</a></h5>
 <p>Panics if <code>chunk_size</code> is 0.</p>
 <h5 id="examples-39"><a href="#examples-39">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>slice = [<span class="string">&#39;l&#39;</span>, <span class="string">&#39;o&#39;</span>, <span class="string">&#39;r&#39;</span>, <span class="string">&#39;e&#39;</span>, <span class="string">&#39;m&#39;</span>];
@@ -714,7 +701,7 @@ resulting code better than in the case of <a href="https://doc.rust-lang.org/nig
 <p>See <a href="https://doc.rust-lang.org/nightly/std/primitive.slice.html#method.rchunks_mut" title="method std::slice::rchunks_mut"><code>rchunks_mut</code></a> for a variant of this iterator that also returns the remainder as a
 smaller chunk, and <a href="https://doc.rust-lang.org/nightly/std/primitive.slice.html#method.chunks_exact_mut" title="method std::slice::chunks_exact_mut"><code>chunks_exact_mut</code></a> for the same iterator but starting at the beginning
 of the slice.</p>
-<h5 id="panics-18"><a href="#panics-18">Panics</a></h5>
+<h5 id="panics-16"><a href="#panics-16">Panics</a></h5>
 <p>Panics if <code>chunk_size</code> is 0.</p>
 <h5 id="examples-40"><a href="#examples-40">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>v = <span class="kw-2">&amp;mut </span>[<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>];
@@ -789,7 +776,7 @@ then on <code>slice[1]</code> and <code>slice[2]</code> and so on.</p>
 <p>The first will contain all indices from <code>[0, mid)</code> (excluding
 the index <code>mid</code> itself) and the second will contain all
 indices from <code>[mid, len)</code> (excluding the index <code>len</code> itself).</p>
-<h5 id="panics-19"><a href="#panics-19">Panics</a></h5>
+<h5 id="panics-17"><a href="#panics-17">Panics</a></h5>
 <p>Panics if <code>mid &gt; len</code>.</p>
 <h5 id="examples-43"><a href="#examples-43">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>v = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>];
@@ -815,7 +802,7 @@ indices from <code>[mid, len)</code> (excluding the index <code>len</code> itsel
 <p>The first will contain all indices from <code>[0, mid)</code> (excluding
 the index <code>mid</code> itself) and the second will contain all
 indices from <code>[mid, len)</code> (excluding the index <code>len</code> itself).</p>
-<h5 id="panics-20"><a href="#panics-20">Panics</a></h5>
+<h5 id="panics-18"><a href="#panics-18">Panics</a></h5>
 <p>Panics if <code>mid &gt; len</code>.</p>
 <h5 id="examples-44"><a href="#examples-44">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span><span class="kw-2">mut </span>v = [<span class="number">1</span>, <span class="number">0</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">5</span>, <span class="number">6</span>];
@@ -885,7 +872,7 @@ even if the resulting reference is not used. The caller has to ensure that
 <p>The array will contain all indices from <code>[0, N)</code> (excluding
 the index <code>N</code> itself) and the slice will contain all
 indices from <code>[N, len)</code> (excluding the index <code>len</code> itself).</p>
-<h5 id="panics-21"><a href="#panics-21">Panics</a></h5>
+<h5 id="panics-19"><a href="#panics-19">Panics</a></h5>
 <p>Panics if <code>N &gt; len</code>.</p>
 <h5 id="examples-47"><a href="#examples-47">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#![feature(split_array)]
@@ -913,7 +900,7 @@ indices from <code>[N, len)</code> (excluding the index <code>len</code> itself)
 <p>The array will contain all indices from <code>[0, N)</code> (excluding
 the index <code>N</code> itself) and the slice will contain all
 indices from <code>[N, len)</code> (excluding the index <code>len</code> itself).</p>
-<h5 id="panics-22"><a href="#panics-22">Panics</a></h5>
+<h5 id="panics-20"><a href="#panics-20">Panics</a></h5>
 <p>Panics if <code>N &gt; len</code>.</p>
 <h5 id="examples-48"><a href="#examples-48">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#![feature(split_array)]
@@ -930,7 +917,7 @@ the end.</p>
 <p>The slice will contain all indices from <code>[0, len - N)</code> (excluding
 the index <code>len - N</code> itself) and the array will contain all
 indices from <code>[len - N, len)</code> (excluding the index <code>len</code> itself).</p>
-<h5 id="panics-23"><a href="#panics-23">Panics</a></h5>
+<h5 id="panics-21"><a href="#panics-21">Panics</a></h5>
 <p>Panics if <code>N &gt; len</code>.</p>
 <h5 id="examples-49"><a href="#examples-49">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#![feature(split_array)]
@@ -959,7 +946,7 @@ index from the end.</p>
 <p>The slice will contain all indices from <code>[0, len - N)</code> (excluding
 the index <code>N</code> itself) and the array will contain all
 indices from <code>[len - N, len)</code> (excluding the index <code>len</code> itself).</p>
-<h5 id="panics-24"><a href="#panics-24">Panics</a></h5>
+<h5 id="panics-22"><a href="#panics-22">Panics</a></h5>
 <p>Panics if <code>N &gt; len</code>.</p>
 <h5 id="examples-50"><a href="#examples-50">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#![feature(split_array)]
@@ -1328,7 +1315,7 @@ fourth could match any position in <code>[1, 4]</code>.</p>
     T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.Ord.html" title="trait core::cmp::Ord">Ord</a>,</span></h4></section></summary><div class="docblock"><p>Sorts the slice, but might not preserve the order of equal elements.</p>
 <p>This sort is unstable (i.e., may reorder equal elements), in-place
 (i.e., does not allocate), and <em>O</em>(<em>n</em> * log(<em>n</em>)) worst-case.</p>
-<h5 id="current-implementation"><a href="#current-implementation">Current implementation</a></h5>
+<h5 id="current-implementation-2"><a href="#current-implementation-2">Current implementation</a></h5>
 <p>The current algorithm is based on <a href="https://github.com/orlp/pdqsort">pattern-defeating quicksort</a> by Orson Peters,
 which combines the fast average case of randomized quicksort with the fast worst case of
 heapsort, while achieving linear time on slices with certain patterns. It uses some
@@ -1359,7 +1346,7 @@ total order if it is (for all <code>a</code>, <code>b</code> and <code>c</code>)
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span><span class="kw-2">mut </span>floats = [<span class="number">5f64</span>, <span class="number">4.0</span>, <span class="number">1.0</span>, <span class="number">3.0</span>, <span class="number">2.0</span>];
 floats.sort_unstable_by(|a, b| a.partial_cmp(b).unwrap());
 <span class="macro">assert_eq!</span>(floats, [<span class="number">1.0</span>, <span class="number">2.0</span>, <span class="number">3.0</span>, <span class="number">4.0</span>, <span class="number">5.0</span>]);</code></pre></div>
-<h5 id="current-implementation-1"><a href="#current-implementation-1">Current implementation</a></h5>
+<h5 id="current-implementation-3"><a href="#current-implementation-3">Current implementation</a></h5>
 <p>The current algorithm is based on <a href="https://github.com/orlp/pdqsort">pattern-defeating quicksort</a> by Orson Peters,
 which combines the fast average case of randomized quicksort with the fast worst case of
 heapsort, while achieving linear time on slices with certain patterns. It uses some
@@ -1382,7 +1369,7 @@ elements.</p>
 <p>This sort is unstable (i.e., may reorder equal elements), in-place
 (i.e., does not allocate), and <em>O</em>(m * <em>n</em> * log(<em>n</em>)) worst-case, where the key function is
 <em>O</em>(<em>m</em>).</p>
-<h5 id="current-implementation-2"><a href="#current-implementation-2">Current implementation</a></h5>
+<h5 id="current-implementation-4"><a href="#current-implementation-4">Current implementation</a></h5>
 <p>The current algorithm is based on <a href="https://github.com/orlp/pdqsort">pattern-defeating quicksort</a> by Orson Peters,
 which combines the fast average case of randomized quicksort with the fast worst case of
 heapsort, while achieving linear time on slices with certain patterns. It uses some
@@ -1410,10 +1397,10 @@ This function is also known as “kth element” in other libraries.</p>
 the subslice prior to <code>index</code>, the element at <code>index</code>, and the subslice after <code>index</code>;
 accordingly, the values in those two subslices will respectively all be less-than-or-equal-to
 and greater-than-or-equal-to the value of the element at <code>index</code>.</p>
-<h5 id="current-implementation-3"><a href="#current-implementation-3">Current implementation</a></h5>
+<h5 id="current-implementation-5"><a href="#current-implementation-5">Current implementation</a></h5>
 <p>The current algorithm is based on the quickselect portion of the same quicksort algorithm
 used for <a href="https://doc.rust-lang.org/nightly/std/primitive.slice.html#method.sort_unstable" title="method std::slice::sort_unstable"><code>sort_unstable</code></a>.</p>
-<h5 id="panics-25"><a href="#panics-25">Panics</a></h5>
+<h5 id="panics-23"><a href="#panics-23">Panics</a></h5>
 <p>Panics when <code>index &gt;= len()</code>, meaning it always panics on empty slices.</p>
 <h5 id="examples-72"><a href="#examples-72">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span><span class="kw-2">mut </span>v = [-<span class="number">5i32</span>, <span class="number">4</span>, <span class="number">1</span>, -<span class="number">3</span>, <span class="number">2</span>];
@@ -1445,10 +1432,10 @@ the slice reordered according to the provided comparator function: the subslice 
 <code>index</code>, the element at <code>index</code>, and the subslice after <code>index</code>; accordingly, the values in
 those two subslices will respectively all be less-than-or-equal-to and greater-than-or-equal-to
 the value of the element at <code>index</code>.</p>
-<h5 id="current-implementation-4"><a href="#current-implementation-4">Current implementation</a></h5>
+<h5 id="current-implementation-6"><a href="#current-implementation-6">Current implementation</a></h5>
 <p>The current algorithm is based on the quickselect portion of the same quicksort algorithm
 used for <a href="https://doc.rust-lang.org/nightly/std/primitive.slice.html#method.sort_unstable" title="method std::slice::sort_unstable"><code>sort_unstable</code></a>.</p>
-<h5 id="panics-26"><a href="#panics-26">Panics</a></h5>
+<h5 id="panics-24"><a href="#panics-24">Panics</a></h5>
 <p>Panics when <code>index &gt;= len()</code>, meaning it always panics on empty slices.</p>
 <h5 id="examples-73"><a href="#examples-73">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span><span class="kw-2">mut </span>v = [-<span class="number">5i32</span>, <span class="number">4</span>, <span class="number">1</span>, -<span class="number">3</span>, <span class="number">2</span>];
@@ -1481,10 +1468,10 @@ the slice reordered according to the provided key extraction function: the subsl
 <code>index</code>, the element at <code>index</code>, and the subslice after <code>index</code>; accordingly, the values in
 those two subslices will respectively all be less-than-or-equal-to and greater-than-or-equal-to
 the value of the element at <code>index</code>.</p>
-<h5 id="current-implementation-5"><a href="#current-implementation-5">Current implementation</a></h5>
+<h5 id="current-implementation-7"><a href="#current-implementation-7">Current implementation</a></h5>
 <p>The current algorithm is based on the quickselect portion of the same quicksort algorithm
 used for <a href="https://doc.rust-lang.org/nightly/std/primitive.slice.html#method.sort_unstable" title="method std::slice::sort_unstable"><code>sort_unstable</code></a>.</p>
-<h5 id="panics-27"><a href="#panics-27">Panics</a></h5>
+<h5 id="panics-25"><a href="#panics-25">Panics</a></h5>
 <p>Panics when <code>index &gt;= len()</code>, meaning it always panics on empty slices.</p>
 <h5 id="examples-74"><a href="#examples-74">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span><span class="kw-2">mut </span>v = [-<span class="number">5i32</span>, <span class="number">4</span>, <span class="number">1</span>, -<span class="number">3</span>, <span class="number">2</span>];
@@ -1552,7 +1539,7 @@ The second contains all the duplicates in no specified order.</p>
 slice move to the end while the last <code>self.len() - mid</code> elements move to
 the front. After calling <code>rotate_left</code>, the element previously at index
 <code>mid</code> will become the first element in the slice.</p>
-<h5 id="panics-28"><a href="#panics-28">Panics</a></h5>
+<h5 id="panics-26"><a href="#panics-26">Panics</a></h5>
 <p>This function will panic if <code>mid</code> is greater than the length of the
 slice. Note that <code>mid == self.len()</code> does <em>not</em> panic and is a no-op
 rotation.</p>
@@ -1571,7 +1558,7 @@ a[<span class="number">1</span>..<span class="number">5</span>].rotate_left(<spa
 elements of the slice move to the end while the last <code>k</code> elements move
 to the front. After calling <code>rotate_right</code>, the element previously at
 index <code>self.len() - k</code> will become the first element in the slice.</p>
-<h5 id="panics-29"><a href="#panics-29">Panics</a></h5>
+<h5 id="panics-27"><a href="#panics-27">Panics</a></h5>
 <p>This function will panic if <code>k</code> is greater than the length of the
 slice. Note that <code>k == self.len()</code> does <em>not</em> panic and is a no-op
 rotation.</p>
@@ -1605,7 +1592,7 @@ buf.fill_with(Default::default);
 </div></details><details class="toggle method-toggle" open><summary><section id="method.clone_from_slice" class="method"><span class="rightside"><span class="since" title="Stable since Rust version 1.7.0">1.7.0</span> · <a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/slice/mod.rs.html#3261-3263">source</a></span><h4 class="code-header">pub fn <a href="#method.clone_from_slice" class="fn">clone_from_slice</a>(&amp;mut self, src: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">[T]</a>)<span class="where fmt-newline">where
     T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a>,</span></h4></section></summary><div class="docblock"><p>Copies the elements from <code>src</code> into <code>self</code>.</p>
 <p>The length of <code>src</code> must be the same as <code>self</code>.</p>
-<h5 id="panics-30"><a href="#panics-30">Panics</a></h5>
+<h5 id="panics-28"><a href="#panics-28">Panics</a></h5>
 <p>This function will panic if the two slices have different lengths.</p>
 <h5 id="examples-82"><a href="#examples-82">Examples</a></h5>
 <p>Cloning two elements from a slice into another:</p>
@@ -1643,7 +1630,7 @@ sub-slices from a slice:</p>
     T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a>,</span></h4></section></summary><div class="docblock"><p>Copies all elements from <code>src</code> into <code>self</code>, using a memcpy.</p>
 <p>The length of <code>src</code> must be the same as <code>self</code>.</p>
 <p>If <code>T</code> does not implement <code>Copy</code>, use <a href="https://doc.rust-lang.org/nightly/std/primitive.slice.html#method.clone_from_slice" title="method std::slice::clone_from_slice"><code>clone_from_slice</code></a>.</p>
-<h5 id="panics-31"><a href="#panics-31">Panics</a></h5>
+<h5 id="panics-29"><a href="#panics-29">Panics</a></h5>
 <p>This function will panic if the two slices have different lengths.</p>
 <h5 id="examples-83"><a href="#examples-83">Examples</a></h5>
 <p>Copying two elements from a slice into another:</p>
@@ -1685,7 +1672,7 @@ using a memmove.</p>
 index of the range within <code>self</code> to copy to, which will have the same
 length as <code>src</code>. The two ranges may overlap. The ends of the two ranges
 must be less than or equal to <code>self.len()</code>.</p>
-<h5 id="panics-32"><a href="#panics-32">Panics</a></h5>
+<h5 id="panics-30"><a href="#panics-30">Panics</a></h5>
 <p>This function will panic if either range exceeds the end of the slice,
 or if the end of <code>src</code> is before the start.</p>
 <h5 id="examples-84"><a href="#examples-84">Examples</a></h5>
@@ -1698,7 +1685,7 @@ bytes.copy_within(<span class="number">1</span>..<span class="number">5</span>, 
 <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span>bytes, <span class="string">b&quot;Hello, Wello!&quot;</span>);</code></pre></div>
 </div></details><details class="toggle method-toggle" open><summary><section id="method.swap_with_slice" class="method"><span class="rightside"><span class="since" title="Stable since Rust version 1.27.0">1.27.0</span> · <a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/slice/mod.rs.html#3446">source</a></span><h4 class="code-header">pub fn <a href="#method.swap_with_slice" class="fn">swap_with_slice</a>(&amp;mut self, other: &amp;mut <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">[T]</a>)</h4></section></summary><div class="docblock"><p>Swaps all elements in <code>self</code> with those in <code>other</code>.</p>
 <p>The length of <code>other</code> must be the same as <code>self</code>.</p>
-<h5 id="panics-33"><a href="#panics-33">Panics</a></h5>
+<h5 id="panics-31"><a href="#panics-31">Panics</a></h5>
 <p>This function will panic if the two slices have different lengths.</p>
 <h5 id="example"><a href="#example">Example</a></h5>
 <p>Swapping two elements across slices:</p>
@@ -1789,7 +1776,7 @@ postconditions as that method.  You’re only assured that
 </ul>
 <p>That said, this is a safe method, so if you’re only writing safe code,
 then this can at most cause incorrect logic, not unsoundness.</p>
-<h5 id="panics-34"><a href="#panics-34">Panics</a></h5>
+<h5 id="panics-32"><a href="#panics-32">Panics</a></h5>
 <p>This will panic if the size of the SIMD type is different from
 <code>LANES</code> times that of the scalar.</p>
 <p>At the time of writing, the trait restrictions on <code>Simd&lt;T, LANES&gt;</code> keeps
@@ -1844,7 +1831,7 @@ postconditions as that method.  You’re only assured that
 <p>That said, this is a safe method, so if you’re only writing safe code,
 then this can at most cause incorrect logic, not unsoundness.</p>
 <p>This is the mutable version of <a href="https://doc.rust-lang.org/nightly/std/primitive.slice.html#method.as_simd" title="method std::slice::as_simd"><code>slice::as_simd</code></a>; see that for examples.</p>
-<h5 id="panics-35"><a href="#panics-35">Panics</a></h5>
+<h5 id="panics-33"><a href="#panics-33">Panics</a></h5>
 <p>This will panic if the size of the SIMD type is different from
 <code>LANES</code> times that of the scalar.</p>
 <p>At the time of writing, the trait restrictions on <code>Simd&lt;T, LANES&gt;</code> keeps
@@ -2071,32 +2058,6 @@ passed more than once.</p>
     <span class="kw-2">*</span>b = <span class="number">612</span>;
 }
 <span class="macro">assert_eq!</span>(v, <span class="kw-2">&amp;</span>[<span class="number">413</span>, <span class="number">2</span>, <span class="number">612</span>]);</code></pre></div>
-</div></details></div><div class="impl-items"><details class="toggle method-toggle" open><summary><section id="method.sort_floats" class="method"><a class="srclink rightside" href="https://doc.rust-lang.org/nightly/src/core/slice/mod.rs.html#4363">source</a><h4 class="code-header">pub fn <a href="#method.sort_floats" class="fn">sort_floats</a>(&amp;mut self)</h4></section><span class="item-info"><div class="stab unstable"><span class="emoji">🔬</span><span>This is a nightly-only experimental API. (<code>sort_floats</code>)</span></div></span></summary><div class="docblock"><p>Sorts the slice of floats.</p>
-<p>This sort is in-place (i.e. does not allocate), <em>O</em>(<em>n</em> * log(<em>n</em>)) worst-case, and uses
-the ordering defined by <a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html#method.total_cmp" title="method std::f64::total_cmp"><code>f64::total_cmp</code></a>.</p>
-<h5 id="current-implementation-6"><a href="#current-implementation-6">Current implementation</a></h5>
-<p>This uses the same sorting algorithm as <a href="https://doc.rust-lang.org/nightly/std/primitive.slice.html#method.sort_unstable_by" title="method std::slice::sort_unstable_by"><code>sort_unstable_by</code></a>.</p>
-<h5 id="examples-99"><a href="#examples-99">Examples</a></h5>
-<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#![feature(sort_floats)]
-</span><span class="kw">let </span><span class="kw-2">mut </span>v = [<span class="number">2.6</span>, -<span class="number">5e-8</span>, f64::NAN, <span class="number">8.29</span>, f64::INFINITY, -<span class="number">1.0</span>, <span class="number">0.0</span>, -f64::INFINITY, -<span class="number">0.0</span>];
-
-v.sort_floats();
-<span class="kw">let </span>sorted = [-f64::INFINITY, -<span class="number">1.0</span>, -<span class="number">5e-8</span>, -<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">2.6</span>, <span class="number">8.29</span>, f64::INFINITY, f64::NAN];
-<span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span>v[..<span class="number">8</span>], <span class="kw-2">&amp;</span>sorted[..<span class="number">8</span>]);
-<span class="macro">assert!</span>(v[<span class="number">8</span>].is_nan());</code></pre></div>
-</div></details></div><div class="impl-items"><details class="toggle method-toggle" open><summary><section id="method.sort_floats-1" class="method"><a class="srclink rightside" href="https://doc.rust-lang.org/nightly/src/core/slice/mod.rs.html#4334">source</a><h4 class="code-header">pub fn <a href="#method.sort_floats-1" class="fn">sort_floats</a>(&amp;mut self)</h4></section><span class="item-info"><div class="stab unstable"><span class="emoji">🔬</span><span>This is a nightly-only experimental API. (<code>sort_floats</code>)</span></div></span></summary><div class="docblock"><p>Sorts the slice of floats.</p>
-<p>This sort is in-place (i.e. does not allocate), <em>O</em>(<em>n</em> * log(<em>n</em>)) worst-case, and uses
-the ordering defined by <a href="https://doc.rust-lang.org/nightly/std/primitive.f32.html#method.total_cmp" title="method std::f32::total_cmp"><code>f32::total_cmp</code></a>.</p>
-<h5 id="current-implementation-7"><a href="#current-implementation-7">Current implementation</a></h5>
-<p>This uses the same sorting algorithm as <a href="https://doc.rust-lang.org/nightly/std/primitive.slice.html#method.sort_unstable_by" title="method std::slice::sort_unstable_by"><code>sort_unstable_by</code></a>.</p>
-<h5 id="examples-100"><a href="#examples-100">Examples</a></h5>
-<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#![feature(sort_floats)]
-</span><span class="kw">let </span><span class="kw-2">mut </span>v = [<span class="number">2.6</span>, -<span class="number">5e-8</span>, f32::NAN, <span class="number">8.29</span>, f32::INFINITY, -<span class="number">1.0</span>, <span class="number">0.0</span>, -f32::INFINITY, -<span class="number">0.0</span>];
-
-v.sort_floats();
-<span class="kw">let </span>sorted = [-f32::INFINITY, -<span class="number">1.0</span>, -<span class="number">5e-8</span>, -<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">2.6</span>, <span class="number">8.29</span>, f32::INFINITY, f32::NAN];
-<span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span>v[..<span class="number">8</span>], <span class="kw-2">&amp;</span>sorted[..<span class="number">8</span>]);
-<span class="macro">assert!</span>(v[<span class="number">8</span>].is_nan());</code></pre></div>
 </div></details></div><div class="impl-items"><details class="toggle method-toggle" open><summary><section id="method.is_ascii" class="method"><span class="rightside"><span class="since" title="Stable since Rust version 1.23.0">1.23.0</span> · <a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/slice/ascii.rs.html#15">source</a></span><h4 class="code-header">pub fn <a href="#method.is_ascii" class="fn">is_ascii</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></h4></section></summary><div class="docblock"><p>Checks if all bytes in this slice are within the ASCII range.</p>
 </div></details><details class="toggle method-toggle" open><summary><section id="method.eq_ignore_ascii_case" class="method"><span class="rightside"><span class="since" title="Stable since Rust version 1.23.0">1.23.0</span> · <a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/slice/ascii.rs.html#26">source</a></span><h4 class="code-header">pub fn <a href="#method.eq_ignore_ascii_case" class="fn">eq_ignore_ascii_case</a>(&amp;self, other: &amp;[<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>]) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></h4></section></summary><div class="docblock"><p>Checks that two slices are an ASCII case-insensitive match.</p>
 <p>Same as <code>to_ascii_lowercase(a) == to_ascii_lowercase(b)</code>,
@@ -2113,7 +2074,7 @@ but non-ASCII letters are unchanged.</p>
 <a href="#method.to_ascii_lowercase"><code>to_ascii_lowercase</code></a>.</p>
 </div></details><details class="toggle method-toggle" open><summary><section id="method.escape_ascii" class="method"><span class="rightside"><span class="since" title="Stable since Rust version 1.60.0">1.60.0</span> · <a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/slice/ascii.rs.html#78">source</a></span><h4 class="code-header">pub fn <a href="#method.escape_ascii" class="fn">escape_ascii</a>(&amp;self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/core/slice/ascii/struct.EscapeAscii.html" title="struct core::slice::ascii::EscapeAscii">EscapeAscii</a>&lt;'_&gt;</h4></section></summary><div class="docblock"><p>Returns an iterator that produces an escaped version of this slice,
 treating it as an ASCII string.</p>
-<h5 id="examples-101"><a href="#examples-101">Examples</a></h5>
+<h5 id="examples-99"><a href="#examples-99">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code>
 <span class="kw">let </span>s = <span class="string">b&quot;0\t\r\n&#39;\&quot;\\\x9d&quot;</span>;
 <span class="kw">let </span>escaped = s.escape_ascii().to_string();
@@ -2121,7 +2082,7 @@ treating it as an ASCII string.</p>
 </div></details><details class="toggle method-toggle" open><summary><section id="method.trim_ascii_start" class="method"><a class="srclink rightside" href="https://doc.rust-lang.org/nightly/src/core/slice/ascii.rs.html#97">source</a><h4 class="code-header">pub fn <a href="#method.trim_ascii_start" class="fn">trim_ascii_start</a>(&amp;self) -&gt; &amp;[<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>] <a href="#" class="tooltip" data-notable-ty="&amp;[u8]">ⓘ</a></h4></section><span class="item-info"><div class="stab unstable"><span class="emoji">🔬</span><span>This is a nightly-only experimental API. (<code>byte_slice_trim_ascii</code>)</span></div></span></summary><div class="docblock"><p>Returns a byte slice with leading ASCII whitespace bytes removed.</p>
 <p>‘Whitespace’ refers to the definition used by
 <code>u8::is_ascii_whitespace</code>.</p>
-<h5 id="examples-102"><a href="#examples-102">Examples</a></h5>
+<h5 id="examples-100"><a href="#examples-100">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#![feature(byte_slice_trim_ascii)]
 
 </span><span class="macro">assert_eq!</span>(<span class="string">b&quot; \t hello world\n&quot;</span>.trim_ascii_start(), <span class="string">b&quot;hello world\n&quot;</span>);
@@ -2130,7 +2091,7 @@ treating it as an ASCII string.</p>
 </div></details><details class="toggle method-toggle" open><summary><section id="method.trim_ascii_end" class="method"><a class="srclink rightside" href="https://doc.rust-lang.org/nightly/src/core/slice/ascii.rs.html#126">source</a><h4 class="code-header">pub fn <a href="#method.trim_ascii_end" class="fn">trim_ascii_end</a>(&amp;self) -&gt; &amp;[<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>] <a href="#" class="tooltip" data-notable-ty="&amp;[u8]">ⓘ</a></h4></section><span class="item-info"><div class="stab unstable"><span class="emoji">🔬</span><span>This is a nightly-only experimental API. (<code>byte_slice_trim_ascii</code>)</span></div></span></summary><div class="docblock"><p>Returns a byte slice with trailing ASCII whitespace bytes removed.</p>
 <p>‘Whitespace’ refers to the definition used by
 <code>u8::is_ascii_whitespace</code>.</p>
-<h5 id="examples-103"><a href="#examples-103">Examples</a></h5>
+<h5 id="examples-101"><a href="#examples-101">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#![feature(byte_slice_trim_ascii)]
 
 </span><span class="macro">assert_eq!</span>(<span class="string">b&quot;\r hello world\n &quot;</span>.trim_ascii_end(), <span class="string">b&quot;\r hello world&quot;</span>);
@@ -2140,12 +2101,51 @@ treating it as an ASCII string.</p>
 removed.</p>
 <p>‘Whitespace’ refers to the definition used by
 <code>u8::is_ascii_whitespace</code>.</p>
-<h5 id="examples-104"><a href="#examples-104">Examples</a></h5>
+<h5 id="examples-102"><a href="#examples-102">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#![feature(byte_slice_trim_ascii)]
 
 </span><span class="macro">assert_eq!</span>(<span class="string">b&quot;\r hello world\n &quot;</span>.trim_ascii(), <span class="string">b&quot;hello world&quot;</span>);
 <span class="macro">assert_eq!</span>(<span class="string">b&quot;  &quot;</span>.trim_ascii(), <span class="string">b&quot;&quot;</span>);
 <span class="macro">assert_eq!</span>(<span class="string">b&quot;&quot;</span>.trim_ascii(), <span class="string">b&quot;&quot;</span>);</code></pre></div>
+</div></details></div><div class="impl-items"><details class="toggle method-toggle" open><summary><section id="method.flatten" class="method"><a class="srclink rightside" href="https://doc.rust-lang.org/nightly/src/core/slice/mod.rs.html#4259">source</a><h4 class="code-header">pub fn <a href="#method.flatten" class="fn">flatten</a>(&amp;self) -&gt; &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">[T]</a> <a href="#" class="tooltip" data-notable-ty="&amp;[T]">ⓘ</a></h4></section><span class="item-info"><div class="stab unstable"><span class="emoji">🔬</span><span>This is a nightly-only experimental API. (<code>slice_flatten</code>)</span></div></span></summary><div class="docblock"><p>Takes a <code>&amp;[[T; N]]</code>, and flattens it to a <code>&amp;[T]</code>.</p>
+<h5 id="panics-34"><a href="#panics-34">Panics</a></h5>
+<p>This panics if the length of the resulting slice would overflow a <code>usize</code>.</p>
+<p>This is only possible when flattening a slice of arrays of zero-sized
+types, and thus tends to be irrelevant in practice. If
+<code>size_of::&lt;T&gt;() &gt; 0</code>, this will never panic.</p>
+<h5 id="examples-103"><a href="#examples-103">Examples</a></h5>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#![feature(slice_flatten)]
+
+</span><span class="macro">assert_eq!</span>([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]].flatten(), <span class="kw-2">&amp;</span>[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]);
+
+<span class="macro">assert_eq!</span>(
+    [[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]].flatten(),
+    [[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">4</span>], [<span class="number">5</span>, <span class="number">6</span>]].flatten(),
+);
+
+<span class="kw">let </span>slice_of_empty_arrays: <span class="kw-2">&amp;</span>[[i32; <span class="number">0</span>]] = <span class="kw-2">&amp;</span>[[], [], [], [], []];
+<span class="macro">assert!</span>(slice_of_empty_arrays.flatten().is_empty());
+
+<span class="kw">let </span>empty_slice_of_arrays: <span class="kw-2">&amp;</span>[[u32; <span class="number">10</span>]] = <span class="kw-2">&amp;</span>[];
+<span class="macro">assert!</span>(empty_slice_of_arrays.flatten().is_empty());</code></pre></div>
+</div></details><details class="toggle method-toggle" open><summary><section id="method.flatten_mut" class="method"><a class="srclink rightside" href="https://doc.rust-lang.org/nightly/src/core/slice/mod.rs.html#4297">source</a><h4 class="code-header">pub fn <a href="#method.flatten_mut" class="fn">flatten_mut</a>(&amp;mut self) -&gt; &amp;mut <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">[T]</a> <a href="#" class="tooltip" data-notable-ty="&amp;mut [T]">ⓘ</a></h4></section><span class="item-info"><div class="stab unstable"><span class="emoji">🔬</span><span>This is a nightly-only experimental API. (<code>slice_flatten</code>)</span></div></span></summary><div class="docblock"><p>Takes a <code>&amp;mut [[T; N]]</code>, and flattens it to a <code>&amp;mut [T]</code>.</p>
+<h5 id="panics-35"><a href="#panics-35">Panics</a></h5>
+<p>This panics if the length of the resulting slice would overflow a <code>usize</code>.</p>
+<p>This is only possible when flattening a slice of arrays of zero-sized
+types, and thus tends to be irrelevant in practice. If
+<code>size_of::&lt;T&gt;() &gt; 0</code>, this will never panic.</p>
+<h5 id="examples-104"><a href="#examples-104">Examples</a></h5>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#![feature(slice_flatten)]
+
+</span><span class="kw">fn </span>add_5_to_all(slice: <span class="kw-2">&amp;mut </span>[i32]) {
+    <span class="kw">for </span>i <span class="kw">in </span>slice {
+        <span class="kw-2">*</span>i += <span class="number">5</span>;
+    }
+}
+
+<span class="kw">let </span><span class="kw-2">mut </span>array = [[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]];
+add_5_to_all(array.flatten_mut());
+<span class="macro">assert_eq!</span>(array, [[<span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>], [<span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>], [<span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>]]);</code></pre></div>
 </div></details></div><div class="impl-items"><details class="toggle method-toggle" open><summary><section id="method.to_ascii_uppercase" class="method"><span class="rightside"><span class="since" title="Stable since Rust version 1.23.0">1.23.0</span> · <a class="srclink" href="https://doc.rust-lang.org/nightly/src/alloc/slice.rs.html#621">source</a></span><h4 class="code-header">pub fn <a href="#method.to_ascii_uppercase" class="fn">to_ascii_uppercase</a>(&amp;self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>, <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/alloc/struct.Global.html" title="struct alloc::alloc::Global">Global</a>&gt;</h4></section></summary><div class="docblock"><p>Returns a vector containing a copy of this slice where each byte
 is mapped to its ASCII upper case equivalent.</p>
 <p>ASCII letters ‘a’ to ‘z’ are mapped to ‘A’ to ‘Z’,
@@ -2380,9 +2380,9 @@ given separator between each.</p>
     T: <a class="trait" href="types/trait.StaticType.html" title="trait glib::types::StaticType">StaticType</a>,</span></h3></section></summary><div class="impl-items"><details class="toggle method-toggle" open><summary><section id="method.ensure_type" class="method trait-impl"><a class="srclink rightside" href="../src/glib/types.rs.html#264-266">source</a><a href="#method.ensure_type" class="anchor">§</a><h4 class="code-header">fn <a href="types/trait.StaticTypeExt.html#tymethod.ensure_type" class="fn">ensure_type</a>()</h4></section></summary><div class='docblock'>Ensures that the type has been registered with the type system.</div></details></div></details><details class="toggle implementors-toggle"><summary><section id="impl-ToOwned-for-ValueArray" class="impl"><a class="srclink rightside" href="https://doc.rust-lang.org/nightly/src/alloc/borrow.rs.html#82">source</a><a href="#impl-ToOwned-for-ValueArray" class="anchor">§</a><h3 class="code-header">impl&lt;T&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/alloc/borrow/trait.ToOwned.html" title="trait alloc::borrow::ToOwned">ToOwned</a> for T<span class="where fmt-newline">where
     T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a>,</span></h3></section></summary><div class="impl-items"><details class="toggle" open><summary><section id="associatedtype.Owned" class="associatedtype trait-impl"><a href="#associatedtype.Owned" class="anchor">§</a><h4 class="code-header">type <a href="https://doc.rust-lang.org/nightly/alloc/borrow/trait.ToOwned.html#associatedtype.Owned" class="associatedtype">Owned</a> = T</h4></section></summary><div class='docblock'>The resulting type after obtaining ownership.</div></details><details class="toggle method-toggle" open><summary><section id="method.to_owned" class="method trait-impl"><a class="srclink rightside" href="https://doc.rust-lang.org/nightly/src/alloc/borrow.rs.html#87">source</a><a href="#method.to_owned" class="anchor">§</a><h4 class="code-header">fn <a href="https://doc.rust-lang.org/nightly/alloc/borrow/trait.ToOwned.html#tymethod.to_owned" class="fn">to_owned</a>(&amp;self) -&gt; T</h4></section></summary><div class='docblock'>Creates owned data from borrowed data, usually by cloning. <a href="https://doc.rust-lang.org/nightly/alloc/borrow/trait.ToOwned.html#tymethod.to_owned">Read more</a></div></details><details class="toggle method-toggle" open><summary><section id="method.clone_into" class="method trait-impl"><a class="srclink rightside" href="https://doc.rust-lang.org/nightly/src/alloc/borrow.rs.html#91">source</a><a href="#method.clone_into" class="anchor">§</a><h4 class="code-header">fn <a href="https://doc.rust-lang.org/nightly/alloc/borrow/trait.ToOwned.html#method.clone_into" class="fn">clone_into</a>(&amp;self, target: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;mut T</a>)</h4></section></summary><div class='docblock'>Uses borrowed data to replace owned data, usually by cloning. <a href="https://doc.rust-lang.org/nightly/alloc/borrow/trait.ToOwned.html#method.clone_into">Read more</a></div></details></div></details><details class="toggle implementors-toggle"><summary><section id="impl-TransparentType-for-ValueArray" class="impl"><a class="srclink rightside" href="../src/glib/translate.rs.html#2646-2648">source</a><a href="#impl-TransparentType-for-ValueArray" class="anchor">§</a><h3 class="code-header">impl&lt;T&gt; <a class="trait" href="translate/trait.TransparentType.html" title="trait glib::translate::TransparentType">TransparentType</a> for T<span class="where fmt-newline">where
     T: <a class="trait" href="translate/trait.TransparentPtrType.html" title="trait glib::translate::TransparentPtrType">TransparentPtrType</a>,</span></h3></section></summary><div class="impl-items"><section id="associatedtype.GlibType" class="associatedtype trait-impl"><a href="#associatedtype.GlibType" class="anchor">§</a><h4 class="code-header">type <a href="translate/trait.TransparentType.html#associatedtype.GlibType" class="associatedtype">GlibType</a> = &lt;T as <a class="trait" href="translate/trait.GlibPtrDefault.html" title="trait glib::translate::GlibPtrDefault">GlibPtrDefault</a>&gt;::<a class="associatedtype" href="translate/trait.GlibPtrDefault.html#associatedtype.GlibType" title="type glib::translate::GlibPtrDefault::GlibType">GlibType</a></h4></section></div></details><details class="toggle implementors-toggle"><summary><section id="impl-TryFrom%3CU%3E-for-ValueArray" class="impl"><a class="srclink rightside" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#775">source</a><a href="#impl-TryFrom%3CU%3E-for-ValueArray" class="anchor">§</a><h3 class="code-header">impl&lt;T, U&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;U&gt; for T<span class="where fmt-newline">where
-    U: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;T&gt;,</span></h3></section></summary><div class="impl-items"><details class="toggle" open><summary><section id="associatedtype.Error-1" class="associatedtype trait-impl"><a href="#associatedtype.Error-1" class="anchor">§</a><h4 class="code-header">type <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" class="associatedtype">Error</a> = <a class="enum" href="https://doc.rust-lang.org/nightly/core/convert/enum.Infallible.html" title="enum core::convert::Infallible">Infallible</a></h4></section></summary><div class='docblock'>The type returned in the event of a conversion error.</div></details><details class="toggle method-toggle" open><summary><section id="method.try_from" class="method trait-impl"><span class="rightside"><span class="since" title="const unstable">const: <a href="https://github.com/rust-lang/rust/issues/88674" title="Tracking issue for const_convert">unstable</a></span> · <a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#781">source</a></span><a href="#method.try_from" class="anchor">§</a><h4 class="code-header">fn <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#tymethod.try_from" class="fn">try_from</a>(value: U) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;T, &lt;T as <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;U&gt;&gt;::<a class="associatedtype" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" title="type core::convert::TryFrom::Error">Error</a>&gt;</h4></section></summary><div class='docblock'>Performs the conversion.</div></details></div></details><details class="toggle implementors-toggle"><summary><section id="impl-TryFromClosureReturnValue-for-ValueArray" class="impl"><a class="srclink rightside" href="../src/glib/closure.rs.html#373-392">source</a><a href="#impl-TryFromClosureReturnValue-for-ValueArray" class="anchor">§</a><h3 class="code-header">impl&lt;T&gt; <a class="trait" href="closure/trait.TryFromClosureReturnValue.html" title="trait glib::closure::TryFromClosureReturnValue">TryFromClosureReturnValue</a> for T<span class="where fmt-newline">where
+    U: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;T&gt;,</span></h3></section></summary><div class="impl-items"><details class="toggle" open><summary><section id="associatedtype.Error" class="associatedtype trait-impl"><a href="#associatedtype.Error" class="anchor">§</a><h4 class="code-header">type <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" class="associatedtype">Error</a> = <a class="enum" href="https://doc.rust-lang.org/nightly/core/convert/enum.Infallible.html" title="enum core::convert::Infallible">Infallible</a></h4></section></summary><div class='docblock'>The type returned in the event of a conversion error.</div></details><details class="toggle method-toggle" open><summary><section id="method.try_from" class="method trait-impl"><span class="rightside"><span class="since" title="const unstable">const: <a href="https://github.com/rust-lang/rust/issues/88674" title="Tracking issue for const_convert">unstable</a></span> · <a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#781">source</a></span><a href="#method.try_from" class="anchor">§</a><h4 class="code-header">fn <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#tymethod.try_from" class="fn">try_from</a>(value: U) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;T, &lt;T as <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;U&gt;&gt;::<a class="associatedtype" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" title="type core::convert::TryFrom::Error">Error</a>&gt;</h4></section></summary><div class='docblock'>Performs the conversion.</div></details></div></details><details class="toggle implementors-toggle"><summary><section id="impl-TryFromClosureReturnValue-for-ValueArray" class="impl"><a class="srclink rightside" href="../src/glib/closure.rs.html#373-392">source</a><a href="#impl-TryFromClosureReturnValue-for-ValueArray" class="anchor">§</a><h3 class="code-header">impl&lt;T&gt; <a class="trait" href="closure/trait.TryFromClosureReturnValue.html" title="trait glib::closure::TryFromClosureReturnValue">TryFromClosureReturnValue</a> for T<span class="where fmt-newline">where
     T: for&lt;'a&gt; <a class="trait" href="value/trait.FromValue.html" title="trait glib::value::FromValue">FromValue</a>&lt;'a&gt; + <a class="trait" href="types/trait.StaticType.html" title="trait glib::types::StaticType">StaticType</a> + 'static,</span></h3></section></summary><div class="impl-items"><section id="method.try_from_closure_return_value" class="method trait-impl"><a class="srclink rightside" href="../src/glib/closure.rs.html#375-391">source</a><a href="#method.try_from_closure_return_value" class="anchor">§</a><h4 class="code-header">fn <a href="closure/trait.TryFromClosureReturnValue.html#tymethod.try_from_closure_return_value" class="fn">try_from_closure_return_value</a>(v: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="value/struct.Value.html" title="struct glib::value::Value">Value</a>&gt;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;T, <a class="struct" href="error/struct.BoolError.html" title="struct glib::error::BoolError">BoolError</a>&gt;</h4></section></div></details><details class="toggle implementors-toggle"><summary><section id="impl-TryInto%3CU%3E-for-ValueArray" class="impl"><a class="srclink rightside" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#760">source</a><a href="#impl-TryInto%3CU%3E-for-ValueArray" class="anchor">§</a><h3 class="code-header">impl&lt;T, U&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html" title="trait core::convert::TryInto">TryInto</a>&lt;U&gt; for T<span class="where fmt-newline">where
-    U: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;T&gt;,</span></h3></section></summary><div class="impl-items"><details class="toggle" open><summary><section id="associatedtype.Error" class="associatedtype trait-impl"><a href="#associatedtype.Error" class="anchor">§</a><h4 class="code-header">type <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#associatedtype.Error" class="associatedtype">Error</a> = &lt;U as <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;T&gt;&gt;::<a class="associatedtype" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" title="type core::convert::TryFrom::Error">Error</a></h4></section></summary><div class='docblock'>The type returned in the event of a conversion error.</div></details><details class="toggle method-toggle" open><summary><section id="method.try_into" class="method trait-impl"><span class="rightside"><span class="since" title="const unstable">const: <a href="https://github.com/rust-lang/rust/issues/88674" title="Tracking issue for const_convert">unstable</a></span> · <a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#766">source</a></span><a href="#method.try_into" class="anchor">§</a><h4 class="code-header">fn <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into" class="fn">try_into</a>(self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;U, &lt;U as <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;T&gt;&gt;::<a class="associatedtype" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" title="type core::convert::TryFrom::Error">Error</a>&gt;</h4></section></summary><div class='docblock'>Performs the conversion.</div></details></div></details><section id="impl-FromValueOptional%3C'a%3E-for-ValueArray" class="impl"><a class="srclink rightside" href="../src/glib/value.rs.html#280-286">source</a><a href="#impl-FromValueOptional%3C'a%3E-for-ValueArray" class="anchor">§</a><h3 class="code-header">impl&lt;'a, T, C, E&gt; <a class="trait" href="value/trait.FromValueOptional.html" title="trait glib::value::FromValueOptional">FromValueOptional</a>&lt;'a&gt; for T<span class="where fmt-newline">where
+    U: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;T&gt;,</span></h3></section></summary><div class="impl-items"><details class="toggle" open><summary><section id="associatedtype.Error-1" class="associatedtype trait-impl"><a href="#associatedtype.Error-1" class="anchor">§</a><h4 class="code-header">type <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#associatedtype.Error" class="associatedtype">Error</a> = &lt;U as <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;T&gt;&gt;::<a class="associatedtype" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" title="type core::convert::TryFrom::Error">Error</a></h4></section></summary><div class='docblock'>The type returned in the event of a conversion error.</div></details><details class="toggle method-toggle" open><summary><section id="method.try_into" class="method trait-impl"><span class="rightside"><span class="since" title="const unstable">const: <a href="https://github.com/rust-lang/rust/issues/88674" title="Tracking issue for const_convert">unstable</a></span> · <a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#766">source</a></span><a href="#method.try_into" class="anchor">§</a><h4 class="code-header">fn <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into" class="fn">try_into</a>(self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;U, &lt;U as <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;T&gt;&gt;::<a class="associatedtype" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" title="type core::convert::TryFrom::Error">Error</a>&gt;</h4></section></summary><div class='docblock'>Performs the conversion.</div></details></div></details><section id="impl-FromValueOptional%3C'a%3E-for-ValueArray" class="impl"><a class="srclink rightside" href="../src/glib/value.rs.html#280-286">source</a><a href="#impl-FromValueOptional%3C'a%3E-for-ValueArray" class="anchor">§</a><h3 class="code-header">impl&lt;'a, T, C, E&gt; <a class="trait" href="value/trait.FromValueOptional.html" title="trait glib::value::FromValueOptional">FromValueOptional</a>&lt;'a&gt; for T<span class="where fmt-newline">where
     T: <a class="trait" href="value/trait.FromValue.html" title="trait glib::value::FromValue">FromValue</a>&lt;'a, Checker = C&gt;,
     C: <a class="trait" href="value/trait.ValueTypeChecker.html" title="trait glib::value::ValueTypeChecker">ValueTypeChecker</a>&lt;Error = <a class="enum" href="value/enum.ValueTypeMismatchOrNoneError.html" title="enum glib::value::ValueTypeMismatchOrNoneError">ValueTypeMismatchOrNoneError</a>&lt;E&gt;&gt;,
-    E: <a class="trait" href="https://doc.rust-lang.org/nightly/core/error/trait.Error.html" title="trait core::error::Error">Error</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + 'static,</span></h3></section></div><script type="text/json" id="notable-traits-data">{"&[T]":"<h3>Notable traits for <code>&amp;[<a class=\"primitive\" href=\"https://doc.rust-lang.org/nightly/std/primitive.u8.html\">u8</a>]</code></h3><pre><code><span class=\"where fmt-newline\">impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/std/io/trait.Read.html\" title=\"trait std::io::Read\">Read</a> for &amp;[<a class=\"primitive\" href=\"https://doc.rust-lang.org/nightly/std/primitive.u8.html\">u8</a>]</span><span class=\"where fmt-newline\">impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/std/io/trait.Write.html\" title=\"trait std::io::Write\">Write</a> for &amp;mut [<a class=\"primitive\" href=\"https://doc.rust-lang.org/nightly/std/primitive.u8.html\">u8</a>]</span>","&[u8]":"<h3>Notable traits for <code>&amp;[<a class=\"primitive\" href=\"https://doc.rust-lang.org/nightly/std/primitive.u8.html\">u8</a>]</code></h3><pre><code><span class=\"where fmt-newline\">impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/std/io/trait.Read.html\" title=\"trait std::io::Read\">Read</a> for &amp;[<a class=\"primitive\" href=\"https://doc.rust-lang.org/nightly/std/primitive.u8.html\">u8</a>]</span><span class=\"where fmt-newline\">impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/std/io/trait.Write.html\" title=\"trait std::io::Write\">Write</a> for &amp;mut [<a class=\"primitive\" href=\"https://doc.rust-lang.org/nightly/std/primitive.u8.html\">u8</a>]</span>","&mut [T]":"<h3>Notable traits for <code>&amp;[<a class=\"primitive\" href=\"https://doc.rust-lang.org/nightly/std/primitive.u8.html\">u8</a>]</code></h3><pre><code><span class=\"where fmt-newline\">impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/std/io/trait.Read.html\" title=\"trait std::io::Read\">Read</a> for &amp;[<a class=\"primitive\" href=\"https://doc.rust-lang.org/nightly/std/primitive.u8.html\">u8</a>]</span><span class=\"where fmt-newline\">impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/std/io/trait.Write.html\" title=\"trait std::io::Write\">Write</a> for &amp;mut [<a class=\"primitive\" href=\"https://doc.rust-lang.org/nightly/std/primitive.u8.html\">u8</a>]</span>","<[T] as Concat<Item>>::Output":"<h3>Notable traits for <code>&amp;[<a class=\"primitive\" href=\"https://doc.rust-lang.org/nightly/std/primitive.u8.html\">u8</a>]</code></h3><pre><code><span class=\"where fmt-newline\">impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/std/io/trait.Read.html\" title=\"trait std::io::Read\">Read</a> for &amp;[<a class=\"primitive\" href=\"https://doc.rust-lang.org/nightly/std/primitive.u8.html\">u8</a>]</span><span class=\"where fmt-newline\">impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/std/io/trait.Write.html\" title=\"trait std::io::Write\">Write</a> for &amp;mut [<a class=\"primitive\" href=\"https://doc.rust-lang.org/nightly/std/primitive.u8.html\">u8</a>]</span>","<[T] as Join<Separator>>::Output":"<h3>Notable traits for <code>&amp;[<a class=\"primitive\" href=\"https://doc.rust-lang.org/nightly/std/primitive.u8.html\">u8</a>]</code></h3><pre><code><span class=\"where fmt-newline\">impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/std/io/trait.Read.html\" title=\"trait std::io::Read\">Read</a> for &amp;[<a class=\"primitive\" href=\"https://doc.rust-lang.org/nightly/std/primitive.u8.html\">u8</a>]</span><span class=\"where fmt-newline\">impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/std/io/trait.Write.html\" title=\"trait std::io::Write\">Write</a> for &amp;mut [<a class=\"primitive\" href=\"https://doc.rust-lang.org/nightly/std/primitive.u8.html\">u8</a>]</span>"}</script></section></div></main><div id="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (44cfafe2f 2023-03-03)" data-search-js="search-894761433ba8c506.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
+    E: <a class="trait" href="https://doc.rust-lang.org/nightly/core/error/trait.Error.html" title="trait core::error::Error">Error</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + 'static,</span></h3></section></div><script type="text/json" id="notable-traits-data">{"&[T]":"<h3>Notable traits for <code>&amp;[<a class=\"primitive\" href=\"https://doc.rust-lang.org/nightly/std/primitive.u8.html\">u8</a>]</code></h3><pre><code><span class=\"where fmt-newline\">impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/std/io/trait.Read.html\" title=\"trait std::io::Read\">Read</a> for &amp;[<a class=\"primitive\" href=\"https://doc.rust-lang.org/nightly/std/primitive.u8.html\">u8</a>]</span><span class=\"where fmt-newline\">impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/std/io/trait.Write.html\" title=\"trait std::io::Write\">Write</a> for &amp;mut [<a class=\"primitive\" href=\"https://doc.rust-lang.org/nightly/std/primitive.u8.html\">u8</a>]</span>","&[u8]":"<h3>Notable traits for <code>&amp;[<a class=\"primitive\" href=\"https://doc.rust-lang.org/nightly/std/primitive.u8.html\">u8</a>]</code></h3><pre><code><span class=\"where fmt-newline\">impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/std/io/trait.Read.html\" title=\"trait std::io::Read\">Read</a> for &amp;[<a class=\"primitive\" href=\"https://doc.rust-lang.org/nightly/std/primitive.u8.html\">u8</a>]</span><span class=\"where fmt-newline\">impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/std/io/trait.Write.html\" title=\"trait std::io::Write\">Write</a> for &amp;mut [<a class=\"primitive\" href=\"https://doc.rust-lang.org/nightly/std/primitive.u8.html\">u8</a>]</span>","&mut [T]":"<h3>Notable traits for <code>&amp;[<a class=\"primitive\" href=\"https://doc.rust-lang.org/nightly/std/primitive.u8.html\">u8</a>]</code></h3><pre><code><span class=\"where fmt-newline\">impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/std/io/trait.Read.html\" title=\"trait std::io::Read\">Read</a> for &amp;[<a class=\"primitive\" href=\"https://doc.rust-lang.org/nightly/std/primitive.u8.html\">u8</a>]</span><span class=\"where fmt-newline\">impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/std/io/trait.Write.html\" title=\"trait std::io::Write\">Write</a> for &amp;mut [<a class=\"primitive\" href=\"https://doc.rust-lang.org/nightly/std/primitive.u8.html\">u8</a>]</span>","<[T] as Concat<Item>>::Output":"<h3>Notable traits for <code>&amp;[<a class=\"primitive\" href=\"https://doc.rust-lang.org/nightly/std/primitive.u8.html\">u8</a>]</code></h3><pre><code><span class=\"where fmt-newline\">impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/std/io/trait.Read.html\" title=\"trait std::io::Read\">Read</a> for &amp;[<a class=\"primitive\" href=\"https://doc.rust-lang.org/nightly/std/primitive.u8.html\">u8</a>]</span><span class=\"where fmt-newline\">impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/std/io/trait.Write.html\" title=\"trait std::io::Write\">Write</a> for &amp;mut [<a class=\"primitive\" href=\"https://doc.rust-lang.org/nightly/std/primitive.u8.html\">u8</a>]</span>","<[T] as Join<Separator>>::Output":"<h3>Notable traits for <code>&amp;[<a class=\"primitive\" href=\"https://doc.rust-lang.org/nightly/std/primitive.u8.html\">u8</a>]</code></h3><pre><code><span class=\"where fmt-newline\">impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/std/io/trait.Read.html\" title=\"trait std::io::Read\">Read</a> for &amp;[<a class=\"primitive\" href=\"https://doc.rust-lang.org/nightly/std/primitive.u8.html\">u8</a>]</span><span class=\"where fmt-newline\">impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/std/io/trait.Write.html\" title=\"trait std::io::Write\">Write</a> for &amp;mut [<a class=\"primitive\" href=\"https://doc.rust-lang.org/nightly/std/primitive.u8.html\">u8</a>]</span>"}</script></section></div></main><div id="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.70.0-nightly (f15f0ea73 2023-03-04)" data-search-js="search-8a59a8356673ec1f.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
