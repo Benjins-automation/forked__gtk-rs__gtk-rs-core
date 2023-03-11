@@ -368,14 +368,14 @@
     stderr_fd: V,
 ) -&gt; <span class="prelude-ty">Result</span>&lt;Pid, Error&gt; {
     <span class="kw">let </span>child_setup_data: Box_&lt;<span class="prelude-ty">Option</span>&lt;Box_&lt;<span class="kw">dyn </span>FnOnce() + <span class="lifetime">&#39;static</span>&gt;&gt;&gt; = Box_::new(child_setup);
-    <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>child_setup_func&lt;P: AsRef&lt;std::path::Path&gt;&gt;(user_data: ffi::gpointer) {
+    <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>child_setup_func(user_data: ffi::gpointer) {
         <span class="kw">let </span>callback: Box_&lt;<span class="prelude-ty">Option</span>&lt;Box_&lt;<span class="kw">dyn </span>FnOnce() + <span class="lifetime">&#39;static</span>&gt;&gt;&gt; =
             Box_::from_raw(user_data <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>);
         <span class="kw">let </span>callback = (<span class="kw-2">*</span>callback).expect(<span class="string">&quot;cannot get closure...&quot;</span>);
         callback()
     }
     <span class="kw">let </span>child_setup = <span class="kw">if </span>child_setup_data.is_some() {
-        <span class="prelude-val">Some</span>(child_setup_func::&lt;P&gt; <span class="kw">as _</span>)
+        <span class="prelude-val">Some</span>(child_setup_func <span class="kw">as _</span>)
     } <span class="kw">else </span>{
         <span class="prelude-val">None
     </span>};
@@ -478,14 +478,14 @@
     child_setup: <span class="prelude-ty">Option</span>&lt;Box_&lt;<span class="kw">dyn </span>FnOnce() + <span class="lifetime">&#39;static</span>&gt;&gt;,
 ) -&gt; <span class="prelude-ty">Result</span>&lt;(Pid, T, U, V), Error&gt; {
     <span class="kw">let </span>child_setup_data: Box_&lt;<span class="prelude-ty">Option</span>&lt;Box_&lt;<span class="kw">dyn </span>FnOnce() + <span class="lifetime">&#39;static</span>&gt;&gt;&gt; = Box_::new(child_setup);
-    <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>child_setup_func&lt;P: AsRef&lt;std::path::Path&gt;&gt;(user_data: ffi::gpointer) {
+    <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>child_setup_func(user_data: ffi::gpointer) {
         <span class="kw">let </span>callback: Box_&lt;<span class="prelude-ty">Option</span>&lt;Box_&lt;<span class="kw">dyn </span>FnOnce() + <span class="lifetime">&#39;static</span>&gt;&gt;&gt; =
             Box_::from_raw(user_data <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>);
         <span class="kw">let </span>callback = (<span class="kw-2">*</span>callback).expect(<span class="string">&quot;cannot get closure...&quot;</span>);
         callback()
     }
     <span class="kw">let </span>child_setup = <span class="kw">if </span>child_setup_data.is_some() {
-        <span class="prelude-val">Some</span>(child_setup_func::&lt;P&gt; <span class="kw">as _</span>)
+        <span class="prelude-val">Some</span>(child_setup_func <span class="kw">as _</span>)
     } <span class="kw">else </span>{
         <span class="prelude-val">None
     </span>};

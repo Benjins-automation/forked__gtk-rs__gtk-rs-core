@@ -3035,7 +3035,7 @@
     }
 
     <span class="kw">fn </span>set_action_group&lt;P: IsA&lt;ActionGroup&gt;&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, action_group: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>P&gt;) {
-        glib::ObjectExt::set_property(<span class="self">self</span>.as_ref(), <span class="string">&quot;action-group&quot;</span>, <span class="kw-2">&amp;</span>action_group)
+        glib::ObjectExt::set_property(<span class="self">self</span>.as_ref(), <span class="string">&quot;action-group&quot;</span>, action_group)
     }
 
     <span class="kw">fn </span>connect_activate&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {

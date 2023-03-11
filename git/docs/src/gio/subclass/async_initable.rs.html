@@ -535,7 +535,7 @@
     <span class="kw">fn </span>interface_init(iface: <span class="kw-2">&amp;mut </span>glib::Interface&lt;<span class="self">Self</span>&gt;) {
         <span class="kw">let </span>iface = iface.as_mut();
         iface.init_async = <span class="prelude-val">Some</span>(async_initable_init_async::&lt;T&gt;);
-        iface.init_finish = <span class="prelude-val">Some</span>(async_initable_init_finish::&lt;T&gt;);
+        iface.init_finish = <span class="prelude-val">Some</span>(async_initable_init_finish);
     }
 }
 
@@ -582,7 +582,7 @@
     });
 }
 
-<span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>async_initable_init_finish&lt;T: AsyncInitableImpl&gt;(
+<span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>async_initable_init_finish(
     initable: <span class="kw-2">*mut </span>ffi::GAsyncInitable,
     res: <span class="kw-2">*mut </span>ffi::GAsyncResult,
     error: <span class="kw-2">*mut *mut </span>glib::ffi::GError,

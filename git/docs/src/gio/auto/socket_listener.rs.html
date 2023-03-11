@@ -1452,7 +1452,7 @@
     }
 
     <span class="kw">fn </span>set_listen_backlog(<span class="kw-2">&amp;</span><span class="self">self</span>, listen_backlog: i32) {
-        glib::ObjectExt::set_property(<span class="self">self</span>.as_ref(), <span class="string">&quot;listen-backlog&quot;</span>, <span class="kw-2">&amp;</span>listen_backlog)
+        glib::ObjectExt::set_property(<span class="self">self</span>.as_ref(), <span class="string">&quot;listen-backlog&quot;</span>, listen_backlog)
     }
 
     <span class="kw">fn </span>connect_event&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, SocketListenerEvent, <span class="kw-2">&amp;</span>Socket) + <span class="lifetime">&#39;static</span>&gt;(

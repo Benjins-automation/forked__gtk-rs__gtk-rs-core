@@ -3104,7 +3104,7 @@
     }
 
     <span class="kw">fn </span>set_g_default_timeout(<span class="kw-2">&amp;</span><span class="self">self</span>, g_default_timeout: i32) {
-        glib::ObjectExt::set_property(<span class="self">self</span>.as_ref(), <span class="string">&quot;g-default-timeout&quot;</span>, <span class="kw-2">&amp;</span>g_default_timeout)
+        glib::ObjectExt::set_property(<span class="self">self</span>.as_ref(), <span class="string">&quot;g-default-timeout&quot;</span>, g_default_timeout)
     }
 
     <span class="kw">fn </span>g_flags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; DBusProxyFlags {
@@ -3116,7 +3116,7 @@
     }
 
     <span class="kw">fn </span>set_g_interface_info(<span class="kw-2">&amp;</span><span class="self">self</span>, g_interface_info: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>DBusInterfaceInfo&gt;) {
-        glib::ObjectExt::set_property(<span class="self">self</span>.as_ref(), <span class="string">&quot;g-interface-info&quot;</span>, <span class="kw-2">&amp;</span>g_interface_info)
+        glib::ObjectExt::set_property(<span class="self">self</span>.as_ref(), <span class="string">&quot;g-interface-info&quot;</span>, g_interface_info)
     }
 
     <span class="kw">fn </span>g_interface_name(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;glib::GString&gt; {

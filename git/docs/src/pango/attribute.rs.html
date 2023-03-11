@@ -376,7 +376,7 @@
 
         <span class="kw">impl </span><span class="macro-nonterminal">$rust_type </span>{
             <span class="attr">#[doc(alias = <span class="string">&quot;pango_attribute_equal&quot;</span>)]
-            </span><span class="kw">fn </span>equal&lt;<span class="lifetime">&#39;a</span>, T:  <span class="kw">crate</span>::attribute::IsAttribute&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, attr2: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>T) -&gt; bool {
+            </span><span class="kw">fn </span>equal&lt;T:  <span class="kw">crate</span>::attribute::IsAttribute&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, attr2: <span class="kw-2">&amp;</span>T) -&gt; bool {
                 <span class="kw">unsafe </span>{
                     glib::translate::from_glib(ffi::pango_attribute_equal(<span class="self">self</span>.as_ptr() <span class="kw">as </span><span class="kw-2">*const </span>ffi::PangoAttribute,
                        glib::translate::ToGlibPtr::to_glib_none(attr2.upcast_ref()).<span class="number">0</span>,

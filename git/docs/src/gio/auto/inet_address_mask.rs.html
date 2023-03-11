@@ -608,11 +608,11 @@
     }
 
     <span class="kw">fn </span>set_address&lt;P: IsA&lt;InetAddress&gt;&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, address: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>P&gt;) {
-        glib::ObjectExt::set_property(<span class="self">self</span>.as_ref(), <span class="string">&quot;address&quot;</span>, <span class="kw-2">&amp;</span>address)
+        glib::ObjectExt::set_property(<span class="self">self</span>.as_ref(), <span class="string">&quot;address&quot;</span>, address)
     }
 
     <span class="kw">fn </span>set_length(<span class="kw-2">&amp;</span><span class="self">self</span>, length: u32) {
-        glib::ObjectExt::set_property(<span class="self">self</span>.as_ref(), <span class="string">&quot;length&quot;</span>, <span class="kw-2">&amp;</span>length)
+        glib::ObjectExt::set_property(<span class="self">self</span>.as_ref(), <span class="string">&quot;length&quot;</span>, length)
     }
 
     <span class="kw">fn </span>connect_address_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + Send + Sync + <span class="lifetime">&#39;static</span>&gt;(
