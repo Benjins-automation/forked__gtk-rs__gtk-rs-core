@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib/src/auto/functions.rs`."><title>functions.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-c4dbdcde0fbd8430.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../../static.files/light-db279b6232be9c13.css"><link rel="stylesheet" disabled href="../../../static.files/dark-cf923f49f397b216.css"><link rel="stylesheet" disabled href="../../../static.files/ayu-be46fdc453a55015.css"><script src="../../../static.files/storage-3891ce972e3a2bf8.js"></script><script defer src="../../../static.files/source-script-1b95b7cca98b26e5.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-98a684e84ae5b08b.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib/src/auto/functions.rs`."><title>functions.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-c4dbdcde0fbd8430.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.70.0-nightly (ff4b772f8 2023-03-10)" data-search-js="search-8a59a8356673ec1f.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" data-theme-light-css="light-db279b6232be9c13.css" data-theme-dark-css="dark-cf923f49f397b216.css" data-theme-ayu-css="ayu-be46fdc453a55015.css" ></div><script src="../../../static.files/storage-9184409068f70b79.js"></script><script defer src="../../../static.files/source-script-1b95b7cca98b26e5.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-f5a2577c5297a973.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-db279b6232be9c13.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-cf923f49f397b216.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -1115,6 +1115,105 @@
 <a href="#1042" id="1042">1042</a>
 <a href="#1043" id="1043">1043</a>
 <a href="#1044" id="1044">1044</a>
+<a href="#1045" id="1045">1045</a>
+<a href="#1046" id="1046">1046</a>
+<a href="#1047" id="1047">1047</a>
+<a href="#1048" id="1048">1048</a>
+<a href="#1049" id="1049">1049</a>
+<a href="#1050" id="1050">1050</a>
+<a href="#1051" id="1051">1051</a>
+<a href="#1052" id="1052">1052</a>
+<a href="#1053" id="1053">1053</a>
+<a href="#1054" id="1054">1054</a>
+<a href="#1055" id="1055">1055</a>
+<a href="#1056" id="1056">1056</a>
+<a href="#1057" id="1057">1057</a>
+<a href="#1058" id="1058">1058</a>
+<a href="#1059" id="1059">1059</a>
+<a href="#1060" id="1060">1060</a>
+<a href="#1061" id="1061">1061</a>
+<a href="#1062" id="1062">1062</a>
+<a href="#1063" id="1063">1063</a>
+<a href="#1064" id="1064">1064</a>
+<a href="#1065" id="1065">1065</a>
+<a href="#1066" id="1066">1066</a>
+<a href="#1067" id="1067">1067</a>
+<a href="#1068" id="1068">1068</a>
+<a href="#1069" id="1069">1069</a>
+<a href="#1070" id="1070">1070</a>
+<a href="#1071" id="1071">1071</a>
+<a href="#1072" id="1072">1072</a>
+<a href="#1073" id="1073">1073</a>
+<a href="#1074" id="1074">1074</a>
+<a href="#1075" id="1075">1075</a>
+<a href="#1076" id="1076">1076</a>
+<a href="#1077" id="1077">1077</a>
+<a href="#1078" id="1078">1078</a>
+<a href="#1079" id="1079">1079</a>
+<a href="#1080" id="1080">1080</a>
+<a href="#1081" id="1081">1081</a>
+<a href="#1082" id="1082">1082</a>
+<a href="#1083" id="1083">1083</a>
+<a href="#1084" id="1084">1084</a>
+<a href="#1085" id="1085">1085</a>
+<a href="#1086" id="1086">1086</a>
+<a href="#1087" id="1087">1087</a>
+<a href="#1088" id="1088">1088</a>
+<a href="#1089" id="1089">1089</a>
+<a href="#1090" id="1090">1090</a>
+<a href="#1091" id="1091">1091</a>
+<a href="#1092" id="1092">1092</a>
+<a href="#1093" id="1093">1093</a>
+<a href="#1094" id="1094">1094</a>
+<a href="#1095" id="1095">1095</a>
+<a href="#1096" id="1096">1096</a>
+<a href="#1097" id="1097">1097</a>
+<a href="#1098" id="1098">1098</a>
+<a href="#1099" id="1099">1099</a>
+<a href="#1100" id="1100">1100</a>
+<a href="#1101" id="1101">1101</a>
+<a href="#1102" id="1102">1102</a>
+<a href="#1103" id="1103">1103</a>
+<a href="#1104" id="1104">1104</a>
+<a href="#1105" id="1105">1105</a>
+<a href="#1106" id="1106">1106</a>
+<a href="#1107" id="1107">1107</a>
+<a href="#1108" id="1108">1108</a>
+<a href="#1109" id="1109">1109</a>
+<a href="#1110" id="1110">1110</a>
+<a href="#1111" id="1111">1111</a>
+<a href="#1112" id="1112">1112</a>
+<a href="#1113" id="1113">1113</a>
+<a href="#1114" id="1114">1114</a>
+<a href="#1115" id="1115">1115</a>
+<a href="#1116" id="1116">1116</a>
+<a href="#1117" id="1117">1117</a>
+<a href="#1118" id="1118">1118</a>
+<a href="#1119" id="1119">1119</a>
+<a href="#1120" id="1120">1120</a>
+<a href="#1121" id="1121">1121</a>
+<a href="#1122" id="1122">1122</a>
+<a href="#1123" id="1123">1123</a>
+<a href="#1124" id="1124">1124</a>
+<a href="#1125" id="1125">1125</a>
+<a href="#1126" id="1126">1126</a>
+<a href="#1127" id="1127">1127</a>
+<a href="#1128" id="1128">1128</a>
+<a href="#1129" id="1129">1129</a>
+<a href="#1130" id="1130">1130</a>
+<a href="#1131" id="1131">1131</a>
+<a href="#1132" id="1132">1132</a>
+<a href="#1133" id="1133">1133</a>
+<a href="#1134" id="1134">1134</a>
+<a href="#1135" id="1135">1135</a>
+<a href="#1136" id="1136">1136</a>
+<a href="#1137" id="1137">1137</a>
+<a href="#1138" id="1138">1138</a>
+<a href="#1139" id="1139">1139</a>
+<a href="#1140" id="1140">1140</a>
+<a href="#1141" id="1141">1141</a>
+<a href="#1142" id="1142">1142</a>
+<a href="#1143" id="1143">1143</a>
 </pre><pre class="rust"><code><span class="comment">// This file was generated by gir (https://github.com/gtk-rs/gir)
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
@@ -2112,12 +2211,46 @@
 //    unsafe { TODO: call ffi:g_spawn_sync() }
 //}
 
+</span><span class="doccomment">/// Looks up the Unicode script for `iso15924`. ISO 15924 assigns four-letter
+/// codes to scripts. For example, the code for Arabic is &#39;Arab&#39;.
+/// This function accepts four letter codes encoded as a `guint32` in a
+/// big-endian fashion. That is, the code expected for Arabic is
+/// 0x41726162 (0x41 is ASCII code for &#39;A&#39;, 0x72 is ASCII code for &#39;r&#39;, etc).
+///
+/// See
+/// [Codes for the representation of names of scripts](http://unicode.org/iso15924/codelists.html)
+/// for details.
+/// ## `iso15924`
+/// a Unicode script
+///
+/// # Returns
+///
+/// the Unicode script for `iso15924`, or
+///  of [`UnicodeScript::InvalidCode`][crate::UnicodeScript::InvalidCode] if `iso15924` is zero and
+///  [`UnicodeScript::Unknown`][crate::UnicodeScript::Unknown] if `iso15924` is unknown.
 </span><span class="attr">#[doc(alias = <span class="string">&quot;g_unicode_script_from_iso15924&quot;</span>)]
 </span><span class="kw">pub fn </span>unicode_script_from_iso15924(iso15924: u32) -&gt; UnicodeScript {
     <span class="kw">unsafe </span>{ from_glib(ffi::g_unicode_script_from_iso15924(iso15924)) }
 }
 
-<span class="attr">#[doc(alias = <span class="string">&quot;g_unicode_script_to_iso15924&quot;</span>)]
+<span class="doccomment">/// Looks up the ISO 15924 code for `script`. ISO 15924 assigns four-letter
+/// codes to scripts. For example, the code for Arabic is &#39;Arab&#39;. The
+/// four letter codes are encoded as a `guint32` by this function in a
+/// big-endian fashion. That is, the code returned for Arabic is
+/// 0x41726162 (0x41 is ASCII code for &#39;A&#39;, 0x72 is ASCII code for &#39;r&#39;, etc).
+///
+/// See
+/// [Codes for the representation of names of scripts](http://unicode.org/iso15924/codelists.html)
+/// for details.
+/// ## `script`
+/// a Unicode script
+///
+/// # Returns
+///
+/// the ISO 15924 code for `script`, encoded as an integer,
+///  of zero if `script` is [`UnicodeScript::InvalidCode`][crate::UnicodeScript::InvalidCode] or
+///  ISO 15924 code &#39;Zzzz&#39; (script code for UNKNOWN) if `script` is not understood.
+</span><span class="attr">#[doc(alias = <span class="string">&quot;g_unicode_script_to_iso15924&quot;</span>)]
 </span><span class="kw">pub fn </span>unicode_script_to_iso15924(script: UnicodeScript) -&gt; u32 {
     <span class="kw">unsafe </span>{ ffi::g_unicode_script_to_iso15924(script.into_glib()) }
 }
@@ -2131,33 +2264,98 @@
 //    unsafe { TODO: call ffi:g_unix_get_passwd_entry() }
 //}
 
+</span><span class="doccomment">/// A wrapper for the POSIX `unlink()` function. The `unlink()` function
+/// deletes a name from the filesystem. If this was the last link to the
+/// file and no processes have it opened, the diskspace occupied by the
+/// file is freed.
+///
+/// See your C library manual for more details about `unlink()`. Note
+/// that on Windows, it is in general not possible to delete files that
+/// are open to some process, or mapped into memory.
+/// ## `filename`
+/// a pathname in the GLib file name encoding
+///  (UTF-8 on Windows)
+///
+/// # Returns
+///
+/// 0 if the name was successfully deleted, -1 if an error
+///  occurred
 </span><span class="attr">#[doc(alias = <span class="string">&quot;g_unlink&quot;</span>)]
 </span><span class="kw">pub fn </span>unlink(filename: <span class="kw">impl </span>AsRef&lt;std::path::Path&gt;) -&gt; i32 {
     <span class="kw">unsafe </span>{ ffi::g_unlink(filename.as_ref().to_glib_none().<span class="number">0</span>) }
 }
 
-<span class="attr">#[doc(alias = <span class="string">&quot;g_unsetenv&quot;</span>)]
+<span class="doccomment">/// Removes an environment variable from the environment.
+///
+/// Note that on some systems, when variables are overwritten, the
+/// memory used for the previous variables and its value isn&#39;t reclaimed.
+///
+/// You should be mindful of the fact that environment variable handling
+/// in UNIX is not thread-safe, and your program may crash if one thread
+/// calls [`unsetenv()`][crate::unsetenv()] while another thread is calling `getenv()`. (And note
+/// that many functions, such as `gettext()`, call `getenv()` internally.) This
+/// function is only safe to use at the very start of your program, before
+/// creating any other threads (or creating objects that create worker
+/// threads of their own).
+///
+/// If you need to set up the environment for a child process, you can
+/// use [`environ()`][crate::environ()] to get an environment array, modify that with
+/// `g_environ_setenv()` and `g_environ_unsetenv()`, and then pass that
+/// array directly to `execvpe()`, [`spawn_async()`][crate::spawn_async()], or the like.
+/// ## `variable`
+/// the environment variable to remove, must
+///  not contain &#39;=&#39;
+</span><span class="attr">#[doc(alias = <span class="string">&quot;g_unsetenv&quot;</span>)]
 </span><span class="kw">pub fn </span>unsetenv(variable: <span class="kw">impl </span>AsRef&lt;std::ffi::OsStr&gt;) {
     <span class="kw">unsafe </span>{
         ffi::g_unsetenv(variable.as_ref().to_glib_none().<span class="number">0</span>);
     }
 }
 
-<span class="attr">#[doc(alias = <span class="string">&quot;g_usleep&quot;</span>)]
+<span class="doccomment">/// Pauses the current thread for the given number of microseconds.
+///
+/// There are 1 million microseconds per second (represented by the
+/// `G_USEC_PER_SEC` macro). [`usleep()`][crate::usleep()] may have limited precision,
+/// depending on hardware and operating system; don&#39;t rely on the exact
+/// length of the sleep.
+/// ## `microseconds`
+/// number of microseconds to pause
+</span><span class="attr">#[doc(alias = <span class="string">&quot;g_usleep&quot;</span>)]
 </span><span class="kw">pub fn </span>usleep(microseconds: libc::c_ulong) {
     <span class="kw">unsafe </span>{
         ffi::g_usleep(microseconds);
     }
 }
 
-<span class="attr">#[doc(alias = <span class="string">&quot;g_uuid_string_is_valid&quot;</span>)]
+<span class="doccomment">/// Parses the string `str` and verify if it is a UUID.
+///
+/// The function accepts the following syntax:
+///
+/// - simple forms (e.g. `f81d4fae-7dec-11d0-a765-00a0c91e6bf6`)
+///
+/// Note that hyphens are required within the UUID string itself,
+/// as per the aforementioned RFC.
+/// ## `str`
+/// a string representing a UUID
+///
+/// # Returns
+///
+/// [`true`] if `str` is a valid UUID, [`false`] otherwise.
+</span><span class="attr">#[doc(alias = <span class="string">&quot;g_uuid_string_is_valid&quot;</span>)]
 </span><span class="kw">pub fn </span>uuid_string_is_valid(str: <span class="kw-2">&amp;</span>str) -&gt; bool {
     <span class="kw">unsafe </span>{ from_glib(ffi::g_uuid_string_is_valid(str.to_glib_none().<span class="number">0</span>)) }
 }
 
-<span class="attr">#[doc(alias = <span class="string">&quot;g_uuid_string_random&quot;</span>)]
+<span class="doccomment">/// Generates a random UUID (RFC 4122 version 4) as a string. It has the same
+/// randomness guarantees as `GRand`, so must not be used for cryptographic
+/// purposes such as key generation, nonces, salts or one-time pads.
+///
+/// # Returns
+///
+/// A string that should be freed with `g_free()`.
+</span><span class="attr">#[doc(alias = <span class="string">&quot;g_uuid_string_random&quot;</span>)]
 </span><span class="kw">pub fn </span>uuid_string_random() -&gt; <span class="kw">crate</span>::GString {
     <span class="kw">unsafe </span>{ from_glib_full(ffi::g_uuid_string_random()) }
 }
 </code></pre></div>
-</section></main><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.70.0-nightly (f63ccaf25 2023-03-06)" data-search-js="search-8a59a8356673ec1f.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
+</section></main></body></html>
