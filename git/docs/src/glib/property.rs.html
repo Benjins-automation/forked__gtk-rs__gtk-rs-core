@@ -335,6 +335,8 @@
 <a href="#262" id="262">262</a>
 <a href="#263" id="263">263</a>
 <a href="#264" id="264">264</a>
+<a href="#265" id="265">265</a>
+<a href="#266" id="266">266</a>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 </span><span class="kw">use </span>std::cell::Cell;
@@ -595,9 +597,11 @@
 <span class="macro">impl_atomic!</span>(std::sync::atomic::AtomicBool, bool);
 <span class="macro">impl_atomic!</span>(std::sync::atomic::AtomicI8, i8);
 <span class="macro">impl_atomic!</span>(std::sync::atomic::AtomicI32, i32);
-<span class="macro">impl_atomic!</span>(std::sync::atomic::AtomicI64, i64);
+<span class="attr">#[cfg(target_has_atomic = <span class="string">&quot;64&quot;</span>)]
+</span><span class="macro">impl_atomic!</span>(std::sync::atomic::AtomicI64, i64);
 <span class="macro">impl_atomic!</span>(std::sync::atomic::AtomicU8, u8);
 <span class="macro">impl_atomic!</span>(std::sync::atomic::AtomicU32, u32);
-<span class="macro">impl_atomic!</span>(std::sync::atomic::AtomicU64, u64);
+<span class="attr">#[cfg(target_has_atomic = <span class="string">&quot;64&quot;</span>)]
+</span><span class="macro">impl_atomic!</span>(std::sync::atomic::AtomicU64, u64);
 </code></pre></div>
 </section></main></body></html>
