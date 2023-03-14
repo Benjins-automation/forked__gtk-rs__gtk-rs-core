@@ -344,61 +344,6 @@
 <a href="#271" id="271">271</a>
 <a href="#272" id="272">272</a>
 <a href="#273" id="273">273</a>
-<a href="#274" id="274">274</a>
-<a href="#275" id="275">275</a>
-<a href="#276" id="276">276</a>
-<a href="#277" id="277">277</a>
-<a href="#278" id="278">278</a>
-<a href="#279" id="279">279</a>
-<a href="#280" id="280">280</a>
-<a href="#281" id="281">281</a>
-<a href="#282" id="282">282</a>
-<a href="#283" id="283">283</a>
-<a href="#284" id="284">284</a>
-<a href="#285" id="285">285</a>
-<a href="#286" id="286">286</a>
-<a href="#287" id="287">287</a>
-<a href="#288" id="288">288</a>
-<a href="#289" id="289">289</a>
-<a href="#290" id="290">290</a>
-<a href="#291" id="291">291</a>
-<a href="#292" id="292">292</a>
-<a href="#293" id="293">293</a>
-<a href="#294" id="294">294</a>
-<a href="#295" id="295">295</a>
-<a href="#296" id="296">296</a>
-<a href="#297" id="297">297</a>
-<a href="#298" id="298">298</a>
-<a href="#299" id="299">299</a>
-<a href="#300" id="300">300</a>
-<a href="#301" id="301">301</a>
-<a href="#302" id="302">302</a>
-<a href="#303" id="303">303</a>
-<a href="#304" id="304">304</a>
-<a href="#305" id="305">305</a>
-<a href="#306" id="306">306</a>
-<a href="#307" id="307">307</a>
-<a href="#308" id="308">308</a>
-<a href="#309" id="309">309</a>
-<a href="#310" id="310">310</a>
-<a href="#311" id="311">311</a>
-<a href="#312" id="312">312</a>
-<a href="#313" id="313">313</a>
-<a href="#314" id="314">314</a>
-<a href="#315" id="315">315</a>
-<a href="#316" id="316">316</a>
-<a href="#317" id="317">317</a>
-<a href="#318" id="318">318</a>
-<a href="#319" id="319">319</a>
-<a href="#320" id="320">320</a>
-<a href="#321" id="321">321</a>
-<a href="#322" id="322">322</a>
-<a href="#323" id="323">323</a>
-<a href="#324" id="324">324</a>
-<a href="#325" id="325">325</a>
-<a href="#326" id="326">326</a>
-<a href="#327" id="327">327</a>
-<a href="#328" id="328">328</a>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 </span><span class="kw">use </span>std::mem::transmute;
@@ -410,7 +355,17 @@
 };
 
 <span class="kw">impl </span>SignalGroup {
-    <span class="attr">#[doc(alias = <span class="string">&quot;g_signal_group_connect_closure&quot;</span>)]
+    <span class="doccomment">/// Connects `closure` to the signal `detailed_signal` on [`target`][struct@crate::SignalGroup#target].
+    ///
+    /// You cannot connect a signal handler after [`target`][struct@crate::SignalGroup#target] has been set.
+    /// ## `detailed_signal`
+    /// a string of the form `signal-name` with optional `::signal-detail`
+    /// ## `closure`
+    /// the closure to connect.
+    /// ## `after`
+    /// whether the handler should be called before or after the
+    ///  default handler of the signal.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_signal_group_connect_closure&quot;</span>)]
     </span><span class="kw">pub fn </span>connect_closure(<span class="kw-2">&amp;</span><span class="self">self</span>, signal_name: <span class="kw-2">&amp;</span>str, after: bool, closure: RustClosure) {
         <span class="kw">unsafe </span>{
             gobject_ffi::g_signal_group_connect_closure(
@@ -425,87 +380,11 @@
     <span class="doccomment">/// Connects `c_handler` to the signal `detailed_signal`
     /// on the target instance of `self`.
     ///
-    /// You cannot connect a signal handler afterReturns the depth of the stack of calls to
-    /// [`MainContext::dispatch()`][crate::MainContext::dispatch()] on any [`MainContext`][crate::MainContext] in the current thread.
-    ///  That is, when called from the toplevel, it gives 0. When
-    /// called from within a callback from [`MainContext::iteration()`][crate::MainContext::iteration()]
-    /// (or [`MainLoop::run()`][crate::MainLoop::run()], etc.) it returns 1. When called from within
-    /// a callback to a recursive call to [`MainContext::iteration()`][crate::MainContext::iteration()],
-    /// it returns 2. And so forth.
-    ///
-    /// This function is useful in a situation like the following:
-    /// Imagine an extremely simple &quot;garbage collected&quot; system.
-    ///
-    ///
-    ///
-    /// **⚠️ The following code is in C ⚠️**
-    ///
-    /// ```C
-    /// static GList *free_list;
-    ///
-    /// gpointer
-    /// allocate_memory (gsize size)
-    /// {
-    ///   gpointer result = g_malloc (size);
-    ///   free_list = g_list_prepend (free_list, result);
-    ///   return result;
-    /// }
-    ///
-    /// void
-    /// free_allocated_memory (void)
-    /// {
-    ///   GList *l;
-    ///   for (l = free_list; l; l = l-&gt;next);
-    ///     g_free (l-&gt;data);
-    ///   g_list_free (free_list);
-    ///   free_list = NULL;
-    ///  }
-    ///
-    /// [...]
-    ///
-    /// while (TRUE);
-    ///  {
-    ///    g_main_context_iteration (NULL, TRUE);
-    ///    free_allocated_memory();
-    ///   }
-    /// ```
-    ///
-    /// This works from an application, however, if you want to do the same
-    /// thing from a library, it gets more difficult, since you no longer
-    /// control the main loop. You might think you can simply use an idle
-    /// function to make the call to `free_allocated_memory()`, but that
-    /// doesn&#39;t work, since the idle function could be called from a
-    /// recursive callback. This can be fixed by using [`main_depth()`][crate::main_depth()]
-    ///
-    ///
-    ///
-    /// **⚠️ The following code is in C ⚠️**
-    ///
-    /// ```C
-    /// gpointer
-    /// allocate_memory (gsize size)
-    /// {
-    ///   FreeListBlock *block = g_new (FreeListBlock, 1);
-    ///   block-&gt;mem = g_malloc (size);
-    ///   block-&gt;depth = g_main_depth ();
-    ///   free_list = g_list_prepend (free_list, block);
-    ///   return block-&gt;mem;
-    /// }
-    ///
-    /// void
-    /// free_allocated_memory (void)
-    /// {
-    ///   GList *l;
-    ///
-    ///   int depth = g_main_depth ();
-    ///   for (l = free_list; l; );
-    ///     {
-    ///   SignalGroup::fn connect_unbind --&gt;
-    /// This signal is emitted when the target instance of `self_` is set to a
-    /// new [`Object`][crate::Object].
-    ///
-    /// This signal will only be emitted if the previous target of `self_` is
-    /// non-[`None`].
+    /// You cannot connect a signal handler after [`target`][struct@crate::SignalGroup#target] has been set.
+    /// ## `detailed_signal`
+    /// a string of the form &quot;signal-name::detail&quot;
+    /// ## `c_handler`
+    /// the `GCallback` to connect
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_signal_group_connect&quot;</span>)]
     #[inline]
     </span><span class="kw">pub fn </span>connect&lt;F&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, signal_name: <span class="kw-2">&amp;</span>str, after: bool, callback: F)
@@ -610,7 +489,13 @@
         )
     }
 
-    <span class="attr">#[doc(alias = <span class="string">&quot;bind&quot;</span>)]
+    <span class="doccomment">/// This signal is emitted when [`target`][struct@crate::SignalGroup#target] is set to a new value
+    /// other than [`None`]. It is similar to [`notify`][struct@crate::Object#notify] on `target` except it
+    /// will not emit when [`target`][struct@crate::SignalGroup#target] is [`None`] and also allows for
+    /// receiving the [`Object`][crate::Object] without a data-race.
+    /// ## `instance`
+    /// a [`Object`][crate::Object] containing the new value for [`target`][struct@crate::SignalGroup#target]
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;bind&quot;</span>)]
     </span><span class="kw">pub fn </span>connect_bind&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Object) + Send + Sync + <span class="lifetime">&#39;static</span>&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         f: F,
@@ -632,7 +517,12 @@
         }
     }
 
-    <span class="attr">#[doc(alias = <span class="string">&quot;unbind&quot;</span>)]
+    <span class="doccomment">/// This signal is emitted when the target instance of `self_` is set to a
+    /// new [`Object`][crate::Object].
+    ///
+    /// This signal will only be emitted if the previous target of `self_` is
+    /// non-[`None`].
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;unbind&quot;</span>)]
     </span><span class="kw">pub fn </span>connect_unbind&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + Send + Sync + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
         <span class="kw">unsafe </span>{ <span class="self">self</span>.connect_unbind_unsafe(f) }
     }
