@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Trait containing all `struct@TlsConnection` methods."><title>TlsConnectionExt in gio::prelude - Rust</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-c4dbdcde0fbd8430.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.70.0-nightly (22f247c6f 2023-03-13)" data-search-js="search-d1bc581867fd0849.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" data-theme-light-css="light-db279b6232be9c13.css" data-theme-dark-css="dark-cf923f49f397b216.css" data-theme-ayu-css="ayu-be46fdc453a55015.css" ></div><script src="../../static.files/storage-9184409068f70b79.js"></script><script defer src="sidebar-items.js"></script><script defer src="../../static.files/main-f5a2577c5297a973.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-db279b6232be9c13.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-cf923f49f397b216.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc trait"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Trait containing all `struct@TlsConnection` methods."><title>TlsConnectionExt in gio::prelude - Rust</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-c4dbdcde0fbd8430.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.70.0-nightly (13afbdaa0 2023-03-17)" data-search-js="search-d1bc581867fd0849.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" data-theme-light-css="light-db279b6232be9c13.css" data-theme-dark-css="dark-cf923f49f397b216.css" data-theme-ayu-css="ayu-be46fdc453a55015.css" ></div><script src="../../static.files/storage-9184409068f70b79.js"></script><script defer src="sidebar-items.js"></script><script defer src="../../static.files/main-f5a2577c5297a973.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-db279b6232be9c13.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-cf923f49f397b216.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc trait"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -171,8 +171,8 @@
 <h6 id="errors"><a href="#errors"><code>errors</code></a></h6>
 <p>the problems with <code>peer_cert</code></p>
 <h5 id="returns"><a href="#returns">Returns</a></h5>
-<p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="primitive std::bool"><code>true</code></a> if one of the signal handlers has returned
-<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="primitive std::bool"><code>true</code></a> to accept <code>peer_cert</code></p>
+<p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="primitive bool"><code>true</code></a> if one of the signal handlers has returned
+<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="primitive bool"><code>true</code></a> to accept <code>peer_cert</code></p>
 </div></details><details class="toggle method-toggle" open><summary><section id="tymethod.certificate" class="method"><a class="srclink rightside" href="../../src/gio/auto/tls_connection.rs.html#267">source</a><h4 class="code-header">fn <a href="#tymethod.certificate" class="fn">certificate</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../struct.TlsCertificate.html" title="struct gio::TlsCertificate">TlsCertificate</a>&gt;</h4></section></summary><div class="docblock"><p>Gets <code>self</code>’s certificate, as set by
 <a href="trait.TlsConnectionExt.html#tymethod.set_certificate"><code>set_certificate()</code></a>.</p>
 <h5 id="returns-1"><a href="#returns-1">Returns</a></h5>
@@ -233,7 +233,7 @@ from the TLS protocol in TLS 1.3.</p>
 when the connection is closed. See
 <a href="trait.TlsConnectionExt.html#tymethod.set_require_close_notify"><code>set_require_close_notify()</code></a> for details.</p>
 <h5 id="returns-10"><a href="#returns-10">Returns</a></h5>
-<p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="primitive std::bool"><code>true</code></a> if <code>self</code> requires a proper TLS close
+<p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="primitive bool"><code>true</code></a> if <code>self</code> requires a proper TLS close
 notification.</p>
 </div></details><details class="toggle method-toggle" open><summary><section id="tymethod.handshake" class="method"><a class="srclink rightside" href="../../src/gio/auto/tls_connection.rs.html#431">source</a><h4 class="code-header">fn <a href="#tymethod.handshake" class="fn">handshake</a>(
     &amp;self,
@@ -332,7 +332,7 @@ from the TLS protocol in TLS 1.3.</p>
 <h6 id="mode"><a href="#mode"><code>mode</code></a></h6>
 <p>the rehandshaking mode</p>
 </div></details><details class="toggle method-toggle" open><summary><section id="tymethod.set_require_close_notify" class="method"><a class="srclink rightside" href="../../src/gio/auto/tls_connection.rs.html#551">source</a><h4 class="code-header">fn <a href="#tymethod.set_require_close_notify" class="fn">set_require_close_notify</a>(&amp;self, require_close_notify: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>)</h4></section></summary><div class="docblock"><p>Sets whether or not <code>self</code> expects a proper TLS close notification
-before the connection is closed. If this is <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="primitive std::bool"><code>true</code></a> (the default),
+before the connection is closed. If this is <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="primitive bool"><code>true</code></a> (the default),
 then <code>self</code> will expect to receive a TLS close notification from its
 peer before the connection is closed, and will return a
 <a href="../enum.TlsError.html#variant.Eof" title="variant gio::TlsError::Eof"><code>TlsError::Eof</code></a> error if the connection is closed without proper
@@ -376,7 +376,7 @@ calling <a href="trait.TlsCertificateExt.html#tymethod.issuer" title="method gio
 certificate, and the signal will only be emitted if the
 certificate was not acceptable according to <code>conn</code>’s
 <a href="../struct.TlsClientConnection.html#validation_flags" title="struct gio::TlsClientConnection"><code>validation_flags</code></a>. If you would like the
-certificate to be accepted despite <code>errors</code>, return <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="primitive std::bool"><code>true</code></a> from the
+certificate to be accepted despite <code>errors</code>, return <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="primitive bool"><code>true</code></a> from the
 signal handler. Otherwise, if no handler accepts the certificate,
 the handshake will fail with <a href="../enum.TlsError.html#variant.BadCertificate" title="variant gio::TlsError::BadCertificate"><code>TlsError::BadCertificate</code></a>.</p>
 <p>GLib guarantees that if certificate verification fails, this signal
@@ -392,16 +392,16 @@ presented by the client, if this was requested via the server’s
 <a href="../struct.TlsServerConnection.html#authentication_mode" title="struct gio::TlsServerConnection"><code>authentication_mode</code></a>. On the server side,
 the signal is always emitted when the client presents a
 certificate, and the certificate will only be accepted if a
-handler returns <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="primitive std::bool"><code>true</code></a>.</p>
+handler returns <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="primitive bool"><code>true</code></a>.</p>
 <p>Note that if this signal is emitted as part of asynchronous I/O
 in the main thread, then you should not attempt to interact with
 the user before returning from the signal handler. If you want to
 let the user decide whether or not to accept the certificate, you
-would have to return <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="primitive std::bool"><code>false</code></a> from the signal handler on the first
+would have to return <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="primitive bool"><code>false</code></a> from the signal handler on the first
 attempt, and then after the connection attempt returns a
 <a href="../enum.TlsError.html#variant.BadCertificate" title="variant gio::TlsError::BadCertificate"><code>TlsError::BadCertificate</code></a>, you can interact with the user, and
 if the user decides to accept the certificate, remember that fact,
-create a new connection, and return <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="primitive std::bool"><code>true</code></a> from the signal handler
+create a new connection, and return <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="primitive bool"><code>true</code></a> from the signal handler
 the next time.</p>
 <p>If you are doing I/O in another thread, you do not
 need to worry about this, and can simply block in the signal
@@ -411,8 +411,8 @@ handler until the UI thread returns an answer.</p>
 <h6 id="errors-1"><a href="#errors-1"><code>errors</code></a></h6>
 <p>the problems with <code>peer_cert</code>.</p>
 <h5 id="returns-12"><a href="#returns-12">Returns</a></h5>
-<p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="primitive std::bool"><code>true</code></a> to accept <code>peer_cert</code> (which will also
-immediately end the signal emission). <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="primitive std::bool"><code>false</code></a> to allow the signal
+<p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="primitive bool"><code>true</code></a> to accept <code>peer_cert</code> (which will also
+immediately end the signal emission). <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="primitive bool"><code>false</code></a> to allow the signal
 emission to continue, which will cause the handshake to fail if
 no one else overrides it.</p>
 </div></details><details class="toggle method-toggle" open><summary><section id="tymethod.connect_advertised_protocols_notify" class="method"><a class="srclink rightside" href="../../src/gio/auto/tls_connection.rs.html#633">source</a><h4 class="code-header">fn <a href="#tymethod.connect_advertised_protocols_notify" class="fn">connect_advertised_protocols_notify</a>&lt;F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html" title="trait core::ops::function::Fn">Fn</a>(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;Self</a>) + 'static&gt;(
