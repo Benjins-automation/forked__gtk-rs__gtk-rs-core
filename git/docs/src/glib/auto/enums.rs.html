@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib/src/auto/enums.rs`."><title>enums.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-c4dbdcde0fbd8430.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.70.0-nightly (1db9c061d 2023-03-21)" data-search-js="search-a6dd7f063a44c279.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" data-theme-light-css="light-db279b6232be9c13.css" data-theme-dark-css="dark-cf923f49f397b216.css" data-theme-ayu-css="ayu-be46fdc453a55015.css" ></div><script src="../../../static.files/storage-9184409068f70b79.js"></script><script defer src="../../../static.files/source-script-1b95b7cca98b26e5.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-f5a2577c5297a973.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-db279b6232be9c13.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-cf923f49f397b216.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib/src/auto/enums.rs`."><title>enums.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-c4dbdcde0fbd8430.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.70.0-nightly (a266f1199 2023-03-22)" data-search-js="search-a6dd7f063a44c279.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" data-theme-light-css="light-db279b6232be9c13.css" data-theme-dark-css="dark-cf923f49f397b216.css" data-theme-ayu-css="ayu-be46fdc453a55015.css" ></div><script src="../../../static.files/storage-9184409068f70b79.js"></script><script defer src="../../../static.files/source-script-1b95b7cca98b26e5.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-f5a2577c5297a973.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-db279b6232be9c13.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-cf923f49f397b216.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -2308,24 +2308,6 @@
 <a href="#2235" id="2235">2235</a>
 <a href="#2236" id="2236">2236</a>
 <a href="#2237" id="2237">2237</a>
-<a href="#2238" id="2238">2238</a>
-<a href="#2239" id="2239">2239</a>
-<a href="#2240" id="2240">2240</a>
-<a href="#2241" id="2241">2241</a>
-<a href="#2242" id="2242">2242</a>
-<a href="#2243" id="2243">2243</a>
-<a href="#2244" id="2244">2244</a>
-<a href="#2245" id="2245">2245</a>
-<a href="#2246" id="2246">2246</a>
-<a href="#2247" id="2247">2247</a>
-<a href="#2248" id="2248">2248</a>
-<a href="#2249" id="2249">2249</a>
-<a href="#2250" id="2250">2250</a>
-<a href="#2251" id="2251">2251</a>
-<a href="#2252" id="2252">2252</a>
-<a href="#2253" id="2253">2253</a>
-<a href="#2254" id="2254">2254</a>
-<a href="#2255" id="2255">2255</a>
 </pre><pre class="rust"><code><span class="comment">// This file was generated by gir (https://github.com/gtk-rs/gir)
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
@@ -2333,29 +2315,19 @@
 </span><span class="kw">use crate</span>::{error::ErrorDomain, translate::<span class="kw-2">*</span>, Quark};
 <span class="kw">use </span>std::fmt;
 
-<span class="doccomment">/// The hashing algorithm to be used by [`Checksum`][crate::Checksum] when performing the
-/// digest of some data.
-///
-/// Note that the [`ChecksumType`][crate::ChecksumType] enumeration may be extended at a later
-/// date to include new hashing algorithm types.
-</span><span class="attr">#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
+<span class="attr">#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
 #[non_exhaustive]
 #[doc(alias = <span class="string">&quot;GChecksumType&quot;</span>)]
 </span><span class="kw">pub enum </span>ChecksumType {
-    <span class="doccomment">/// Use the MD5 hashing algorithm
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_CHECKSUM_MD5&quot;</span>)]
+    <span class="attr">#[doc(alias = <span class="string">&quot;G_CHECKSUM_MD5&quot;</span>)]
     </span>Md5,
-    <span class="doccomment">/// Use the SHA-1 hashing algorithm
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_CHECKSUM_SHA1&quot;</span>)]
+    <span class="attr">#[doc(alias = <span class="string">&quot;G_CHECKSUM_SHA1&quot;</span>)]
     </span>Sha1,
-    <span class="doccomment">/// Use the SHA-256 hashing algorithm
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_CHECKSUM_SHA256&quot;</span>)]
+    <span class="attr">#[doc(alias = <span class="string">&quot;G_CHECKSUM_SHA256&quot;</span>)]
     </span>Sha256,
-    <span class="doccomment">/// Use the SHA-512 hashing algorithm (Since: 2.36)
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_CHECKSUM_SHA512&quot;</span>)]
+    <span class="attr">#[doc(alias = <span class="string">&quot;G_CHECKSUM_SHA512&quot;</span>)]
     </span>Sha512,
-    <span class="doccomment">/// Use the SHA-384 hashing algorithm (Since: 2.51)
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_CHECKSUM_SHA384&quot;</span>)]
+    <span class="attr">#[doc(alias = <span class="string">&quot;G_CHECKSUM_SHA384&quot;</span>)]
     </span>Sha384,
     <span class="attr">#[doc(hidden)]
     </span>__Unknown(i32),
@@ -2410,39 +2382,25 @@
     }
 }
 
-<span class="doccomment">/// Error codes returned by character set conversion routines.
-</span><span class="attr">#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
+<span class="attr">#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
 #[non_exhaustive]
 #[doc(alias = <span class="string">&quot;GConvertError&quot;</span>)]
 </span><span class="kw">pub enum </span>ConvertError {
-    <span class="doccomment">/// Conversion between the requested character
-    ///  sets is not supported.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_CONVERT_ERROR_NO_CONVERSION&quot;</span>)]
+    <span class="attr">#[doc(alias = <span class="string">&quot;G_CONVERT_ERROR_NO_CONVERSION&quot;</span>)]
     </span>NoConversion,
-    <span class="doccomment">/// Invalid byte sequence in conversion input;
-    ///  or the character sequence could not be represented in the target
-    ///  character set.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_CONVERT_ERROR_ILLEGAL_SEQUENCE&quot;</span>)]
+    <span class="attr">#[doc(alias = <span class="string">&quot;G_CONVERT_ERROR_ILLEGAL_SEQUENCE&quot;</span>)]
     </span>IllegalSequence,
-    <span class="doccomment">/// Conversion failed for some reason.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_CONVERT_ERROR_FAILED&quot;</span>)]
+    <span class="attr">#[doc(alias = <span class="string">&quot;G_CONVERT_ERROR_FAILED&quot;</span>)]
     </span>Failed,
-    <span class="doccomment">/// Partial character sequence at end of input.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_CONVERT_ERROR_PARTIAL_INPUT&quot;</span>)]
+    <span class="attr">#[doc(alias = <span class="string">&quot;G_CONVERT_ERROR_PARTIAL_INPUT&quot;</span>)]
     </span>PartialInput,
-    <span class="doccomment">/// URI is invalid.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_CONVERT_ERROR_BAD_URI&quot;</span>)]
+    <span class="attr">#[doc(alias = <span class="string">&quot;G_CONVERT_ERROR_BAD_URI&quot;</span>)]
     </span>BadUri,
-    <span class="doccomment">/// Pathname is not an absolute path.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_CONVERT_ERROR_NOT_ABSOLUTE_PATH&quot;</span>)]
+    <span class="attr">#[doc(alias = <span class="string">&quot;G_CONVERT_ERROR_NOT_ABSOLUTE_PATH&quot;</span>)]
     </span>NotAbsolutePath,
-    <span class="doccomment">/// No memory available. Since: 2.40
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_CONVERT_ERROR_NO_MEMORY&quot;</span>)]
+    <span class="attr">#[doc(alias = <span class="string">&quot;G_CONVERT_ERROR_NO_MEMORY&quot;</span>)]
     </span>NoMemory,
-    <span class="doccomment">/// An embedded NUL character is present in
-    ///  conversion output where a NUL-terminated string is expected.
-    ///  Since: 2.56
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_CONVERT_ERROR_EMBEDDED_NUL&quot;</span>)]
+    <span class="attr">#[doc(alias = <span class="string">&quot;G_CONVERT_ERROR_EMBEDDED_NUL&quot;</span>)]
     </span>EmbeddedNul,
     <span class="attr">#[doc(hidden)]
     </span>__Unknown(i32),
@@ -2527,50 +2485,35 @@
     }
 }
 
-<span class="doccomment">/// Enumeration representing a month; values are [`January`][Self::January],
-/// [`February`][Self::February], etc. [`BadMonth`][Self::BadMonth] is the invalid value.
-</span><span class="attr">#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
+<span class="attr">#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
 #[non_exhaustive]
 #[doc(alias = <span class="string">&quot;GDateMonth&quot;</span>)]
 </span><span class="kw">pub enum </span>DateMonth {
-    <span class="doccomment">/// invalid value
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_BAD_MONTH&quot;</span>)]
+    <span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_BAD_MONTH&quot;</span>)]
     </span>BadMonth,
-    <span class="doccomment">/// January
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_JANUARY&quot;</span>)]
+    <span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_JANUARY&quot;</span>)]
     </span>January,
-    <span class="doccomment">/// February
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_FEBRUARY&quot;</span>)]
+    <span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_FEBRUARY&quot;</span>)]
     </span>February,
-    <span class="doccomment">/// March
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_MARCH&quot;</span>)]
+    <span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_MARCH&quot;</span>)]
     </span>March,
-    <span class="doccomment">/// April
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_APRIL&quot;</span>)]
+    <span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_APRIL&quot;</span>)]
     </span>April,
-    <span class="doccomment">/// May
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_MAY&quot;</span>)]
+    <span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_MAY&quot;</span>)]
     </span>May,
-    <span class="doccomment">/// June
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_JUNE&quot;</span>)]
+    <span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_JUNE&quot;</span>)]
     </span>June,
-    <span class="doccomment">/// July
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_JULY&quot;</span>)]
+    <span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_JULY&quot;</span>)]
     </span>July,
-    <span class="doccomment">/// August
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_AUGUST&quot;</span>)]
+    <span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_AUGUST&quot;</span>)]
     </span>August,
-    <span class="doccomment">/// September
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_SEPTEMBER&quot;</span>)]
+    <span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_SEPTEMBER&quot;</span>)]
     </span>September,
-    <span class="doccomment">/// October
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_OCTOBER&quot;</span>)]
+    <span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_OCTOBER&quot;</span>)]
     </span>October,
-    <span class="doccomment">/// November
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_NOVEMBER&quot;</span>)]
+    <span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_NOVEMBER&quot;</span>)]
     </span>November,
-    <span class="doccomment">/// December
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_DECEMBER&quot;</span>)]
+    <span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_DECEMBER&quot;</span>)]
     </span>December,
     <span class="attr">#[doc(hidden)]
     </span>__Unknown(i32),
@@ -4452,45 +4395,66 @@
     }
 }
 
-<span class="attr">#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
+<span class="doccomment">/// The range of possible top-level types of [`Variant`][struct@crate::Variant] instances.
+</span><span class="attr">#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
 #[non_exhaustive]
 #[doc(alias = <span class="string">&quot;GVariantClass&quot;</span>)]
 </span><span class="kw">pub enum </span>VariantClass {
-    <span class="attr">#[doc(alias = <span class="string">&quot;G_VARIANT_CLASS_BOOLEAN&quot;</span>)]
+    <span class="doccomment">/// The [`Variant`][struct@crate::Variant] is a boolean.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_VARIANT_CLASS_BOOLEAN&quot;</span>)]
     </span>Boolean,
-    <span class="attr">#[doc(alias = <span class="string">&quot;G_VARIANT_CLASS_BYTE&quot;</span>)]
+    <span class="doccomment">/// The [`Variant`][struct@crate::Variant] is a byte.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_VARIANT_CLASS_BYTE&quot;</span>)]
     </span>Byte,
-    <span class="attr">#[doc(alias = <span class="string">&quot;G_VARIANT_CLASS_INT16&quot;</span>)]
+    <span class="doccomment">/// The [`Variant`][struct@crate::Variant] is a signed 16 bit integer.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_VARIANT_CLASS_INT16&quot;</span>)]
     </span>Int16,
-    <span class="attr">#[doc(alias = <span class="string">&quot;G_VARIANT_CLASS_UINT16&quot;</span>)]
+    <span class="doccomment">/// The [`Variant`][struct@crate::Variant] is an unsigned 16 bit integer.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_VARIANT_CLASS_UINT16&quot;</span>)]
     </span>Uint16,
-    <span class="attr">#[doc(alias = <span class="string">&quot;G_VARIANT_CLASS_INT32&quot;</span>)]
+    <span class="doccomment">/// The [`Variant`][struct@crate::Variant] is a signed 32 bit integer.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_VARIANT_CLASS_INT32&quot;</span>)]
     </span>Int32,
-    <span class="attr">#[doc(alias = <span class="string">&quot;G_VARIANT_CLASS_UINT32&quot;</span>)]
+    <span class="doccomment">/// The [`Variant`][struct@crate::Variant] is an unsigned 32 bit integer.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_VARIANT_CLASS_UINT32&quot;</span>)]
     </span>Uint32,
-    <span class="attr">#[doc(alias = <span class="string">&quot;G_VARIANT_CLASS_INT64&quot;</span>)]
+    <span class="doccomment">/// The [`Variant`][struct@crate::Variant] is a signed 64 bit integer.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_VARIANT_CLASS_INT64&quot;</span>)]
     </span>Int64,
-    <span class="attr">#[doc(alias = <span class="string">&quot;G_VARIANT_CLASS_UINT64&quot;</span>)]
+    <span class="doccomment">/// The [`Variant`][struct@crate::Variant] is an unsigned 64 bit integer.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_VARIANT_CLASS_UINT64&quot;</span>)]
     </span>Uint64,
-    <span class="attr">#[doc(alias = <span class="string">&quot;G_VARIANT_CLASS_HANDLE&quot;</span>)]
+    <span class="doccomment">/// The [`Variant`][struct@crate::Variant] is a file handle index.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_VARIANT_CLASS_HANDLE&quot;</span>)]
     </span>Handle,
-    <span class="attr">#[doc(alias = <span class="string">&quot;G_VARIANT_CLASS_DOUBLE&quot;</span>)]
+    <span class="doccomment">/// The [`Variant`][struct@crate::Variant] is a double precision floating
+    ///  point value.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_VARIANT_CLASS_DOUBLE&quot;</span>)]
     </span>Double,
-    <span class="attr">#[doc(alias = <span class="string">&quot;G_VARIANT_CLASS_STRING&quot;</span>)]
+    <span class="doccomment">/// The [`Variant`][struct@crate::Variant] is a normal string.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_VARIANT_CLASS_STRING&quot;</span>)]
     </span>String,
-    <span class="attr">#[doc(alias = <span class="string">&quot;G_VARIANT_CLASS_OBJECT_PATH&quot;</span>)]
+    <span class="doccomment">/// The [`Variant`][struct@crate::Variant] is a D-Bus object path
+    ///  string.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_VARIANT_CLASS_OBJECT_PATH&quot;</span>)]
     </span>ObjectPath,
-    <span class="attr">#[doc(alias = <span class="string">&quot;G_VARIANT_CLASS_SIGNATURE&quot;</span>)]
+    <span class="doccomment">/// The [`Variant`][struct@crate::Variant] is a D-Bus signature string.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_VARIANT_CLASS_SIGNATURE&quot;</span>)]
     </span>Signature,
-    <span class="attr">#[doc(alias = <span class="string">&quot;G_VARIANT_CLASS_VARIANT&quot;</span>)]
+    <span class="doccomment">/// The [`Variant`][struct@crate::Variant] is a variant.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_VARIANT_CLASS_VARIANT&quot;</span>)]
     </span>Variant,
-    <span class="attr">#[doc(alias = <span class="string">&quot;G_VARIANT_CLASS_MAYBE&quot;</span>)]
+    <span class="doccomment">/// The [`Variant`][struct@crate::Variant] is a maybe-typed value.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_VARIANT_CLASS_MAYBE&quot;</span>)]
     </span>Maybe,
-    <span class="attr">#[doc(alias = <span class="string">&quot;G_VARIANT_CLASS_ARRAY&quot;</span>)]
+    <span class="doccomment">/// The [`Variant`][struct@crate::Variant] is an array.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_VARIANT_CLASS_ARRAY&quot;</span>)]
     </span>Array,
-    <span class="attr">#[doc(alias = <span class="string">&quot;G_VARIANT_CLASS_TUPLE&quot;</span>)]
+    <span class="doccomment">/// The [`Variant`][struct@crate::Variant] is a tuple.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_VARIANT_CLASS_TUPLE&quot;</span>)]
     </span>Tuple,
-    <span class="attr">#[doc(alias = <span class="string">&quot;G_VARIANT_CLASS_DICT_ENTRY&quot;</span>)]
+    <span class="doccomment">/// The [`Variant`][struct@crate::Variant] is a dictionary entry.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;G_VARIANT_CLASS_DICT_ENTRY&quot;</span>)]
     </span>DictEntry,
     <span class="attr">#[doc(hidden)]
     </span>__Unknown(i32),
@@ -4581,5 +4545,4 @@
         }
     }
 }
-</code></pre></div>
-</section></main></body></html>
+</code></pre></div></section></main></body></html>
