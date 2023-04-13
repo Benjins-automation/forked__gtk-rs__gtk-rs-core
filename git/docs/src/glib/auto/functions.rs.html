@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib/src/auto/functions.rs`."><title>functions.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-63a85fc7cf22dee2.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.70.0-nightly (9df3a39fb 2023-04-11)" data-search-js="search-bc5a112813b5d712.js" data-settings-js="settings-298e1ea74db45b39.js" data-settings-css="settings-0bcba95ff279c1db.css" data-theme-light-css="light-db279b6232be9c13.css" data-theme-dark-css="dark-cf923f49f397b216.css" data-theme-ayu-css="ayu-be46fdc453a55015.css" ></div><script src="../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../../static.files/source-script-1b95b7cca98b26e5.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-1159a395118aa44e.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-db279b6232be9c13.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-cf923f49f397b216.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib/src/auto/functions.rs`."><title>functions.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-ba5701c5741a7b69.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.70.0-nightly (4087deacc 2023-04-12)" data-search-js="search-bc5a112813b5d712.js" data-settings-js="settings-298e1ea74db45b39.js" data-settings-css="settings-7bfb4c59cc6bc502.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../../static.files/source-script-905937fbbdc8e9ea.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-f61008743c98d196.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -988,6 +988,166 @@
 <a href="#915" id="915">915</a>
 <a href="#916" id="916">916</a>
 <a href="#917" id="917">917</a>
+<a href="#918" id="918">918</a>
+<a href="#919" id="919">919</a>
+<a href="#920" id="920">920</a>
+<a href="#921" id="921">921</a>
+<a href="#922" id="922">922</a>
+<a href="#923" id="923">923</a>
+<a href="#924" id="924">924</a>
+<a href="#925" id="925">925</a>
+<a href="#926" id="926">926</a>
+<a href="#927" id="927">927</a>
+<a href="#928" id="928">928</a>
+<a href="#929" id="929">929</a>
+<a href="#930" id="930">930</a>
+<a href="#931" id="931">931</a>
+<a href="#932" id="932">932</a>
+<a href="#933" id="933">933</a>
+<a href="#934" id="934">934</a>
+<a href="#935" id="935">935</a>
+<a href="#936" id="936">936</a>
+<a href="#937" id="937">937</a>
+<a href="#938" id="938">938</a>
+<a href="#939" id="939">939</a>
+<a href="#940" id="940">940</a>
+<a href="#941" id="941">941</a>
+<a href="#942" id="942">942</a>
+<a href="#943" id="943">943</a>
+<a href="#944" id="944">944</a>
+<a href="#945" id="945">945</a>
+<a href="#946" id="946">946</a>
+<a href="#947" id="947">947</a>
+<a href="#948" id="948">948</a>
+<a href="#949" id="949">949</a>
+<a href="#950" id="950">950</a>
+<a href="#951" id="951">951</a>
+<a href="#952" id="952">952</a>
+<a href="#953" id="953">953</a>
+<a href="#954" id="954">954</a>
+<a href="#955" id="955">955</a>
+<a href="#956" id="956">956</a>
+<a href="#957" id="957">957</a>
+<a href="#958" id="958">958</a>
+<a href="#959" id="959">959</a>
+<a href="#960" id="960">960</a>
+<a href="#961" id="961">961</a>
+<a href="#962" id="962">962</a>
+<a href="#963" id="963">963</a>
+<a href="#964" id="964">964</a>
+<a href="#965" id="965">965</a>
+<a href="#966" id="966">966</a>
+<a href="#967" id="967">967</a>
+<a href="#968" id="968">968</a>
+<a href="#969" id="969">969</a>
+<a href="#970" id="970">970</a>
+<a href="#971" id="971">971</a>
+<a href="#972" id="972">972</a>
+<a href="#973" id="973">973</a>
+<a href="#974" id="974">974</a>
+<a href="#975" id="975">975</a>
+<a href="#976" id="976">976</a>
+<a href="#977" id="977">977</a>
+<a href="#978" id="978">978</a>
+<a href="#979" id="979">979</a>
+<a href="#980" id="980">980</a>
+<a href="#981" id="981">981</a>
+<a href="#982" id="982">982</a>
+<a href="#983" id="983">983</a>
+<a href="#984" id="984">984</a>
+<a href="#985" id="985">985</a>
+<a href="#986" id="986">986</a>
+<a href="#987" id="987">987</a>
+<a href="#988" id="988">988</a>
+<a href="#989" id="989">989</a>
+<a href="#990" id="990">990</a>
+<a href="#991" id="991">991</a>
+<a href="#992" id="992">992</a>
+<a href="#993" id="993">993</a>
+<a href="#994" id="994">994</a>
+<a href="#995" id="995">995</a>
+<a href="#996" id="996">996</a>
+<a href="#997" id="997">997</a>
+<a href="#998" id="998">998</a>
+<a href="#999" id="999">999</a>
+<a href="#1000" id="1000">1000</a>
+<a href="#1001" id="1001">1001</a>
+<a href="#1002" id="1002">1002</a>
+<a href="#1003" id="1003">1003</a>
+<a href="#1004" id="1004">1004</a>
+<a href="#1005" id="1005">1005</a>
+<a href="#1006" id="1006">1006</a>
+<a href="#1007" id="1007">1007</a>
+<a href="#1008" id="1008">1008</a>
+<a href="#1009" id="1009">1009</a>
+<a href="#1010" id="1010">1010</a>
+<a href="#1011" id="1011">1011</a>
+<a href="#1012" id="1012">1012</a>
+<a href="#1013" id="1013">1013</a>
+<a href="#1014" id="1014">1014</a>
+<a href="#1015" id="1015">1015</a>
+<a href="#1016" id="1016">1016</a>
+<a href="#1017" id="1017">1017</a>
+<a href="#1018" id="1018">1018</a>
+<a href="#1019" id="1019">1019</a>
+<a href="#1020" id="1020">1020</a>
+<a href="#1021" id="1021">1021</a>
+<a href="#1022" id="1022">1022</a>
+<a href="#1023" id="1023">1023</a>
+<a href="#1024" id="1024">1024</a>
+<a href="#1025" id="1025">1025</a>
+<a href="#1026" id="1026">1026</a>
+<a href="#1027" id="1027">1027</a>
+<a href="#1028" id="1028">1028</a>
+<a href="#1029" id="1029">1029</a>
+<a href="#1030" id="1030">1030</a>
+<a href="#1031" id="1031">1031</a>
+<a href="#1032" id="1032">1032</a>
+<a href="#1033" id="1033">1033</a>
+<a href="#1034" id="1034">1034</a>
+<a href="#1035" id="1035">1035</a>
+<a href="#1036" id="1036">1036</a>
+<a href="#1037" id="1037">1037</a>
+<a href="#1038" id="1038">1038</a>
+<a href="#1039" id="1039">1039</a>
+<a href="#1040" id="1040">1040</a>
+<a href="#1041" id="1041">1041</a>
+<a href="#1042" id="1042">1042</a>
+<a href="#1043" id="1043">1043</a>
+<a href="#1044" id="1044">1044</a>
+<a href="#1045" id="1045">1045</a>
+<a href="#1046" id="1046">1046</a>
+<a href="#1047" id="1047">1047</a>
+<a href="#1048" id="1048">1048</a>
+<a href="#1049" id="1049">1049</a>
+<a href="#1050" id="1050">1050</a>
+<a href="#1051" id="1051">1051</a>
+<a href="#1052" id="1052">1052</a>
+<a href="#1053" id="1053">1053</a>
+<a href="#1054" id="1054">1054</a>
+<a href="#1055" id="1055">1055</a>
+<a href="#1056" id="1056">1056</a>
+<a href="#1057" id="1057">1057</a>
+<a href="#1058" id="1058">1058</a>
+<a href="#1059" id="1059">1059</a>
+<a href="#1060" id="1060">1060</a>
+<a href="#1061" id="1061">1061</a>
+<a href="#1062" id="1062">1062</a>
+<a href="#1063" id="1063">1063</a>
+<a href="#1064" id="1064">1064</a>
+<a href="#1065" id="1065">1065</a>
+<a href="#1066" id="1066">1066</a>
+<a href="#1067" id="1067">1067</a>
+<a href="#1068" id="1068">1068</a>
+<a href="#1069" id="1069">1069</a>
+<a href="#1070" id="1070">1070</a>
+<a href="#1071" id="1071">1071</a>
+<a href="#1072" id="1072">1072</a>
+<a href="#1073" id="1073">1073</a>
+<a href="#1074" id="1074">1074</a>
+<a href="#1075" id="1075">1075</a>
+<a href="#1076" id="1076">1076</a>
+<a href="#1077" id="1077">1077</a>
 </pre></div><pre class="rust"><code><span class="comment">// This file was generated by gir (https://github.com/gtk-rs/gir)
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
@@ -1530,13 +1690,46 @@
     <span class="kw">unsafe </span>{ ffi::g_main_depth() }
 }
 
-<span class="attr">#[doc(alias = <span class="string">&quot;g_markup_escape_text&quot;</span>)]
+<span class="doccomment">/// Escapes text so that the markup parser will parse it verbatim.
+/// Less than, greater than, ampersand, etc. are replaced with the
+/// corresponding entities. This function would typically be used
+/// when writing out a file to be parsed with the markup parser.
+///
+/// Note that this function doesn&#39;t protect whitespace and line endings
+/// from being processed according to the XML rules for normalization
+/// of line endings and attribute values.
+///
+/// Note also that this function will produce character references in
+/// the range of &amp;`x1`; ... &amp;`x1f`; for all control sequences
+/// except for tabstop, newline and carriage return. The character
+/// references in this range are not valid XML 1.0, but they are
+/// valid XML 1.1 and will be accepted by the GMarkup parser.
+/// ## `text`
+/// some valid UTF-8 text
+/// ## `length`
+/// length of `text` in bytes, or -1 if the text is nul-terminated
+///
+/// # Returns
+///
+/// a newly allocated string with the escaped text
+</span><span class="attr">#[doc(alias = <span class="string">&quot;g_markup_escape_text&quot;</span>)]
 </span><span class="kw">pub fn </span>markup_escape_text(text: <span class="kw-2">&amp;</span>str) -&gt; <span class="kw">crate</span>::GString {
     <span class="kw">let </span>length = text.len() <span class="kw">as _</span>;
     <span class="kw">unsafe </span>{ from_glib_full(ffi::g_markup_escape_text(text.to_glib_none().<span class="number">0</span>, length)) }
 }
 
-<span class="attr">#[doc(alias = <span class="string">&quot;g_mkdir_with_parents&quot;</span>)]
+<span class="doccomment">/// Create a directory if it doesn&#39;t already exist. Create intermediate
+/// parent directories as needed, too.
+/// ## `pathname`
+/// a pathname in the GLib file name encoding
+/// ## `mode`
+/// permissions to use for newly created directories
+///
+/// # Returns
+///
+/// 0 if the directory already exists, or was successfully
+/// created. Returns -1 if an error occurred, with errno set.
+</span><span class="attr">#[doc(alias = <span class="string">&quot;g_mkdir_with_parents&quot;</span>)]
 </span><span class="kw">pub fn </span>mkdir_with_parents(pathname: <span class="kw">impl </span>AsRef&lt;std::path::Path&gt;, mode: i32) -&gt; i32 {
     <span class="kw">unsafe </span>{ ffi::g_mkdir_with_parents(pathname.as_ref().to_glib_none().<span class="number">0</span>, mode) }
 }
@@ -1594,7 +1787,8 @@
 /// ## `prg_name`
 /// the program name, needed by gdb for the &quot;[S]tack trace&quot;
 ///  option. If `prg_name` is [`None`], `g_get_prgname()` is called to get
-///  the program name (which will work correctllong integer value to be set
+///  the program name (which will work correctly if `gdk_init()` or
+///  `gtk_init()` has been called)
 </span><span class="attr">#[doc(alias = <span class="string">&quot;g_on_error_query&quot;</span>)]
 </span><span class="kw">pub fn </span>on_error_query(prg_name: <span class="kw-2">&amp;</span>str) {
     <span class="kw">unsafe </span>{
@@ -1602,14 +1796,43 @@
     }
 }
 
-<span class="attr">#[doc(alias = <span class="string">&quot;g_on_error_stack_trace&quot;</span>)]
+<span class="doccomment">/// Invokes gdb, which attaches to the current process and shows a
+/// stack trace. Called by [`on_error_query()`][crate::on_error_query()] when the &quot;[S]tack trace&quot;
+/// option is selected. You can get the current process&#39;s program name
+/// with `g_get_prgname()`, assuming that you have called `gtk_init()` or
+/// `gdk_init()`.
+///
+/// This function may cause different actions on non-UNIX platforms.
+///
+/// When running on Windows, this function is *not* called by
+/// [`on_error_query()`][crate::on_error_query()]. If called directly, it will raise an
+/// exception, which will crash the program. If the `G_DEBUGGER` environment
+/// variable is set, a debugger will be invoked to attach and
+/// handle that exception (see [Running GLib Applications](glib-running.html)).
+/// ## `prg_name`
+/// the program name, needed by gdb for the &quot;[S]tack trace&quot;
+///  option
+</span><span class="attr">#[doc(alias = <span class="string">&quot;g_on_error_stack_trace&quot;</span>)]
 </span><span class="kw">pub fn </span>on_error_stack_trace(prg_name: <span class="kw-2">&amp;</span>str) {
     <span class="kw">unsafe </span>{
         ffi::g_on_error_stack_trace(prg_name.to_glib_none().<span class="number">0</span>);
     }
 }
 
-<span class="attr">#[doc(alias = <span class="string">&quot;g_path_get_basename&quot;</span>)]
+<span class="doccomment">/// Gets the last component of the filename.
+///
+/// If `file_name` ends with a directory separator it gets the component
+/// before the last slash. If `file_name` consists only of directory
+/// separators (and on Windows, possibly a drive letter), a single
+/// separator is returned. If `file_name` is empty, it gets &quot;.&quot;.
+/// ## `file_name`
+/// the name of the file
+///
+/// # Returns
+///
+/// a newly allocated string
+///  containing the last component of the filename
+</span><span class="attr">#[doc(alias = <span class="string">&quot;g_path_get_basename&quot;</span>)]
 #[allow(dead_code)]
 </span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>path_get_basename(file_name: <span class="kw">impl </span>AsRef&lt;std::path::Path&gt;) -&gt; std::path::PathBuf {
     <span class="kw">unsafe </span>{
@@ -1619,7 +1842,19 @@
     }
 }
 
-<span class="attr">#[doc(alias = <span class="string">&quot;g_path_get_dirname&quot;</span>)]
+<span class="doccomment">/// Gets the directory components of a file name. For example, the directory
+/// component of `/usr/bin/test` is `/usr/bin`. The directory component of `/`
+/// is `/`.
+///
+/// If the file name has no directory components &quot;.&quot; is returned.
+/// The returned string should be freed when no longer needed.
+/// ## `file_name`
+/// the name of the file
+///
+/// # Returns
+///
+/// the directory components of the file
+</span><span class="attr">#[doc(alias = <span class="string">&quot;g_path_get_dirname&quot;</span>)]
 #[allow(dead_code)]
 </span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>path_get_dirname(file_name: <span class="kw">impl </span>AsRef&lt;std::path::Path&gt;) -&gt; std::path::PathBuf {
     <span class="kw">unsafe </span>{ from_glib_full(ffi::g_path_get_dirname(file_name.as_ref().to_glib_none().<span class="number">0</span>)) }
@@ -1630,48 +1865,133 @@
 //    unsafe { TODO: call ffi:g_poll() }
 //}
 
+</span><span class="doccomment">/// Returns a random `gdouble` equally distributed over the range [0..1).
+///
+/// # Returns
+///
+/// a random number
 </span><span class="attr">#[doc(alias = <span class="string">&quot;g_random_double&quot;</span>)]
 </span><span class="kw">pub fn </span>random_double() -&gt; f64 {
     <span class="kw">unsafe </span>{ ffi::g_random_double() }
 }
 
-<span class="attr">#[doc(alias = <span class="string">&quot;g_random_double_range&quot;</span>)]
+<span class="doccomment">/// Returns a random `gdouble` equally distributed over the range
+/// [`begin`..`end`).
+/// ## `begin`
+/// lower closed bound of the interval
+/// ## `end`
+/// upper open bound of the interval
+///
+/// # Returns
+///
+/// a random number
+</span><span class="attr">#[doc(alias = <span class="string">&quot;g_random_double_range&quot;</span>)]
 </span><span class="kw">pub fn </span>random_double_range(begin: f64, end: f64) -&gt; f64 {
     <span class="kw">unsafe </span>{ ffi::g_random_double_range(begin, end) }
 }
 
-<span class="attr">#[doc(alias = <span class="string">&quot;g_random_int&quot;</span>)]
+<span class="doccomment">/// Return a random `guint32` equally distributed over the range
+/// [0..2^32-1].
+///
+/// # Returns
+///
+/// a random number
+</span><span class="attr">#[doc(alias = <span class="string">&quot;g_random_int&quot;</span>)]
 </span><span class="kw">pub fn </span>random_int() -&gt; u32 {
     <span class="kw">unsafe </span>{ ffi::g_random_int() }
 }
 
-<span class="attr">#[doc(alias = <span class="string">&quot;g_random_int_range&quot;</span>)]
+<span class="doccomment">/// Returns a random `gint32` equally distributed over the range
+/// [`begin`..`end`-1].
+/// ## `begin`
+/// lower closed bound of the interval
+/// ## `end`
+/// upper open bound of the interval
+///
+/// # Returns
+///
+/// a random number
+</span><span class="attr">#[doc(alias = <span class="string">&quot;g_random_int_range&quot;</span>)]
 </span><span class="kw">pub fn </span>random_int_range(begin: i32, end: i32) -&gt; i32 {
     <span class="kw">unsafe </span>{ ffi::g_random_int_range(begin, end) }
 }
 
-<span class="attr">#[doc(alias = <span class="string">&quot;g_random_set_seed&quot;</span>)]
+<span class="doccomment">/// Sets the seed for the global random number generator, which is used
+/// by the g_random_* functions, to `seed`.
+/// ## `seed`
+/// a value to reinitialize the global random number generator
+</span><span class="attr">#[doc(alias = <span class="string">&quot;g_random_set_seed&quot;</span>)]
 </span><span class="kw">pub fn </span>random_set_seed(seed: u32) {
     <span class="kw">unsafe </span>{
         ffi::g_random_set_seed(seed);
     }
 }
 
-<span class="attr">#[doc(alias = <span class="string">&quot;g_reload_user_special_dirs_cache&quot;</span>)]
+<span class="doccomment">/// Resets the cache used for [`user_special_dir()`][crate::user_special_dir()], so
+/// that the latest on-disk version is used. Call this only
+/// if you just changed the data on disk yourself.
+///
+/// Due to thread safety issues this may cause leaking of strings
+/// that were previously returned from [`user_special_dir()`][crate::user_special_dir()]
+/// that can&#39;t be freed. We ensure to only leak the data for
+/// the directories that actually changed value though.
+</span><span class="attr">#[doc(alias = <span class="string">&quot;g_reload_user_special_dirs_cache&quot;</span>)]
 </span><span class="kw">pub fn </span>reload_user_special_dirs_cache() {
     <span class="kw">unsafe </span>{
         ffi::g_reload_user_special_dirs_cache();
     }
 }
 
-<span class="attr">#[doc(alias = <span class="string">&quot;g_set_application_name&quot;</span>)]
+<span class="doccomment">/// Sets a human-readable name for the application. This name should be
+/// localized if possible, and is intended for display to the user.
+/// Contrast with `g_set_prgname()`, which sets a non-localized name.
+/// `g_set_prgname()` will be called automatically by `gtk_init()`,
+/// but [`set_application_name()`][crate::set_application_name()] will not.
+///
+/// Note that for thread safety reasons, this function can only
+/// be called once.
+///
+/// The application name will be used in contexts such as error messages,
+/// or when displaying an application&#39;s name in the task list.
+/// ## `application_name`
+/// localized name of the application
+</span><span class="attr">#[doc(alias = <span class="string">&quot;g_set_application_name&quot;</span>)]
 </span><span class="kw">pub fn </span>set_application_name(application_name: <span class="kw-2">&amp;</span>str) {
     <span class="kw">unsafe </span>{
         ffi::g_set_application_name(application_name.to_glib_none().<span class="number">0</span>);
     }
 }
 
-<span class="attr">#[doc(alias = <span class="string">&quot;g_setenv&quot;</span>)]
+<span class="doccomment">/// Sets an environment variable. On UNIX, both the variable&#39;s name and
+/// value can be arbitrary byte strings, except that the variable&#39;s name
+/// cannot contain &#39;=&#39;. On Windows, they should be in UTF-8.
+///
+/// Note that on some systems, when variables are overwritten, the memory
+/// used for the previous variables and its value isn&#39;t reclaimed.
+///
+/// You should be mindful of the fact that environment variable handling
+/// in UNIX is not thread-safe, and your program may crash if one thread
+/// calls [`setenv()`][crate::setenv()] while another thread is calling `getenv()`. (And note
+/// that many functions, such as `gettext()`, call `getenv()` internally.)
+/// This function is only safe to use at the very start of your program,
+/// before creating any other threads (or creating objects that create
+/// worker threads of their own).
+///
+/// If you need to set up the environment for a child process, you can
+/// use [`environ()`][crate::environ()] to get an environment array, modify that with
+/// `g_environ_setenv()` and `g_environ_unsetenv()`, and then pass that
+/// array directly to `execvpe()`, [`spawn_async()`][crate::spawn_async()], or the like.
+/// ## `variable`
+/// ate::Value] of type `dest_type`.
+/// ## `src_type`
+/// source type to be copied.
+/// ## `dest_type`
+/// destination type for copying.
+///
+/// # Returns
+///
+/// [`true`] if `g_value_copy()` is possible with `src_type` and `dest_type`.
+</span><span class="attr">#[doc(alias = <span class="string">&quot;g_setenv&quot;</span>)]
 </span><span class="kw">pub fn </span>setenv(
     variable: <span class="kw">impl </span>AsRef&lt;std::ffi::OsStr&gt;,
     value: <span class="kw">impl </span>AsRef&lt;std::ffi::OsStr&gt;,
