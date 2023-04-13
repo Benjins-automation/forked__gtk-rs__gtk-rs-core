@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib/src/variant.rs`."><title>variant.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-fbd14db5c88ed452.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.70.0-nightly (cf7ada217 2023-04-03)" data-search-js="search-bc5a112813b5d712.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" data-theme-light-css="light-db279b6232be9c13.css" data-theme-dark-css="dark-cf923f49f397b216.css" data-theme-ayu-css="ayu-be46fdc453a55015.css" ></div><script src="../../static.files/storage-d4a1a279bad1a0c0.js"></script><script defer src="../../static.files/source-script-1b95b7cca98b26e5.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-8e6affb8c73a5ff1.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-db279b6232be9c13.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-cf923f49f397b216.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib/src/variant.rs`."><title>variant.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-ba5701c5741a7b69.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.70.0-nightly (4087deacc 2023-04-12)" data-search-js="search-bc5a112813b5d712.js" data-settings-js="settings-298e1ea74db45b39.js" data-settings-css="settings-7bfb4c59cc6bc502.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../static.files/source-script-905937fbbdc8e9ea.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-f61008743c98d196.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -71,7 +71,7 @@
 </script>
 
 
-<nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../glib/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../glib/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -2711,7 +2711,187 @@
 <a href="#2638" id="2638">2638</a>
 <a href="#2639" id="2639">2639</a>
 <a href="#2640" id="2640">2640</a>
-</pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
+<a href="#2641" id="2641">2641</a>
+<a href="#2642" id="2642">2642</a>
+<a href="#2643" id="2643">2643</a>
+<a href="#2644" id="2644">2644</a>
+<a href="#2645" id="2645">2645</a>
+<a href="#2646" id="2646">2646</a>
+<a href="#2647" id="2647">2647</a>
+<a href="#2648" id="2648">2648</a>
+<a href="#2649" id="2649">2649</a>
+<a href="#2650" id="2650">2650</a>
+<a href="#2651" id="2651">2651</a>
+<a href="#2652" id="2652">2652</a>
+<a href="#2653" id="2653">2653</a>
+<a href="#2654" id="2654">2654</a>
+<a href="#2655" id="2655">2655</a>
+<a href="#2656" id="2656">2656</a>
+<a href="#2657" id="2657">2657</a>
+<a href="#2658" id="2658">2658</a>
+<a href="#2659" id="2659">2659</a>
+<a href="#2660" id="2660">2660</a>
+<a href="#2661" id="2661">2661</a>
+<a href="#2662" id="2662">2662</a>
+<a href="#2663" id="2663">2663</a>
+<a href="#2664" id="2664">2664</a>
+<a href="#2665" id="2665">2665</a>
+<a href="#2666" id="2666">2666</a>
+<a href="#2667" id="2667">2667</a>
+<a href="#2668" id="2668">2668</a>
+<a href="#2669" id="2669">2669</a>
+<a href="#2670" id="2670">2670</a>
+<a href="#2671" id="2671">2671</a>
+<a href="#2672" id="2672">2672</a>
+<a href="#2673" id="2673">2673</a>
+<a href="#2674" id="2674">2674</a>
+<a href="#2675" id="2675">2675</a>
+<a href="#2676" id="2676">2676</a>
+<a href="#2677" id="2677">2677</a>
+<a href="#2678" id="2678">2678</a>
+<a href="#2679" id="2679">2679</a>
+<a href="#2680" id="2680">2680</a>
+<a href="#2681" id="2681">2681</a>
+<a href="#2682" id="2682">2682</a>
+<a href="#2683" id="2683">2683</a>
+<a href="#2684" id="2684">2684</a>
+<a href="#2685" id="2685">2685</a>
+<a href="#2686" id="2686">2686</a>
+<a href="#2687" id="2687">2687</a>
+<a href="#2688" id="2688">2688</a>
+<a href="#2689" id="2689">2689</a>
+<a href="#2690" id="2690">2690</a>
+<a href="#2691" id="2691">2691</a>
+<a href="#2692" id="2692">2692</a>
+<a href="#2693" id="2693">2693</a>
+<a href="#2694" id="2694">2694</a>
+<a href="#2695" id="2695">2695</a>
+<a href="#2696" id="2696">2696</a>
+<a href="#2697" id="2697">2697</a>
+<a href="#2698" id="2698">2698</a>
+<a href="#2699" id="2699">2699</a>
+<a href="#2700" id="2700">2700</a>
+<a href="#2701" id="2701">2701</a>
+<a href="#2702" id="2702">2702</a>
+<a href="#2703" id="2703">2703</a>
+<a href="#2704" id="2704">2704</a>
+<a href="#2705" id="2705">2705</a>
+<a href="#2706" id="2706">2706</a>
+<a href="#2707" id="2707">2707</a>
+<a href="#2708" id="2708">2708</a>
+<a href="#2709" id="2709">2709</a>
+<a href="#2710" id="2710">2710</a>
+<a href="#2711" id="2711">2711</a>
+<a href="#2712" id="2712">2712</a>
+<a href="#2713" id="2713">2713</a>
+<a href="#2714" id="2714">2714</a>
+<a href="#2715" id="2715">2715</a>
+<a href="#2716" id="2716">2716</a>
+<a href="#2717" id="2717">2717</a>
+<a href="#2718" id="2718">2718</a>
+<a href="#2719" id="2719">2719</a>
+<a href="#2720" id="2720">2720</a>
+<a href="#2721" id="2721">2721</a>
+<a href="#2722" id="2722">2722</a>
+<a href="#2723" id="2723">2723</a>
+<a href="#2724" id="2724">2724</a>
+<a href="#2725" id="2725">2725</a>
+<a href="#2726" id="2726">2726</a>
+<a href="#2727" id="2727">2727</a>
+<a href="#2728" id="2728">2728</a>
+<a href="#2729" id="2729">2729</a>
+<a href="#2730" id="2730">2730</a>
+<a href="#2731" id="2731">2731</a>
+<a href="#2732" id="2732">2732</a>
+<a href="#2733" id="2733">2733</a>
+<a href="#2734" id="2734">2734</a>
+<a href="#2735" id="2735">2735</a>
+<a href="#2736" id="2736">2736</a>
+<a href="#2737" id="2737">2737</a>
+<a href="#2738" id="2738">2738</a>
+<a href="#2739" id="2739">2739</a>
+<a href="#2740" id="2740">2740</a>
+<a href="#2741" id="2741">2741</a>
+<a href="#2742" id="2742">2742</a>
+<a href="#2743" id="2743">2743</a>
+<a href="#2744" id="2744">2744</a>
+<a href="#2745" id="2745">2745</a>
+<a href="#2746" id="2746">2746</a>
+<a href="#2747" id="2747">2747</a>
+<a href="#2748" id="2748">2748</a>
+<a href="#2749" id="2749">2749</a>
+<a href="#2750" id="2750">2750</a>
+<a href="#2751" id="2751">2751</a>
+<a href="#2752" id="2752">2752</a>
+<a href="#2753" id="2753">2753</a>
+<a href="#2754" id="2754">2754</a>
+<a href="#2755" id="2755">2755</a>
+<a href="#2756" id="2756">2756</a>
+<a href="#2757" id="2757">2757</a>
+<a href="#2758" id="2758">2758</a>
+<a href="#2759" id="2759">2759</a>
+<a href="#2760" id="2760">2760</a>
+<a href="#2761" id="2761">2761</a>
+<a href="#2762" id="2762">2762</a>
+<a href="#2763" id="2763">2763</a>
+<a href="#2764" id="2764">2764</a>
+<a href="#2765" id="2765">2765</a>
+<a href="#2766" id="2766">2766</a>
+<a href="#2767" id="2767">2767</a>
+<a href="#2768" id="2768">2768</a>
+<a href="#2769" id="2769">2769</a>
+<a href="#2770" id="2770">2770</a>
+<a href="#2771" id="2771">2771</a>
+<a href="#2772" id="2772">2772</a>
+<a href="#2773" id="2773">2773</a>
+<a href="#2774" id="2774">2774</a>
+<a href="#2775" id="2775">2775</a>
+<a href="#2776" id="2776">2776</a>
+<a href="#2777" id="2777">2777</a>
+<a href="#2778" id="2778">2778</a>
+<a href="#2779" id="2779">2779</a>
+<a href="#2780" id="2780">2780</a>
+<a href="#2781" id="2781">2781</a>
+<a href="#2782" id="2782">2782</a>
+<a href="#2783" id="2783">2783</a>
+<a href="#2784" id="2784">2784</a>
+<a href="#2785" id="2785">2785</a>
+<a href="#2786" id="2786">2786</a>
+<a href="#2787" id="2787">2787</a>
+<a href="#2788" id="2788">2788</a>
+<a href="#2789" id="2789">2789</a>
+<a href="#2790" id="2790">2790</a>
+<a href="#2791" id="2791">2791</a>
+<a href="#2792" id="2792">2792</a>
+<a href="#2793" id="2793">2793</a>
+<a href="#2794" id="2794">2794</a>
+<a href="#2795" id="2795">2795</a>
+<a href="#2796" id="2796">2796</a>
+<a href="#2797" id="2797">2797</a>
+<a href="#2798" id="2798">2798</a>
+<a href="#2799" id="2799">2799</a>
+<a href="#2800" id="2800">2800</a>
+<a href="#2801" id="2801">2801</a>
+<a href="#2802" id="2802">2802</a>
+<a href="#2803" id="2803">2803</a>
+<a href="#2804" id="2804">2804</a>
+<a href="#2805" id="2805">2805</a>
+<a href="#2806" id="2806">2806</a>
+<a href="#2807" id="2807">2807</a>
+<a href="#2808" id="2808">2808</a>
+<a href="#2809" id="2809">2809</a>
+<a href="#2810" id="2810">2810</a>
+<a href="#2811" id="2811">2811</a>
+<a href="#2812" id="2812">2812</a>
+<a href="#2813" id="2813">2813</a>
+<a href="#2814" id="2814">2814</a>
+<a href="#2815" id="2815">2815</a>
+<a href="#2816" id="2816">2816</a>
+<a href="#2817" id="2817">2817</a>
+<a href="#2818" id="2818">2818</a>
+<a href="#2819" id="2819">2819</a>
+<a href="#2820" id="2820">2820</a>
+</pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 // rustdoc-stripper-ignore-next
 </span><span class="doccomment">//! `Variant` binding and helper traits.
@@ -2975,6 +3155,12 @@
 
     <span class="comment">// rustdoc-stripper-ignore-next
     </span><span class="doccomment">/// Returns the classification of the variant.
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// Classifies `self` according to its top-level type.
+    ///
+    /// # Returns
+    ///
+    /// the [`VariantClass`][crate::VariantClass] of `self`
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_variant_classify&quot;</span>)]
     </span><span class="kw">pub fn </span>classify(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw">crate</span>::VariantClass {
         <span class="kw">unsafe </span>{ from_glib(ffi::g_variant_classify(<span class="self">self</span>.to_glib_none().<span class="number">0</span>)) }
@@ -2984,6 +3170,25 @@
     </span><span class="doccomment">/// Tries to extract a value of type `T`.
     ///
     /// Returns `Some` if `T` matches the variant&#39;s type.
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// Deconstructs a [`Variant`][struct@crate::Variant] instance.
+    ///
+    /// Think of this function as an analogue to `scanf()`.
+    ///
+    /// The arguments that are expected by this function are entirely
+    /// determined by `format_string`. `format_string` also restricts the
+    /// permissible types of `self`. It is an error to give a value with
+    /// an incompatible type. See the section on
+    /// [GVariant format strings][gvariant-format-strings].
+    /// Please note that the syntax of the format string is very likely to be
+    /// extended in the future.
+    ///
+    /// `format_string` determines the C types that are used for unpacking
+    /// the values and also determines if the values are copied or borrowed,
+    /// see the section on
+    /// [GVariant format strings][gvariant-format-strings-pointers].
+    /// ## `format_string`
+    /// a [`Variant`][struct@crate::Variant] format string
     </span><span class="attr">#[inline]
     </span><span class="kw">pub fn </span>get&lt;T: FromVariant&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;T&gt; {
         T::from_variant(<span class="self">self</span>)
@@ -3024,6 +3229,36 @@
     ///
     /// * if `self` is not a container type.
     /// * if given `index` is larger than number of children.
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// Reads a child item out of a container [`Variant`][struct@crate::Variant] instance. This
+    /// includes variants, maybes, arrays, tuples and dictionary
+    /// entries. It is an error to call this function on any other type of
+    /// [`Variant`][struct@crate::Variant].
+    ///
+    /// It is an error if `index_` is greater than the number of child items
+    /// in the container. See [`n_children()`][Self::n_children()].
+    ///
+    /// The returned value is never floating. You should free it with
+    /// `g_variant_unref()` when you&#39;re done with it.
+    ///
+    /// Note that values borrowed from the returned child are not guaranteed to
+    /// still be valid after the child is freed even if you still hold a reference
+    /// to `self`, if `self` has not been serialized at the time this function is
+    /// called. To avoid this, you can serialize `self` by calling
+    /// [`data()`][Self::data()] and optionally ignoring the return value.
+    ///
+    /// There may be implementation specific restrictions on deeply nested values,
+    /// which would result in the unit tuple being returned as the child value,
+    /// instead of further nested children. [`Variant`][struct@crate::Variant] is guaranteed to handle
+    /// nesting up to at least 64 levels.
+    ///
+    /// This function is O(1).
+    /// ## `index_`
+    /// the index of the child to fetch
+    ///
+    /// # Returns
+    ///
+    /// the child at the specified index
     </span><span class="attr">#[doc(alias = <span class="string">&quot;get_child_value&quot;</span>)]
     #[doc(alias = <span class="string">&quot;g_variant_get_child_value&quot;</span>)]
     #[must_use]
@@ -3110,6 +3345,40 @@
     </span><span class="doccomment">/// Tries to extract a `&amp;[T]` from a variant of array type with a suitable element type.
     ///
     /// Returns an error if the type is wrong.
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// Provides access to the serialized data for an array of fixed-sized
+    /// items.
+    ///
+    /// `self` must be an array with fixed-sized elements. Numeric types are
+    /// fixed-size, as are tuples containing only other fixed-sized types.
+    ///
+    /// `element_size` must be the size of a single element in the array,
+    /// as given by the section on
+    /// [serialized data memory][gvariant-serialized-data-memory].
+    ///
+    /// In particular, arrays of these fixed-sized types can be interpreted
+    /// as an array of the given C type, with `element_size` set to the size
+    /// the appropriate type:
+    /// - `G_VARIANT_TYPE_INT16` (etc.): `gint16` (etc.)
+    /// - `G_VARIANT_TYPE_BOOLEAN`: `guchar` (not `gboolean`!)
+    /// - `G_VARIANT_TYPE_BYTE`: `guint8`
+    /// - `G_VARIANT_TYPE_HANDLE`: `guint32`
+    /// - `G_VARIANT_TYPE_DOUBLE`: `gdouble`
+    ///
+    /// For example, if calling this function for an array of 32-bit integers,
+    /// you might say `sizeof(gint32)`. This value isn&#39;t used except for the purpose
+    /// of a double-check that the form of the serialized data matches the caller&#39;s
+    /// expectation.
+    ///
+    /// `n_elements`, which must be non-[`None`], is set equal to the number of
+    /// items in the array.
+    /// ## `element_size`
+    /// the size of each element
+    ///
+    /// # Returns
+    ///
+    /// a pointer to
+    ///  the fixed array
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_variant_get_fixed_array&quot;</span>)]
     </span><span class="kw">pub fn </span>fixed_array&lt;T: FixedSizeVariantType&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="kw-2">&amp;</span>[T], VariantTypeMismatchError&gt; {
         <span class="kw">unsafe </span>{
@@ -3476,6 +3745,15 @@
 
     <span class="comment">// rustdoc-stripper-ignore-next
     </span><span class="doccomment">/// Returns the serialized form of a GVariant instance.
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// Returns a pointer to the serialized form of a [`Variant`][struct@crate::Variant] instance.
+    /// The semantics of this function are exactly the same as
+    /// [`data()`][Self::data()], except that the returned [`Bytes`][crate::Bytes] holds
+    /// a reference to the variant data.
+    ///
+    /// # Returns
+    ///
+    /// A new [`Bytes`][crate::Bytes] representing the variant data
     </span><span class="attr">#[doc(alias = <span class="string">&quot;get_data_as_bytes&quot;</span>)]
     #[doc(alias = <span class="string">&quot;g_variant_get_data_as_bytes&quot;</span>)]
     </span><span class="kw">pub fn </span>data_as_bytes(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Bytes {
@@ -3484,6 +3762,36 @@
 
     <span class="comment">// rustdoc-stripper-ignore-next
     </span><span class="doccomment">/// Returns the serialized form of a GVariant instance.
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// Returns a pointer to the serialized form of a [`Variant`][struct@crate::Variant] instance.
+    /// The returned data may not be in fully-normalised form if read from an
+    /// untrusted source. The returned data must not be freed; it remains
+    /// valid for as long as `self` exists.
+    ///
+    /// If `self` is a fixed-sized value that was deserialized from a
+    /// corrupted serialized container then [`None`] may be returned. In this
+    /// case, the proper thing to do is typically to use the appropriate
+    /// number of nul bytes in place of `self`. If `self` is not fixed-sized
+    /// then [`None`] is never returned.
+    ///
+    /// In the case that `self` is already in serialized form, this function
+    /// is O(1). If the value is not already in serialized form,
+    /// serialization occurs implicitly and is approximately O(n) in the size
+    /// of the result.
+    ///
+    /// To deserialize the data returned by this function, in addition to the
+    /// serialized data, you must know the type of the [`Variant`][struct@crate::Variant], and (if the
+    /// machine might be different) the endianness of the machine that stored
+    /// it. As a result, file formats or network messages that incorporate
+    /// serialized `GVariants` must include this information either
+    /// implicitly (for instance &quot;the file always contains a
+    /// `G_VARIANT_TYPE_VARIANT` and it is always in little-endian order&quot;) or
+    /// explicitly (by storing the type and/or endianness in addition to the
+    /// serialized data).
+    ///
+    /// # Returns
+    ///
+    /// the serialized form of `self`, or [`None`]
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_variant_get_data&quot;</span>)]
     </span><span class="kw">pub fn </span>data(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>[u8] {
         <span class="kw">unsafe </span>{
@@ -3553,6 +3861,36 @@
 
     <span class="comment">// rustdoc-stripper-ignore-next
     </span><span class="doccomment">/// Returns a copy of the variant in normal form.
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// Gets a [`Variant`][struct@crate::Variant] instance that has the same value as `self` and is
+    /// trusted to be in normal form.
+    ///
+    /// If `self` is already trusted to be in normal form then a new
+    /// reference to `self` is returned.
+    ///
+    /// If `self` is not already trusted, then it is scanned to check if it
+    /// is in normal form. If it is found to be in normal form then it is
+    /// marked as trusted and a new reference to it is returned.
+    ///
+    /// If `self` is found not to be in normal form then a new trusted
+    /// [`Variant`][struct@crate::Variant] is created with the same value as `self`. The non-normal parts of
+    /// `self` will be replaced with default values which are guaranteed to be in
+    /// normal form.
+    ///
+    /// It makes sense to call this function if you&#39;ve received [`Variant`][struct@crate::Variant]
+    /// data from untrusted sources and you want to ensure your serialized
+    /// output is definitely in normal form.
+    ///
+    /// If `self` is already in normal form, a new reference will be returned
+    /// (which will be floating if `self` is floating). If it is not in normal form,
+    /// the newly created [`Variant`][struct@crate::Variant] will be returned with a single non-floating
+    /// reference. Typically, `g_variant_take_ref()` should be called on the return
+    /// value from this function to guarantee ownership of a single non-floating
+    /// reference to it.
+    ///
+    /// # Returns
+    ///
+    /// a trusted [`Variant`][struct@crate::Variant]
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_variant_get_normal_form&quot;</span>)]
     #[must_use]
     </span><span class="kw">pub fn </span>normal_form(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="self">Self </span>{
@@ -3561,6 +3899,28 @@
 
     <span class="comment">// rustdoc-stripper-ignore-next
     </span><span class="doccomment">/// Returns a copy of the variant in the opposite endianness.
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// Performs a byteswapping operation on the contents of `self`. The
+    /// result is that all multi-byte numeric data contained in `self` is
+    /// byteswapped. That includes 16, 32, and 64bit signed and unsigned
+    /// integers as well as file handles and double precision floating point
+    /// values.
+    ///
+    /// This function is an identity mapping on any value that does not
+    /// contain multi-byte numeric data. That include strings, booleans,
+    /// bytes and containers containing only these things (recursively).
+    ///
+    /// While this function can safely handle untrusted, non-normal data, it is
+    /// recommended to check whether the input is in normal form beforehand, using
+    /// [`is_normal_form()`][Self::is_normal_form()], and to reject non-normal inputs if your
+    /// application can be strict about what inputs it rejects.
+    ///
+    /// The returned value is always in normal form and is marked as trusted.
+    /// A full, not floating, reference is returned.
+    ///
+    /// # Returns
+    ///
+    /// the byteswapped form of `self`
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_variant_byteswap&quot;</span>)]
     #[must_use]
     </span><span class="kw">pub fn </span>byteswap(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="self">Self </span>{
