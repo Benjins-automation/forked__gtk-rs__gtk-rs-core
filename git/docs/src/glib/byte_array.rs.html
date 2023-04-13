@@ -231,7 +231,6 @@
 <a href="#158" id="158">158</a>
 <a href="#159" id="159">159</a>
 <a href="#160" id="160">160</a>
-<a href="#161" id="161">161</a>
 </pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 // rustdoc-stripper-ignore-next
@@ -257,8 +256,7 @@
 <span class="kw">use </span><span class="kw">crate</span>::translate::<span class="kw-2">*</span>;
 
 <span class="macro">wrapper! </span>{
-    <span class="doccomment">/// Contains the public fields of a GByteArray.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;GByteArray&quot;</span>)]
+    <span class="attr">#[doc(alias = <span class="string">&quot;GByteArray&quot;</span>)]
     </span><span class="kw">pub struct </span>ByteArray(Shared&lt;ffi::GByteArray&gt;);
 
     <span class="kw">match fn </span>{

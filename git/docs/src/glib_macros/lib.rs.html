@@ -1133,6 +1133,10 @@
 <a href="#1060" id="1060">1060</a>
 <a href="#1061" id="1061">1061</a>
 <a href="#1062" id="1062">1062</a>
+<a href="#1063" id="1063">1063</a>
+<a href="#1064" id="1064">1064</a>
+<a href="#1065" id="1065">1065</a>
+<a href="#1066" id="1066">1066</a>
 </pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 </span><span class="kw">mod </span>boxed_derive;
@@ -2001,6 +2005,10 @@
 /// | `default` | Sets the `default_value` field of the Param Spec builder | | `#[property(default = 1)]` |
 /// | `&lt;optional-pspec-builder-fields&gt; = expr` | Used to add optional Param Spec builder fields | | `#[property(minimum = 0)` , `#[property(minimum = 0, maximum = 1)]`, etc. |
 /// | `&lt;optional-pspec-builder-fields&gt;` | Used to add optional Param Spec builder fields | | `#[property(explicit_notify)]` , `#[property(construct_only)]`, etc. |
+///
+/// ## Using Rust keywords as property names
+/// You might hit a roadblock when declaring properties with this macro because you want to use a name that happens to be a Rust keyword. This may happen with names like `loop`, which is a pretty common name when creating things like animation handlers.
+/// To use those names, you can make use of the raw identifier feature of Rust. Simply prefix the identifier name with `r#` in the struct declaration. Internally, those `r#`s are stripped so you can use its expected name in [`ObjectExt::property`] or within GtkBuilder template files.
 ///
 /// # Generated wrapper methods
 /// The following methods are generated on the wrapper type specified on `#[properties(wrapper_type = ...)]`:

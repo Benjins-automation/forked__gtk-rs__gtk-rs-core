@@ -738,6 +738,20 @@
 <a href="#665" id="665">665</a>
 <a href="#666" id="666">666</a>
 <a href="#667" id="667">667</a>
+<a href="#668" id="668">668</a>
+<a href="#669" id="669">669</a>
+<a href="#670" id="670">670</a>
+<a href="#671" id="671">671</a>
+<a href="#672" id="672">672</a>
+<a href="#673" id="673">673</a>
+<a href="#674" id="674">674</a>
+<a href="#675" id="675">675</a>
+<a href="#676" id="676">676</a>
+<a href="#677" id="677">677</a>
+<a href="#678" id="678">678</a>
+<a href="#679" id="679">679</a>
+<a href="#680" id="680">680</a>
+<a href="#681" id="681">681</a>
 </pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 </span><span class="kw">use </span><span class="kw">crate</span>::utils::crate_ident_new;
@@ -751,6 +765,7 @@
 <span class="kw">use </span>syn::parse::Parse;
 <span class="kw">use </span>syn::punctuated::Punctuated;
 <span class="kw">use </span>syn::spanned::Spanned;
+<span class="kw">use </span>syn::LitStr;
 <span class="kw">use </span>syn::Token;
 
 <span class="kw">pub struct </span>PropsMacroInput {
@@ -1043,11 +1058,14 @@
     <span class="kw">let </span>PropDesc {
         ty, name, builder, ..
     } = prop;
+    <span class="kw">let </span>stripped_name = strip_raw_prefix_from_name(name);
 
     <span class="kw">match </span>(<span class="kw-2">&amp;</span>prop.override_class, <span class="kw-2">&amp;</span>prop.override_interface) {
-        (<span class="prelude-val">Some</span>(c), <span class="prelude-val">None</span>) =&gt; <span class="kw">return </span><span class="macro">quote!</span>(#crate_ident::ParamSpecOverride::for_class::&lt;#c&gt;(#name)),
+        (<span class="prelude-val">Some</span>(c), <span class="prelude-val">None</span>) =&gt; {
+            <span class="kw">return </span><span class="macro">quote!</span>(#crate_ident::ParamSpecOverride::for_class::&lt;#c&gt;(#stripped_name))
+        }
         (<span class="prelude-val">None</span>, <span class="prelude-val">Some</span>(i)) =&gt; {
-            <span class="kw">return </span><span class="macro">quote!</span>(#crate_ident::ParamSpecOverride::for_interface::&lt;#i&gt;(#name))
+            <span class="kw">return </span><span class="macro">quote!</span>(#crate_ident::ParamSpecOverride::for_interface::&lt;#i&gt;(#stripped_name))
         }
         (<span class="prelude-val">Some</span>(<span class="kw">_</span>), <span class="prelude-val">Some</span>(<span class="kw">_</span>)) =&gt; {
             <span class="macro">unreachable!</span>(<span class="string">&quot;Both `override_class` and `override_interface` specified&quot;</span>)
@@ -1068,14 +1086,14 @@
         .map(|(<span class="kw-2">mut </span>required_params, chained_methods)| {
             <span class="kw">let </span>name_expr = syn::ExprLit {
                 attrs: <span class="macro">vec!</span>[],
-                lit: syn::Lit::Str(name.to_owned()),
+                lit: syn::Lit::Str(stripped_name.to_owned()),
             };
             required_params.insert(<span class="number">0</span>, name_expr.into());
             <span class="kw">let </span>required_params = required_params.iter();
 
             <span class="macro">quote!</span>((#(#required_params,)<span class="kw-2">*</span>)#chained_methods)
         })
-        .unwrap_or(<span class="macro">quote!</span>((#name)));
+        .unwrap_or(<span class="macro">quote!</span>((#stripped_name)));
 
     <span class="kw">let </span>builder_fields = prop.builder_fields.iter().map(|(k, v)| <span class="macro">quote!</span>(.#k(#v)));
 
@@ -1168,14 +1186,14 @@
             ty,
             ..
         } = p;
-
+        <span class="kw">let </span>stripped_name = strip_raw_prefix_from_name(name);
         <span class="kw">let </span>crate_ident = crate_ident_new();
         <span class="kw">let </span>enum_ident = name_to_enum_ident(name.value());
         <span class="kw">let </span>span = p.attrs_span;
         <span class="kw">let </span>expect = <span class="macro">quote!</span>(.unwrap_or_else(
             |err| <span class="macro">panic!</span>(
                 <span class="string">&quot;Invalid conversion from `glib::value::Value` to `{}` inside setter for property `{}`: {:?}&quot;</span>,
-                ::std::any::type_name::&lt;&lt;#ty <span class="kw">as </span>#crate_ident::Property&gt;::Value&gt;(), #name, err
+                ::std::any::type_name::&lt;&lt;#ty <span class="kw">as </span>#crate_ident::Property&gt;::Value&gt;(), #stripped_name, err
             )
         ));
         set.as_ref().map(|set| {
@@ -1249,16 +1267,25 @@
     <span class="macro">format_ident!</span>(<span class="string">&quot;{}&quot;</span>, name.value().replace(<span class="string">&#39;-&#39;</span>, <span class="string">&quot;_&quot;</span>))
 }
 
+<span class="doccomment">/// Strips out raw identifier prefix (`r#`) from literal string items
+</span><span class="kw">fn </span>strip_raw_prefix_from_name(name: <span class="kw-2">&amp;</span>LitStr) -&gt; LitStr {
+    LitStr::new(
+        name.value().strip_prefix(<span class="string">&quot;r#&quot;</span>).unwrap_or(<span class="kw-2">&amp;</span>name.value()),
+        name.span(),
+    )
+}
+
 <span class="kw">fn </span>expand_wrapper_getset_properties(props: <span class="kw-2">&amp;</span>[PropDesc]) -&gt; TokenStream2 {
     <span class="kw">let </span>crate_ident = crate_ident_new();
     <span class="kw">let </span>defs = props.iter().map(|p| {
         <span class="kw">let </span>name = <span class="kw-2">&amp;</span>p.name;
+        <span class="kw">let </span>stripped_name = strip_raw_prefix_from_name(name);
         <span class="kw">let </span>ident = name_to_ident(name);
         <span class="kw">let </span>ty = <span class="kw-2">&amp;</span>p.ty;
 
         <span class="kw">let </span>getter = p.get.is_some().then(|| {
             <span class="macro">quote!</span>(<span class="kw">pub fn </span>#ident(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; &lt;#ty <span class="kw">as </span>#crate_ident::Property&gt;::Value {
-                 <span class="self">self</span>.property::&lt;&lt;#ty <span class="kw">as </span>#crate_ident::Property&gt;::Value&gt;(#name)
+                 <span class="self">self</span>.property::&lt;&lt;#ty <span class="kw">as </span>#crate_ident::Property&gt;::Value&gt;(#stripped_name)
             })
         });
         <span class="kw">let </span>is_construct_only = p.builder_fields.iter().any(|(k, <span class="kw">_</span>)| <span class="kw-2">*</span>k == <span class="string">&quot;construct_only&quot;</span>);
@@ -1280,7 +1307,7 @@
                 )
             };
             <span class="macro">quote!</span>(<span class="kw">pub fn </span>#ident&lt;<span class="lifetime">&#39;a</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, value: #set_ty) {
-                <span class="self">self</span>.set_property_from_value(#name, <span class="kw-2">&amp;</span>::std::convert::From::from(#upcasted_borrowed_value))
+                <span class="self">self</span>.set_property_from_value(#stripped_name, <span class="kw-2">&amp;</span>::std::convert::From::from(#upcasted_borrowed_value))
             })
         });
         <span class="kw">let </span>span = p.attrs_span;
@@ -1296,10 +1323,11 @@
     <span class="kw">let </span>crate_ident = crate_ident_new();
     <span class="kw">let </span>connection_fns = props.iter().map(|p| {
         <span class="kw">let </span>name = <span class="kw-2">&amp;</span>p.name;
+        <span class="kw">let </span>stripped_name = strip_raw_prefix_from_name(name);
         <span class="kw">let </span>fn_ident = <span class="macro">format_ident!</span>(<span class="string">&quot;connect_{}_notify&quot;</span>, name_to_ident(name));
         <span class="kw">let </span>span = p.attrs_span;
         <span class="macro">quote_spanned!</span>(span=&gt; <span class="kw">pub fn </span>#fn_ident&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; #crate_ident::SignalHandlerId {
-            <span class="self">self</span>.connect_notify_local(::core::option::Option::Some(#name), <span class="kw">move </span>|this, <span class="kw">_</span>| {
+            <span class="self">self</span>.connect_notify_local(::core::option::Option::Some(#stripped_name), <span class="kw">move </span>|this, <span class="kw">_</span>| {
                 f(this)
             })
         })
@@ -1310,8 +1338,8 @@
 <span class="kw">fn </span>expand_wrapper_notify_prop(props: <span class="kw-2">&amp;</span>[PropDesc]) -&gt; TokenStream2 {
     <span class="kw">let </span>crate_ident = crate_ident_new();
     <span class="kw">let </span>emit_fns = props.iter().map(|p| {
-        <span class="kw">let </span>name = <span class="kw-2">&amp;</span>p.name;
-        <span class="kw">let </span>fn_ident = <span class="macro">format_ident!</span>(<span class="string">&quot;notify_{}&quot;</span>, name_to_ident(name));
+        <span class="kw">let </span>name = strip_raw_prefix_from_name(<span class="kw-2">&amp;</span>p.name);
+        <span class="kw">let </span>fn_ident = <span class="macro">format_ident!</span>(<span class="string">&quot;notify_{}&quot;</span>, name_to_ident(<span class="kw-2">&amp;</span>name));
         <span class="kw">let </span>span = p.attrs_span;
         <span class="kw">let </span>enum_ident = name_to_enum_ident(name.value());
         <span class="macro">quote_spanned!</span>(span=&gt; <span class="kw">pub fn </span>#fn_ident(<span class="kw-2">&amp;</span><span class="self">self</span>) {
