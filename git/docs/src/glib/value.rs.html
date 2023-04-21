@@ -1702,28 +1702,6 @@
 <a href="#1629" id="1629">1629</a>
 <a href="#1630" id="1630">1630</a>
 <a href="#1631" id="1631">1631</a>
-<a href="#1632" id="1632">1632</a>
-<a href="#1633" id="1633">1633</a>
-<a href="#1634" id="1634">1634</a>
-<a href="#1635" id="1635">1635</a>
-<a href="#1636" id="1636">1636</a>
-<a href="#1637" id="1637">1637</a>
-<a href="#1638" id="1638">1638</a>
-<a href="#1639" id="1639">1639</a>
-<a href="#1640" id="1640">1640</a>
-<a href="#1641" id="1641">1641</a>
-<a href="#1642" id="1642">1642</a>
-<a href="#1643" id="1643">1643</a>
-<a href="#1644" id="1644">1644</a>
-<a href="#1645" id="1645">1645</a>
-<a href="#1646" id="1646">1646</a>
-<a href="#1647" id="1647">1647</a>
-<a href="#1648" id="1648">1648</a>
-<a href="#1649" id="1649">1649</a>
-<a href="#1650" id="1650">1650</a>
-<a href="#1651" id="1651">1651</a>
-<a href="#1652" id="1652">1652</a>
-<a href="#1653" id="1653">1653</a>
 </pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 // rustdoc-stripper-ignore-next
@@ -2339,28 +2317,6 @@
     /// # Returns
     ///
     /// [`true`] if the transformation is possible, [`false`] otherwise.
-    ///
-    /// unsupported shell expansions. If the input does contain such expansions,
-    /// they are passed through literally.
-    ///
-    /// Possible errors are those from the `G_SHELL_ERROR` domain.
-    ///
-    /// In particular, if `command_line` is an empty string (or a string containing
-    /// only whitespace), `G_SHELL_ERROR_EMPTY_STRING` will be returned. It’s
-    /// guaranteed that `argvp` will be a non-empty array if this function returns
-    /// successfully.
-    ///
-    /// Free the returned vector with `g_strfreev()`.
-    /// ## `command_line`
-    /// command line to parse
-    ///
-    /// # Returns
-    ///
-    /// [`true`] on success, [`false`] if error set
-    ///
-    /// ## `argvp`
-    ///
-    ///  return location for array of args
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_value_type_transformable&quot;</span>)]
     </span><span class="kw">pub fn </span>type_transformable(src: Type, dst: Type) -&gt; bool {
         <span class="kw">unsafe </span>{
