@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gio/src/auto/mod.rs`."><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-ba5701c5741a7b69.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (dbba59457 2023-05-01)" data-search-js="search-618e954b235f6acc.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gio/src/auto/mod.rs`."><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-ba5701c5741a7b69.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (a368898de 2023-05-02)" data-search-js="search-618e954b235f6acc.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -1052,25 +1052,25 @@
 <span class="kw">mod </span>datagram_based;
 <span class="kw">pub use </span><span class="self">self</span>::datagram_based::DatagramBased;
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
 </span><span class="kw">mod </span>debug_controller;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::debug_controller::DebugController;
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
 </span><span class="kw">mod </span>debug_controller_dbus;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::debug_controller_dbus::DebugControllerDBus;
 
-<span class="attr">#[cfg(any(all(not(windows), not(target_os = <span class="string">&quot;macos&quot;</span>)), feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(all(not(windows), not(target_os = <span class="string">&quot;macos&quot;</span>)))))]
+<span class="attr">#[cfg(any(all(not(windows), not(target_os = <span class="string">&quot;macos&quot;</span>))))]
+#[cfg_attr(docsrs, doc(cfg(all(not(windows), not(target_os = <span class="string">&quot;macos&quot;</span>)))))]
 </span><span class="kw">mod </span>desktop_app_info;
-<span class="attr">#[cfg(any(all(not(windows), not(target_os = <span class="string">&quot;macos&quot;</span>)), feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(all(not(windows), not(target_os = <span class="string">&quot;macos&quot;</span>)))))]
+<span class="attr">#[cfg(any(all(not(windows), not(target_os = <span class="string">&quot;macos&quot;</span>))))]
+#[cfg_attr(docsrs, doc(cfg(all(not(windows), not(target_os = <span class="string">&quot;macos&quot;</span>)))))]
 </span><span class="kw">pub use </span><span class="self">self</span>::desktop_app_info::DesktopAppInfo;
 
 <span class="kw">mod </span>drive;
@@ -1148,11 +1148,11 @@
 <span class="kw">mod </span>memory_input_stream;
 <span class="kw">pub use </span><span class="self">self</span>::memory_input_stream::MemoryInputStream;
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_64&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_64&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_64&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_64&quot;</span>)))]
 </span><span class="kw">mod </span>memory_monitor;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_64&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_64&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_64&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_64&quot;</span>)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::memory_monitor::MemoryMonitor;
 
 <span class="kw">mod </span>memory_output_stream;
@@ -1203,11 +1203,11 @@
 <span class="kw">mod </span>pollable_output_stream;
 <span class="kw">pub use </span><span class="self">self</span>::pollable_output_stream::PollableOutputStream;
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
 </span><span class="kw">mod </span>power_profile_monitor;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::power_profile_monitor::PowerProfileMonitor;
 
 <span class="kw">mod </span>property_action;
@@ -1321,46 +1321,46 @@
 <span class="kw">mod </span>tls_server_connection;
 <span class="kw">pub use </span><span class="self">self</span>::tls_server_connection::TlsServerConnection;
 
-<span class="attr">#[cfg(any(unix, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(unix)))]
+<span class="attr">#[cfg(any(unix))]
+#[cfg_attr(docsrs, doc(cfg(unix)))]
 </span><span class="kw">mod </span>unix_credentials_message;
-<span class="attr">#[cfg(any(unix, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(unix)))]
+<span class="attr">#[cfg(any(unix))]
+#[cfg_attr(docsrs, doc(cfg(unix)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::unix_credentials_message::UnixCredentialsMessage;
 
-<span class="attr">#[cfg(any(unix, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(unix)))]
+<span class="attr">#[cfg(any(unix))]
+#[cfg_attr(docsrs, doc(cfg(unix)))]
 </span><span class="kw">mod </span>unix_fd_list;
-<span class="attr">#[cfg(any(unix, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(unix)))]
+<span class="attr">#[cfg(any(unix))]
+#[cfg_attr(docsrs, doc(cfg(unix)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::unix_fd_list::UnixFDList;
 
-<span class="attr">#[cfg(any(unix, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(unix)))]
+<span class="attr">#[cfg(any(unix))]
+#[cfg_attr(docsrs, doc(cfg(unix)))]
 </span><span class="kw">mod </span>unix_fd_message;
-<span class="attr">#[cfg(any(unix, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(unix)))]
+<span class="attr">#[cfg(any(unix))]
+#[cfg_attr(docsrs, doc(cfg(unix)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::unix_fd_message::UnixFDMessage;
 
-<span class="attr">#[cfg(any(unix, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(unix)))]
+<span class="attr">#[cfg(any(unix))]
+#[cfg_attr(docsrs, doc(cfg(unix)))]
 </span><span class="kw">mod </span>unix_input_stream;
-<span class="attr">#[cfg(any(unix, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(unix)))]
+<span class="attr">#[cfg(any(unix))]
+#[cfg_attr(docsrs, doc(cfg(unix)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::unix_input_stream::UnixInputStream;
 
-<span class="attr">#[cfg(any(unix, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(unix)))]
+<span class="attr">#[cfg(any(unix))]
+#[cfg_attr(docsrs, doc(cfg(unix)))]
 </span><span class="kw">mod </span>unix_output_stream;
-<span class="attr">#[cfg(any(unix, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(unix)))]
+<span class="attr">#[cfg(any(unix))]
+#[cfg_attr(docsrs, doc(cfg(unix)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::unix_output_stream::UnixOutputStream;
 
-<span class="attr">#[cfg(any(unix, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(unix)))]
+<span class="attr">#[cfg(any(unix))]
+#[cfg_attr(docsrs, doc(cfg(unix)))]
 </span><span class="kw">mod </span>unix_socket_address;
-<span class="attr">#[cfg(any(unix, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(unix)))]
+<span class="attr">#[cfg(any(unix))]
+#[cfg_attr(docsrs, doc(cfg(unix)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::unix_socket_address::UnixSocketAddress;
 
 <span class="kw">mod </span>vfs;
@@ -1417,18 +1417,18 @@
 <span class="kw">mod </span>srv_target;
 <span class="kw">pub use </span><span class="self">self</span>::srv_target::SrvTarget;
 
-<span class="attr">#[cfg(any(unix, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(unix)))]
+<span class="attr">#[cfg(any(unix))]
+#[cfg_attr(docsrs, doc(cfg(unix)))]
 </span><span class="kw">mod </span>unix_mount_entry;
-<span class="attr">#[cfg(any(unix, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(unix)))]
+<span class="attr">#[cfg(any(unix))]
+#[cfg_attr(docsrs, doc(cfg(unix)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::unix_mount_entry::UnixMountEntry;
 
-<span class="attr">#[cfg(any(unix, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(unix)))]
+<span class="attr">#[cfg(any(unix))]
+#[cfg_attr(docsrs, doc(cfg(unix)))]
 </span><span class="kw">mod </span>unix_mount_point;
-<span class="attr">#[cfg(any(unix, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(unix)))]
+<span class="attr">#[cfg(any(unix))]
+#[cfg_attr(docsrs, doc(cfg(unix)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::unix_mount_point::UnixMountPoint;
 
 <span class="kw">mod </span>enums;
@@ -1447,15 +1447,15 @@
 <span class="kw">pub use </span><span class="self">self</span>::enums::FileMonitorEvent;
 <span class="kw">pub use </span><span class="self">self</span>::enums::FileType;
 <span class="kw">pub use </span><span class="self">self</span>::enums::IOErrorEnum;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_64&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_64&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_64&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_64&quot;</span>)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::enums::MemoryMonitorWarningLevel;
 <span class="kw">pub use </span><span class="self">self</span>::enums::MountOperationResult;
 <span class="kw">pub use </span><span class="self">self</span>::enums::NetworkConnectivity;
 <span class="kw">pub use </span><span class="self">self</span>::enums::NotificationPriority;
 <span class="kw">pub use </span><span class="self">self</span>::enums::PasswordSave;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::enums::PollableReturn;
 <span class="kw">pub use </span><span class="self">self</span>::enums::ResolverError;
 <span class="kw">pub use </span><span class="self">self</span>::enums::ResolverRecordType;
@@ -1467,19 +1467,19 @@
 <span class="kw">pub use </span><span class="self">self</span>::enums::SocketType;
 <span class="kw">pub use </span><span class="self">self</span>::enums::TlsAuthenticationMode;
 <span class="kw">pub use </span><span class="self">self</span>::enums::TlsCertificateRequestFlags;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_66&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_66&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_66&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_66&quot;</span>)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::enums::TlsChannelBindingType;
 <span class="kw">pub use </span><span class="self">self</span>::enums::TlsDatabaseLookupFlags;
 <span class="kw">pub use </span><span class="self">self</span>::enums::TlsError;
 <span class="kw">pub use </span><span class="self">self</span>::enums::TlsInteractionResult;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::enums::TlsProtocolVersion;
 <span class="attr">#[allow(deprecated)]
 </span><span class="kw">pub use </span><span class="self">self</span>::enums::TlsRehandshakeMode;
-<span class="attr">#[cfg(any(unix, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(unix)))]
+<span class="attr">#[cfg(any(unix))]
+#[cfg_attr(docsrs, doc(cfg(unix)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::enums::UnixSocketAddressType;
 <span class="kw">pub use </span><span class="self">self</span>::enums::ZlibCompressorFormat;
 
@@ -1510,8 +1510,8 @@
 <span class="kw">pub use </span><span class="self">self</span>::flags::MountMountFlags;
 <span class="kw">pub use </span><span class="self">self</span>::flags::MountUnmountFlags;
 <span class="kw">pub use </span><span class="self">self</span>::flags::OutputStreamSpliceFlags;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::flags::ResolverNameLookupFlags;
 <span class="kw">pub use </span><span class="self">self</span>::flags::ResourceLookupFlags;
 <span class="kw">pub use </span><span class="self">self</span>::flags::SettingsBindFlags;
@@ -1523,11 +1523,11 @@
 <span class="kw">pub mod </span>functions;
 
 <span class="kw">mod </span>constants;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::constants::DEBUG_CONTROLLER_EXTENSION_POINT_NAME;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_58&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_58&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_58&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_58&quot;</span>)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::constants::DRIVE_IDENTIFIER_KIND_UNIX_DEVICE;
 <span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_ACCESS_CAN_DELETE;
 <span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE;
@@ -1536,12 +1536,12 @@
 <span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_ACCESS_CAN_TRASH;
 <span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_ACCESS_CAN_WRITE;
 <span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_DOS_IS_ARCHIVE;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_DOS_IS_MOUNTPOINT;
 <span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_DOS_IS_SYSTEM;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_DOS_REPARSE_POINT_TAG;
 <span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_ETAG_VALUE;
 <span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_FILESYSTEM_FREE;
@@ -1593,62 +1593,62 @@
 <span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_STANDARD_TARGET_URI;
 <span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_STANDARD_TYPE;
 <span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_THUMBNAILING_FAILED;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_76&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_76&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_76&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_76&quot;</span>)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_THUMBNAILING_FAILED_LARGE;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_76&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_76&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_76&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_76&quot;</span>)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_THUMBNAILING_FAILED_NORMAL;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_76&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_76&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_76&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_76&quot;</span>)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_THUMBNAILING_FAILED_XLARGE;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_76&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_76&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_76&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_76&quot;</span>)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_THUMBNAILING_FAILED_XXLARGE;
 <span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_THUMBNAIL_IS_VALID;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_76&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_76&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_76&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_76&quot;</span>)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_THUMBNAIL_IS_VALID_LARGE;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_76&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_76&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_76&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_76&quot;</span>)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_THUMBNAIL_IS_VALID_NORMAL;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_76&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_76&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_76&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_76&quot;</span>)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_THUMBNAIL_IS_VALID_XLARGE;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_76&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_76&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_76&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_76&quot;</span>)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_THUMBNAIL_IS_VALID_XXLARGE;
 <span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_THUMBNAIL_PATH;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_76&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_76&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_76&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_76&quot;</span>)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_THUMBNAIL_PATH_LARGE;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_76&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_76&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_76&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_76&quot;</span>)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_THUMBNAIL_PATH_NORMAL;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_76&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_76&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_76&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_76&quot;</span>)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_THUMBNAIL_PATH_XLARGE;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_76&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_76&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_76&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_76&quot;</span>)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_THUMBNAIL_PATH_XXLARGE;
 <span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_TIME_ACCESS;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_74&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_74&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_74&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_74&quot;</span>)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_TIME_ACCESS_NSEC;
 <span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_TIME_ACCESS_USEC;
 <span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_TIME_CHANGED;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_74&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_74&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_74&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_74&quot;</span>)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_TIME_CHANGED_NSEC;
 <span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_TIME_CHANGED_USEC;
 <span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_TIME_CREATED;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_74&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_74&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_74&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_74&quot;</span>)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_TIME_CREATED_NSEC;
 <span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_TIME_CREATED_USEC;
 <span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_TIME_MODIFIED;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_74&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_74&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_74&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_74&quot;</span>)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_TIME_MODIFIED_NSEC;
 <span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_TIME_MODIFIED_USEC;
 <span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_TRASH_DELETION_DATE;
@@ -1664,8 +1664,8 @@
 <span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_UNIX_NLINK;
 <span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_UNIX_RDEV;
 <span class="kw">pub use </span><span class="self">self</span>::constants::FILE_ATTRIBUTE_UNIX_UID;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_64&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_64&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_64&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_64&quot;</span>)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::constants::MEMORY_MONITOR_EXTENSION_POINT_NAME;
 <span class="kw">pub use </span><span class="self">self</span>::constants::MENU_ATTRIBUTE_ACTION;
 <span class="kw">pub use </span><span class="self">self</span>::constants::MENU_ATTRIBUTE_ACTION_NAMESPACE;
@@ -1676,8 +1676,8 @@
 <span class="kw">pub use </span><span class="self">self</span>::constants::MENU_LINK_SUBMENU;
 <span class="kw">pub use </span><span class="self">self</span>::constants::NATIVE_VOLUME_MONITOR_EXTENSION_POINT_NAME;
 <span class="kw">pub use </span><span class="self">self</span>::constants::NETWORK_MONITOR_EXTENSION_POINT_NAME;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
 </span><span class="kw">pub use </span><span class="self">self</span>::constants::POWER_PROFILE_MONITOR_EXTENSION_POINT_NAME;
 <span class="kw">pub use </span><span class="self">self</span>::constants::PROXY_EXTENSION_POINT_NAME;
 <span class="kw">pub use </span><span class="self">self</span>::constants::PROXY_RESOLVER_EXTENSION_POINT_NAME;
@@ -1719,11 +1719,11 @@
     <span class="kw">pub use </span><span class="kw">super</span>::dbus_interface_skeleton::DBusInterfaceSkeletonExt;
     <span class="kw">pub use </span><span class="kw">super</span>::dbus_object::DBusObjectExt;
     <span class="kw">pub use </span><span class="kw">super</span>::dbus_proxy::DBusProxyExt;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
     </span><span class="kw">pub use </span><span class="kw">super</span>::debug_controller::DebugControllerExt;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
     </span><span class="kw">pub use </span><span class="kw">super</span>::debug_controller_dbus::DebugControllerDBusExt;
     <span class="kw">pub use </span><span class="kw">super</span>::drive::DriveExt;
     <span class="kw">pub use </span><span class="kw">super</span>::emblemed_icon::EmblemedIconExt;
@@ -1745,8 +1745,8 @@
     <span class="kw">pub use </span><span class="kw">super</span>::list_model::ListModelExt;
     <span class="kw">pub use </span><span class="kw">super</span>::loadable_icon::LoadableIconExt;
     <span class="kw">pub use </span><span class="kw">super</span>::memory_input_stream::MemoryInputStreamExt;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_64&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_64&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_64&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_64&quot;</span>)))]
     </span><span class="kw">pub use </span><span class="kw">super</span>::memory_monitor::MemoryMonitorExt;
     <span class="kw">pub use </span><span class="kw">super</span>::memory_output_stream::MemoryOutputStreamExt;
     <span class="kw">pub use </span><span class="kw">super</span>::menu_attribute_iter::MenuAttributeIterExt;
@@ -1761,8 +1761,8 @@
     <span class="kw">pub use </span><span class="kw">super</span>::permission::PermissionExt;
     <span class="kw">pub use </span><span class="kw">super</span>::pollable_input_stream::PollableInputStreamExt;
     <span class="kw">pub use </span><span class="kw">super</span>::pollable_output_stream::PollableOutputStreamExt;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
     </span><span class="kw">pub use </span><span class="kw">super</span>::power_profile_monitor::PowerProfileMonitorExt;
     <span class="kw">pub use </span><span class="kw">super</span>::proxy::ProxyExt;
     <span class="kw">pub use </span><span class="kw">super</span>::proxy_address::ProxyAddressExt;
@@ -1793,23 +1793,23 @@
     <span class="kw">pub use </span><span class="kw">super</span>::tls_interaction::TlsInteractionExt;
     <span class="kw">pub use </span><span class="kw">super</span>::tls_password::TlsPasswordExt;
     <span class="kw">pub use </span><span class="kw">super</span>::tls_server_connection::TlsServerConnectionExt;
-    <span class="attr">#[cfg(any(unix, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(unix)))]
+    <span class="attr">#[cfg(any(unix))]
+    #[cfg_attr(docsrs, doc(cfg(unix)))]
     </span><span class="kw">pub use </span><span class="kw">super</span>::unix_credentials_message::UnixCredentialsMessageExt;
-    <span class="attr">#[cfg(any(unix, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(unix)))]
+    <span class="attr">#[cfg(any(unix))]
+    #[cfg_attr(docsrs, doc(cfg(unix)))]
     </span><span class="kw">pub use </span><span class="kw">super</span>::unix_fd_list::UnixFDListExt;
-    <span class="attr">#[cfg(any(unix, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(unix)))]
+    <span class="attr">#[cfg(any(unix))]
+    #[cfg_attr(docsrs, doc(cfg(unix)))]
     </span><span class="kw">pub use </span><span class="kw">super</span>::unix_fd_message::UnixFDMessageExt;
-    <span class="attr">#[cfg(any(unix, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(unix)))]
+    <span class="attr">#[cfg(any(unix))]
+    #[cfg_attr(docsrs, doc(cfg(unix)))]
     </span><span class="kw">pub use </span><span class="kw">super</span>::unix_input_stream::UnixInputStreamExt;
-    <span class="attr">#[cfg(any(unix, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(unix)))]
+    <span class="attr">#[cfg(any(unix))]
+    #[cfg_attr(docsrs, doc(cfg(unix)))]
     </span><span class="kw">pub use </span><span class="kw">super</span>::unix_output_stream::UnixOutputStreamExt;
-    <span class="attr">#[cfg(any(unix, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(unix)))]
+    <span class="attr">#[cfg(any(unix))]
+    #[cfg_attr(docsrs, doc(cfg(unix)))]
     </span><span class="kw">pub use </span><span class="kw">super</span>::unix_socket_address::UnixSocketAddressExt;
     <span class="kw">pub use </span><span class="kw">super</span>::vfs::VfsExt;
     <span class="kw">pub use </span><span class="kw">super</span>::volume::VolumeExt;

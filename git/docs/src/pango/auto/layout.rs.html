@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `pango/src/auto/layout.rs`."><title>layout.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-ba5701c5741a7b69.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="pango" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (dbba59457 2023-05-01)" data-search-js="search-618e954b235f6acc.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `pango/src/auto/layout.rs`."><title>layout.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-ba5701c5741a7b69.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="pango" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (a368898de 2023-05-02)" data-search-js="search-618e954b235f6acc.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -1506,19 +1506,19 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-</span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_46&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_46&quot;</span>)))]
+</span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_46&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_46&quot;</span>)))]
 </span><span class="kw">use </span><span class="kw">crate</span>::Direction;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
 </span><span class="kw">use </span><span class="kw">crate</span>::LayoutSerializeFlags;
 <span class="kw">use crate</span>::{
     Alignment, AttrList, Context, EllipsizeMode, FontDescription, LayoutIter, LayoutLine,
     Rectangle, TabArray, WrapMode,
 };
 <span class="kw">use </span>glib::translate::<span class="kw-2">*</span>;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-#[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
 </span><span class="kw">use </span>std::ptr;
 <span class="kw">use </span>std::{fmt, mem};
 
@@ -1672,8 +1672,8 @@
     ///
     /// ## `weak_pos`
     /// location to store the weak cursor position
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     #[doc(alias = <span class="string">&quot;pango_layout_get_caret_pos&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_caret_pos&quot;</span>)]
     </span><span class="kw">pub fn </span>caret_pos(<span class="kw-2">&amp;</span><span class="self">self</span>, index_: i32) -&gt; (Rectangle, Rectangle) {
@@ -1775,8 +1775,8 @@
     /// # Returns
     ///
     /// the text direction at @index
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_46&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_46&quot;</span>)))]
+    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_46&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_46&quot;</span>)))]
     #[doc(alias = <span class="string">&quot;pango_layout_get_direction&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_direction&quot;</span>)]
     </span><span class="kw">pub fn </span>direction(<span class="kw-2">&amp;</span><span class="self">self</span>, index: i32) -&gt; Direction {
@@ -1913,8 +1913,8 @@
     /// # Returns
     ///
     /// the justify value
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     #[doc(alias = <span class="string">&quot;pango_layout_get_justify_last_line&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_justify_last_line&quot;</span>)]
     </span><span class="kw">pub fn </span>is_justify_last_line(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
@@ -1985,8 +1985,8 @@
     <span class="doccomment">/// Gets the line spacing factor of @self.
     ///
     /// See [`set_line_spacing()`][Self::set_line_spacing()].
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
+    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
     #[doc(alias = <span class="string">&quot;pango_layout_get_line_spacing&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_line_spacing&quot;</span>)]
     </span><span class="kw">pub fn </span>line_spacing(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; f32 {
@@ -2433,8 +2433,8 @@
     /// # Returns
     ///
     /// a `GBytes` containing the serialized form of @self
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     #[doc(alias = <span class="string">&quot;pango_layout_serialize&quot;</span>)]
     </span><span class="kw">pub fn </span>serialize(<span class="kw-2">&amp;</span><span class="self">self</span>, flags: LayoutSerializeFlags) -&gt; glib::Bytes {
         <span class="kw">unsafe </span>{
@@ -2623,8 +2623,8 @@
     /// The default value is [`false`].
     /// ## `justify`
     /// whether the last line in the layout should be justified
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     #[doc(alias = <span class="string">&quot;pango_layout_set_justify_last_line&quot;</span>)]
     </span><span class="kw">pub fn </span>set_justify_last_line(<span class="kw-2">&amp;</span><span class="self">self</span>, justify: bool) {
         <span class="kw">unsafe </span>{
@@ -2650,8 +2650,8 @@
     /// property, see `attr_line_height_new()`.
     /// ## `factor`
     /// the new line spacing factor
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
+    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
     #[doc(alias = <span class="string">&quot;pango_layout_set_line_spacing&quot;</span>)]
     </span><span class="kw">pub fn </span>set_line_spacing(<span class="kw-2">&amp;</span><span class="self">self</span>, factor: f32) {
         <span class="kw">unsafe </span>{
@@ -2860,8 +2860,8 @@
     /// # Returns
     ///
     /// [`true`] if saving was successful
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     #[doc(alias = <span class="string">&quot;pango_layout_write_to_file&quot;</span>)]
     </span><span class="kw">pub fn </span>write_to_file(
         <span class="kw-2">&amp;</span><span class="self">self</span>,

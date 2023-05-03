@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `pango/sys/src/lib.rs`."><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-ba5701c5741a7b69.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="pango_sys" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (dbba59457 2023-05-01)" data-search-js="search-618e954b235f6acc.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `pango/sys/src/lib.rs`."><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-ba5701c5741a7b69.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="pango_sys" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (a368898de 2023-05-02)" data-search-js="search-618e954b235f6acc.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -2993,7 +2993,7 @@
     clippy::unreadable_literal,
     clippy::upper_case_acronyms
 )]
-#![cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, feature(doc_cfg))]
+#![cfg_attr(docsrs, feature(doc_cfg))]
 
 #[allow(unused_imports)]
 </span><span class="kw">use </span>libc::{
@@ -4377,8 +4377,8 @@
     <span class="comment">//=========================================================================
     // PangoBaselineShift
     //=========================================================================
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_baseline_shift_get_type() -&gt; GType;
 
     <span class="comment">//=========================================================================
@@ -4405,8 +4405,8 @@
     <span class="comment">//=========================================================================
     // PangoFontScale
     //=========================================================================
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_font_scale_get_type() -&gt; GType;
 
     <span class="comment">//=========================================================================
@@ -4435,18 +4435,18 @@
     <span class="comment">//=========================================================================
     // PangoLayoutDeserializeError
     //=========================================================================
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_layout_deserialize_error_get_type() -&gt; GType;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_layout_deserialize_error_quark() -&gt; glib::GQuark;
 
     <span class="comment">//=========================================================================
     // PangoOverline
     //=========================================================================
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_46&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_46&quot;</span>)))]
+    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_46&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_46&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_overline_get_type() -&gt; GType;
 
     <span class="comment">//=========================================================================
@@ -4479,8 +4479,8 @@
     <span class="comment">//=========================================================================
     // PangoTextTransform
     //=========================================================================
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_text_transform_get_type() -&gt; GType;
 
     <span class="comment">//=========================================================================
@@ -4511,29 +4511,29 @@
     <span class="comment">//=========================================================================
     // PangoLayoutDeserializeFlags
     //=========================================================================
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_layout_deserialize_flags_get_type() -&gt; GType;
 
     <span class="comment">//=========================================================================
     // PangoLayoutSerializeFlags
     //=========================================================================
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_layout_serialize_flags_get_type() -&gt; GType;
 
     <span class="comment">//=========================================================================
     // PangoShapeFlags
     //=========================================================================
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
+    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_shape_flags_get_type() -&gt; GType;
 
     <span class="comment">//=========================================================================
     // PangoShowFlags
     //=========================================================================
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
+    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_show_flags_get_type() -&gt; GType;
 
     <span class="comment">//=========================================================================
@@ -4549,8 +4549,8 @@
     <span class="comment">//=========================================================================
     // PangoAttrIterator
     //=========================================================================
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
+    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_attr_iterator_get_type() -&gt; GType;
     <span class="kw">pub fn </span>pango_attr_iterator_copy(iterator: <span class="kw-2">*mut </span>PangoAttrIterator) -&gt; <span class="kw-2">*mut </span>PangoAttrIterator;
     <span class="kw">pub fn </span>pango_attr_iterator_destroy(iterator: <span class="kw-2">*mut </span>PangoAttrIterator);
@@ -4584,8 +4584,8 @@
     <span class="kw">pub fn </span>pango_attr_list_new() -&gt; <span class="kw-2">*mut </span>PangoAttrList;
     <span class="kw">pub fn </span>pango_attr_list_change(list: <span class="kw-2">*mut </span>PangoAttrList, attr: <span class="kw-2">*mut </span>PangoAttribute);
     <span class="kw">pub fn </span>pango_attr_list_copy(list: <span class="kw-2">*mut </span>PangoAttrList) -&gt; <span class="kw-2">*mut </span>PangoAttrList;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_46&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_46&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_46&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_46&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_attr_list_equal(
         list: <span class="kw-2">*mut </span>PangoAttrList,
         other_list: <span class="kw-2">*mut </span>PangoAttrList,
@@ -4595,8 +4595,8 @@
         func: PangoAttrFilterFunc,
         data: gpointer,
     ) -&gt; <span class="kw-2">*mut </span>PangoAttrList;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_attr_list_get_attributes(list: <span class="kw-2">*mut </span>PangoAttrList) -&gt; <span class="kw-2">*mut </span>glib::GSList;
     <span class="kw">pub fn </span>pango_attr_list_get_iterator(list: <span class="kw-2">*mut </span>PangoAttrList) -&gt; <span class="kw-2">*mut </span>PangoAttrIterator;
     <span class="kw">pub fn </span>pango_attr_list_insert(list: <span class="kw-2">*mut </span>PangoAttrList, attr: <span class="kw-2">*mut </span>PangoAttribute);
@@ -4608,15 +4608,15 @@
         pos: c_int,
         len: c_int,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_attr_list_to_string(list: <span class="kw-2">*mut </span>PangoAttrList) -&gt; <span class="kw-2">*mut </span>c_char;
     <span class="kw">pub fn </span>pango_attr_list_unref(list: <span class="kw-2">*mut </span>PangoAttrList);
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_attr_list_update(list: <span class="kw-2">*mut </span>PangoAttrList, pos: c_int, remove: c_int, add: c_int);
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_attr_list_from_string(text: <span class="kw-2">*const </span>c_char) -&gt; <span class="kw-2">*mut </span>PangoAttrList;
 
     <span class="comment">//=========================================================================
@@ -4643,37 +4643,37 @@
     <span class="comment">//=========================================================================
     // PangoAttribute
     //=========================================================================
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
+    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_attribute_get_type() -&gt; GType;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_attribute_as_color(attr: <span class="kw-2">*mut </span>PangoAttribute) -&gt; <span class="kw-2">*mut </span>PangoAttrColor;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_attribute_as_float(attr: <span class="kw-2">*mut </span>PangoAttribute) -&gt; <span class="kw-2">*mut </span>PangoAttrFloat;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_attribute_as_font_desc(attr: <span class="kw-2">*mut </span>PangoAttribute) -&gt; <span class="kw-2">*mut </span>PangoAttrFontDesc;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_attribute_as_font_features(
         attr: <span class="kw-2">*mut </span>PangoAttribute,
     ) -&gt; <span class="kw-2">*mut </span>PangoAttrFontFeatures;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_attribute_as_int(attr: <span class="kw-2">*mut </span>PangoAttribute) -&gt; <span class="kw-2">*mut </span>PangoAttrInt;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_attribute_as_language(attr: <span class="kw-2">*mut </span>PangoAttribute) -&gt; <span class="kw-2">*mut </span>PangoAttrLanguage;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_attribute_as_shape(attr: <span class="kw-2">*mut </span>PangoAttribute) -&gt; <span class="kw-2">*mut </span>PangoAttrShape;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_attribute_as_size(attr: <span class="kw-2">*mut </span>PangoAttribute) -&gt; <span class="kw-2">*mut </span>PangoAttrSize;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_attribute_as_string(attr: <span class="kw-2">*mut </span>PangoAttribute) -&gt; <span class="kw-2">*mut </span>PangoAttrString;
     <span class="kw">pub fn </span>pango_attribute_copy(attr: <span class="kw-2">*const </span>PangoAttribute) -&gt; <span class="kw-2">*mut </span>PangoAttribute;
     <span class="kw">pub fn </span>pango_attribute_destroy(attr: <span class="kw-2">*mut </span>PangoAttribute);
@@ -4690,8 +4690,8 @@
     <span class="kw">pub fn </span>pango_color_copy(src: <span class="kw-2">*const </span>PangoColor) -&gt; <span class="kw-2">*mut </span>PangoColor;
     <span class="kw">pub fn </span>pango_color_free(color: <span class="kw-2">*mut </span>PangoColor);
     <span class="kw">pub fn </span>pango_color_parse(color: <span class="kw-2">*mut </span>PangoColor, spec: <span class="kw-2">*const </span>c_char) -&gt; gboolean;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_46&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_46&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_46&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_46&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_color_parse_with_alpha(
         color: <span class="kw-2">*mut </span>PangoColor,
         alpha: <span class="kw-2">*mut </span>u16,
@@ -4732,8 +4732,8 @@
     <span class="kw">pub fn </span>pango_font_description_get_stretch(desc: <span class="kw-2">*const </span>PangoFontDescription) -&gt; PangoStretch;
     <span class="kw">pub fn </span>pango_font_description_get_style(desc: <span class="kw-2">*const </span>PangoFontDescription) -&gt; PangoStyle;
     <span class="kw">pub fn </span>pango_font_description_get_variant(desc: <span class="kw-2">*const </span>PangoFontDescription) -&gt; PangoVariant;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_42&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_42&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_42&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_42&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_font_description_get_variations(
         desc: <span class="kw-2">*const </span>PangoFontDescription,
     ) -&gt; <span class="kw-2">*const </span>c_char;
@@ -4775,14 +4775,14 @@
         desc: <span class="kw-2">*mut </span>PangoFontDescription,
         variant: PangoVariant,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_42&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_42&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_42&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_42&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_font_description_set_variations(
         desc: <span class="kw-2">*mut </span>PangoFontDescription,
         variations: <span class="kw-2">*const </span>c_char,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_42&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_42&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_42&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_42&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_font_description_set_variations_static(
         desc: <span class="kw-2">*mut </span>PangoFontDescription,
         variations: <span class="kw-2">*const </span>c_char,
@@ -4804,8 +4804,8 @@
     <span class="kw">pub fn </span>pango_font_metrics_get_approximate_digit_width(metrics: <span class="kw-2">*mut </span>PangoFontMetrics) -&gt; c_int;
     <span class="kw">pub fn </span>pango_font_metrics_get_ascent(metrics: <span class="kw-2">*mut </span>PangoFontMetrics) -&gt; c_int;
     <span class="kw">pub fn </span>pango_font_metrics_get_descent(metrics: <span class="kw-2">*mut </span>PangoFontMetrics) -&gt; c_int;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_font_metrics_get_height(metrics: <span class="kw-2">*mut </span>PangoFontMetrics) -&gt; c_int;
     <span class="kw">pub fn </span>pango_font_metrics_get_strikethrough_position(metrics: <span class="kw-2">*mut </span>PangoFontMetrics) -&gt; c_int;
     <span class="kw">pub fn </span>pango_font_metrics_get_strikethrough_thickness(metrics: <span class="kw-2">*mut </span>PangoFontMetrics) -&gt; c_int;
@@ -4899,8 +4899,8 @@
         trailing: gboolean,
         x_pos: <span class="kw-2">*mut </span>c_int,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_glyph_string_index_to_x_full(
         glyphs: <span class="kw-2">*mut </span>PangoGlyphString,
         text: <span class="kw-2">*const </span>c_char,
@@ -4927,8 +4927,8 @@
     //=========================================================================
     </span><span class="kw">pub fn </span>pango_item_get_type() -&gt; GType;
     <span class="kw">pub fn </span>pango_item_new() -&gt; <span class="kw-2">*mut </span>PangoItem;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_item_apply_attrs(item: <span class="kw-2">*mut </span>PangoItem, iter: <span class="kw-2">*mut </span>PangoAttrIterator);
     <span class="kw">pub fn </span>pango_item_copy(item: <span class="kw-2">*mut </span>PangoItem) -&gt; <span class="kw-2">*mut </span>PangoItem;
     <span class="kw">pub fn </span>pango_item_free(item: <span class="kw-2">*mut </span>PangoItem);
@@ -4958,8 +4958,8 @@
     <span class="kw">pub fn </span>pango_language_to_string(language: <span class="kw-2">*mut </span>PangoLanguage) -&gt; <span class="kw-2">*const </span>c_char;
     <span class="kw">pub fn </span>pango_language_from_string(language: <span class="kw-2">*const </span>c_char) -&gt; <span class="kw-2">*mut </span>PangoLanguage;
     <span class="kw">pub fn </span>pango_language_get_default() -&gt; <span class="kw-2">*mut </span>PangoLanguage;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_48&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_48&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_48&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_48&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_language_get_preferred() -&gt; <span class="kw-2">*mut *mut </span>PangoLanguage;
 
     <span class="comment">//=========================================================================
@@ -4999,8 +4999,8 @@
         y1_: <span class="kw-2">*mut </span>c_int,
     );
     <span class="kw">pub fn </span>pango_layout_iter_get_run(iter: <span class="kw-2">*mut </span>PangoLayoutIter) -&gt; <span class="kw-2">*mut </span>PangoLayoutRun;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_layout_iter_get_run_baseline(iter: <span class="kw-2">*mut </span>PangoLayoutIter) -&gt; c_int;
     <span class="kw">pub fn </span>pango_layout_iter_get_run_extents(
         iter: <span class="kw-2">*mut </span>PangoLayoutIter,
@@ -5022,22 +5022,22 @@
         ink_rect: <span class="kw-2">*mut </span>PangoRectangle,
         logical_rect: <span class="kw-2">*mut </span>PangoRectangle,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_layout_line_get_height(line: <span class="kw-2">*mut </span>PangoLayoutLine, height: <span class="kw-2">*mut </span>c_int);
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_layout_line_get_length(line: <span class="kw-2">*mut </span>PangoLayoutLine) -&gt; c_int;
     <span class="kw">pub fn </span>pango_layout_line_get_pixel_extents(
         layout_line: <span class="kw-2">*mut </span>PangoLayoutLine,
         ink_rect: <span class="kw-2">*mut </span>PangoRectangle,
         logical_rect: <span class="kw-2">*mut </span>PangoRectangle,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_layout_line_get_resolved_direction(line: <span class="kw-2">*mut </span>PangoLayoutLine) -&gt; PangoDirection;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_layout_line_get_start_index(line: <span class="kw-2">*mut </span>PangoLayoutLine) -&gt; c_int;
     <span class="kw">pub fn </span>pango_layout_line_get_x_ranges(
         line: <span class="kw-2">*mut </span>PangoLayoutLine,
@@ -5052,8 +5052,8 @@
         trailing: gboolean,
         x_pos: <span class="kw-2">*mut </span>c_int,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_layout_line_is_paragraph_start(line: <span class="kw-2">*mut </span>PangoLayoutLine) -&gt; gboolean;
     <span class="kw">pub fn </span>pango_layout_line_ref(line: <span class="kw-2">*mut </span>PangoLayoutLine) -&gt; <span class="kw-2">*mut </span>PangoLayoutLine;
     <span class="kw">pub fn </span>pango_layout_line_unref(line: <span class="kw-2">*mut </span>PangoLayoutLine);
@@ -5077,8 +5077,8 @@
         xscale: <span class="kw-2">*mut </span>c_double,
         yscale: <span class="kw-2">*mut </span>c_double,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_matrix_get_slant_ratio(matrix: <span class="kw-2">*const </span>PangoMatrix) -&gt; c_double;
     <span class="kw">pub fn </span>pango_matrix_rotate(matrix: <span class="kw-2">*mut </span>PangoMatrix, degrees: c_double);
     <span class="kw">pub fn </span>pango_matrix_scale(matrix: <span class="kw-2">*mut </span>PangoMatrix, scale_x: c_double, scale_y: c_double);
@@ -5102,8 +5102,8 @@
     <span class="comment">//=========================================================================
     // PangoScriptIter
     //=========================================================================
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
+    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_script_iter_get_type() -&gt; GType;
     <span class="kw">pub fn </span>pango_script_iter_new(text: <span class="kw-2">*const </span>c_char, length: c_int) -&gt; <span class="kw-2">*mut </span>PangoScriptIter;
     <span class="kw">pub fn </span>pango_script_iter_free(iter: <span class="kw-2">*mut </span>PangoScriptIter);
@@ -5132,8 +5132,8 @@
     ) -&gt; <span class="kw-2">*mut </span>PangoTabArray;
     <span class="kw">pub fn </span>pango_tab_array_copy(src: <span class="kw-2">*mut </span>PangoTabArray) -&gt; <span class="kw-2">*mut </span>PangoTabArray;
     <span class="kw">pub fn </span>pango_tab_array_free(tab_array: <span class="kw-2">*mut </span>PangoTabArray);
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_tab_array_get_decimal_point(
         tab_array: <span class="kw-2">*mut </span>PangoTabArray,
         tab_index: c_int,
@@ -5152,15 +5152,15 @@
         locations: <span class="kw-2">*mut *mut </span>c_int,
     );
     <span class="kw">pub fn </span>pango_tab_array_resize(tab_array: <span class="kw-2">*mut </span>PangoTabArray, new_size: c_int);
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_tab_array_set_decimal_point(
         tab_array: <span class="kw-2">*mut </span>PangoTabArray,
         tab_index: c_int,
         decimal_point: u32,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_tab_array_set_positions_in_pixels(
         tab_array: <span class="kw-2">*mut </span>PangoTabArray,
         positions_in_pixels: gboolean,
@@ -5171,14 +5171,14 @@
         alignment: PangoTabAlign,
         location: c_int,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_tab_array_sort(tab_array: <span class="kw-2">*mut </span>PangoTabArray);
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_tab_array_to_string(tab_array: <span class="kw-2">*mut </span>PangoTabArray) -&gt; <span class="kw-2">*mut </span>c_char;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_tab_array_from_string(text: <span class="kw-2">*const </span>c_char) -&gt; <span class="kw-2">*mut </span>PangoTabArray;
 
     <span class="comment">//=========================================================================
@@ -5202,8 +5202,8 @@
         desc: <span class="kw-2">*const </span>PangoFontDescription,
         language: <span class="kw-2">*mut </span>PangoLanguage,
     ) -&gt; <span class="kw-2">*mut </span>PangoFontMetrics;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_context_get_round_glyph_positions(context: <span class="kw-2">*mut </span>PangoContext) -&gt; gboolean;
     <span class="kw">pub fn </span>pango_context_get_serial(context: <span class="kw-2">*mut </span>PangoContext) -&gt; c_uint;
     <span class="kw">pub fn </span>pango_context_list_families(
@@ -5230,8 +5230,8 @@
     <span class="kw">pub fn </span>pango_context_set_gravity_hint(context: <span class="kw-2">*mut </span>PangoContext, hint: PangoGravityHint);
     <span class="kw">pub fn </span>pango_context_set_language(context: <span class="kw-2">*mut </span>PangoContext, language: <span class="kw-2">*mut </span>PangoLanguage);
     <span class="kw">pub fn </span>pango_context_set_matrix(context: <span class="kw-2">*mut </span>PangoContext, matrix: <span class="kw-2">*const </span>PangoMatrix);
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_context_set_round_glyph_positions(
         context: <span class="kw-2">*mut </span>PangoContext,
         round_positions: gboolean,
@@ -5240,8 +5240,8 @@
     <span class="comment">//=========================================================================
     // PangoCoverage
     //=========================================================================
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
+    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_coverage_get_type() -&gt; GType;
     <span class="kw">pub fn </span>pango_coverage_new() -&gt; <span class="kw-2">*mut </span>PangoCoverage;
     <span class="kw">pub fn </span>pango_coverage_from_bytes(bytes: <span class="kw-2">*mut </span>u8, n_bytes: c_int) -&gt; <span class="kw-2">*mut </span>PangoCoverage;
@@ -5266,8 +5266,8 @@
     //=========================================================================
     </span><span class="kw">pub fn </span>pango_font_get_type() -&gt; GType;
     <span class="kw">pub fn </span>pango_font_descriptions_free(descs: <span class="kw-2">*mut *mut </span>PangoFontDescription, n_descs: c_int);
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_font_deserialize(
         context: <span class="kw-2">*mut </span>PangoContext,
         bytes: <span class="kw-2">*mut </span>glib::GBytes,
@@ -5281,11 +5281,11 @@
         font: <span class="kw-2">*mut </span>PangoFont,
         language: <span class="kw-2">*mut </span>PangoLanguage,
     ) -&gt; <span class="kw-2">*mut </span>PangoCoverage;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_46&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_46&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_46&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_46&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_font_get_face(font: <span class="kw-2">*mut </span>PangoFont) -&gt; <span class="kw-2">*mut </span>PangoFontFace;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_font_get_features(
         font: <span class="kw-2">*mut </span>PangoFont,
         features: gconstpointer,
@@ -5299,21 +5299,21 @@
         ink_rect: <span class="kw-2">*mut </span>PangoRectangle,
         logical_rect: <span class="kw-2">*mut </span>PangoRectangle,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_font_get_hb_font(font: <span class="kw-2">*mut </span>PangoFont) -&gt; gconstpointer;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_font_get_languages(font: <span class="kw-2">*mut </span>PangoFont) -&gt; <span class="kw-2">*mut *mut </span>PangoLanguage;
     <span class="kw">pub fn </span>pango_font_get_metrics(
         font: <span class="kw-2">*mut </span>PangoFont,
         language: <span class="kw-2">*mut </span>PangoLanguage,
     ) -&gt; <span class="kw-2">*mut </span>PangoFontMetrics;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_font_has_char(font: <span class="kw-2">*mut </span>PangoFont, wc: u32) -&gt; gboolean;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_font_serialize(font: <span class="kw-2">*mut </span>PangoFont) -&gt; <span class="kw-2">*mut </span>glib::GBytes;
 
     <span class="comment">//=========================================================================
@@ -5322,8 +5322,8 @@
     </span><span class="kw">pub fn </span>pango_font_face_get_type() -&gt; GType;
     <span class="kw">pub fn </span>pango_font_face_describe(face: <span class="kw-2">*mut </span>PangoFontFace) -&gt; <span class="kw-2">*mut </span>PangoFontDescription;
     <span class="kw">pub fn </span>pango_font_face_get_face_name(face: <span class="kw-2">*mut </span>PangoFontFace) -&gt; <span class="kw-2">*const </span>c_char;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_46&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_46&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_46&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_46&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_font_face_get_family(face: <span class="kw-2">*mut </span>PangoFontFace) -&gt; <span class="kw-2">*mut </span>PangoFontFamily;
     <span class="kw">pub fn </span>pango_font_face_is_synthesized(face: <span class="kw-2">*mut </span>PangoFontFace) -&gt; gboolean;
     <span class="kw">pub fn </span>pango_font_face_list_sizes(
@@ -5336,16 +5336,16 @@
     // PangoFontFamily
     //=========================================================================
     </span><span class="kw">pub fn </span>pango_font_family_get_type() -&gt; GType;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_46&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_46&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_46&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_46&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_font_family_get_face(
         family: <span class="kw-2">*mut </span>PangoFontFamily,
         name: <span class="kw-2">*const </span>c_char,
     ) -&gt; <span class="kw-2">*mut </span>PangoFontFace;
     <span class="kw">pub fn </span>pango_font_family_get_name(family: <span class="kw-2">*mut </span>PangoFontFamily) -&gt; <span class="kw-2">*const </span>c_char;
     <span class="kw">pub fn </span>pango_font_family_is_monospace(family: <span class="kw-2">*mut </span>PangoFontFamily) -&gt; gboolean;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_font_family_is_variable(family: <span class="kw-2">*mut </span>PangoFontFamily) -&gt; gboolean;
     <span class="kw">pub fn </span>pango_font_family_list_faces(
         family: <span class="kw-2">*mut </span>PangoFontFamily,
@@ -5359,8 +5359,8 @@
     </span><span class="kw">pub fn </span>pango_font_map_get_type() -&gt; GType;
     <span class="kw">pub fn </span>pango_font_map_changed(fontmap: <span class="kw-2">*mut </span>PangoFontMap);
     <span class="kw">pub fn </span>pango_font_map_create_context(fontmap: <span class="kw-2">*mut </span>PangoFontMap) -&gt; <span class="kw-2">*mut </span>PangoContext;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_46&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_46&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_46&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_46&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_font_map_get_family(
         fontmap: <span class="kw-2">*mut </span>PangoFontMap,
         name: <span class="kw-2">*const </span>c_char,
@@ -5408,8 +5408,8 @@
     //=========================================================================
     </span><span class="kw">pub fn </span>pango_layout_get_type() -&gt; GType;
     <span class="kw">pub fn </span>pango_layout_new(context: <span class="kw-2">*mut </span>PangoContext) -&gt; <span class="kw-2">*mut </span>PangoLayout;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_layout_deserialize(
         context: <span class="kw-2">*mut </span>PangoContext,
         bytes: <span class="kw-2">*mut </span>glib::GBytes,
@@ -5422,8 +5422,8 @@
     <span class="kw">pub fn </span>pango_layout_get_attributes(layout: <span class="kw-2">*mut </span>PangoLayout) -&gt; <span class="kw-2">*mut </span>PangoAttrList;
     <span class="kw">pub fn </span>pango_layout_get_auto_dir(layout: <span class="kw-2">*mut </span>PangoLayout) -&gt; gboolean;
     <span class="kw">pub fn </span>pango_layout_get_baseline(layout: <span class="kw-2">*mut </span>PangoLayout) -&gt; c_int;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_layout_get_caret_pos(
         layout: <span class="kw-2">*mut </span>PangoLayout,
         index_: c_int,
@@ -5438,8 +5438,8 @@
         strong_pos: <span class="kw-2">*mut </span>PangoRectangle,
         weak_pos: <span class="kw-2">*mut </span>PangoRectangle,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_46&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_46&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_46&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_46&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_layout_get_direction(layout: <span class="kw-2">*mut </span>PangoLayout, index: c_int) -&gt; PangoDirection;
     <span class="kw">pub fn </span>pango_layout_get_ellipsize(layout: <span class="kw-2">*mut </span>PangoLayout) -&gt; PangoEllipsizeMode;
     <span class="kw">pub fn </span>pango_layout_get_extents(
@@ -5454,8 +5454,8 @@
     <span class="kw">pub fn </span>pango_layout_get_indent(layout: <span class="kw-2">*mut </span>PangoLayout) -&gt; c_int;
     <span class="kw">pub fn </span>pango_layout_get_iter(layout: <span class="kw-2">*mut </span>PangoLayout) -&gt; <span class="kw-2">*mut </span>PangoLayoutIter;
     <span class="kw">pub fn </span>pango_layout_get_justify(layout: <span class="kw-2">*mut </span>PangoLayout) -&gt; gboolean;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_layout_get_justify_last_line(layout: <span class="kw-2">*mut </span>PangoLayout) -&gt; gboolean;
     <span class="kw">pub fn </span>pango_layout_get_line(layout: <span class="kw-2">*mut </span>PangoLayout, line: c_int) -&gt; <span class="kw-2">*mut </span>PangoLayoutLine;
     <span class="kw">pub fn </span>pango_layout_get_line_count(layout: <span class="kw-2">*mut </span>PangoLayout) -&gt; c_int;
@@ -5463,8 +5463,8 @@
         layout: <span class="kw-2">*mut </span>PangoLayout,
         line: c_int,
     ) -&gt; <span class="kw-2">*mut </span>PangoLayoutLine;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_layout_get_line_spacing(layout: <span class="kw-2">*mut </span>PangoLayout) -&gt; c_float;
     <span class="kw">pub fn </span>pango_layout_get_lines(layout: <span class="kw-2">*mut </span>PangoLayout) -&gt; <span class="kw-2">*mut </span>glib::GSList;
     <span class="kw">pub fn </span>pango_layout_get_lines_readonly(layout: <span class="kw-2">*mut </span>PangoLayout) -&gt; <span class="kw-2">*mut </span>glib::GSList;
@@ -5519,8 +5519,8 @@
         new_index: <span class="kw-2">*mut </span>c_int,
         new_trailing: <span class="kw-2">*mut </span>c_int,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_layout_serialize(
         layout: <span class="kw-2">*mut </span>PangoLayout,
         flags: PangoLayoutSerializeFlags,
@@ -5536,11 +5536,11 @@
     <span class="kw">pub fn </span>pango_layout_set_height(layout: <span class="kw-2">*mut </span>PangoLayout, height: c_int);
     <span class="kw">pub fn </span>pango_layout_set_indent(layout: <span class="kw-2">*mut </span>PangoLayout, indent: c_int);
     <span class="kw">pub fn </span>pango_layout_set_justify(layout: <span class="kw-2">*mut </span>PangoLayout, justify: gboolean);
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_layout_set_justify_last_line(layout: <span class="kw-2">*mut </span>PangoLayout, justify: gboolean);
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_layout_set_line_spacing(layout: <span class="kw-2">*mut </span>PangoLayout, factor: c_float);
     <span class="kw">pub fn </span>pango_layout_set_markup(layout: <span class="kw-2">*mut </span>PangoLayout, markup: <span class="kw-2">*const </span>c_char, length: c_int);
     <span class="kw">pub fn </span>pango_layout_set_markup_with_accel(
@@ -5556,8 +5556,8 @@
     <span class="kw">pub fn </span>pango_layout_set_text(layout: <span class="kw-2">*mut </span>PangoLayout, text: <span class="kw-2">*const </span>c_char, length: c_int);
     <span class="kw">pub fn </span>pango_layout_set_width(layout: <span class="kw-2">*mut </span>PangoLayout, width: c_int);
     <span class="kw">pub fn </span>pango_layout_set_wrap(layout: <span class="kw-2">*mut </span>PangoLayout, wrap: PangoWrapMode);
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_layout_write_to_file(
         layout: <span class="kw-2">*mut </span>PangoLayout,
         flags: PangoLayoutSerializeFlags,
@@ -5660,16 +5660,16 @@
     <span class="comment">//=========================================================================
     // Other functions
     //=========================================================================
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
+    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_attr_allow_breaks_new(allow_breaks: gboolean) -&gt; <span class="kw-2">*mut </span>PangoAttribute;
     <span class="kw">pub fn </span>pango_attr_background_alpha_new(alpha: u16) -&gt; <span class="kw-2">*mut </span>PangoAttribute;
     <span class="kw">pub fn </span>pango_attr_background_new(red: u16, green: u16, blue: u16) -&gt; <span class="kw-2">*mut </span>PangoAttribute;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_attr_baseline_shift_new(shift: c_int) -&gt; <span class="kw-2">*mut </span>PangoAttribute;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_attr_break(
         text: <span class="kw-2">*const </span>c_char,
         length: c_int,
@@ -5680,36 +5680,36 @@
     );
     <span class="kw">pub fn </span>pango_attr_fallback_new(enable_fallback: gboolean) -&gt; <span class="kw-2">*mut </span>PangoAttribute;
     <span class="kw">pub fn </span>pango_attr_family_new(family: <span class="kw-2">*const </span>c_char) -&gt; <span class="kw-2">*mut </span>PangoAttribute;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_attr_font_scale_new(scale: PangoFontScale) -&gt; <span class="kw-2">*mut </span>PangoAttribute;
     <span class="kw">pub fn </span>pango_attr_foreground_alpha_new(alpha: u16) -&gt; <span class="kw-2">*mut </span>PangoAttribute;
     <span class="kw">pub fn </span>pango_attr_foreground_new(red: u16, green: u16, blue: u16) -&gt; <span class="kw-2">*mut </span>PangoAttribute;
     <span class="kw">pub fn </span>pango_attr_gravity_hint_new(hint: PangoGravityHint) -&gt; <span class="kw-2">*mut </span>PangoAttribute;
     <span class="kw">pub fn </span>pango_attr_gravity_new(gravity: PangoGravity) -&gt; <span class="kw-2">*mut </span>PangoAttribute;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_attr_insert_hyphens_new(insert_hyphens: gboolean) -&gt; <span class="kw-2">*mut </span>PangoAttribute;
     <span class="kw">pub fn </span>pango_attr_letter_spacing_new(letter_spacing: c_int) -&gt; <span class="kw-2">*mut </span>PangoAttribute;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_attr_line_height_new(factor: c_double) -&gt; <span class="kw-2">*mut </span>PangoAttribute;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_attr_line_height_new_absolute(height: c_int) -&gt; <span class="kw-2">*mut </span>PangoAttribute;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_46&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_46&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_46&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_46&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_attr_overline_color_new(red: u16, green: u16, blue: u16) -&gt; <span class="kw-2">*mut </span>PangoAttribute;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_46&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_46&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_46&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_46&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_attr_overline_new(overline: PangoOverline) -&gt; <span class="kw-2">*mut </span>PangoAttribute;
     <span class="kw">pub fn </span>pango_attr_rise_new(rise: c_int) -&gt; <span class="kw-2">*mut </span>PangoAttribute;
     <span class="kw">pub fn </span>pango_attr_scale_new(scale_factor: c_double) -&gt; <span class="kw-2">*mut </span>PangoAttribute;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_attr_sentence_new() -&gt; <span class="kw-2">*mut </span>PangoAttribute;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_attr_show_new(flags: PangoShowFlags) -&gt; <span class="kw-2">*mut </span>PangoAttribute;
     <span class="kw">pub fn </span>pango_attr_stretch_new(stretch: PangoStretch) -&gt; <span class="kw-2">*mut </span>PangoAttribute;
     <span class="kw">pub fn </span>pango_attr_strikethrough_color_new(
@@ -5719,15 +5719,15 @@
     ) -&gt; <span class="kw-2">*mut </span>PangoAttribute;
     <span class="kw">pub fn </span>pango_attr_strikethrough_new(strikethrough: gboolean) -&gt; <span class="kw-2">*mut </span>PangoAttribute;
     <span class="kw">pub fn </span>pango_attr_style_new(style: PangoStyle) -&gt; <span class="kw-2">*mut </span>PangoAttribute;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_attr_text_transform_new(transform: PangoTextTransform) -&gt; <span class="kw-2">*mut </span>PangoAttribute;
     <span class="kw">pub fn </span>pango_attr_underline_color_new(red: u16, green: u16, blue: u16) -&gt; <span class="kw-2">*mut </span>PangoAttribute;
     <span class="kw">pub fn </span>pango_attr_underline_new(underline: PangoUnderline) -&gt; <span class="kw-2">*mut </span>PangoAttribute;
     <span class="kw">pub fn </span>pango_attr_variant_new(variant: PangoVariant) -&gt; <span class="kw-2">*mut </span>PangoAttribute;
     <span class="kw">pub fn </span>pango_attr_weight_new(weight: PangoWeight) -&gt; <span class="kw-2">*mut </span>PangoAttribute;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_attr_word_new() -&gt; <span class="kw-2">*mut </span>PangoAttribute;
     <span class="kw">pub fn </span>pango_break(
         text: <span class="kw-2">*const </span>c_char,
@@ -5847,8 +5847,8 @@
         analysis: <span class="kw-2">*const </span>PangoAnalysis,
         glyphs: <span class="kw-2">*mut </span>PangoGlyphString,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_shape_item(
         item: <span class="kw-2">*mut </span>PangoItem,
         paragraph_text: <span class="kw-2">*const </span>c_char,
@@ -5857,8 +5857,8 @@
         glyphs: <span class="kw-2">*mut </span>PangoGlyphString,
         flags: PangoShapeFlags,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_shape_with_flags(
         item_text: <span class="kw-2">*const </span>c_char,
         item_length: c_int,
@@ -5870,8 +5870,8 @@
     );
     <span class="kw">pub fn </span>pango_skip_space(pos: <span class="kw-2">*mut *const </span>c_char) -&gt; gboolean;
     <span class="kw">pub fn </span>pango_split_file_list(str: <span class="kw-2">*const </span>c_char) -&gt; <span class="kw-2">*mut *mut </span>c_char;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
-    #[cfg_attr(feature = <span class="string">&quot;dox&quot;</span>, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
+    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_44&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]
     </span><span class="kw">pub fn </span>pango_tailor_break(
         text: <span class="kw-2">*const </span>c_char,
         length: c_int,

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `cairo/sys/src/lib.rs`."><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-ba5701c5741a7b69.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="cairo_sys" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (dbba59457 2023-05-01)" data-search-js="search-618e954b235f6acc.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `cairo/sys/src/lib.rs`."><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-ba5701c5741a7b69.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="cairo_sys" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (a368898de 2023-05-02)" data-search-js="search-618e954b235f6acc.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -1821,27 +1821,142 @@
 <a href="#1748" id="1748">1748</a>
 <a href="#1749" id="1749">1749</a>
 <a href="#1750" id="1750">1750</a>
+<a href="#1751" id="1751">1751</a>
+<a href="#1752" id="1752">1752</a>
+<a href="#1753" id="1753">1753</a>
+<a href="#1754" id="1754">1754</a>
+<a href="#1755" id="1755">1755</a>
+<a href="#1756" id="1756">1756</a>
+<a href="#1757" id="1757">1757</a>
+<a href="#1758" id="1758">1758</a>
+<a href="#1759" id="1759">1759</a>
+<a href="#1760" id="1760">1760</a>
+<a href="#1761" id="1761">1761</a>
+<a href="#1762" id="1762">1762</a>
+<a href="#1763" id="1763">1763</a>
+<a href="#1764" id="1764">1764</a>
+<a href="#1765" id="1765">1765</a>
+<a href="#1766" id="1766">1766</a>
+<a href="#1767" id="1767">1767</a>
+<a href="#1768" id="1768">1768</a>
+<a href="#1769" id="1769">1769</a>
+<a href="#1770" id="1770">1770</a>
+<a href="#1771" id="1771">1771</a>
+<a href="#1772" id="1772">1772</a>
+<a href="#1773" id="1773">1773</a>
+<a href="#1774" id="1774">1774</a>
+<a href="#1775" id="1775">1775</a>
+<a href="#1776" id="1776">1776</a>
+<a href="#1777" id="1777">1777</a>
+<a href="#1778" id="1778">1778</a>
+<a href="#1779" id="1779">1779</a>
+<a href="#1780" id="1780">1780</a>
+<a href="#1781" id="1781">1781</a>
+<a href="#1782" id="1782">1782</a>
+<a href="#1783" id="1783">1783</a>
+<a href="#1784" id="1784">1784</a>
+<a href="#1785" id="1785">1785</a>
+<a href="#1786" id="1786">1786</a>
+<a href="#1787" id="1787">1787</a>
+<a href="#1788" id="1788">1788</a>
+<a href="#1789" id="1789">1789</a>
+<a href="#1790" id="1790">1790</a>
+<a href="#1791" id="1791">1791</a>
+<a href="#1792" id="1792">1792</a>
+<a href="#1793" id="1793">1793</a>
+<a href="#1794" id="1794">1794</a>
+<a href="#1795" id="1795">1795</a>
+<a href="#1796" id="1796">1796</a>
+<a href="#1797" id="1797">1797</a>
+<a href="#1798" id="1798">1798</a>
+<a href="#1799" id="1799">1799</a>
+<a href="#1800" id="1800">1800</a>
+<a href="#1801" id="1801">1801</a>
+<a href="#1802" id="1802">1802</a>
+<a href="#1803" id="1803">1803</a>
+<a href="#1804" id="1804">1804</a>
+<a href="#1805" id="1805">1805</a>
+<a href="#1806" id="1806">1806</a>
+<a href="#1807" id="1807">1807</a>
+<a href="#1808" id="1808">1808</a>
+<a href="#1809" id="1809">1809</a>
+<a href="#1810" id="1810">1810</a>
+<a href="#1811" id="1811">1811</a>
+<a href="#1812" id="1812">1812</a>
+<a href="#1813" id="1813">1813</a>
+<a href="#1814" id="1814">1814</a>
+<a href="#1815" id="1815">1815</a>
+<a href="#1816" id="1816">1816</a>
+<a href="#1817" id="1817">1817</a>
+<a href="#1818" id="1818">1818</a>
+<a href="#1819" id="1819">1819</a>
+<a href="#1820" id="1820">1820</a>
+<a href="#1821" id="1821">1821</a>
+<a href="#1822" id="1822">1822</a>
+<a href="#1823" id="1823">1823</a>
+<a href="#1824" id="1824">1824</a>
+<a href="#1825" id="1825">1825</a>
+<a href="#1826" id="1826">1826</a>
+<a href="#1827" id="1827">1827</a>
+<a href="#1828" id="1828">1828</a>
+<a href="#1829" id="1829">1829</a>
+<a href="#1830" id="1830">1830</a>
+<a href="#1831" id="1831">1831</a>
+<a href="#1832" id="1832">1832</a>
+<a href="#1833" id="1833">1833</a>
+<a href="#1834" id="1834">1834</a>
+<a href="#1835" id="1835">1835</a>
+<a href="#1836" id="1836">1836</a>
+<a href="#1837" id="1837">1837</a>
+<a href="#1838" id="1838">1838</a>
+<a href="#1839" id="1839">1839</a>
+<a href="#1840" id="1840">1840</a>
+<a href="#1841" id="1841">1841</a>
+<a href="#1842" id="1842">1842</a>
+<a href="#1843" id="1843">1843</a>
+<a href="#1844" id="1844">1844</a>
+<a href="#1845" id="1845">1845</a>
+<a href="#1846" id="1846">1846</a>
+<a href="#1847" id="1847">1847</a>
+<a href="#1848" id="1848">1848</a>
+<a href="#1849" id="1849">1849</a>
+<a href="#1850" id="1850">1850</a>
+<a href="#1851" id="1851">1851</a>
+<a href="#1852" id="1852">1852</a>
+<a href="#1853" id="1853">1853</a>
+<a href="#1854" id="1854">1854</a>
+<a href="#1855" id="1855">1855</a>
+<a href="#1856" id="1856">1856</a>
+<a href="#1857" id="1857">1857</a>
+<a href="#1858" id="1858">1858</a>
+<a href="#1859" id="1859">1859</a>
 </pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 </span><span class="attr">#![allow(non_camel_case_types)]
 #![allow(clippy::unreadable_literal)]
 #![allow(clippy::write_literal)]
 #![allow(clippy::upper_case_acronyms)]
+#![cfg_attr(docsrs, feature(doc_cfg))]
 
 </span><span class="kw">extern crate </span>libc;
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;xlib&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;xlib&quot;</span>)]
 </span><span class="kw">extern crate </span>x11;
 
 <span class="attr">#[cfg(all(windows, feature = <span class="string">&quot;win32-surface&quot;</span>))]
 </span><span class="kw">extern crate </span>winapi <span class="kw">as </span>winapi_orig;
 
 <span class="attr">#[cfg(all(windows, feature = <span class="string">&quot;win32-surface&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(all(windows, feature = <span class="string">&quot;win32-surface&quot;</span>))))]
 </span><span class="kw">pub mod </span>winapi {
     <span class="kw">pub use </span>winapi_orig::shared::windef::HDC;
 }
 
-<span class="attr">#[cfg(all(feature = <span class="string">&quot;dox&quot;</span>, not(all(windows, feature = <span class="string">&quot;win32-surface&quot;</span>))))]
+<span class="attr">#[cfg(all(docsrs, not(all(windows, feature = <span class="string">&quot;win32-surface&quot;</span>))))]
+#[cfg_attr(
+    docsrs,
+    doc(cfg(all(docsrs, not(all(windows, feature = <span class="string">&quot;win32-surface&quot;</span>)))))
+)]
 </span><span class="kw">pub mod </span>winapi {
     <span class="kw">use </span>libc::c_void;
 
@@ -1851,7 +1966,7 @@
 
 <span class="kw">use </span>libc::{c_char, c_double, c_int, c_uchar, c_uint, c_ulong, c_void};
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;xlib&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;xlib&quot;</span>)]
 </span><span class="kw">use </span>x11::xlib;
 
 <span class="kw">pub type </span>cairo_antialias_t = c_int;
@@ -1873,24 +1988,31 @@
 <span class="kw">pub type </span>cairo_pattern_type_t = c_int;
 <span class="kw">pub type </span>cairo_path_data_type_t = c_int;
 <span class="kw">pub type </span>cairo_region_overlap_t = c_int;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;script&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;script&quot;</span>)]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;script&quot;</span>)))]
 </span><span class="kw">pub type </span>cairo_script_mode_t = c_int;
 <span class="kw">pub type </span>cairo_status_t = c_int;
 <span class="kw">pub type </span>cairo_subpixel_order_t = c_int;
 <span class="kw">pub type </span>cairo_surface_type_t = c_int;
-<span class="attr">#[cfg(any(all(feature = <span class="string">&quot;svg&quot;</span>, feature = <span class="string">&quot;v1_16&quot;</span>), feature = <span class="string">&quot;dox&quot;</span>))]
+<span class="attr">#[cfg(all(feature = <span class="string">&quot;svg&quot;</span>, feature = <span class="string">&quot;v1_16&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(all(feature = <span class="string">&quot;svg&quot;</span>, feature = <span class="string">&quot;v1_16&quot;</span>))))]
 </span><span class="kw">pub type </span>cairo_svg_unit_t = c_int;
 <span class="kw">pub type </span>cairo_text_cluster_flags_t = c_int;
 
-<span class="attr">#[cfg(any(all(feature = <span class="string">&quot;pdf&quot;</span>, feature = <span class="string">&quot;v1_16&quot;</span>), feature = <span class="string">&quot;dox&quot;</span>))]
+<span class="attr">#[cfg(all(feature = <span class="string">&quot;pdf&quot;</span>, feature = <span class="string">&quot;v1_16&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(all(feature = <span class="string">&quot;pdf&quot;</span>, feature = <span class="string">&quot;v1_16&quot;</span>))))]
 </span><span class="kw">pub type </span>cairo_pdf_outline_flags_t = c_int;
-<span class="attr">#[cfg(any(all(feature = <span class="string">&quot;pdf&quot;</span>, feature = <span class="string">&quot;v1_16&quot;</span>), feature = <span class="string">&quot;dox&quot;</span>))]
+<span class="attr">#[cfg(all(feature = <span class="string">&quot;pdf&quot;</span>, feature = <span class="string">&quot;v1_16&quot;</span>))]
+#[cfg_attr(docsrs, doc(cfg(all(feature = <span class="string">&quot;pdf&quot;</span>, feature = <span class="string">&quot;v1_16&quot;</span>))))]
 </span><span class="kw">pub type </span>cairo_pdf_metadata_t = c_int;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;pdf&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;pdf&quot;</span>)]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;pdf&quot;</span>)))]
 </span><span class="kw">pub type </span>cairo_pdf_version_t = c_int;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;svg&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;svg&quot;</span>)]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;svg&quot;</span>)))]
 </span><span class="kw">pub type </span>cairo_svg_version_t = c_int;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;ps&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;ps&quot;</span>)]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;ps&quot;</span>)))]
 </span><span class="kw">pub type </span>cairo_ps_level_t = c_int;
 
 <span class="kw">pub type </span>cairo_mesh_corner_t = c_uint;
@@ -1920,28 +2042,34 @@
 <span class="macro">opaque!</span>(cairo_pattern_t);
 
 <span class="macro">opaque!</span>(
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;xcb&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;xcb&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;xcb&quot;</span>)))]
     </span>xcb_connection_t
 );
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;xcb&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;xcb&quot;</span>)]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;xcb&quot;</span>)))]
 </span><span class="kw">pub type </span>xcb_drawable_t = u32;
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;xcb&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;xcb&quot;</span>)]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;xcb&quot;</span>)))]
 </span><span class="kw">pub type </span>xcb_pixmap_t = u32;
 
 <span class="macro">opaque!</span>(
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;xcb&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;xcb&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;xcb&quot;</span>)))]
     </span>xcb_visualtype_t <span class="comment">// has visible fields in &lt;xcb/xproto.h&gt;
 </span>);
 
 <span class="macro">opaque!</span>(
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;xcb&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;xcb&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;xcb&quot;</span>)))]
     </span>xcb_screen_t <span class="comment">// has visible fields in &lt;xcb/xproto.h&gt;
 </span>);
 
 <span class="macro">opaque!</span>(
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;xcb&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;xcb&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;xcb&quot;</span>)))]
     </span>xcb_render_pictforminfo_t <span class="comment">// has visible fields in &lt;xcb/render.h&gt;
 </span>);
 
@@ -2076,9 +2204,11 @@
 <span class="kw">pub type </span>cairo_write_func_t =
     <span class="prelude-ty">Option</span>&lt;<span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn</span>(<span class="kw-2">*mut </span>c_void, <span class="kw-2">*mut </span>c_uchar, c_uint) -&gt; cairo_status_t&gt;;
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;freetype&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;freetype&quot;</span>)]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;freetype&quot;</span>)))]
 </span><span class="kw">pub type </span>FT_Face = <span class="kw-2">*mut </span>c_void;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;freetype&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;freetype&quot;</span>)]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;freetype&quot;</span>)))]
 </span><span class="kw">pub type </span>FcPattern = c_void;
 
 <span class="kw">pub type </span>cairo_user_scaled_font_init_func_t = <span class="prelude-ty">Option</span>&lt;
@@ -2163,9 +2293,11 @@
     <span class="kw">pub fn </span>cairo_get_line_join(cr: <span class="kw-2">*mut </span>cairo_t) -&gt; cairo_line_join_t;
     <span class="kw">pub fn </span>cairo_set_line_width(cr: <span class="kw-2">*mut </span>cairo_t, width: c_double);
     <span class="kw">pub fn </span>cairo_get_line_width(cr: <span class="kw-2">*mut </span>cairo_t) -&gt; c_double;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_18&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v1_18&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_18&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_set_hairline(cr: <span class="kw-2">*mut </span>cairo_t, set_hairline: cairo_bool_t);
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_18&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v1_18&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_18&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_get_hairline(cr: <span class="kw-2">*mut </span>cairo_t) -&gt; cairo_bool_t;
     <span class="kw">pub fn </span>cairo_set_miter_limit(cr: <span class="kw-2">*mut </span>cairo_t, limit: c_double);
     <span class="kw">pub fn </span>cairo_get_miter_limit(cr: <span class="kw-2">*mut </span>cairo_t) -&gt; c_double;
@@ -2218,9 +2350,11 @@
     <span class="kw">pub fn </span>cairo_copy_page(cr: <span class="kw-2">*mut </span>cairo_t);
     <span class="kw">pub fn </span>cairo_show_page(cr: <span class="kw-2">*mut </span>cairo_t);
     <span class="kw">pub fn </span>cairo_get_reference_count(cr: <span class="kw-2">*mut </span>cairo_t) -&gt; c_uint;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_16&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v1_16&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_16&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_tag_begin(cr: <span class="kw-2">*mut </span>cairo_t, tag_name: <span class="kw-2">*const </span>c_char, attributes: <span class="kw-2">*const </span>c_char);
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_16&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v1_16&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_16&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_tag_end(cr: <span class="kw-2">*mut </span>cairo_t, tag_name: <span class="kw-2">*const </span>c_char);
 
     <span class="comment">// CAIRO UTILS
@@ -2590,33 +2724,41 @@
     <span class="kw">pub fn </span>cairo_text_cluster_allocate(num_clusters: c_int) -&gt; <span class="kw-2">*mut </span>cairo_text_cluster_t;
     <span class="kw">pub fn </span>cairo_text_cluster_free(clusters: <span class="kw-2">*mut </span>cairo_text_cluster_t);
 
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;freetype&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;freetype&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;freetype&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_ft_font_face_create_for_ft_face(
         face: FT_Face,
         load_flags: c_int,
     ) -&gt; <span class="kw-2">*mut </span>cairo_font_face_t;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;freetype&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;freetype&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;freetype&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_ft_font_face_create_for_pattern(pattern: <span class="kw-2">*mut </span>FcPattern)
         -&gt; <span class="kw-2">*mut </span>cairo_font_face_t;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;freetype&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;freetype&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;freetype&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_ft_font_options_substitute(
         options: <span class="kw-2">*const </span>cairo_font_options_t,
         pattern: <span class="kw-2">*mut </span>FcPattern,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;freetype&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;freetype&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;freetype&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_ft_scaled_font_lock_face(scaled_font: <span class="kw-2">*mut </span>cairo_scaled_font_t) -&gt; FT_Face;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;freetype&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;freetype&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;freetype&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_ft_scaled_font_unlock_face(scaled_font: <span class="kw-2">*mut </span>cairo_scaled_font_t);
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;freetype&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;freetype&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;freetype&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_ft_font_face_get_synthesize(
         font_face: <span class="kw-2">*mut </span>cairo_font_face_t,
     ) -&gt; cairo_ft_synthesize_t;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;freetype&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;freetype&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;freetype&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_ft_font_face_set_synthesize(
         font_face: <span class="kw-2">*mut </span>cairo_font_face_t,
         synth_flags: cairo_ft_synthesize_t,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;freetype&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;freetype&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;freetype&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_ft_font_face_unset_synthesize(
         font_face: <span class="kw-2">*mut </span>cairo_font_face_t,
         synth_flags: cairo_ft_synthesize_t,
@@ -2779,9 +2921,11 @@
     <span class="kw">pub fn </span>cairo_font_options_get_hint_metrics(
         options: <span class="kw-2">*const </span>cairo_font_options_t,
     ) -&gt; cairo_hint_metrics_t;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_16&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v1_16&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_16&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_font_options_get_variations(options: <span class="kw-2">*mut </span>cairo_font_options_t) -&gt; <span class="kw-2">*const </span>c_char;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_16&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v1_16&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_16&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_font_options_set_variations(
         options: <span class="kw-2">*mut </span>cairo_font_options_t,
         variations: <span class="kw-2">*const </span>c_char,
@@ -2949,12 +3093,14 @@
     <span class="kw">pub fn </span>cairo_image_surface_get_stride(surface: <span class="kw-2">*mut </span>cairo_surface_t) -&gt; c_int;
     <span class="kw">pub fn </span>cairo_image_surface_get_width(surface: <span class="kw-2">*mut </span>cairo_surface_t) -&gt; c_int;
     <span class="kw">pub fn </span>cairo_format_stride_for_width(format: cairo_format_t, width: c_int) -&gt; c_int;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;png&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;png&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;png&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_image_surface_create_from_png_stream(
         read_func: cairo_read_func_t,
         closure: <span class="kw-2">*mut </span>c_void,
     ) -&gt; <span class="kw-2">*mut </span>cairo_surface_t;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;png&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;png&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;png&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_surface_write_to_png_stream(
         surface: <span class="kw-2">*mut </span>cairo_surface_t,
         write_func: cairo_write_func_t,
@@ -2962,38 +3108,45 @@
     ) -&gt; cairo_status_t;
 
     <span class="comment">// CAIRO PDF
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;pdf&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;pdf&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;pdf&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_pdf_surface_create(
         filename: <span class="kw-2">*const </span>c_char,
         width_in_points: c_double,
         height_in_points: c_double,
     ) -&gt; <span class="kw-2">*mut </span>cairo_surface_t;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;pdf&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;pdf&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;pdf&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_pdf_surface_create_for_stream(
         write_func: cairo_write_func_t,
         closure: <span class="kw-2">*mut </span>c_void,
         width_in_points: c_double,
         height_in_points: c_double,
     ) -&gt; <span class="kw-2">*mut </span>cairo_surface_t;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;pdf&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;pdf&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;pdf&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_pdf_surface_restrict_to_version(
         surface: <span class="kw-2">*mut </span>cairo_surface_t,
         version: cairo_pdf_version_t,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;pdf&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;pdf&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;pdf&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_pdf_get_versions(
         versions: <span class="kw-2">*mut *mut </span>cairo_pdf_version_t,
         num_versions: <span class="kw-2">*mut </span>c_int,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;pdf&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;pdf&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;pdf&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_pdf_version_to_string(version: cairo_pdf_version_t) -&gt; <span class="kw-2">*const </span>c_char;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;pdf&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;pdf&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;pdf&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_pdf_surface_set_size(
         surface: <span class="kw-2">*mut </span>cairo_surface_t,
         width_in_points: f64,
         height_in_points: f64,
     );
-    <span class="attr">#[cfg(any(all(feature = <span class="string">&quot;pdf&quot;</span>, feature = <span class="string">&quot;v1_16&quot;</span>), feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(all(feature = <span class="string">&quot;pdf&quot;</span>, feature = <span class="string">&quot;v1_16&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(all(feature = <span class="string">&quot;pdf&quot;</span>, feature = <span class="string">&quot;v1_16&quot;</span>))))]
     </span><span class="kw">pub fn </span>cairo_pdf_surface_add_outline(
         surface: <span class="kw-2">*mut </span>cairo_surface_t,
         parent_id: c_int,
@@ -3001,21 +3154,25 @@
         link_attribs: <span class="kw-2">*const </span>c_char,
         flags: cairo_pdf_outline_flags_t,
     ) -&gt; c_int;
-    <span class="attr">#[cfg(any(all(feature = <span class="string">&quot;pdf&quot;</span>, feature = <span class="string">&quot;v1_16&quot;</span>), feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(all(feature = <span class="string">&quot;pdf&quot;</span>, feature = <span class="string">&quot;v1_16&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(all(feature = <span class="string">&quot;pdf&quot;</span>, feature = <span class="string">&quot;v1_16&quot;</span>))))]
     </span><span class="kw">pub fn </span>cairo_pdf_surface_set_metadata(
         surface: <span class="kw-2">*mut </span>cairo_surface_t,
         metadata: cairo_pdf_metadata_t,
         utf8: <span class="kw-2">*const </span>c_char,
     );
-    <span class="attr">#[cfg(any(all(feature = <span class="string">&quot;pdf&quot;</span>, feature = <span class="string">&quot;v1_18&quot;</span>), feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(all(feature = <span class="string">&quot;pdf&quot;</span>, feature = <span class="string">&quot;v1_18&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(all(feature = <span class="string">&quot;pdf&quot;</span>, feature = <span class="string">&quot;v1_18&quot;</span>))))]
     </span><span class="kw">pub fn </span>cairo_pdf_surface_set_custom_metadata(
         surface: <span class="kw-2">*mut </span>cairo_surface_t,
         name: <span class="kw-2">*const </span>c_char,
         value: <span class="kw-2">*const </span>c_char,
     );
-    <span class="attr">#[cfg(any(all(feature = <span class="string">&quot;pdf&quot;</span>, feature = <span class="string">&quot;v1_16&quot;</span>), feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(all(feature = <span class="string">&quot;pdf&quot;</span>, feature = <span class="string">&quot;v1_16&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(all(feature = <span class="string">&quot;pdf&quot;</span>, feature = <span class="string">&quot;v1_16&quot;</span>))))]
     </span><span class="kw">pub fn </span>cairo_pdf_surface_set_page_label(surface: <span class="kw-2">*mut </span>cairo_surface_t, utf8: <span class="kw-2">*const </span>c_char);
-    <span class="attr">#[cfg(any(all(feature = <span class="string">&quot;pdf&quot;</span>, feature = <span class="string">&quot;v1_16&quot;</span>), feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(all(feature = <span class="string">&quot;pdf&quot;</span>, feature = <span class="string">&quot;v1_16&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(all(feature = <span class="string">&quot;pdf&quot;</span>, feature = <span class="string">&quot;v1_16&quot;</span>))))]
     </span><span class="kw">pub fn </span>cairo_pdf_surface_set_thumbnail_size(
         surface: <span class="kw-2">*mut </span>cairo_surface_t,
         width: c_int,
@@ -3023,82 +3180,101 @@
     );
 
     <span class="comment">// CAIRO SVG
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;svg&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;svg&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;svg&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_svg_surface_create(
         filename: <span class="kw-2">*const </span>c_char,
         width_in_points: c_double,
         height_in_points: c_double,
     ) -&gt; <span class="kw-2">*mut </span>cairo_surface_t;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;svg&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;svg&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;svg&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_svg_surface_create_for_stream(
         write_func: cairo_write_func_t,
         closure: <span class="kw-2">*mut </span>c_void,
         width_in_points: c_double,
         height_in_points: c_double,
     ) -&gt; <span class="kw-2">*mut </span>cairo_surface_t;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;svg&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;svg&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;svg&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_svg_surface_restrict_to_version(
         surface: <span class="kw-2">*mut </span>cairo_surface_t,
         version: cairo_svg_version_t,
     );
-    <span class="attr">#[cfg(any(all(feature = <span class="string">&quot;svg&quot;</span>, feature = <span class="string">&quot;v1_16&quot;</span>), feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(all(feature = <span class="string">&quot;svg&quot;</span>, feature = <span class="string">&quot;v1_16&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(all(feature = <span class="string">&quot;svg&quot;</span>, feature = <span class="string">&quot;v1_16&quot;</span>))))]
     </span><span class="kw">pub fn </span>cairo_svg_surface_get_document_unit(surface: <span class="kw-2">*const </span>cairo_surface_t)
         -&gt; cairo_svg_unit_t;
-    <span class="attr">#[cfg(any(all(feature = <span class="string">&quot;svg&quot;</span>, feature = <span class="string">&quot;v1_16&quot;</span>), feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(all(feature = <span class="string">&quot;svg&quot;</span>, feature = <span class="string">&quot;v1_16&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(all(feature = <span class="string">&quot;svg&quot;</span>, feature = <span class="string">&quot;v1_16&quot;</span>))))]
     </span><span class="kw">pub fn </span>cairo_svg_surface_set_document_unit(
         surface: <span class="kw-2">*mut </span>cairo_surface_t,
         unit: cairo_svg_unit_t,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;svg&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;svg&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;svg&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_svg_get_versions(
         versions: <span class="kw-2">*mut *mut </span>cairo_svg_version_t,
         num_versions: <span class="kw-2">*mut </span>c_int,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;svg&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;svg&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;svg&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_svg_version_to_string(version: cairo_svg_version_t) -&gt; <span class="kw-2">*const </span>c_char;
 
     <span class="comment">// CAIRO PS
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;ps&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;ps&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;ps&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_ps_surface_create(
         filename: <span class="kw-2">*const </span>c_char,
         width_in_points: c_double,
         height_in_points: c_double,
     ) -&gt; <span class="kw-2">*mut </span>cairo_surface_t;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;ps&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;ps&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;ps&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_ps_surface_create_for_stream(
         write_func: cairo_write_func_t,
         closure: <span class="kw-2">*mut </span>c_void,
         width_in_points: c_double,
         height_in_points: c_double,
     ) -&gt; <span class="kw-2">*mut </span>cairo_surface_t;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;ps&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;ps&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;ps&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_ps_surface_restrict_to_level(
         surface: <span class="kw-2">*mut </span>cairo_surface_t,
         version: cairo_ps_level_t,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;ps&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;ps&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;ps&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_ps_get_levels(levels: <span class="kw-2">*mut *mut </span>cairo_ps_level_t, num_levels: <span class="kw-2">*mut </span>c_int);
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;ps&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;ps&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;ps&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_ps_level_to_string(level: cairo_ps_level_t) -&gt; <span class="kw-2">*const </span>c_char;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;ps&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;ps&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;ps&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_ps_surface_set_eps(surface: <span class="kw-2">*mut </span>cairo_surface_t, eps: cairo_bool_t);
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;ps&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;ps&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;ps&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_ps_surface_get_eps(surface: <span class="kw-2">*mut </span>cairo_surface_t) -&gt; cairo_bool_t;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;ps&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;ps&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;ps&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_ps_surface_set_size(
         surface: <span class="kw-2">*mut </span>cairo_surface_t,
         width_in_points: f64,
         height_in_points: f64,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;ps&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;ps&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;ps&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_ps_surface_dsc_begin_setup(surface: <span class="kw-2">*mut </span>cairo_surface_t);
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;ps&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;ps&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;ps&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_ps_surface_dsc_begin_page_setup(surface: <span class="kw-2">*mut </span>cairo_surface_t);
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;ps&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;ps&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;ps&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_ps_surface_dsc_comment(surface: <span class="kw-2">*mut </span>cairo_surface_t, comment: <span class="kw-2">*const </span>c_char);
 
     <span class="comment">// CAIRO XCB
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;xcb&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;xcb&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;xcb&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_xcb_surface_create(
         connection: <span class="kw-2">*mut </span>xcb_connection_t,
         drawable: xcb_drawable_t,
@@ -3106,7 +3282,8 @@
         width: c_int,
         height: c_int,
     ) -&gt; <span class="kw-2">*mut </span>cairo_surface_t;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;xcb&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;xcb&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;xcb&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_xcb_surface_create_for_bitmap(
         connection: <span class="kw-2">*mut </span>xcb_connection_t,
         screen: <span class="kw-2">*mut </span>xcb_screen_t,
@@ -3114,7 +3291,8 @@
         width: c_int,
         height: c_int,
     ) -&gt; <span class="kw-2">*mut </span>cairo_surface_t;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;xcb&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;xcb&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;xcb&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_xcb_surface_create_with_xrender_format(
         connection: <span class="kw-2">*mut </span>xcb_connection_t,
         screen: <span class="kw-2">*mut </span>xcb_screen_t,
@@ -3123,36 +3301,44 @@
         width: c_int,
         height: c_int,
     ) -&gt; <span class="kw-2">*mut </span>cairo_surface_t;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;xcb&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;xcb&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;xcb&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_xcb_surface_set_size(surface: <span class="kw-2">*mut </span>cairo_surface_t, width: c_int, height: c_int);
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;xcb&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;xcb&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;xcb&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_xcb_surface_set_drawable(
         surface: <span class="kw-2">*mut </span>cairo_surface_t,
         drawable: xcb_drawable_t,
         width: c_int,
         height: c_int,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;xcb&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;xcb&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;xcb&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_xcb_device_get_connection(device: <span class="kw-2">*mut </span>cairo_device_t) -&gt; <span class="kw-2">*mut </span>xcb_connection_t;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;xcb&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;xcb&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;xcb&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_xcb_device_debug_cap_xrender_version(
         device: <span class="kw-2">*mut </span>cairo_device_t,
         major_version: c_int,
         minor_version: c_int,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;xcb&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;xcb&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;xcb&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_xcb_device_debug_cap_xshm_version(
         device: <span class="kw-2">*mut </span>cairo_device_t,
         major_version: c_int,
         minor_version: c_int,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;xcb&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;xcb&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;xcb&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_xcb_device_debug_get_precision(device: <span class="kw-2">*mut </span>cairo_device_t) -&gt; c_int;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;xcb&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;xcb&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;xcb&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_xcb_device_debug_set_precision(device: <span class="kw-2">*mut </span>cairo_device_t, precision: c_int);
 
     <span class="comment">// CAIRO XLIB SURFACE
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;xlib&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;xlib&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;xlib&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_xlib_surface_create(
         dpy: <span class="kw-2">*mut </span>xlib::Display,
         drawable: xlib::Drawable,
@@ -3160,7 +3346,8 @@
         width: c_int,
         height: c_int,
     ) -&gt; <span class="kw-2">*mut </span>cairo_surface_t;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;xlib&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;xlib&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;xlib&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_xlib_surface_create_for_bitmap(
         dpy: <span class="kw-2">*mut </span>xlib::Display,
         bitmap: xlib::Pixmap,
@@ -3168,113 +3355,143 @@
         width: c_int,
         height: c_int,
     ) -&gt; <span class="kw-2">*mut </span>cairo_surface_t;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;xlib&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;xlib&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;xlib&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_xlib_surface_set_size(surface: <span class="kw-2">*mut </span>cairo_surface_t, width: c_int, height: c_int);
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;xlib&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;xlib&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;xlib&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_xlib_surface_set_drawable(
         surface: <span class="kw-2">*mut </span>cairo_surface_t,
         drawable: xlib::Drawable,
         width: c_int,
         height: c_int,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;xlib&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;xlib&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;xlib&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_xlib_surface_get_display(surface: <span class="kw-2">*mut </span>cairo_surface_t) -&gt; <span class="kw-2">*mut </span>xlib::Display;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;xlib&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;xlib&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;xlib&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_xlib_surface_get_drawable(surface: <span class="kw-2">*mut </span>cairo_surface_t) -&gt; xlib::Drawable;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;xlib&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;xlib&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;xlib&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_xlib_surface_get_screen(surface: <span class="kw-2">*mut </span>cairo_surface_t) -&gt; <span class="kw-2">*mut </span>xlib::Screen;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;xlib&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;xlib&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;xlib&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_xlib_surface_get_visual(surface: <span class="kw-2">*mut </span>cairo_surface_t) -&gt; <span class="kw-2">*mut </span>xlib::Visual;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;xlib&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;xlib&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;xlib&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_xlib_surface_get_depth(surface: <span class="kw-2">*mut </span>cairo_surface_t) -&gt; c_int;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;xlib&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;xlib&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;xlib&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_xlib_surface_get_width(surface: <span class="kw-2">*mut </span>cairo_surface_t) -&gt; c_int;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;xlib&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;xlib&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;xlib&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_xlib_surface_get_height(surface: <span class="kw-2">*mut </span>cairo_surface_t) -&gt; c_int;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;xlib&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;xlib&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;xlib&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_xlib_device_debug_cap_xrender_version(
         device: <span class="kw-2">*mut </span>cairo_device_t,
         major_version: c_int,
         minor_version: c_int,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;xlib&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;xlib&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;xlib&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_xlib_device_debug_get_precision(device: <span class="kw-2">*mut </span>cairo_device_t) -&gt; c_int;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;xlib&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;xlib&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;xlib&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_xlib_device_debug_set_precision(device: <span class="kw-2">*mut </span>cairo_device_t, precision: c_int);
 
     <span class="comment">// CAIRO WINDOWS SURFACE
-    </span><span class="attr">#[cfg(any(all(windows, feature = <span class="string">&quot;win32-surface&quot;</span>), feature = <span class="string">&quot;dox&quot;</span>))]
+    </span><span class="attr">#[cfg(all(windows, feature = <span class="string">&quot;win32-surface&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(all(windows, feature = <span class="string">&quot;win32-surface&quot;</span>))))]
     </span><span class="kw">pub fn </span>cairo_win32_surface_create(hdc: winapi::HDC) -&gt; <span class="kw-2">*mut </span>cairo_surface_t;
-    <span class="attr">#[cfg(any(all(windows, feature = <span class="string">&quot;win32-surface&quot;</span>), feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(all(windows, feature = <span class="string">&quot;win32-surface&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(all(windows, feature = <span class="string">&quot;win32-surface&quot;</span>))))]
     </span><span class="kw">pub fn </span>cairo_win32_surface_create_with_format(
         hdc: winapi::HDC,
         format: cairo_format_t,
     ) -&gt; <span class="kw-2">*mut </span>cairo_surface_t;
-    <span class="attr">#[cfg(any(all(windows, feature = <span class="string">&quot;win32-surface&quot;</span>), feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(all(windows, feature = <span class="string">&quot;win32-surface&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(all(windows, feature = <span class="string">&quot;win32-surface&quot;</span>))))]
     </span><span class="kw">pub fn </span>cairo_win32_surface_create_with_dib(
         format: cairo_format_t,
         width: c_int,
         height: c_int,
     ) -&gt; <span class="kw-2">*mut </span>cairo_surface_t;
-    <span class="attr">#[cfg(any(all(windows, feature = <span class="string">&quot;win32-surface&quot;</span>), feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(all(windows, feature = <span class="string">&quot;win32-surface&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(all(windows, feature = <span class="string">&quot;win32-surface&quot;</span>))))]
     </span><span class="kw">pub fn </span>cairo_win32_surface_create_with_ddb(
         hdc: winapi::HDC,
         format: cairo_format_t,
         width: c_int,
         height: c_int,
     ) -&gt; <span class="kw-2">*mut </span>cairo_surface_t;
-    <span class="attr">#[cfg(any(all(windows, feature = <span class="string">&quot;win32-surface&quot;</span>), feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(all(windows, feature = <span class="string">&quot;win32-surface&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(all(windows, feature = <span class="string">&quot;win32-surface&quot;</span>))))]
     </span><span class="kw">pub fn </span>cairo_win32_printing_surface_create(hdc: winapi::HDC) -&gt; <span class="kw-2">*mut </span>cairo_surface_t;
-    <span class="attr">#[cfg(any(all(windows, feature = <span class="string">&quot;win32-surface&quot;</span>), feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(all(windows, feature = <span class="string">&quot;win32-surface&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(all(windows, feature = <span class="string">&quot;win32-surface&quot;</span>))))]
     </span><span class="kw">pub fn </span>cairo_win32_surface_get_dc(surface: <span class="kw-2">*mut </span>cairo_surface_t) -&gt; winapi::HDC;
-    <span class="attr">#[cfg(any(all(windows, feature = <span class="string">&quot;win32-surface&quot;</span>), feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(all(windows, feature = <span class="string">&quot;win32-surface&quot;</span>))]
+    #[cfg_attr(docsrs, doc(cfg(all(windows, feature = <span class="string">&quot;win32-surface&quot;</span>))))]
     </span><span class="kw">pub fn </span>cairo_win32_surface_get_image(surface: <span class="kw-2">*mut </span>cairo_surface_t) -&gt; <span class="kw-2">*mut </span>cairo_surface_t;
 
-    <span class="attr">#[cfg(any(target_os = <span class="string">&quot;macos&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(target_os = <span class="string">&quot;macos&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(target_os = <span class="string">&quot;macos&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_quartz_surface_create(
         format: cairo_format_t,
         width: c_uint,
         height: c_uint,
     ) -&gt; <span class="kw-2">*mut </span>cairo_surface_t;
-    <span class="attr">#[cfg(any(target_os = <span class="string">&quot;macos&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(target_os = <span class="string">&quot;macos&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(target_os = <span class="string">&quot;macos&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_quartz_surface_create_for_cg_context(
         cg_context: CGContextRef,
         width: c_uint,
         height: c_uint,
     ) -&gt; <span class="kw-2">*mut </span>cairo_surface_t;
-    <span class="attr">#[cfg(any(target_os = <span class="string">&quot;macos&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(target_os = <span class="string">&quot;macos&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(target_os = <span class="string">&quot;macos&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_quartz_surface_get_cg_context(surface: <span class="kw-2">*mut </span>cairo_surface_t) -&gt; CGContextRef;
 
     <span class="comment">// CAIRO SCRIPT
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;script&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;script&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;script&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_script_create(filename: <span class="kw-2">*const </span>c_char) -&gt; <span class="kw-2">*mut </span>cairo_device_t;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;script&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;script&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;script&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_script_create_for_stream(
         write_func: cairo_write_func_t,
         closure: <span class="kw-2">*mut </span>c_void,
     ) -&gt; cairo_status_t;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;script&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;script&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;script&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_script_from_recording_surface(
         script: <span class="kw-2">*mut </span>cairo_device_t,
         surface: <span class="kw-2">*mut </span>cairo_surface_t,
     ) -&gt; cairo_status_t;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;script&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;script&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;script&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_script_get_mode(script: <span class="kw-2">*mut </span>cairo_device_t) -&gt; cairo_script_mode_t;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;script&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;script&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;script&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_script_set_mode(script: <span class="kw-2">*mut </span>cairo_device_t, mode: cairo_script_mode_t);
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;script&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;script&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;script&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_script_surface_create(
         script: <span class="kw-2">*mut </span>cairo_device_t,
         content: cairo_content_t,
         width: c_double,
         height: c_double,
     ) -&gt; <span class="kw-2">*mut </span>cairo_surface_t;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;script&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;script&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;script&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_script_surface_create_for_target(
         script: <span class="kw-2">*mut </span>cairo_device_t,
         target: <span class="kw-2">*mut </span>cairo_surface_t,
     ) -&gt; <span class="kw-2">*mut </span>cairo_surface_t;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;script&quot;</span>, feature = <span class="string">&quot;dox&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;script&quot;</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;script&quot;</span>)))]
     </span><span class="kw">pub fn </span>cairo_script_write_comment(
         script: <span class="kw-2">*mut </span>cairo_device_t,
         comment: <span class="kw-2">*const </span>c_char,
@@ -3350,6 +3567,7 @@
 }
 
 <span class="attr">#[cfg(feature = <span class="string">&quot;use_glib&quot;</span>)]
+#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;use_glib&quot;</span>)))]
 </span><span class="kw">pub mod </span>gobject;
 
 <span class="kw">pub const </span>STATUS_SUCCESS: i32 = <span class="number">0</span>;
