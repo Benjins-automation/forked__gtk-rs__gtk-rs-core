@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `pango/src/auto/enums.rs`."><title>enums.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="pango" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (a77c55248 2023-05-06)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `pango/src/auto/enums.rs`."><title>enums.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="pango" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (c4190f2d3 2023-05-07)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -4311,36 +4311,36 @@
     </span><span class="attr">#[doc(alias = <span class="string">&quot;PANGO_ATTR_OVERLINE_COLOR&quot;</span>)]
     </span>OverlineColor,
     <span class="doccomment">/// line height factor ([`AttrFloat`][crate::AttrFloat]). Since: 1.50
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     #[doc(alias = <span class="string">&quot;PANGO_ATTR_LINE_HEIGHT&quot;</span>)]
     </span>LineHeight,
     <span class="doccomment">/// line height ([`AttrInt`][crate::AttrInt]). Since: 1.50
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     #[doc(alias = <span class="string">&quot;PANGO_ATTR_ABSOLUTE_LINE_HEIGHT&quot;</span>)]
     </span>AbsoluteLineHeight,
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     #[doc(alias = <span class="string">&quot;PANGO_ATTR_TEXT_TRANSFORM&quot;</span>)]
     </span>TextTransform,
     <span class="doccomment">/// override segmentation to classify the range of the attribute as a single word ([`AttrInt`][crate::AttrInt]). Since 1.50
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     #[doc(alias = <span class="string">&quot;PANGO_ATTR_WORD&quot;</span>)]
     </span>Word,
     <span class="doccomment">/// override segmentation to classify the range of the attribute as a single sentence ([`AttrInt`][crate::AttrInt]). Since 1.50
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     #[doc(alias = <span class="string">&quot;PANGO_ATTR_SENTENCE&quot;</span>)]
     </span>Sentence,
     <span class="doccomment">/// baseline displacement ([`AttrInt`][crate::AttrInt]). Since 1.50
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     #[doc(alias = <span class="string">&quot;PANGO_ATTR_BASELINE_SHIFT&quot;</span>)]
     </span>BaselineShift,
     <span class="doccomment">/// font-relative size change ([`AttrInt`][crate::AttrInt]). Since 1.50
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     #[doc(alias = <span class="string">&quot;PANGO_ATTR_FONT_SCALE&quot;</span>)]
     </span>FontScale,
@@ -4393,19 +4393,19 @@
                 <span class="self">Self</span>::InsertHyphens =&gt; <span class="string">&quot;InsertHyphens&quot;</span>,
                 <span class="self">Self</span>::Overline =&gt; <span class="string">&quot;Overline&quot;</span>,
                 <span class="self">Self</span>::OverlineColor =&gt; <span class="string">&quot;OverlineColor&quot;</span>,
-                <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+                <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
                 </span><span class="self">Self</span>::LineHeight =&gt; <span class="string">&quot;LineHeight&quot;</span>,
-                <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+                <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
                 </span><span class="self">Self</span>::AbsoluteLineHeight =&gt; <span class="string">&quot;AbsoluteLineHeight&quot;</span>,
-                <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+                <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
                 </span><span class="self">Self</span>::TextTransform =&gt; <span class="string">&quot;TextTransform&quot;</span>,
-                <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+                <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
                 </span><span class="self">Self</span>::Word =&gt; <span class="string">&quot;Word&quot;</span>,
-                <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+                <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
                 </span><span class="self">Self</span>::Sentence =&gt; <span class="string">&quot;Sentence&quot;</span>,
-                <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+                <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
                 </span><span class="self">Self</span>::BaselineShift =&gt; <span class="string">&quot;BaselineShift&quot;</span>,
-                <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+                <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
                 </span><span class="self">Self</span>::FontScale =&gt; <span class="string">&quot;FontScale&quot;</span>,
                 <span class="kw">_ </span>=&gt; <span class="string">&quot;Unknown&quot;</span>,
             }
@@ -4450,19 +4450,19 @@
             <span class="self">Self</span>::InsertHyphens =&gt; ffi::PANGO_ATTR_INSERT_HYPHENS,
             <span class="self">Self</span>::Overline =&gt; ffi::PANGO_ATTR_OVERLINE,
             <span class="self">Self</span>::OverlineColor =&gt; ffi::PANGO_ATTR_OVERLINE_COLOR,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
             </span><span class="self">Self</span>::LineHeight =&gt; ffi::PANGO_ATTR_LINE_HEIGHT,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
             </span><span class="self">Self</span>::AbsoluteLineHeight =&gt; ffi::PANGO_ATTR_ABSOLUTE_LINE_HEIGHT,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
             </span><span class="self">Self</span>::TextTransform =&gt; ffi::PANGO_ATTR_TEXT_TRANSFORM,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
             </span><span class="self">Self</span>::Word =&gt; ffi::PANGO_ATTR_WORD,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
             </span><span class="self">Self</span>::Sentence =&gt; ffi::PANGO_ATTR_SENTENCE,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
             </span><span class="self">Self</span>::BaselineShift =&gt; ffi::PANGO_ATTR_BASELINE_SHIFT,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
             </span><span class="self">Self</span>::FontScale =&gt; ffi::PANGO_ATTR_FONT_SCALE,
             <span class="self">Self</span>::__Unknown(value) =&gt; value,
         }
@@ -4504,19 +4504,19 @@
             ffi::PANGO_ATTR_INSERT_HYPHENS =&gt; <span class="self">Self</span>::InsertHyphens,
             ffi::PANGO_ATTR_OVERLINE =&gt; <span class="self">Self</span>::Overline,
             ffi::PANGO_ATTR_OVERLINE_COLOR =&gt; <span class="self">Self</span>::OverlineColor,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
             </span>ffi::PANGO_ATTR_LINE_HEIGHT =&gt; <span class="self">Self</span>::LineHeight,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
             </span>ffi::PANGO_ATTR_ABSOLUTE_LINE_HEIGHT =&gt; <span class="self">Self</span>::AbsoluteLineHeight,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
             </span>ffi::PANGO_ATTR_TEXT_TRANSFORM =&gt; <span class="self">Self</span>::TextTransform,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
             </span>ffi::PANGO_ATTR_WORD =&gt; <span class="self">Self</span>::Word,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
             </span>ffi::PANGO_ATTR_SENTENCE =&gt; <span class="self">Self</span>::Sentence,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
             </span>ffi::PANGO_ATTR_BASELINE_SHIFT =&gt; <span class="self">Self</span>::BaselineShift,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
             </span>ffi::PANGO_ATTR_FONT_SCALE =&gt; <span class="self">Self</span>::FontScale,
             value =&gt; <span class="self">Self</span>::__Unknown(value),
         }
@@ -4577,7 +4577,7 @@
 }
 
 <span class="doccomment">/// An enumeration that affects baseline shifts between runs.
-</span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+</span><span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
 #[non_exhaustive]
@@ -4598,7 +4598,7 @@
     </span>__Unknown(i32),
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
 </span><span class="kw">impl </span>fmt::Display <span class="kw">for </span>BaselineShift {
     <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter) -&gt; fmt::Result {
@@ -4615,7 +4615,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
 #[doc(hidden)]
 </span><span class="kw">impl </span>IntoGlib <span class="kw">for </span>BaselineShift {
@@ -4632,7 +4632,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
 #[doc(hidden)]
 </span><span class="kw">impl </span>FromGlib&lt;ffi::PangoBaselineShift&gt; <span class="kw">for </span>BaselineShift {
@@ -4647,7 +4647,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
 </span><span class="kw">impl </span>StaticType <span class="kw">for </span>BaselineShift {
     <span class="attr">#[inline]
@@ -4656,7 +4656,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
 </span><span class="kw">impl </span>glib::HasParamSpec <span class="kw">for </span>BaselineShift {
     <span class="kw">type </span>ParamSpec = glib::ParamSpecEnum;
@@ -4668,13 +4668,13 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
 </span><span class="kw">impl </span>glib::value::ValueType <span class="kw">for </span>BaselineShift {
     <span class="kw">type </span>Type = <span class="self">Self</span>;
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
 </span><span class="kw">unsafe impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; FromValue&lt;<span class="lifetime">&#39;a</span>&gt; <span class="kw">for </span>BaselineShift {
     <span class="kw">type </span>Checker = glib::value::GenericValueTypeChecker&lt;<span class="self">Self</span>&gt;;
@@ -4685,7 +4685,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
 </span><span class="kw">impl </span>ToValue <span class="kw">for </span>BaselineShift {
     <span class="attr">#[inline]
@@ -4703,7 +4703,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
 </span><span class="kw">impl </span>From&lt;BaselineShift&gt; <span class="kw">for </span>glib::Value {
     <span class="attr">#[inline]
@@ -5386,7 +5386,7 @@
 
 <span class="doccomment">/// An enumeration that affects font sizes for superscript
 /// and subscript positioning and for (emulated) Small Caps.
-</span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+</span><span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
 #[non_exhaustive]
@@ -5408,7 +5408,7 @@
     </span>__Unknown(i32),
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
 </span><span class="kw">impl </span>fmt::Display <span class="kw">for </span>FontScale {
     <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter) -&gt; fmt::Result {
@@ -5426,7 +5426,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
 #[doc(hidden)]
 </span><span class="kw">impl </span>IntoGlib <span class="kw">for </span>FontScale {
@@ -5444,7 +5444,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
 #[doc(hidden)]
 </span><span class="kw">impl </span>FromGlib&lt;ffi::PangoFontScale&gt; <span class="kw">for </span>FontScale {
@@ -5460,7 +5460,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
 </span><span class="kw">impl </span>StaticType <span class="kw">for </span>FontScale {
     <span class="attr">#[inline]
@@ -5469,7 +5469,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
 </span><span class="kw">impl </span>glib::HasParamSpec <span class="kw">for </span>FontScale {
     <span class="kw">type </span>ParamSpec = glib::ParamSpecEnum;
@@ -5481,13 +5481,13 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
 </span><span class="kw">impl </span>glib::value::ValueType <span class="kw">for </span>FontScale {
     <span class="kw">type </span>Type = <span class="self">Self</span>;
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
 </span><span class="kw">unsafe impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; FromValue&lt;<span class="lifetime">&#39;a</span>&gt; <span class="kw">for </span>FontScale {
     <span class="kw">type </span>Checker = glib::value::GenericValueTypeChecker&lt;<span class="self">Self</span>&gt;;
@@ -5498,7 +5498,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
 </span><span class="kw">impl </span>ToValue <span class="kw">for </span>FontScale {
     <span class="attr">#[inline]
@@ -5516,7 +5516,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
 </span><span class="kw">impl </span>From&lt;FontScale&gt; <span class="kw">for </span>glib::Value {
     <span class="attr">#[inline]
@@ -5832,7 +5832,7 @@
 
 <span class="doccomment">/// The [`Overline`][crate::Overline] enumeration is used to specify whether text
 /// should be overlined, and if so, the type of line.
-</span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_46&quot;</span>))]
+</span><span class="attr">#[cfg(feature = <span class="string">&quot;v1_46&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_46&quot;</span>)))]
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
 #[non_exhaustive]
@@ -5849,7 +5849,7 @@
     </span>__Unknown(i32),
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_46&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v1_46&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_46&quot;</span>)))]
 </span><span class="kw">impl </span>fmt::Display <span class="kw">for </span>Overline {
     <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter) -&gt; fmt::Result {
@@ -5865,7 +5865,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_46&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v1_46&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_46&quot;</span>)))]
 #[doc(hidden)]
 </span><span class="kw">impl </span>IntoGlib <span class="kw">for </span>Overline {
@@ -5881,7 +5881,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_46&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v1_46&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_46&quot;</span>)))]
 #[doc(hidden)]
 </span><span class="kw">impl </span>FromGlib&lt;ffi::PangoOverline&gt; <span class="kw">for </span>Overline {
@@ -5895,7 +5895,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_46&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v1_46&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_46&quot;</span>)))]
 </span><span class="kw">impl </span>StaticType <span class="kw">for </span>Overline {
     <span class="attr">#[inline]
@@ -5904,7 +5904,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_46&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v1_46&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_46&quot;</span>)))]
 </span><span class="kw">impl </span>glib::HasParamSpec <span class="kw">for </span>Overline {
     <span class="kw">type </span>ParamSpec = glib::ParamSpecEnum;
@@ -5916,13 +5916,13 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_46&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v1_46&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_46&quot;</span>)))]
 </span><span class="kw">impl </span>glib::value::ValueType <span class="kw">for </span>Overline {
     <span class="kw">type </span>Type = <span class="self">Self</span>;
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_46&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v1_46&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_46&quot;</span>)))]
 </span><span class="kw">unsafe impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; FromValue&lt;<span class="lifetime">&#39;a</span>&gt; <span class="kw">for </span>Overline {
     <span class="kw">type </span>Checker = glib::value::GenericValueTypeChecker&lt;<span class="self">Self</span>&gt;;
@@ -5933,7 +5933,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_46&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v1_46&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_46&quot;</span>)))]
 </span><span class="kw">impl </span>ToValue <span class="kw">for </span>Overline {
     <span class="attr">#[inline]
@@ -5951,7 +5951,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_46&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v1_46&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_46&quot;</span>)))]
 </span><span class="kw">impl </span>From&lt;Overline&gt; <span class="kw">for </span>glib::Value {
     <span class="attr">#[inline]
@@ -7190,20 +7190,20 @@
     </span>Left,
     <span class="doccomment">/// the text appears to the left of the tab stop position
     ///   until the available space is filled. Since: 1.50
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     #[doc(alias = <span class="string">&quot;PANGO_TAB_RIGHT&quot;</span>)]
     </span>Right,
     <span class="doccomment">/// the text is centered at the tab stop position
     ///   until the available space is filled. Since: 1.50
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     #[doc(alias = <span class="string">&quot;PANGO_TAB_CENTER&quot;</span>)]
     </span>Center,
     <span class="doccomment">/// text before the first occurrence of the decimal point
     ///   character appears to the left of the tab stop position (until the available
     ///   space is filled), the rest to the right. Since: 1.50
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     #[doc(alias = <span class="string">&quot;PANGO_TAB_DECIMAL&quot;</span>)]
     </span>Decimal,
@@ -7218,11 +7218,11 @@
             <span class="string">&quot;TabAlign::{}&quot;</span>,
             <span class="kw">match </span><span class="kw-2">*</span><span class="self">self </span>{
                 <span class="self">Self</span>::Left =&gt; <span class="string">&quot;Left&quot;</span>,
-                <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+                <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
                 </span><span class="self">Self</span>::Right =&gt; <span class="string">&quot;Right&quot;</span>,
-                <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+                <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
                 </span><span class="self">Self</span>::Center =&gt; <span class="string">&quot;Center&quot;</span>,
-                <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+                <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
                 </span><span class="self">Self</span>::Decimal =&gt; <span class="string">&quot;Decimal&quot;</span>,
                 <span class="kw">_ </span>=&gt; <span class="string">&quot;Unknown&quot;</span>,
             }
@@ -7238,11 +7238,11 @@
     </span><span class="kw">fn </span>into_glib(<span class="self">self</span>) -&gt; ffi::PangoTabAlign {
         <span class="kw">match </span><span class="self">self </span>{
             <span class="self">Self</span>::Left =&gt; ffi::PANGO_TAB_LEFT,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
             </span><span class="self">Self</span>::Right =&gt; ffi::PANGO_TAB_RIGHT,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
             </span><span class="self">Self</span>::Center =&gt; ffi::PANGO_TAB_CENTER,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
             </span><span class="self">Self</span>::Decimal =&gt; ffi::PANGO_TAB_DECIMAL,
             <span class="self">Self</span>::__Unknown(value) =&gt; value,
         }
@@ -7255,11 +7255,11 @@
     </span><span class="kw">unsafe fn </span>from_glib(value: ffi::PangoTabAlign) -&gt; <span class="self">Self </span>{
         <span class="kw">match </span>value {
             ffi::PANGO_TAB_LEFT =&gt; <span class="self">Self</span>::Left,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
             </span>ffi::PANGO_TAB_RIGHT =&gt; <span class="self">Self</span>::Right,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
             </span>ffi::PANGO_TAB_CENTER =&gt; <span class="self">Self</span>::Center,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
             </span>ffi::PANGO_TAB_DECIMAL =&gt; <span class="self">Self</span>::Decimal,
             value =&gt; <span class="self">Self</span>::__Unknown(value),
         }
@@ -7320,7 +7320,7 @@
 }
 
 <span class="doccomment">/// An enumeration that affects how Pango treats characters during shaping.
-</span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+</span><span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
 #[non_exhaustive]
@@ -7343,7 +7343,7 @@
     </span>__Unknown(i32),
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
 </span><span class="kw">impl </span>fmt::Display <span class="kw">for </span>TextTransform {
     <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter) -&gt; fmt::Result {
@@ -7361,7 +7361,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
 #[doc(hidden)]
 </span><span class="kw">impl </span>IntoGlib <span class="kw">for </span>TextTransform {
@@ -7379,7 +7379,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
 #[doc(hidden)]
 </span><span class="kw">impl </span>FromGlib&lt;ffi::PangoTextTransform&gt; <span class="kw">for </span>TextTransform {
@@ -7395,7 +7395,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
 </span><span class="kw">impl </span>StaticType <span class="kw">for </span>TextTransform {
     <span class="attr">#[inline]
@@ -7404,7 +7404,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
 </span><span class="kw">impl </span>glib::HasParamSpec <span class="kw">for </span>TextTransform {
     <span class="kw">type </span>ParamSpec = glib::ParamSpecEnum;
@@ -7416,13 +7416,13 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
 </span><span class="kw">impl </span>glib::value::ValueType <span class="kw">for </span>TextTransform {
     <span class="kw">type </span>Type = <span class="self">Self</span>;
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
 </span><span class="kw">unsafe impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; FromValue&lt;<span class="lifetime">&#39;a</span>&gt; <span class="kw">for </span>TextTransform {
     <span class="kw">type </span>Checker = glib::value::GenericValueTypeChecker&lt;<span class="self">Self</span>&gt;;
@@ -7433,7 +7433,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
 </span><span class="kw">impl </span>ToValue <span class="kw">for </span>TextTransform {
     <span class="attr">#[inline]
@@ -7451,7 +7451,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
 </span><span class="kw">impl </span>From&lt;TextTransform&gt; <span class="kw">for </span>glib::Value {
     <span class="attr">#[inline]
@@ -7637,33 +7637,33 @@
     </span>SmallCaps,
     <span class="doccomment">/// A font with all characters
     ///   replaced by smaller variants of the capital characters. Since: 1.50
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     #[doc(alias = <span class="string">&quot;PANGO_VARIANT_ALL_SMALL_CAPS&quot;</span>)]
     </span>AllSmallCaps,
     <span class="doccomment">/// A font with the lower case characters
     ///   replaced by smaller variants of the capital characters.
     ///   Petite Caps can be even smaller than Small Caps. Since: 1.50
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     #[doc(alias = <span class="string">&quot;PANGO_VARIANT_PETITE_CAPS&quot;</span>)]
     </span>PetiteCaps,
     <span class="doccomment">/// A font with all characters
     ///   replaced by smaller variants of the capital characters.
     ///   Petite Caps can be even smaller than Small Caps. Since: 1.50
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     #[doc(alias = <span class="string">&quot;PANGO_VARIANT_ALL_PETITE_CAPS&quot;</span>)]
     </span>AllPetiteCaps,
     <span class="doccomment">/// A font with the upper case characters
     ///   replaced by smaller variants of the capital letters. Since: 1.50
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     #[doc(alias = <span class="string">&quot;PANGO_VARIANT_UNICASE&quot;</span>)]
     </span>Unicase,
     <span class="doccomment">/// A font with capital letters that
     ///   are more suitable for all-uppercase titles. Since: 1.50
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_50&quot;</span>)))]
     #[doc(alias = <span class="string">&quot;PANGO_VARIANT_TITLE_CAPS&quot;</span>)]
     </span>TitleCaps,
@@ -7679,15 +7679,15 @@
             <span class="kw">match </span><span class="kw-2">*</span><span class="self">self </span>{
                 <span class="self">Self</span>::Normal =&gt; <span class="string">&quot;Normal&quot;</span>,
                 <span class="self">Self</span>::SmallCaps =&gt; <span class="string">&quot;SmallCaps&quot;</span>,
-                <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+                <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
                 </span><span class="self">Self</span>::AllSmallCaps =&gt; <span class="string">&quot;AllSmallCaps&quot;</span>,
-                <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+                <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
                 </span><span class="self">Self</span>::PetiteCaps =&gt; <span class="string">&quot;PetiteCaps&quot;</span>,
-                <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+                <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
                 </span><span class="self">Self</span>::AllPetiteCaps =&gt; <span class="string">&quot;AllPetiteCaps&quot;</span>,
-                <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+                <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
                 </span><span class="self">Self</span>::Unicase =&gt; <span class="string">&quot;Unicase&quot;</span>,
-                <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+                <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
                 </span><span class="self">Self</span>::TitleCaps =&gt; <span class="string">&quot;TitleCaps&quot;</span>,
                 <span class="kw">_ </span>=&gt; <span class="string">&quot;Unknown&quot;</span>,
             }
@@ -7704,15 +7704,15 @@
         <span class="kw">match </span><span class="self">self </span>{
             <span class="self">Self</span>::Normal =&gt; ffi::PANGO_VARIANT_NORMAL,
             <span class="self">Self</span>::SmallCaps =&gt; ffi::PANGO_VARIANT_SMALL_CAPS,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
             </span><span class="self">Self</span>::AllSmallCaps =&gt; ffi::PANGO_VARIANT_ALL_SMALL_CAPS,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
             </span><span class="self">Self</span>::PetiteCaps =&gt; ffi::PANGO_VARIANT_PETITE_CAPS,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
             </span><span class="self">Self</span>::AllPetiteCaps =&gt; ffi::PANGO_VARIANT_ALL_PETITE_CAPS,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
             </span><span class="self">Self</span>::Unicase =&gt; ffi::PANGO_VARIANT_UNICASE,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
             </span><span class="self">Self</span>::TitleCaps =&gt; ffi::PANGO_VARIANT_TITLE_CAPS,
             <span class="self">Self</span>::__Unknown(value) =&gt; value,
         }
@@ -7726,15 +7726,15 @@
         <span class="kw">match </span>value {
             ffi::PANGO_VARIANT_NORMAL =&gt; <span class="self">Self</span>::Normal,
             ffi::PANGO_VARIANT_SMALL_CAPS =&gt; <span class="self">Self</span>::SmallCaps,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
             </span>ffi::PANGO_VARIANT_ALL_SMALL_CAPS =&gt; <span class="self">Self</span>::AllSmallCaps,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
             </span>ffi::PANGO_VARIANT_PETITE_CAPS =&gt; <span class="self">Self</span>::PetiteCaps,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
             </span>ffi::PANGO_VARIANT_ALL_PETITE_CAPS =&gt; <span class="self">Self</span>::AllPetiteCaps,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
             </span>ffi::PANGO_VARIANT_UNICASE =&gt; <span class="self">Self</span>::Unicase,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v1_50&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
             </span>ffi::PANGO_VARIANT_TITLE_CAPS =&gt; <span class="self">Self</span>::TitleCaps,
             value =&gt; <span class="self">Self</span>::__Unknown(value),
         }

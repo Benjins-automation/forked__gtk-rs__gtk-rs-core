@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gio/src/output_stream.rs`."><title>output_stream.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (a77c55248 2023-05-06)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gio/src/output_stream.rs`."><title>output_stream.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (c4190f2d3 2023-05-07)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -1071,123 +1071,6 @@
 <a href="#998" id="998">998</a>
 <a href="#999" id="999">999</a>
 <a href="#1000" id="1000">1000</a>
-<a href="#1001" id="1001">1001</a>
-<a href="#1002" id="1002">1002</a>
-<a href="#1003" id="1003">1003</a>
-<a href="#1004" id="1004">1004</a>
-<a href="#1005" id="1005">1005</a>
-<a href="#1006" id="1006">1006</a>
-<a href="#1007" id="1007">1007</a>
-<a href="#1008" id="1008">1008</a>
-<a href="#1009" id="1009">1009</a>
-<a href="#1010" id="1010">1010</a>
-<a href="#1011" id="1011">1011</a>
-<a href="#1012" id="1012">1012</a>
-<a href="#1013" id="1013">1013</a>
-<a href="#1014" id="1014">1014</a>
-<a href="#1015" id="1015">1015</a>
-<a href="#1016" id="1016">1016</a>
-<a href="#1017" id="1017">1017</a>
-<a href="#1018" id="1018">1018</a>
-<a href="#1019" id="1019">1019</a>
-<a href="#1020" id="1020">1020</a>
-<a href="#1021" id="1021">1021</a>
-<a href="#1022" id="1022">1022</a>
-<a href="#1023" id="1023">1023</a>
-<a href="#1024" id="1024">1024</a>
-<a href="#1025" id="1025">1025</a>
-<a href="#1026" id="1026">1026</a>
-<a href="#1027" id="1027">1027</a>
-<a href="#1028" id="1028">1028</a>
-<a href="#1029" id="1029">1029</a>
-<a href="#1030" id="1030">1030</a>
-<a href="#1031" id="1031">1031</a>
-<a href="#1032" id="1032">1032</a>
-<a href="#1033" id="1033">1033</a>
-<a href="#1034" id="1034">1034</a>
-<a href="#1035" id="1035">1035</a>
-<a href="#1036" id="1036">1036</a>
-<a href="#1037" id="1037">1037</a>
-<a href="#1038" id="1038">1038</a>
-<a href="#1039" id="1039">1039</a>
-<a href="#1040" id="1040">1040</a>
-<a href="#1041" id="1041">1041</a>
-<a href="#1042" id="1042">1042</a>
-<a href="#1043" id="1043">1043</a>
-<a href="#1044" id="1044">1044</a>
-<a href="#1045" id="1045">1045</a>
-<a href="#1046" id="1046">1046</a>
-<a href="#1047" id="1047">1047</a>
-<a href="#1048" id="1048">1048</a>
-<a href="#1049" id="1049">1049</a>
-<a href="#1050" id="1050">1050</a>
-<a href="#1051" id="1051">1051</a>
-<a href="#1052" id="1052">1052</a>
-<a href="#1053" id="1053">1053</a>
-<a href="#1054" id="1054">1054</a>
-<a href="#1055" id="1055">1055</a>
-<a href="#1056" id="1056">1056</a>
-<a href="#1057" id="1057">1057</a>
-<a href="#1058" id="1058">1058</a>
-<a href="#1059" id="1059">1059</a>
-<a href="#1060" id="1060">1060</a>
-<a href="#1061" id="1061">1061</a>
-<a href="#1062" id="1062">1062</a>
-<a href="#1063" id="1063">1063</a>
-<a href="#1064" id="1064">1064</a>
-<a href="#1065" id="1065">1065</a>
-<a href="#1066" id="1066">1066</a>
-<a href="#1067" id="1067">1067</a>
-<a href="#1068" id="1068">1068</a>
-<a href="#1069" id="1069">1069</a>
-<a href="#1070" id="1070">1070</a>
-<a href="#1071" id="1071">1071</a>
-<a href="#1072" id="1072">1072</a>
-<a href="#1073" id="1073">1073</a>
-<a href="#1074" id="1074">1074</a>
-<a href="#1075" id="1075">1075</a>
-<a href="#1076" id="1076">1076</a>
-<a href="#1077" id="1077">1077</a>
-<a href="#1078" id="1078">1078</a>
-<a href="#1079" id="1079">1079</a>
-<a href="#1080" id="1080">1080</a>
-<a href="#1081" id="1081">1081</a>
-<a href="#1082" id="1082">1082</a>
-<a href="#1083" id="1083">1083</a>
-<a href="#1084" id="1084">1084</a>
-<a href="#1085" id="1085">1085</a>
-<a href="#1086" id="1086">1086</a>
-<a href="#1087" id="1087">1087</a>
-<a href="#1088" id="1088">1088</a>
-<a href="#1089" id="1089">1089</a>
-<a href="#1090" id="1090">1090</a>
-<a href="#1091" id="1091">1091</a>
-<a href="#1092" id="1092">1092</a>
-<a href="#1093" id="1093">1093</a>
-<a href="#1094" id="1094">1094</a>
-<a href="#1095" id="1095">1095</a>
-<a href="#1096" id="1096">1096</a>
-<a href="#1097" id="1097">1097</a>
-<a href="#1098" id="1098">1098</a>
-<a href="#1099" id="1099">1099</a>
-<a href="#1100" id="1100">1100</a>
-<a href="#1101" id="1101">1101</a>
-<a href="#1102" id="1102">1102</a>
-<a href="#1103" id="1103">1103</a>
-<a href="#1104" id="1104">1104</a>
-<a href="#1105" id="1105">1105</a>
-<a href="#1106" id="1106">1106</a>
-<a href="#1107" id="1107">1107</a>
-<a href="#1108" id="1108">1108</a>
-<a href="#1109" id="1109">1109</a>
-<a href="#1110" id="1110">1110</a>
-<a href="#1111" id="1111">1111</a>
-<a href="#1112" id="1112">1112</a>
-<a href="#1113" id="1113">1113</a>
-<a href="#1114" id="1114">1114</a>
-<a href="#1115" id="1115">1115</a>
-<a href="#1116" id="1116">1116</a>
-<a href="#1117" id="1117">1117</a>
 </pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 </span><span class="kw">use </span>std::{io, mem, pin::Pin, ptr};
@@ -1198,7 +1081,7 @@
 </span><span class="kw">use </span><span class="kw">crate</span>::OutputVector;
 <span class="kw">use crate</span>::{error::to_std_io_result, prelude::<span class="kw-2">*</span>, Cancellable, OutputStream, Seekable};
 
-<span class="kw">pub trait </span>OutputStreamExtManual: Sized + OutputStreamExt {
+<span class="kw">pub trait </span>OutputStreamExtManual: IsA&lt;OutputStream&gt; + Sized {
     <span class="doccomment">/// Request an asynchronous write of `count` bytes from `buffer` into
     /// the stream. When the operation is finished `callback` will be called.
     /// You can then call `g_output_stream_write_finish()` to get the result of the
@@ -1244,323 +1127,6 @@
     /// callback to call when the request is satisfied
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_output_stream_write_async&quot;</span>)]
     </span><span class="kw">fn </span>write_async&lt;
-        B: AsRef&lt;[u8]&gt; + Send + <span class="lifetime">&#39;static</span>,
-        Q: FnOnce(<span class="prelude-ty">Result</span>&lt;(B, usize), (B, glib::Error)&gt;) + <span class="lifetime">&#39;static</span>,
-        C: IsA&lt;Cancellable&gt;,
-    &gt;(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        buffer: B,
-        io_priority: Priority,
-        cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>C&gt;,
-        callback: Q,
-    );
-
-    <span class="doccomment">/// Tries to write `count` bytes from `buffer` into the stream. Will block
-    /// during the operation.
-    ///
-    /// This function is similar to [`OutputStreamExt::write()`][crate::prelude::OutputStreamExt::write()], except it tries to
-    /// write as many bytes as requested, only stopping on an error.
-    ///
-    /// On a successful write of `count` bytes, [`true`] is returned, and `bytes_written`
-    /// is set to `count`.
-    ///
-    /// If there is an error during the operation [`false`] is returned and `error`
-    /// is set to indicate the error status.
-    ///
-    /// As a special exception to the normal conventions for functions that
-    /// use [`glib::Error`][crate::glib::Error], if this function returns [`false`] (and sets `error`) then
-    /// `bytes_written` will be set to the number of bytes that were
-    /// successfully written before the error was encountered. This
-    /// functionality is only available from C. If you need it from another
-    /// language then you must write your own loop around
-    /// [`OutputStreamExt::write()`][crate::prelude::OutputStreamExt::write()].
-    /// ## `buffer`
-    /// the buffer containing the data to write.
-    /// ## `cancellable`
-    /// optional [`Cancellable`][crate::Cancellable] object, [`None`] to ignore.
-    ///
-    /// # Returns
-    ///
-    /// [`true`] on success, [`false`] if there was an error
-    ///
-    /// ## `bytes_written`
-    /// location to store the number of bytes that was
-    ///  written to the stream
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_output_stream_write_all&quot;</span>)]
-    </span><span class="kw">fn </span>write_all&lt;C: IsA&lt;Cancellable&gt;&gt;(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        buffer: <span class="kw-2">&amp;</span>[u8],
-        cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>C&gt;,
-    ) -&gt; <span class="prelude-ty">Result</span>&lt;(usize, <span class="prelude-ty">Option</span>&lt;glib::Error&gt;), glib::Error&gt;;
-
-    <span class="doccomment">/// Request an asynchronous write of `count` bytes from `buffer` into
-    /// the stream. When the operation is finished `callback` will be called.
-    /// You can then call `g_output_stream_write_all_finish()` to get the result of the
-    /// operation.
-    ///
-    /// This is the asynchronous version of [`OutputStreamExtManual::write_all()`][crate::prelude::OutputStreamExtManual::write_all()].
-    ///
-    /// Call `g_output_stream_write_all_finish()` to collect the result.
-    ///
-    /// Any outstanding I/O request with higher priority (lower numerical
-    /// value) will be executed before an outstanding request with lower
-    /// priority. Default priority is `G_PRIORITY_DEFAULT`.
-    ///
-    /// Note that no copy of `buffer` will be made, so it must stay valid
-    /// until `callback` is called.
-    /// ## `buffer`
-    /// the buffer containing the data to write
-    /// ## `io_priority`
-    /// the io priority of the request
-    /// ## `cancellable`
-    /// optional [`Cancellable`][crate::Cancellable] object, [`None`] to ignore
-    /// ## `callback`
-    /// callback to call when the request is satisfied
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_output_stream_write_all_async&quot;</span>)]
-    </span><span class="kw">fn </span>write_all_async&lt;
-        B: AsRef&lt;[u8]&gt; + Send + <span class="lifetime">&#39;static</span>,
-        Q: FnOnce(<span class="prelude-ty">Result</span>&lt;(B, usize, <span class="prelude-ty">Option</span>&lt;glib::Error&gt;), (B, glib::Error)&gt;) + <span class="lifetime">&#39;static</span>,
-        C: IsA&lt;Cancellable&gt;,
-    &gt;(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        buffer: B,
-        io_priority: Priority,
-        cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>C&gt;,
-        callback: Q,
-    );
-
-    <span class="kw">fn </span>write_future&lt;B: AsRef&lt;[u8]&gt; + Send + <span class="lifetime">&#39;static</span>&gt;(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        buffer: B,
-        io_priority: Priority,
-    ) -&gt; Pin&lt;Box&lt;<span class="kw">dyn </span>std::future::Future&lt;Output = <span class="prelude-ty">Result</span>&lt;(B, usize), (B, glib::Error)&gt;&gt; + <span class="lifetime">&#39;static</span>&gt;&gt;;
-
-    <span class="kw">fn </span>write_all_future&lt;B: AsRef&lt;[u8]&gt; + Send + <span class="lifetime">&#39;static</span>&gt;(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        buffer: B,
-        io_priority: Priority,
-    ) -&gt; Pin&lt;
-        Box&lt;
-            <span class="kw">dyn </span>std::future::Future&lt;
-                    Output = <span class="prelude-ty">Result</span>&lt;(B, usize, <span class="prelude-ty">Option</span>&lt;glib::Error&gt;), (B, glib::Error)&gt;,
-                &gt; + <span class="lifetime">&#39;static</span>,
-        &gt;,
-    &gt;;
-
-    <span class="doccomment">/// Tries to write the bytes contained in the `n_vectors` `vectors` into the
-    /// stream. Will block during the operation.
-    ///
-    /// If `n_vectors` is 0 or the sum of all bytes in `vectors` is 0, returns 0 and
-    /// does nothing.
-    ///
-    /// On success, the number of bytes written to the stream is returned.
-    /// It is not an error if this is not the same as the requested size, as it
-    /// can happen e.g. on a partial I/O error, or if there is not enough
-    /// storage in the stream. All writes block until at least one byte
-    /// is written or an error occurs; 0 is never returned (unless
-    /// `n_vectors` is 0 or the sum of all bytes in `vectors` is 0).
-    ///
-    /// If `cancellable` is not [`None`], then the operation can be cancelled by
-    /// triggering the cancellable object from another thread. If the operation
-    /// was cancelled, the error [`IOErrorEnum::Cancelled`][crate::IOErrorEnum::Cancelled] will be returned. If an
-    /// operation was partially finished when the operation was cancelled the
-    /// partial result will be returned, without an error.
-    ///
-    /// Some implementations of [`OutputStreamExtManual::writev()`][crate::prelude::OutputStreamExtManual::writev()] may have limitations on the
-    /// aggregate buffer size, and will return [`IOErrorEnum::InvalidArgument`][crate::IOErrorEnum::InvalidArgument] if these
-    /// are exceeded. For example, when writing to a local file on UNIX platforms,
-    /// the aggregate buffer size must not exceed `G_MAXSSIZE` bytes.
-    /// ## `vectors`
-    /// the buffer containing the `GOutputVectors` to write.
-    /// ## `cancellable`
-    /// optional cancellable object
-    ///
-    /// # Returns
-    ///
-    /// [`true`] on success, [`false`] if there was an error
-    ///
-    /// ## `bytes_written`
-    /// location to store the number of bytes that were
-    ///  written to the stream
-    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
-    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
-    #[doc(alias = <span class="string">&quot;g_output_stream_writev&quot;</span>)]
-    </span><span class="kw">fn </span>writev(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        vectors: <span class="kw-2">&amp;</span>[OutputVector],
-        cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Cancellable&gt;&gt;,
-    ) -&gt; <span class="prelude-ty">Result</span>&lt;usize, glib::Error&gt;;
-
-    <span class="doccomment">/// Request an asynchronous write of the bytes contained in `n_vectors` `vectors` into
-    /// the stream. When the operation is finished `callback` will be called.
-    /// You can then call `g_output_stream_writev_finish()` to get the result of the
-    /// operation.
-    ///
-    /// During an async request no other sync and async calls are allowed,
-    /// and will result in [`IOErrorEnum::Pending`][crate::IOErrorEnum::Pending] errors.
-    ///
-    /// On success, the number of bytes written will be passed to the
-    /// `callback`. It is not an error if this is not the same as the
-    /// requested size, as it can happen e.g. on a partial I/O error,
-    /// but generally we try to write as many bytes as requested.
-    ///
-    /// You are guaranteed that this method will never fail with
-    /// [`IOErrorEnum::WouldBlock`][crate::IOErrorEnum::WouldBlock] — if `self` can&#39;t accept more data, the
-    /// method will just wait until this changes.
-    ///
-    /// Any outstanding I/O request with higher priority (lower numerical
-    /// value) will be executed before an outstanding request with lower
-    /// priority. Default priority is `G_PRIORITY_DEFAULT`.
-    ///
-    /// The asynchronous methods have a default fallback that uses threads
-    /// to implement asynchronicity, so they are optional for inheriting
-    /// classes. However, if you override one you must override all.
-    ///
-    /// For the synchronous, blocking version of this function, see
-    /// [`OutputStreamExtManual::writev()`][crate::prelude::OutputStreamExtManual::writev()].
-    ///
-    /// Note that no copy of `vectors` will be made, so it must stay valid
-    /// until `callback` is called.
-    /// ## `vectors`
-    /// the buffer containing the `GOutputVectors` to write.
-    /// ## `io_priority`
-    /// the I/O priority of the request.
-    /// ## `cancellable`
-    /// optional [`Cancellable`][crate::Cancellable] object, [`None`] to ignore.
-    /// ## `callback`
-    /// callback to call when the request is satisfied
-    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
-    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
-    #[doc(alias = <span class="string">&quot;g_output_stream_writev_async&quot;</span>)]
-    </span><span class="kw">fn </span>writev_async&lt;
-        B: AsRef&lt;[u8]&gt; + Send + <span class="lifetime">&#39;static</span>,
-        P: FnOnce(<span class="prelude-ty">Result</span>&lt;(Vec&lt;B&gt;, usize), (Vec&lt;B&gt;, glib::Error)&gt;) + <span class="lifetime">&#39;static</span>,
-    &gt;(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        vectors: <span class="kw">impl </span>IntoIterator&lt;Item = B&gt; + <span class="lifetime">&#39;static</span>,
-        io_priority: glib::Priority,
-        cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Cancellable&gt;&gt;,
-        callback: P,
-    );
-
-    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
-    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
-    </span><span class="kw">fn </span>writev_future&lt;B: AsRef&lt;[u8]&gt; + Send + <span class="lifetime">&#39;static</span>&gt;(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        vectors: <span class="kw">impl </span>IntoIterator&lt;Item = B&gt; + <span class="lifetime">&#39;static</span>,
-        io_priority: glib::Priority,
-    ) -&gt; Pin&lt;
-        Box&lt;
-            <span class="kw">dyn </span>std::future::Future&lt;Output = <span class="prelude-ty">Result</span>&lt;(Vec&lt;B&gt;, usize), (Vec&lt;B&gt;, glib::Error)&gt;&gt;
-                + <span class="lifetime">&#39;static</span>,
-        &gt;,
-    &gt;;
-
-    <span class="doccomment">/// Tries to write the bytes contained in the `n_vectors` `vectors` into the
-    /// stream. Will block during the operation.
-    ///
-    /// This function is similar to [`OutputStreamExtManual::writev()`][crate::prelude::OutputStreamExtManual::writev()], except it tries to
-    /// write as many bytes as requested, only stopping on an error.
-    ///
-    /// On a successful write of all `n_vectors` vectors, [`true`] is returned, and
-    /// `bytes_written` is set to the sum of all the sizes of `vectors`.
-    ///
-    /// If there is an error during the operation [`false`] is returned and `error`
-    /// is set to indicate the error status.
-    ///
-    /// As a special exception to the normal conventions for functions that
-    /// use [`glib::Error`][crate::glib::Error], if this function returns [`false`] (and sets `error`) then
-    /// `bytes_written` will be set to the number of bytes that were
-    /// successfully written before the error was encountered. This
-    /// functionality is only available from C. If you need it from another
-    /// language then you must write your own loop around
-    /// [`OutputStreamExt::write()`][crate::prelude::OutputStreamExt::write()].
-    ///
-    /// The content of the individual elements of `vectors` might be changed by this
-    /// function.
-    /// ## `vectors`
-    /// the buffer containing the `GOutputVectors` to write.
-    /// ## `cancellable`
-    /// optional [`Cancellable`][crate::Cancellable] object, [`None`] to ignore.
-    ///
-    /// # Returns
-    ///
-    /// [`true`] on success, [`false`] if there was an error
-    ///
-    /// ## `bytes_written`
-    /// location to store the number of bytes that were
-    ///  written to the stream
-    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
-    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
-    #[doc(alias = <span class="string">&quot;g_output_stream_writev_all&quot;</span>)]
-    </span><span class="kw">fn </span>writev_all(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        vectors: <span class="kw-2">&amp;</span>[OutputVector],
-        cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Cancellable&gt;&gt;,
-    ) -&gt; <span class="prelude-ty">Result</span>&lt;(usize, <span class="prelude-ty">Option</span>&lt;glib::Error&gt;), glib::Error&gt;;
-
-    <span class="doccomment">/// Request an asynchronous write of the bytes contained in the `n_vectors` `vectors` into
-    /// the stream. When the operation is finished `callback` will be called.
-    /// You can then call `g_output_stream_writev_all_finish()` to get the result of the
-    /// operation.
-    ///
-    /// This is the asynchronous version of [`OutputStreamExtManual::writev_all()`][crate::prelude::OutputStreamExtManual::writev_all()].
-    ///
-    /// Call `g_output_stream_writev_all_finish()` to collect the result.
-    ///
-    /// Any outstanding I/O request with higher priority (lower numerical
-    /// value) will be executed before an outstanding request with lower
-    /// priority. Default priority is `G_PRIORITY_DEFAULT`.
-    ///
-    /// Note that no copy of `vectors` will be made, so it must stay valid
-    /// until `callback` is called. The content of the individual elements
-    /// of `vectors` might be changed by this function.
-    /// ## `vectors`
-    /// the buffer containing the `GOutputVectors` to write.
-    /// ## `io_priority`
-    /// the I/O priority of the request
-    /// ## `cancellable`
-    /// optional [`Cancellable`][crate::Cancellable] object, [`None`] to ignore
-    /// ## `callback`
-    /// callback to call when the request is satisfied
-    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
-    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
-    #[doc(alias = <span class="string">&quot;g_output_stream_writev_all_async&quot;</span>)]
-    </span><span class="kw">fn </span>writev_all_async&lt;
-        B: AsRef&lt;[u8]&gt; + Send + <span class="lifetime">&#39;static</span>,
-        P: FnOnce(<span class="prelude-ty">Result</span>&lt;(Vec&lt;B&gt;, usize, <span class="prelude-ty">Option</span>&lt;glib::Error&gt;), (Vec&lt;B&gt;, glib::Error)&gt;) + <span class="lifetime">&#39;static</span>,
-    &gt;(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        vectors: <span class="kw">impl </span>IntoIterator&lt;Item = B&gt; + <span class="lifetime">&#39;static</span>,
-        io_priority: glib::Priority,
-        cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Cancellable&gt;&gt;,
-        callback: P,
-    );
-
-    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
-    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
-    </span><span class="kw">fn </span>writev_all_future&lt;B: AsRef&lt;[u8]&gt; + Send + <span class="lifetime">&#39;static</span>&gt;(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        vectors: <span class="kw">impl </span>IntoIterator&lt;Item = B&gt; + <span class="lifetime">&#39;static</span>,
-        io_priority: glib::Priority,
-    ) -&gt; Pin&lt;
-        Box&lt;
-            <span class="kw">dyn </span>std::future::Future&lt;
-                    Output = <span class="prelude-ty">Result</span>&lt;(Vec&lt;B&gt;, usize, <span class="prelude-ty">Option</span>&lt;glib::Error&gt;), (Vec&lt;B&gt;, glib::Error)&gt;,
-                &gt; + <span class="lifetime">&#39;static</span>,
-        &gt;,
-    &gt;;
-
-    <span class="kw">fn </span>into_write(<span class="self">self</span>) -&gt; OutputStreamWrite&lt;<span class="self">Self</span>&gt;
-    <span class="kw">where
-        </span><span class="self">Self</span>: IsA&lt;OutputStream&gt;,
-    {
-        OutputStreamWrite(<span class="self">self</span>)
-    }
-}
-
-<span class="kw">impl</span>&lt;O: IsA&lt;OutputStream&gt;&gt; OutputStreamExtManual <span class="kw">for </span>O {
-    <span class="kw">fn </span>write_async&lt;
         B: AsRef&lt;[u8]&gt; + Send + <span class="lifetime">&#39;static</span>,
         Q: FnOnce(<span class="prelude-ty">Result</span>&lt;(B, usize), (B, glib::Error)&gt;) + <span class="lifetime">&#39;static</span>,
         C: IsA&lt;Cancellable&gt;,
@@ -1627,7 +1193,39 @@
         }
     }
 
-    <span class="kw">fn </span>write_all&lt;C: IsA&lt;Cancellable&gt;&gt;(
+    <span class="doccomment">/// Tries to write `count` bytes from `buffer` into the stream. Will block
+    /// during the operation.
+    ///
+    /// This function is similar to [`OutputStreamExt::write()`][crate::prelude::OutputStreamExt::write()], except it tries to
+    /// write as many bytes as requested, only stopping on an error.
+    ///
+    /// On a successful write of `count` bytes, [`true`] is returned, and `bytes_written`
+    /// is set to `count`.
+    ///
+    /// If there is an error during the operation [`false`] is returned and `error`
+    /// is set to indicate the error status.
+    ///
+    /// As a special exception to the normal conventions for functions that
+    /// use [`glib::Error`][crate::glib::Error], if this function returns [`false`] (and sets `error`) then
+    /// `bytes_written` will be set to the number of bytes that were
+    /// successfully written before the error was encountered. This
+    /// functionality is only available from C. If you need it from another
+    /// language then you must write your own loop around
+    /// [`OutputStreamExt::write()`][crate::prelude::OutputStreamExt::write()].
+    /// ## `buffer`
+    /// the buffer containing the data to write.
+    /// ## `cancellable`
+    /// optional [`Cancellable`][crate::Cancellable] object, [`None`] to ignore.
+    ///
+    /// # Returns
+    ///
+    /// [`true`] on success, [`false`] if there was an error
+    ///
+    /// ## `bytes_written`
+    /// location to store the number of bytes that was
+    ///  written to the stream
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_output_stream_write_all&quot;</span>)]
+    </span><span class="kw">fn </span>write_all&lt;C: IsA&lt;Cancellable&gt;&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         buffer: <span class="kw-2">&amp;</span>[u8],
         cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>C&gt;,
@@ -1658,7 +1256,31 @@
         }
     }
 
-    <span class="kw">fn </span>write_all_async&lt;
+    <span class="doccomment">/// Request an asynchronous write of `count` bytes from `buffer` into
+    /// the stream. When the operation is finished `callback` will be called.
+    /// You can then call `g_output_stream_write_all_finish()` to get the result of the
+    /// operation.
+    ///
+    /// This is the asynchronous version of [`OutputStreamExtManual::write_all()`][crate::prelude::OutputStreamExtManual::write_all()].
+    ///
+    /// Call `g_output_stream_write_all_finish()` to collect the result.
+    ///
+    /// Any outstanding I/O request with higher priority (lower numerical
+    /// value) will be executed before an outstanding request with lower
+    /// priority. Default priority is `G_PRIORITY_DEFAULT`.
+    ///
+    /// Note that no copy of `buffer` will be made, so it must stay valid
+    /// until `callback` is called.
+    /// ## `buffer`
+    /// the buffer containing the data to write
+    /// ## `io_priority`
+    /// the io priority of the request
+    /// ## `cancellable`
+    /// optional [`Cancellable`][crate::Cancellable] object, [`None`] to ignore
+    /// ## `callback`
+    /// callback to call when the request is satisfied
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_output_stream_write_all_async&quot;</span>)]
+    </span><span class="kw">fn </span>write_all_async&lt;
         B: AsRef&lt;[u8]&gt; + Send + <span class="lifetime">&#39;static</span>,
         Q: FnOnce(<span class="prelude-ty">Result</span>&lt;(B, usize, <span class="prelude-ty">Option</span>&lt;glib::Error&gt;), (B, glib::Error)&gt;) + <span class="lifetime">&#39;static</span>,
         C: IsA&lt;Cancellable&gt;,
@@ -1734,7 +1356,7 @@
         }
     }
 
-    <span class="kw">fn </span>write_future&lt;<span class="lifetime">&#39;a</span>, B: AsRef&lt;[u8]&gt; + Send + <span class="lifetime">&#39;static</span>&gt;(
+    <span class="kw">fn </span>write_future&lt;B: AsRef&lt;[u8]&gt; + Send + <span class="lifetime">&#39;static</span>&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         buffer: B,
         io_priority: Priority,
@@ -1750,7 +1372,7 @@
         ))
     }
 
-    <span class="kw">fn </span>write_all_future&lt;<span class="lifetime">&#39;a</span>, B: AsRef&lt;[u8]&gt; + Send + <span class="lifetime">&#39;static</span>&gt;(
+    <span class="kw">fn </span>write_all_future&lt;B: AsRef&lt;[u8]&gt; + Send + <span class="lifetime">&#39;static</span>&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         buffer: B,
         io_priority: Priority,
@@ -1771,8 +1393,44 @@
         ))
     }
 
-    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
+    <span class="doccomment">/// Tries to write the bytes contained in the `n_vectors` `vectors` into the
+    /// stream. Will block during the operation.
+    ///
+    /// If `n_vectors` is 0 or the sum of all bytes in `vectors` is 0, returns 0 and
+    /// does nothing.
+    ///
+    /// On success, the number of bytes written to the stream is returned.
+    /// It is not an error if this is not the same as the requested size, as it
+    /// can happen e.g. on a partial I/O error, or if there is not enough
+    /// storage in the stream. All writes block until at least one byte
+    /// is written or an error occurs; 0 is never returned (unless
+    /// `n_vectors` is 0 or the sum of all bytes in `vectors` is 0).
+    ///
+    /// If `cancellable` is not [`None`], then the operation can be cancelled by
+    /// triggering the cancellable object from another thread. If the operation
+    /// was cancelled, the error [`IOErrorEnum::Cancelled`][crate::IOErrorEnum::Cancelled] will be returned. If an
+    /// operation was partially finished when the operation was cancelled the
+    /// partial result will be returned, without an error.
+    ///
+    /// Some implementations of [`OutputStreamExtManual::writev()`][crate::prelude::OutputStreamExtManual::writev()] may have limitations on the
+    /// aggregate buffer size, and will return [`IOErrorEnum::InvalidArgument`][crate::IOErrorEnum::InvalidArgument] if these
+    /// are exceeded. For example, when writing to a local file on UNIX platforms,
+    /// the aggregate buffer size must not exceed `G_MAXSSIZE` bytes.
+    /// ## `vectors`
+    /// the buffer containing the `GOutputVectors` to write.
+    /// ## `cancellable`
+    /// optional cancellable object
+    ///
+    /// # Returns
+    ///
+    /// [`true`] on success, [`false`] if there was an error
+    ///
+    /// ## `bytes_written`
+    /// location to store the number of bytes that were
+    ///  written to the stream
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
+    #[doc(alias = <span class="string">&quot;g_output_stream_writev&quot;</span>)]
     </span><span class="kw">fn </span>writev(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         vectors: <span class="kw-2">&amp;</span>[OutputVector],
@@ -1798,8 +1456,47 @@
         }
     }
 
-    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
+    <span class="doccomment">/// Request an asynchronous write of the bytes contained in `n_vectors` `vectors` into
+    /// the stream. When the operation is finished `callback` will be called.
+    /// You can then call `g_output_stream_writev_finish()` to get the result of the
+    /// operation.
+    ///
+    /// During an async request no other sync and async calls are allowed,
+    /// and will result in [`IOErrorEnum::Pending`][crate::IOErrorEnum::Pending] errors.
+    ///
+    /// On success, the number of bytes written will be passed to the
+    /// `callback`. It is not an error if this is not the same as the
+    /// requested size, as it can happen e.g. on a partial I/O error,
+    /// but generally we try to write as many bytes as requested.
+    ///
+    /// You are guaranteed that this method will never fail with
+    /// [`IOErrorEnum::WouldBlock`][crate::IOErrorEnum::WouldBlock] — if `self` can&#39;t accept more data, the
+    /// method will just wait until this changes.
+    ///
+    /// Any outstanding I/O request with higher priority (lower numerical
+    /// value) will be executed before an outstanding request with lower
+    /// priority. Default priority is `G_PRIORITY_DEFAULT`.
+    ///
+    /// The asynchronous methods have a default fallback that uses threads
+    /// to implement asynchronicity, so they are optional for inheriting
+    /// classes. However, if you override one you must override all.
+    ///
+    /// For the synchronous, blocking version of this function, see
+    /// [`OutputStreamExtManual::writev()`][crate::prelude::OutputStreamExtManual::writev()].
+    ///
+    /// Note that no copy of `vectors` will be made, so it must stay valid
+    /// until `callback` is called.
+    /// ## `vectors`
+    /// the buffer containing the `GOutputVectors` to write.
+    /// ## `io_priority`
+    /// the I/O priority of the request.
+    /// ## `cancellable`
+    /// optional [`Cancellable`][crate::Cancellable] object, [`None`] to ignore.
+    /// ## `callback`
+    /// callback to call when the request is satisfied
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
+    #[doc(alias = <span class="string">&quot;g_output_stream_writev_async&quot;</span>)]
     </span><span class="kw">fn </span>writev_async&lt;
         B: AsRef&lt;[u8]&gt; + Send + <span class="lifetime">&#39;static</span>,
         P: FnOnce(<span class="prelude-ty">Result</span>&lt;(Vec&lt;B&gt;, usize), (Vec&lt;B&gt;, glib::Error)&gt;) + <span class="lifetime">&#39;static</span>,
@@ -1910,8 +1607,43 @@
         ))
     }
 
-    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
+    <span class="doccomment">/// Tries to write the bytes contained in the `n_vectors` `vectors` into the
+    /// stream. Will block during the operation.
+    ///
+    /// This function is similar to [`OutputStreamExtManual::writev()`][crate::prelude::OutputStreamExtManual::writev()], except it tries to
+    /// write as many bytes as requested, only stopping on an error.
+    ///
+    /// On a successful write of all `n_vectors` vectors, [`true`] is returned, and
+    /// `bytes_written` is set to the sum of all the sizes of `vectors`.
+    ///
+    /// If there is an error during the operation [`false`] is returned and `error`
+    /// is set to indicate the error status.
+    ///
+    /// As a special exception to the normal conventions for functions that
+    /// use [`glib::Error`][crate::glib::Error], if this function returns [`false`] (and sets `error`) then
+    /// `bytes_written` will be set to the number of bytes that were
+    /// successfully written before the error was encountered. This
+    /// functionality is only available from C. If you need it from another
+    /// language then you must write your own loop around
+    /// [`OutputStreamExt::write()`][crate::prelude::OutputStreamExt::write()].
+    ///
+    /// The content of the individual elements of `vectors` might be changed by this
+    /// function.
+    /// ## `vectors`
+    /// the buffer containing the `GOutputVectors` to write.
+    /// ## `cancellable`
+    /// optional [`Cancellable`][crate::Cancellable] object, [`None`] to ignore.
+    ///
+    /// # Returns
+    ///
+    /// [`true`] on success, [`false`] if there was an error
+    ///
+    /// ## `bytes_written`
+    /// location to store the number of bytes that were
+    ///  written to the stream
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
+    #[doc(alias = <span class="string">&quot;g_output_stream_writev_all&quot;</span>)]
     </span><span class="kw">fn </span>writev_all(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         vectors: <span class="kw-2">&amp;</span>[OutputVector],
@@ -1940,8 +1672,33 @@
         }
     }
 
-    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
+    <span class="doccomment">/// Request an asynchronous write of the bytes contained in the `n_vectors` `vectors` into
+    /// the stream. When the operation is finished `callback` will be called.
+    /// You can then call `g_output_stream_writev_all_finish()` to get the result of the
+    /// operation.
+    ///
+    /// This is the asynchronous version of [`OutputStreamExtManual::writev_all()`][crate::prelude::OutputStreamExtManual::writev_all()].
+    ///
+    /// Call `g_output_stream_writev_all_finish()` to collect the result.
+    ///
+    /// Any outstanding I/O request with higher priority (lower numerical
+    /// value) will be executed before an outstanding request with lower
+    /// priority. Default priority is `G_PRIORITY_DEFAULT`.
+    ///
+    /// Note that no copy of `vectors` will be made, so it must stay valid
+    /// until `callback` is called. The content of the individual elements
+    /// of `vectors` might be changed by this function.
+    /// ## `vectors`
+    /// the buffer containing the `GOutputVectors` to write.
+    /// ## `io_priority`
+    /// the I/O priority of the request
+    /// ## `cancellable`
+    /// optional [`Cancellable`][crate::Cancellable] object, [`None`] to ignore
+    /// ## `callback`
+    /// callback to call when the request is satisfied
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
+    #[doc(alias = <span class="string">&quot;g_output_stream_writev_all_async&quot;</span>)]
     </span><span class="kw">fn </span>writev_all_async&lt;
         B: AsRef&lt;[u8]&gt; + Send + <span class="lifetime">&#39;static</span>,
         P: FnOnce(<span class="prelude-ty">Result</span>&lt;(Vec&lt;B&gt;, usize, <span class="prelude-ty">Option</span>&lt;glib::Error&gt;), (Vec&lt;B&gt;, glib::Error)&gt;) + <span class="lifetime">&#39;static</span>,
@@ -2054,7 +1811,16 @@
             },
         ))
     }
+
+    <span class="kw">fn </span>into_write(<span class="self">self</span>) -&gt; OutputStreamWrite&lt;<span class="self">Self</span>&gt;
+    <span class="kw">where
+        </span><span class="self">Self</span>: IsA&lt;OutputStream&gt;,
+    {
+        OutputStreamWrite(<span class="self">self</span>)
+    }
 }
+
+<span class="kw">impl</span>&lt;O: IsA&lt;OutputStream&gt;&gt; OutputStreamExtManual <span class="kw">for </span>O {}
 
 <span class="attr">#[derive(Debug)]
 </span><span class="kw">pub struct </span>OutputStreamWrite&lt;T: IsA&lt;OutputStream&gt;&gt;(T);

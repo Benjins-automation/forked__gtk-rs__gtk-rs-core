@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gio/src/auto/dbus_interface_skeleton.rs`."><title>dbus_interface_skeleton.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (a77c55248 2023-05-06)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gio/src/auto/dbus_interface_skeleton.rs`."><title>dbus_interface_skeleton.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (c4190f2d3 2023-05-07)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -490,43 +490,6 @@
 <a href="#417" id="417">417</a>
 <a href="#418" id="418">418</a>
 <a href="#419" id="419">419</a>
-<a href="#420" id="420">420</a>
-<a href="#421" id="421">421</a>
-<a href="#422" id="422">422</a>
-<a href="#423" id="423">423</a>
-<a href="#424" id="424">424</a>
-<a href="#425" id="425">425</a>
-<a href="#426" id="426">426</a>
-<a href="#427" id="427">427</a>
-<a href="#428" id="428">428</a>
-<a href="#429" id="429">429</a>
-<a href="#430" id="430">430</a>
-<a href="#431" id="431">431</a>
-<a href="#432" id="432">432</a>
-<a href="#433" id="433">433</a>
-<a href="#434" id="434">434</a>
-<a href="#435" id="435">435</a>
-<a href="#436" id="436">436</a>
-<a href="#437" id="437">437</a>
-<a href="#438" id="438">438</a>
-<a href="#439" id="439">439</a>
-<a href="#440" id="440">440</a>
-<a href="#441" id="441">441</a>
-<a href="#442" id="442">442</a>
-<a href="#443" id="443">443</a>
-<a href="#444" id="444">444</a>
-<a href="#445" id="445">445</a>
-<a href="#446" id="446">446</a>
-<a href="#447" id="447">447</a>
-<a href="#448" id="448">448</a>
-<a href="#449" id="449">449</a>
-<a href="#450" id="450">450</a>
-<a href="#451" id="451">451</a>
-<a href="#452" id="452">452</a>
-<a href="#453" id="453">453</a>
-<a href="#454" id="454">454</a>
-<a href="#455" id="455">455</a>
-<a href="#456" id="456">456</a>
 </pre></div><pre class="rust"><code><span class="comment">// This file was generated by gir (https://github.com/gtk-rs/gir)
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
@@ -615,7 +578,7 @@
 /// # Implementors
 ///
 /// [`DBusInterfaceSkeleton`][struct@crate::DBusInterfaceSkeleton]
-</span><span class="kw">pub trait </span>DBusInterfaceSkeletonExt: <span class="lifetime">&#39;static </span>{
+</span><span class="kw">pub trait </span>DBusInterfaceSkeletonExt: IsA&lt;DBusInterfaceSkeleton&gt; + <span class="lifetime">&#39;static </span>{
     <span class="doccomment">/// Exports `self` at `object_path` on `connection`.
     ///
     /// This can be called multiple times to export the same `self`
@@ -633,7 +596,23 @@
     /// [`true`] if the interface was exported on `connection`, otherwise [`false`] with
     /// `error` set.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_dbus_interface_skeleton_export&quot;</span>)]
-    </span><span class="kw">fn </span>export(<span class="kw-2">&amp;</span><span class="self">self</span>, connection: <span class="kw-2">&amp;</span>DBusConnection, object_path: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt;;
+    </span><span class="kw">fn </span>export(<span class="kw-2">&amp;</span><span class="self">self</span>, connection: <span class="kw-2">&amp;</span>DBusConnection, object_path: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt; {
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
+            <span class="kw">let </span>is_ok = ffi::g_dbus_interface_skeleton_export(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                connection.to_glib_none().<span class="number">0</span>,
+                object_path.to_glib_none().<span class="number">0</span>,
+                <span class="kw-2">&amp;mut </span>error,
+            );
+            <span class="macro">debug_assert_eq!</span>(is_ok == glib::ffi::GFALSE, !error.is_null());
+            <span class="kw">if </span>error.is_null() {
+                <span class="prelude-val">Ok</span>(())
+            } <span class="kw">else </span>{
+                <span class="prelude-val">Err</span>(from_glib_full(error))
+            }
+        }
+    }
 
     <span class="doccomment">/// If `self` has outstanding changes, request for these changes to be
     /// emitted immediately.
@@ -644,7 +623,11 @@
     /// signal later (e.g. in an idle handler). This technique is useful
     /// for collapsing multiple property changes into one.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_dbus_interface_skeleton_flush&quot;</span>)]
-    </span><span class="kw">fn </span>flush(<span class="kw-2">&amp;</span><span class="self">self</span>);
+    </span><span class="kw">fn </span>flush(<span class="kw-2">&amp;</span><span class="self">self</span>) {
+        <span class="kw">unsafe </span>{
+            ffi::g_dbus_interface_skeleton_flush(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>);
+        }
+    }
 
     <span class="doccomment">/// Gets the first connection that `self` is exported on, if any.
     ///
@@ -654,7 +637,13 @@
     /// not exported anywhere. Do not free, the object belongs to `self`.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_dbus_interface_skeleton_get_connection&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_connection&quot;</span>)]
-    </span><span class="kw">fn </span>connection(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;DBusConnection&gt;;
+    </span><span class="kw">fn </span>connection(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;DBusConnection&gt; {
+        <span class="kw">unsafe </span>{
+            from_glib_none(ffi::g_dbus_interface_skeleton_get_connection(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+            ))
+        }
+    }
 
     <span class="doccomment">/// Gets a list of the connections that `self` is exported on.
     ///
@@ -666,7 +655,13 @@
     ///  been freed with `g_object_unref()`.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_dbus_interface_skeleton_get_connections&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_connections&quot;</span>)]
-    </span><span class="kw">fn </span>connections(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;DBusConnection&gt;;
+    </span><span class="kw">fn </span>connections(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;DBusConnection&gt; {
+        <span class="kw">unsafe </span>{
+            FromGlibPtrContainer::from_glib_full(ffi::g_dbus_interface_skeleton_get_connections(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+            ))
+        }
+    }
 
     <span class="doccomment">/// Gets the [`DBusInterfaceSkeletonFlags`][crate::DBusInterfaceSkeletonFlags] that describes what the behavior
     /// of `self`
@@ -676,7 +671,13 @@
     /// One or more flags from the [`DBusInterfaceSkeletonFlags`][crate::DBusInterfaceSkeletonFlags] enumeration.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_dbus_interface_skeleton_get_flags&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_flags&quot;</span>)]
-    </span><span class="kw">fn </span>flags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; DBusInterfaceSkeletonFlags;
+    </span><span class="kw">fn </span>flags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; DBusInterfaceSkeletonFlags {
+        <span class="kw">unsafe </span>{
+            from_glib(ffi::g_dbus_interface_skeleton_get_flags(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+            ))
+        }
+    }
 
     <span class="doccomment">/// Gets D-Bus introspection information for the D-Bus interface
     /// implemented by `self`.
@@ -686,7 +687,13 @@
     /// A [`DBusInterfaceInfo`][crate::DBusInterfaceInfo] (never [`None`]). Do not free.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_dbus_interface_skeleton_get_info&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_info&quot;</span>)]
-    </span><span class="kw">fn </span>info(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; DBusInterfaceInfo;
+    </span><span class="kw">fn </span>info(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; DBusInterfaceInfo {
+        <span class="kw">unsafe </span>{
+            from_glib_none(ffi::g_dbus_interface_skeleton_get_info(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+            ))
+        }
+    }
 
     <span class="doccomment">/// Gets the object path that `self` is exported on, if any.
     ///
@@ -696,7 +703,13 @@
     /// anywhere. Do not free, the string belongs to `self`.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_dbus_interface_skeleton_get_object_path&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_object_path&quot;</span>)]
-    </span><span class="kw">fn </span>object_path(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;glib::GString&gt;;
+    </span><span class="kw">fn </span>object_path(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;glib::GString&gt; {
+        <span class="kw">unsafe </span>{
+            from_glib_none(ffi::g_dbus_interface_skeleton_get_object_path(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+            ))
+        }
+    }
 
     <span class="doccomment">/// Gets all D-Bus properties for `self`.
     ///
@@ -707,11 +720,19 @@
     /// Free with `g_variant_unref()`.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_dbus_interface_skeleton_get_properties&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_properties&quot;</span>)]
-    </span><span class="kw">fn </span>properties(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; glib::Variant;
+    </span><span class="kw">fn </span>properties(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; glib::Variant {
+        <span class="kw">unsafe </span>{
+            from_glib_full(ffi::g_dbus_interface_skeleton_get_properties(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+            ))
+        }
+    }
 
     <span class="comment">//#[doc(alias = &quot;g_dbus_interface_skeleton_get_vtable&quot;)]
     //#[doc(alias = &quot;get_vtable&quot;)]
-    //fn vtable(&amp;self) -&gt; /*Ignored*/DBusInterfaceVTable;
+    //fn vtable(&amp;self) -&gt; /*Ignored*/DBusInterfaceVTable {
+    //    unsafe { TODO: call ffi:g_dbus_interface_skeleton_get_vtable() }
+    //}
 
     </span><span class="doccomment">/// Checks if `self` is exported on `connection`.
     /// ## `connection`
@@ -721,20 +742,38 @@
     ///
     /// [`true`] if `self` is exported on `connection`, [`false`] otherwise.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_dbus_interface_skeleton_has_connection&quot;</span>)]
-    </span><span class="kw">fn </span>has_connection(<span class="kw-2">&amp;</span><span class="self">self</span>, connection: <span class="kw-2">&amp;</span>DBusConnection) -&gt; bool;
+    </span><span class="kw">fn </span>has_connection(<span class="kw-2">&amp;</span><span class="self">self</span>, connection: <span class="kw-2">&amp;</span>DBusConnection) -&gt; bool {
+        <span class="kw">unsafe </span>{
+            from_glib(ffi::g_dbus_interface_skeleton_has_connection(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                connection.to_glib_none().<span class="number">0</span>,
+            ))
+        }
+    }
 
     <span class="doccomment">/// Sets flags describing what the behavior of `skeleton` should be.
     /// ## `flags`
     /// Flags from the [`DBusInterfaceSkeletonFlags`][crate::DBusInterfaceSkeletonFlags] enumeration.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_dbus_interface_skeleton_set_flags&quot;</span>)]
-    </span><span class="kw">fn </span>set_flags(<span class="kw-2">&amp;</span><span class="self">self</span>, flags: DBusInterfaceSkeletonFlags);
+    </span><span class="kw">fn </span>set_flags(<span class="kw-2">&amp;</span><span class="self">self</span>, flags: DBusInterfaceSkeletonFlags) {
+        <span class="kw">unsafe </span>{
+            ffi::g_dbus_interface_skeleton_set_flags(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                flags.into_glib(),
+            );
+        }
+    }
 
     <span class="doccomment">/// Stops exporting `self` on all connections it is exported on.
     ///
     /// To unexport `self` from only a single connection, use
     /// [`unexport_from_connection()`][Self::unexport_from_connection()]
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_dbus_interface_skeleton_unexport&quot;</span>)]
-    </span><span class="kw">fn </span>unexport(<span class="kw-2">&amp;</span><span class="self">self</span>);
+    </span><span class="kw">fn </span>unexport(<span class="kw-2">&amp;</span><span class="self">self</span>) {
+        <span class="kw">unsafe </span>{
+            ffi::g_dbus_interface_skeleton_unexport(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>);
+        }
+    }
 
     <span class="doccomment">/// Stops exporting `self` on `connection`.
     ///
@@ -743,15 +782,26 @@
     /// ## `connection`
     /// A [`DBusConnection`][crate::DBusConnection].
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_dbus_interface_skeleton_unexport_from_connection&quot;</span>)]
-    </span><span class="kw">fn </span>unexport_from_connection(<span class="kw-2">&amp;</span><span class="self">self</span>, connection: <span class="kw-2">&amp;</span>DBusConnection);
+    </span><span class="kw">fn </span>unexport_from_connection(<span class="kw-2">&amp;</span><span class="self">self</span>, connection: <span class="kw-2">&amp;</span>DBusConnection) {
+        <span class="kw">unsafe </span>{
+            ffi::g_dbus_interface_skeleton_unexport_from_connection(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                connection.to_glib_none().<span class="number">0</span>,
+            );
+        }
+    }
 
     <span class="doccomment">/// Flags from the [`DBusInterfaceSkeletonFlags`][crate::DBusInterfaceSkeletonFlags] enumeration.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g-flags&quot;</span>)]
-    </span><span class="kw">fn </span>g_flags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; DBusInterfaceSkeletonFlags;
+    </span><span class="kw">fn </span>g_flags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; DBusInterfaceSkeletonFlags {
+        glib::ObjectExt::property(<span class="self">self</span>.as_ref(), <span class="string">&quot;g-flags&quot;</span>)
+    }
 
     <span class="doccomment">/// Flags from the [`DBusInterfaceSkeletonFlags`][crate::DBusInterfaceSkeletonFlags] enumeration.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g-flags&quot;</span>)]
-    </span><span class="kw">fn </span>set_g_flags(<span class="kw-2">&amp;</span><span class="self">self</span>, g_flags: DBusInterfaceSkeletonFlags);
+    </span><span class="kw">fn </span>set_g_flags(<span class="kw-2">&amp;</span><span class="self">self</span>, g_flags: DBusInterfaceSkeletonFlags) {
+        glib::ObjectExt::set_property(<span class="self">self</span>.as_ref(), <span class="string">&quot;g-flags&quot;</span>, g_flags)
+    }
 
     <span class="doccomment">/// Emitted when a method is invoked by a remote caller and used to
     /// determine if the method call is authorized.
@@ -796,133 +846,6 @@
     </span><span class="kw">fn </span>connect_g_authorize_method&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>DBusMethodInvocation) -&gt; bool + <span class="lifetime">&#39;static</span>&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         f: F,
-    ) -&gt; SignalHandlerId;
-
-    <span class="attr">#[doc(alias = <span class="string">&quot;g-flags&quot;</span>)]
-    </span><span class="kw">fn </span>connect_g_flags_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId;
-}
-
-<span class="kw">impl</span>&lt;O: IsA&lt;DBusInterfaceSkeleton&gt;&gt; DBusInterfaceSkeletonExt <span class="kw">for </span>O {
-    <span class="kw">fn </span>export(<span class="kw-2">&amp;</span><span class="self">self</span>, connection: <span class="kw-2">&amp;</span>DBusConnection, object_path: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt; {
-        <span class="kw">unsafe </span>{
-            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
-            <span class="kw">let </span>is_ok = ffi::g_dbus_interface_skeleton_export(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                connection.to_glib_none().<span class="number">0</span>,
-                object_path.to_glib_none().<span class="number">0</span>,
-                <span class="kw-2">&amp;mut </span>error,
-            );
-            <span class="macro">debug_assert_eq!</span>(is_ok == glib::ffi::GFALSE, !error.is_null());
-            <span class="kw">if </span>error.is_null() {
-                <span class="prelude-val">Ok</span>(())
-            } <span class="kw">else </span>{
-                <span class="prelude-val">Err</span>(from_glib_full(error))
-            }
-        }
-    }
-
-    <span class="kw">fn </span>flush(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <span class="kw">unsafe </span>{
-            ffi::g_dbus_interface_skeleton_flush(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>);
-        }
-    }
-
-    <span class="kw">fn </span>connection(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;DBusConnection&gt; {
-        <span class="kw">unsafe </span>{
-            from_glib_none(ffi::g_dbus_interface_skeleton_get_connection(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="kw">fn </span>connections(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;DBusConnection&gt; {
-        <span class="kw">unsafe </span>{
-            FromGlibPtrContainer::from_glib_full(ffi::g_dbus_interface_skeleton_get_connections(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="kw">fn </span>flags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; DBusInterfaceSkeletonFlags {
-        <span class="kw">unsafe </span>{
-            from_glib(ffi::g_dbus_interface_skeleton_get_flags(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="kw">fn </span>info(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; DBusInterfaceInfo {
-        <span class="kw">unsafe </span>{
-            from_glib_none(ffi::g_dbus_interface_skeleton_get_info(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="kw">fn </span>object_path(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;glib::GString&gt; {
-        <span class="kw">unsafe </span>{
-            from_glib_none(ffi::g_dbus_interface_skeleton_get_object_path(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="kw">fn </span>properties(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; glib::Variant {
-        <span class="kw">unsafe </span>{
-            from_glib_full(ffi::g_dbus_interface_skeleton_get_properties(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="comment">//fn vtable(&amp;self) -&gt; /*Ignored*/DBusInterfaceVTable {
-    //    unsafe { TODO: call ffi:g_dbus_interface_skeleton_get_vtable() }
-    //}
-
-    </span><span class="kw">fn </span>has_connection(<span class="kw-2">&amp;</span><span class="self">self</span>, connection: <span class="kw-2">&amp;</span>DBusConnection) -&gt; bool {
-        <span class="kw">unsafe </span>{
-            from_glib(ffi::g_dbus_interface_skeleton_has_connection(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                connection.to_glib_none().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="kw">fn </span>set_flags(<span class="kw-2">&amp;</span><span class="self">self</span>, flags: DBusInterfaceSkeletonFlags) {
-        <span class="kw">unsafe </span>{
-            ffi::g_dbus_interface_skeleton_set_flags(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                flags.into_glib(),
-            );
-        }
-    }
-
-    <span class="kw">fn </span>unexport(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <span class="kw">unsafe </span>{
-            ffi::g_dbus_interface_skeleton_unexport(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>);
-        }
-    }
-
-    <span class="kw">fn </span>unexport_from_connection(<span class="kw-2">&amp;</span><span class="self">self</span>, connection: <span class="kw-2">&amp;</span>DBusConnection) {
-        <span class="kw">unsafe </span>{
-            ffi::g_dbus_interface_skeleton_unexport_from_connection(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                connection.to_glib_none().<span class="number">0</span>,
-            );
-        }
-    }
-
-    <span class="kw">fn </span>g_flags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; DBusInterfaceSkeletonFlags {
-        glib::ObjectExt::property(<span class="self">self</span>.as_ref(), <span class="string">&quot;g-flags&quot;</span>)
-    }
-
-    <span class="kw">fn </span>set_g_flags(<span class="kw-2">&amp;</span><span class="self">self</span>, g_flags: DBusInterfaceSkeletonFlags) {
-        glib::ObjectExt::set_property(<span class="self">self</span>.as_ref(), <span class="string">&quot;g-flags&quot;</span>, g_flags)
-    }
-
-    <span class="kw">fn </span>connect_g_authorize_method&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>DBusMethodInvocation) -&gt; bool + <span class="lifetime">&#39;static</span>&gt;(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        f: F,
     ) -&gt; SignalHandlerId {
         <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>g_authorize_method_trampoline&lt;
             P: IsA&lt;DBusInterfaceSkeleton&gt;,
@@ -952,7 +875,8 @@
         }
     }
 
-    <span class="kw">fn </span>connect_g_flags_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
+    <span class="attr">#[doc(alias = <span class="string">&quot;g-flags&quot;</span>)]
+    </span><span class="kw">fn </span>connect_g_flags_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
         <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>notify_g_flags_trampoline&lt;
             P: IsA&lt;DBusInterfaceSkeleton&gt;,
             F: Fn(<span class="kw-2">&amp;</span>P) + <span class="lifetime">&#39;static</span>,
@@ -977,6 +901,8 @@
         }
     }
 }
+
+<span class="kw">impl</span>&lt;O: IsA&lt;DBusInterfaceSkeleton&gt;&gt; DBusInterfaceSkeletonExt <span class="kw">for </span>O {}
 
 <span class="kw">impl </span>fmt::Display <span class="kw">for </span>DBusInterfaceSkeleton {
     <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter) -&gt; fmt::Result {

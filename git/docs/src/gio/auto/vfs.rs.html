@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gio/src/auto/vfs.rs`."><title>vfs.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (a77c55248 2023-05-06)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gio/src/auto/vfs.rs`."><title>vfs.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (c4190f2d3 2023-05-07)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -372,25 +372,6 @@
 <a href="#299" id="299">299</a>
 <a href="#300" id="300">300</a>
 <a href="#301" id="301">301</a>
-<a href="#302" id="302">302</a>
-<a href="#303" id="303">303</a>
-<a href="#304" id="304">304</a>
-<a href="#305" id="305">305</a>
-<a href="#306" id="306">306</a>
-<a href="#307" id="307">307</a>
-<a href="#308" id="308">308</a>
-<a href="#309" id="309">309</a>
-<a href="#310" id="310">310</a>
-<a href="#311" id="311">311</a>
-<a href="#312" id="312">312</a>
-<a href="#313" id="313">313</a>
-<a href="#314" id="314">314</a>
-<a href="#315" id="315">315</a>
-<a href="#316" id="316">316</a>
-<a href="#317" id="317">317</a>
-<a href="#318" id="318">318</a>
-<a href="#319" id="319">319</a>
-<a href="#320" id="320">320</a>
 </pre></div><pre class="rust"><code><span class="comment">// This file was generated by gir (https://github.com/gtk-rs/gir)
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
@@ -449,7 +430,7 @@
 /// # Implementors
 ///
 /// [`Vfs`][struct@crate::Vfs]
-</span><span class="kw">pub trait </span>VfsExt: <span class="lifetime">&#39;static </span>{
+</span><span class="kw">pub trait </span>VfsExt: IsA&lt;Vfs&gt; + <span class="lifetime">&#39;static </span>{
     <span class="doccomment">/// Gets a [`File`][crate::File] for `path`.
     /// ## `path`
     /// a string containing a VFS path.
@@ -460,7 +441,14 @@
     ///  Free the returned object with `g_object_unref()`.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_vfs_get_file_for_path&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_file_for_path&quot;</span>)]
-    </span><span class="kw">fn </span>file_for_path(<span class="kw-2">&amp;</span><span class="self">self</span>, path: <span class="kw-2">&amp;</span>str) -&gt; File;
+    </span><span class="kw">fn </span>file_for_path(<span class="kw-2">&amp;</span><span class="self">self</span>, path: <span class="kw-2">&amp;</span>str) -&gt; File {
+        <span class="kw">unsafe </span>{
+            from_glib_full(ffi::g_vfs_get_file_for_path(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                path.to_glib_none().<span class="number">0</span>,
+            ))
+        }
+    }
 
     <span class="doccomment">/// Gets a [`File`][crate::File] for `uri`.
     ///
@@ -476,7 +464,14 @@
     ///  Free the returned object with `g_object_unref()`.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_vfs_get_file_for_uri&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_file_for_uri&quot;</span>)]
-    </span><span class="kw">fn </span>file_for_uri(<span class="kw-2">&amp;</span><span class="self">self</span>, uri: <span class="kw-2">&amp;</span>str) -&gt; File;
+    </span><span class="kw">fn </span>file_for_uri(<span class="kw-2">&amp;</span><span class="self">self</span>, uri: <span class="kw-2">&amp;</span>str) -&gt; File {
+        <span class="kw">unsafe </span>{
+            from_glib_full(ffi::g_vfs_get_file_for_uri(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                uri.to_glib_none().<span class="number">0</span>,
+            ))
+        }
+    }
 
     <span class="doccomment">/// Gets a list of URI schemes supported by `self`.
     ///
@@ -487,7 +482,13 @@
     ///  not be freed or modified.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_vfs_get_supported_uri_schemes&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_supported_uri_schemes&quot;</span>)]
-    </span><span class="kw">fn </span>supported_uri_schemes(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;glib::GString&gt;;
+    </span><span class="kw">fn </span>supported_uri_schemes(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;glib::GString&gt; {
+        <span class="kw">unsafe </span>{
+            FromGlibPtrContainer::from_glib_none(ffi::g_vfs_get_supported_uri_schemes(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+            ))
+        }
+    }
 
     <span class="doccomment">/// Checks if the VFS is active.
     ///
@@ -496,7 +497,9 @@
     /// [`true`] if construction of the `self` was successful
     ///  and it is now active.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_vfs_is_active&quot;</span>)]
-    </span><span class="kw">fn </span>is_active(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool;
+    </span><span class="kw">fn </span>is_active(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">unsafe </span>{ from_glib(ffi::g_vfs_is_active(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>)) }
+    }
 
     <span class="doccomment">/// This operation never fails, but the returned object might
     /// not support any I/O operations if the `parse_name` cannot
@@ -509,7 +512,14 @@
     /// a [`File`][crate::File] for the given `parse_name`.
     ///  Free the returned object with `g_object_unref()`.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_vfs_parse_name&quot;</span>)]
-    </span><span class="kw">fn </span>parse_name(<span class="kw-2">&amp;</span><span class="self">self</span>, parse_name: <span class="kw-2">&amp;</span>str) -&gt; File;
+    </span><span class="kw">fn </span>parse_name(<span class="kw-2">&amp;</span><span class="self">self</span>, parse_name: <span class="kw-2">&amp;</span>str) -&gt; File {
+        <span class="kw">unsafe </span>{
+            from_glib_full(ffi::g_vfs_parse_name(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                parse_name.to_glib_none().<span class="number">0</span>,
+            ))
+        }
+    }
 
     <span class="doccomment">/// Registers `uri_func` and `parse_name_func` as the [`File`][crate::File] URI and parse name
     /// lookup functions for URIs with a scheme matching `scheme`.
@@ -557,66 +567,6 @@
     ///  for `scheme` already exists.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_vfs_register_uri_scheme&quot;</span>)]
     </span><span class="kw">fn </span>register_uri_scheme(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        scheme: <span class="kw-2">&amp;</span>str,
-        uri_func: <span class="prelude-ty">Option</span>&lt;Box_&lt;<span class="kw">dyn </span>Fn(<span class="kw-2">&amp;</span>Vfs, <span class="kw-2">&amp;</span>str) -&gt; File + <span class="lifetime">&#39;static</span>&gt;&gt;,
-        parse_name_func: <span class="prelude-ty">Option</span>&lt;Box_&lt;<span class="kw">dyn </span>Fn(<span class="kw-2">&amp;</span>Vfs, <span class="kw-2">&amp;</span>str) -&gt; File + <span class="lifetime">&#39;static</span>&gt;&gt;,
-    ) -&gt; bool;
-
-    <span class="doccomment">/// Unregisters the URI handler for `scheme` previously registered with
-    /// [`register_uri_scheme()`][Self::register_uri_scheme()].
-    /// ## `scheme`
-    /// an URI scheme, e.g. &quot;http&quot;
-    ///
-    /// # Returns
-    ///
-    /// [`true`] if `scheme` was successfully unregistered, or [`false`] if a
-    ///  handler for `scheme` does not exist.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_vfs_unregister_uri_scheme&quot;</span>)]
-    </span><span class="kw">fn </span>unregister_uri_scheme(<span class="kw-2">&amp;</span><span class="self">self</span>, scheme: <span class="kw-2">&amp;</span>str) -&gt; bool;
-}
-
-<span class="kw">impl</span>&lt;O: IsA&lt;Vfs&gt;&gt; VfsExt <span class="kw">for </span>O {
-    <span class="kw">fn </span>file_for_path(<span class="kw-2">&amp;</span><span class="self">self</span>, path: <span class="kw-2">&amp;</span>str) -&gt; File {
-        <span class="kw">unsafe </span>{
-            from_glib_full(ffi::g_vfs_get_file_for_path(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                path.to_glib_none().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="kw">fn </span>file_for_uri(<span class="kw-2">&amp;</span><span class="self">self</span>, uri: <span class="kw-2">&amp;</span>str) -&gt; File {
-        <span class="kw">unsafe </span>{
-            from_glib_full(ffi::g_vfs_get_file_for_uri(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                uri.to_glib_none().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="kw">fn </span>supported_uri_schemes(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;glib::GString&gt; {
-        <span class="kw">unsafe </span>{
-            FromGlibPtrContainer::from_glib_none(ffi::g_vfs_get_supported_uri_schemes(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="kw">fn </span>is_active(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
-        <span class="kw">unsafe </span>{ from_glib(ffi::g_vfs_is_active(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>)) }
-    }
-
-    <span class="kw">fn </span>parse_name(<span class="kw-2">&amp;</span><span class="self">self</span>, parse_name: <span class="kw-2">&amp;</span>str) -&gt; File {
-        <span class="kw">unsafe </span>{
-            from_glib_full(ffi::g_vfs_parse_name(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                parse_name.to_glib_none().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="kw">fn </span>register_uri_scheme(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         scheme: <span class="kw-2">&amp;</span>str,
         uri_func: <span class="prelude-ty">Option</span>&lt;Box_&lt;<span class="kw">dyn </span>Fn(<span class="kw-2">&amp;</span>Vfs, <span class="kw-2">&amp;</span>str) -&gt; File + <span class="lifetime">&#39;static</span>&gt;&gt;,
@@ -696,7 +646,17 @@
         }
     }
 
-    <span class="kw">fn </span>unregister_uri_scheme(<span class="kw-2">&amp;</span><span class="self">self</span>, scheme: <span class="kw-2">&amp;</span>str) -&gt; bool {
+    <span class="doccomment">/// Unregisters the URI handler for `scheme` previously registered with
+    /// [`register_uri_scheme()`][Self::register_uri_scheme()].
+    /// ## `scheme`
+    /// an URI scheme, e.g. &quot;http&quot;
+    ///
+    /// # Returns
+    ///
+    /// [`true`] if `scheme` was successfully unregistered, or [`false`] if a
+    ///  handler for `scheme` does not exist.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_vfs_unregister_uri_scheme&quot;</span>)]
+    </span><span class="kw">fn </span>unregister_uri_scheme(<span class="kw-2">&amp;</span><span class="self">self</span>, scheme: <span class="kw-2">&amp;</span>str) -&gt; bool {
         <span class="kw">unsafe </span>{
             from_glib(ffi::g_vfs_unregister_uri_scheme(
                 <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
@@ -705,6 +665,8 @@
         }
     }
 }
+
+<span class="kw">impl</span>&lt;O: IsA&lt;Vfs&gt;&gt; VfsExt <span class="kw">for </span>O {}
 
 <span class="kw">impl </span>fmt::Display <span class="kw">for </span>Vfs {
     <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter) -&gt; fmt::Result {

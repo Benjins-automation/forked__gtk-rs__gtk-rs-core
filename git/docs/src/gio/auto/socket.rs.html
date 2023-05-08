@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gio/src/auto/socket.rs`."><title>socket.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (a77c55248 2023-05-06)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gio/src/auto/socket.rs`."><title>socket.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (c4190f2d3 2023-05-07)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -1645,148 +1645,6 @@
 <a href="#1572" id="1572">1572</a>
 <a href="#1573" id="1573">1573</a>
 <a href="#1574" id="1574">1574</a>
-<a href="#1575" id="1575">1575</a>
-<a href="#1576" id="1576">1576</a>
-<a href="#1577" id="1577">1577</a>
-<a href="#1578" id="1578">1578</a>
-<a href="#1579" id="1579">1579</a>
-<a href="#1580" id="1580">1580</a>
-<a href="#1581" id="1581">1581</a>
-<a href="#1582" id="1582">1582</a>
-<a href="#1583" id="1583">1583</a>
-<a href="#1584" id="1584">1584</a>
-<a href="#1585" id="1585">1585</a>
-<a href="#1586" id="1586">1586</a>
-<a href="#1587" id="1587">1587</a>
-<a href="#1588" id="1588">1588</a>
-<a href="#1589" id="1589">1589</a>
-<a href="#1590" id="1590">1590</a>
-<a href="#1591" id="1591">1591</a>
-<a href="#1592" id="1592">1592</a>
-<a href="#1593" id="1593">1593</a>
-<a href="#1594" id="1594">1594</a>
-<a href="#1595" id="1595">1595</a>
-<a href="#1596" id="1596">1596</a>
-<a href="#1597" id="1597">1597</a>
-<a href="#1598" id="1598">1598</a>
-<a href="#1599" id="1599">1599</a>
-<a href="#1600" id="1600">1600</a>
-<a href="#1601" id="1601">1601</a>
-<a href="#1602" id="1602">1602</a>
-<a href="#1603" id="1603">1603</a>
-<a href="#1604" id="1604">1604</a>
-<a href="#1605" id="1605">1605</a>
-<a href="#1606" id="1606">1606</a>
-<a href="#1607" id="1607">1607</a>
-<a href="#1608" id="1608">1608</a>
-<a href="#1609" id="1609">1609</a>
-<a href="#1610" id="1610">1610</a>
-<a href="#1611" id="1611">1611</a>
-<a href="#1612" id="1612">1612</a>
-<a href="#1613" id="1613">1613</a>
-<a href="#1614" id="1614">1614</a>
-<a href="#1615" id="1615">1615</a>
-<a href="#1616" id="1616">1616</a>
-<a href="#1617" id="1617">1617</a>
-<a href="#1618" id="1618">1618</a>
-<a href="#1619" id="1619">1619</a>
-<a href="#1620" id="1620">1620</a>
-<a href="#1621" id="1621">1621</a>
-<a href="#1622" id="1622">1622</a>
-<a href="#1623" id="1623">1623</a>
-<a href="#1624" id="1624">1624</a>
-<a href="#1625" id="1625">1625</a>
-<a href="#1626" id="1626">1626</a>
-<a href="#1627" id="1627">1627</a>
-<a href="#1628" id="1628">1628</a>
-<a href="#1629" id="1629">1629</a>
-<a href="#1630" id="1630">1630</a>
-<a href="#1631" id="1631">1631</a>
-<a href="#1632" id="1632">1632</a>
-<a href="#1633" id="1633">1633</a>
-<a href="#1634" id="1634">1634</a>
-<a href="#1635" id="1635">1635</a>
-<a href="#1636" id="1636">1636</a>
-<a href="#1637" id="1637">1637</a>
-<a href="#1638" id="1638">1638</a>
-<a href="#1639" id="1639">1639</a>
-<a href="#1640" id="1640">1640</a>
-<a href="#1641" id="1641">1641</a>
-<a href="#1642" id="1642">1642</a>
-<a href="#1643" id="1643">1643</a>
-<a href="#1644" id="1644">1644</a>
-<a href="#1645" id="1645">1645</a>
-<a href="#1646" id="1646">1646</a>
-<a href="#1647" id="1647">1647</a>
-<a href="#1648" id="1648">1648</a>
-<a href="#1649" id="1649">1649</a>
-<a href="#1650" id="1650">1650</a>
-<a href="#1651" id="1651">1651</a>
-<a href="#1652" id="1652">1652</a>
-<a href="#1653" id="1653">1653</a>
-<a href="#1654" id="1654">1654</a>
-<a href="#1655" id="1655">1655</a>
-<a href="#1656" id="1656">1656</a>
-<a href="#1657" id="1657">1657</a>
-<a href="#1658" id="1658">1658</a>
-<a href="#1659" id="1659">1659</a>
-<a href="#1660" id="1660">1660</a>
-<a href="#1661" id="1661">1661</a>
-<a href="#1662" id="1662">1662</a>
-<a href="#1663" id="1663">1663</a>
-<a href="#1664" id="1664">1664</a>
-<a href="#1665" id="1665">1665</a>
-<a href="#1666" id="1666">1666</a>
-<a href="#1667" id="1667">1667</a>
-<a href="#1668" id="1668">1668</a>
-<a href="#1669" id="1669">1669</a>
-<a href="#1670" id="1670">1670</a>
-<a href="#1671" id="1671">1671</a>
-<a href="#1672" id="1672">1672</a>
-<a href="#1673" id="1673">1673</a>
-<a href="#1674" id="1674">1674</a>
-<a href="#1675" id="1675">1675</a>
-<a href="#1676" id="1676">1676</a>
-<a href="#1677" id="1677">1677</a>
-<a href="#1678" id="1678">1678</a>
-<a href="#1679" id="1679">1679</a>
-<a href="#1680" id="1680">1680</a>
-<a href="#1681" id="1681">1681</a>
-<a href="#1682" id="1682">1682</a>
-<a href="#1683" id="1683">1683</a>
-<a href="#1684" id="1684">1684</a>
-<a href="#1685" id="1685">1685</a>
-<a href="#1686" id="1686">1686</a>
-<a href="#1687" id="1687">1687</a>
-<a href="#1688" id="1688">1688</a>
-<a href="#1689" id="1689">1689</a>
-<a href="#1690" id="1690">1690</a>
-<a href="#1691" id="1691">1691</a>
-<a href="#1692" id="1692">1692</a>
-<a href="#1693" id="1693">1693</a>
-<a href="#1694" id="1694">1694</a>
-<a href="#1695" id="1695">1695</a>
-<a href="#1696" id="1696">1696</a>
-<a href="#1697" id="1697">1697</a>
-<a href="#1698" id="1698">1698</a>
-<a href="#1699" id="1699">1699</a>
-<a href="#1700" id="1700">1700</a>
-<a href="#1701" id="1701">1701</a>
-<a href="#1702" id="1702">1702</a>
-<a href="#1703" id="1703">1703</a>
-<a href="#1704" id="1704">1704</a>
-<a href="#1705" id="1705">1705</a>
-<a href="#1706" id="1706">1706</a>
-<a href="#1707" id="1707">1707</a>
-<a href="#1708" id="1708">1708</a>
-<a href="#1709" id="1709">1709</a>
-<a href="#1710" id="1710">1710</a>
-<a href="#1711" id="1711">1711</a>
-<a href="#1712" id="1712">1712</a>
-<a href="#1713" id="1713">1713</a>
-<a href="#1714" id="1714">1714</a>
-<a href="#1715" id="1715">1715</a>
-<a href="#1716" id="1716">1716</a>
 </pre></div><pre class="rust"><code><span class="comment">// This file was generated by gir (https://github.com/gtk-rs/gir)
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
@@ -1989,7 +1847,7 @@
 /// # Implementors
 ///
 /// [`Socket`][struct@crate::Socket]
-</span><span class="kw">pub trait </span>SocketExt: <span class="lifetime">&#39;static </span>{
+</span><span class="kw">pub trait </span>SocketExt: IsA&lt;Socket&gt; + <span class="lifetime">&#39;static </span>{
     <span class="doccomment">/// Accept incoming connections on a connection-based socket. This removes
     /// the first outstanding connection request from the listening socket and
     /// creates a [`Socket`][crate::Socket] object for it.
@@ -2008,7 +1866,21 @@
     /// a new [`Socket`][crate::Socket], or [`None`] on error.
     ///  Free the returned object with `g_object_unref()`.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_accept&quot;</span>)]
-    </span><span class="kw">fn </span>accept(<span class="kw-2">&amp;</span><span class="self">self</span>, cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Cancellable&gt;&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;Socket, glib::Error&gt;;
+    </span><span class="kw">fn </span>accept(<span class="kw-2">&amp;</span><span class="self">self</span>, cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Cancellable&gt;&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;Socket, glib::Error&gt; {
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
+            <span class="kw">let </span>ret = ffi::g_socket_accept(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                cancellable.map(|p| p.as_ref()).to_glib_none().<span class="number">0</span>,
+                <span class="kw-2">&amp;mut </span>error,
+            );
+            <span class="kw">if </span>error.is_null() {
+                <span class="prelude-val">Ok</span>(from_glib_full(ret))
+            } <span class="kw">else </span>{
+                <span class="prelude-val">Err</span>(from_glib_full(error))
+            }
+        }
+    }
 
     <span class="doccomment">/// When a socket is created it is attached to an address family, but it
     /// doesn&#39;t have an address in this family. [`bind()`][Self::bind()] assigns the
@@ -2042,8 +1914,27 @@
     ///
     /// [`true`] on success, [`false`] on error.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_bind&quot;</span>)]
-    </span><span class="kw">fn </span>bind(<span class="kw-2">&amp;</span><span class="self">self</span>, address: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;SocketAddress&gt;, allow_reuse: bool)
-        -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt;;
+    </span><span class="kw">fn </span>bind(
+        <span class="kw-2">&amp;</span><span class="self">self</span>,
+        address: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;SocketAddress&gt;,
+        allow_reuse: bool,
+    ) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt; {
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
+            <span class="kw">let </span>is_ok = ffi::g_socket_bind(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                address.as_ref().to_glib_none().<span class="number">0</span>,
+                allow_reuse.into_glib(),
+                <span class="kw-2">&amp;mut </span>error,
+            );
+            <span class="macro">debug_assert_eq!</span>(is_ok == glib::ffi::GFALSE, !error.is_null());
+            <span class="kw">if </span>error.is_null() {
+                <span class="prelude-val">Ok</span>(())
+            } <span class="kw">else </span>{
+                <span class="prelude-val">Err</span>(from_glib_full(error))
+            }
+        }
+    }
 
     <span class="doccomment">/// Checks and resets the pending connect error for the socket.
     /// This is used to check for errors when [`connect()`][Self::connect()] is
@@ -2053,7 +1944,19 @@
     ///
     /// [`true`] if no error, [`false`] otherwise, setting `error` to the error
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_check_connect_result&quot;</span>)]
-    </span><span class="kw">fn </span>check_connect_result(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt;;
+    </span><span class="kw">fn </span>check_connect_result(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt; {
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
+            <span class="kw">let </span>is_ok =
+                ffi::g_socket_check_connect_result(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, <span class="kw-2">&amp;mut </span>error);
+            <span class="macro">debug_assert_eq!</span>(is_ok == glib::ffi::GFALSE, !error.is_null());
+            <span class="kw">if </span>error.is_null() {
+                <span class="prelude-val">Ok</span>(())
+            } <span class="kw">else </span>{
+                <span class="prelude-val">Err</span>(from_glib_full(error))
+            }
+        }
+    }
 
     <span class="doccomment">/// Closes the socket, shutting down any active connection.
     ///
@@ -2089,7 +1992,18 @@
     ///
     /// [`true`] on success, [`false`] on error
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_close&quot;</span>)]
-    </span><span class="kw">fn </span>close(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt;;
+    </span><span class="kw">fn </span>close(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt; {
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
+            <span class="kw">let </span>is_ok = ffi::g_socket_close(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, <span class="kw-2">&amp;mut </span>error);
+            <span class="macro">debug_assert_eq!</span>(is_ok == glib::ffi::GFALSE, !error.is_null());
+            <span class="kw">if </span>error.is_null() {
+                <span class="prelude-val">Ok</span>(())
+            } <span class="kw">else </span>{
+                <span class="prelude-val">Err</span>(from_glib_full(error))
+            }
+        }
+    }
 
     <span class="doccomment">/// Checks on the readiness of `self` to perform operations.
     /// The operations specified in `condition` are checked for and masked
@@ -2115,7 +2029,14 @@
     ///
     /// the [`glib::IOCondition`][crate::glib::IOCondition] mask of the current state
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_condition_check&quot;</span>)]
-    </span><span class="kw">fn </span>condition_check(<span class="kw-2">&amp;</span><span class="self">self</span>, condition: glib::IOCondition) -&gt; glib::IOCondition;
+    </span><span class="kw">fn </span>condition_check(<span class="kw-2">&amp;</span><span class="self">self</span>, condition: glib::IOCondition) -&gt; glib::IOCondition {
+        <span class="kw">unsafe </span>{
+            from_glib(ffi::g_socket_condition_check(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                condition.into_glib(),
+            ))
+        }
+    }
 
     <span class="doccomment">/// Waits for up to `timeout_us` microseconds for `condition` to become true
     /// on `self`. If the condition is met, [`true`] is returned.
@@ -2149,7 +2070,24 @@
         condition: glib::IOCondition,
         timeout_us: i64,
         cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Cancellable&gt;&gt;,
-    ) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt;;
+    ) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt; {
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
+            <span class="kw">let </span>is_ok = ffi::g_socket_condition_timed_wait(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                condition.into_glib(),
+                timeout_us,
+                cancellable.map(|p| p.as_ref()).to_glib_none().<span class="number">0</span>,
+                <span class="kw-2">&amp;mut </span>error,
+            );
+            <span class="macro">debug_assert_eq!</span>(is_ok == glib::ffi::GFALSE, !error.is_null());
+            <span class="kw">if </span>error.is_null() {
+                <span class="prelude-val">Ok</span>(())
+            } <span class="kw">else </span>{
+                <span class="prelude-val">Err</span>(from_glib_full(error))
+            }
+        }
+    }
 
     <span class="doccomment">/// Waits for `condition` to become true on `self`. When the condition
     /// is met, [`true`] is returned.
@@ -2174,7 +2112,23 @@
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         condition: glib::IOCondition,
         cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Cancellable&gt;&gt;,
-    ) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt;;
+    ) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt; {
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
+            <span class="kw">let </span>is_ok = ffi::g_socket_condition_wait(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                condition.into_glib(),
+                cancellable.map(|p| p.as_ref()).to_glib_none().<span class="number">0</span>,
+                <span class="kw-2">&amp;mut </span>error,
+            );
+            <span class="macro">debug_assert_eq!</span>(is_ok == glib::ffi::GFALSE, !error.is_null());
+            <span class="kw">if </span>error.is_null() {
+                <span class="prelude-val">Ok</span>(())
+            } <span class="kw">else </span>{
+                <span class="prelude-val">Err</span>(from_glib_full(error))
+            }
+        }
+    }
 
     <span class="doccomment">/// Connect the socket to the specified remote address.
     ///
@@ -2205,7 +2159,23 @@
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         address: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;SocketAddress&gt;,
         cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Cancellable&gt;&gt;,
-    ) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt;;
+    ) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt; {
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
+            <span class="kw">let </span>is_ok = ffi::g_socket_connect(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                address.as_ref().to_glib_none().<span class="number">0</span>,
+                cancellable.map(|p| p.as_ref()).to_glib_none().<span class="number">0</span>,
+                <span class="kw-2">&amp;mut </span>error,
+            );
+            <span class="macro">debug_assert_eq!</span>(is_ok == glib::ffi::GFALSE, !error.is_null());
+            <span class="kw">if </span>error.is_null() {
+                <span class="prelude-val">Ok</span>(())
+            } <span class="kw">else </span>{
+                <span class="prelude-val">Err</span>(from_glib_full(error))
+            }
+        }
+    }
 
     <span class="doccomment">/// Creates a [`SocketConnection`][crate::SocketConnection] subclass of the right type for
     /// `self`.
@@ -2214,7 +2184,13 @@
     ///
     /// a [`SocketConnection`][crate::SocketConnection]
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_connection_factory_create_connection&quot;</span>)]
-    </span><span class="kw">fn </span>connection_factory_create_connection(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; SocketConnection;
+    </span><span class="kw">fn </span>connection_factory_create_connection(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; SocketConnection {
+        <span class="kw">unsafe </span>{
+            from_glib_full(ffi::g_socket_connection_factory_create_connection(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+            ))
+        }
+    }
 
     <span class="doccomment">/// Get the amount of data pending in the OS input buffer, without blocking.
     ///
@@ -2235,7 +2211,9 @@
     /// without blocking or truncating, or -1 on error.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_get_available_bytes&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_available_bytes&quot;</span>)]
-    </span><span class="kw">fn </span>available_bytes(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; isize;
+    </span><span class="kw">fn </span>available_bytes(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; isize {
+        <span class="kw">unsafe </span>{ ffi::g_socket_get_available_bytes(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>) }
+    }
 
     <span class="doccomment">/// Gets the blocking mode of the socket. For details on blocking I/O,
     /// see [`set_blocking()`][Self::set_blocking()].
@@ -2245,7 +2223,9 @@
     /// [`true`] if blocking I/O is used, [`false`] otherwise.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_get_blocking&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_blocking&quot;</span>)]
-    </span><span class="kw">fn </span>is_blocking(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool;
+    </span><span class="kw">fn </span>is_blocking(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">unsafe </span>{ from_glib(ffi::g_socket_get_blocking(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>)) }
+    }
 
     <span class="doccomment">/// Gets the broadcast setting on `self`; if [`true`],
     /// it is possible to send packets to broadcast
@@ -2256,7 +2236,9 @@
     /// the broadcast setting on `self`
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_get_broadcast&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_broadcast&quot;</span>)]
-    </span><span class="kw">fn </span>is_broadcast(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool;
+    </span><span class="kw">fn </span>is_broadcast(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">unsafe </span>{ from_glib(ffi::g_socket_get_broadcast(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>)) }
+    }
 
     <span class="doccomment">/// Returns the credentials of the foreign process connected to this
     /// socket, if any (e.g. it is only supported for [`SocketFamily::Unix`][crate::SocketFamily::Unix]
@@ -2285,7 +2267,17 @@
     /// that must be freed with `g_object_unref()`.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_get_credentials&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_credentials&quot;</span>)]
-    </span><span class="kw">fn </span>credentials(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;Credentials, glib::Error&gt;;
+    </span><span class="kw">fn </span>credentials(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;Credentials, glib::Error&gt; {
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
+            <span class="kw">let </span>ret = ffi::g_socket_get_credentials(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, <span class="kw-2">&amp;mut </span>error);
+            <span class="kw">if </span>error.is_null() {
+                <span class="prelude-val">Ok</span>(from_glib_full(ret))
+            } <span class="kw">else </span>{
+                <span class="prelude-val">Err</span>(from_glib_full(error))
+            }
+        }
+    }
 
     <span class="doccomment">/// Gets the socket family of the socket.
     ///
@@ -2294,7 +2286,9 @@
     /// a [`SocketFamily`][crate::SocketFamily]
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_get_family&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_family&quot;</span>)]
-    </span><span class="kw">fn </span>family(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; SocketFamily;
+    </span><span class="kw">fn </span>family(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; SocketFamily {
+        <span class="kw">unsafe </span>{ from_glib(ffi::g_socket_get_family(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>)) }
+    }
 
     <span class="doccomment">/// Gets the keepalive mode of the socket. For details on this,
     /// see [`set_keepalive()`][Self::set_keepalive()].
@@ -2304,7 +2298,9 @@
     /// [`true`] if keepalive is active, [`false`] otherwise.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_get_keepalive&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_keepalive&quot;</span>)]
-    </span><span class="kw">fn </span>is_keepalive(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool;
+    </span><span class="kw">fn </span>is_keepalive(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">unsafe </span>{ from_glib(ffi::g_socket_get_keepalive(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>)) }
+    }
 
     <span class="doccomment">/// Gets the listen backlog setting of the socket. For details on this,
     /// see [`set_listen_backlog()`][Self::set_listen_backlog()].
@@ -2314,7 +2310,9 @@
     /// the maximum number of pending connections.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_get_listen_backlog&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_listen_backlog&quot;</span>)]
-    </span><span class="kw">fn </span>listen_backlog(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; i32;
+    </span><span class="kw">fn </span>listen_backlog(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; i32 {
+        <span class="kw">unsafe </span>{ ffi::g_socket_get_listen_backlog(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>) }
+    }
 
     <span class="doccomment">/// Try to get the local address of a bound socket. This is only
     /// useful if the socket has been bound to a local address,
@@ -2326,7 +2324,17 @@
     ///  Free the returned object with `g_object_unref()`.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_get_local_address&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_local_address&quot;</span>)]
-    </span><span class="kw">fn </span>local_address(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;SocketAddress, glib::Error&gt;;
+    </span><span class="kw">fn </span>local_address(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;SocketAddress, glib::Error&gt; {
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
+            <span class="kw">let </span>ret = ffi::g_socket_get_local_address(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, <span class="kw-2">&amp;mut </span>error);
+            <span class="kw">if </span>error.is_null() {
+                <span class="prelude-val">Ok</span>(from_glib_full(ret))
+            } <span class="kw">else </span>{
+                <span class="prelude-val">Err</span>(from_glib_full(error))
+            }
+        }
+    }
 
     <span class="doccomment">/// Gets the multicast loopback setting on `self`; if [`true`] (the
     /// default), outgoing multicast packets will be looped back to
@@ -2337,7 +2345,13 @@
     /// the multicast loopback setting on `self`
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_get_multicast_loopback&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_multicast_loopback&quot;</span>)]
-    </span><span class="kw">fn </span>is_multicast_loopback(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool;
+    </span><span class="kw">fn </span>is_multicast_loopback(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">unsafe </span>{
+            from_glib(ffi::g_socket_get_multicast_loopback(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+            ))
+        }
+    }
 
     <span class="doccomment">/// Gets the multicast time-to-live setting on `self`; see
     /// [`set_multicast_ttl()`][Self::set_multicast_ttl()] for more details.
@@ -2347,7 +2361,9 @@
     /// the multicast time-to-live setting on `self`
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_get_multicast_ttl&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_multicast_ttl&quot;</span>)]
-    </span><span class="kw">fn </span>multicast_ttl(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u32;
+    </span><span class="kw">fn </span>multicast_ttl(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u32 {
+        <span class="kw">unsafe </span>{ ffi::g_socket_get_multicast_ttl(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>) }
+    }
 
     <span class="doccomment">/// Gets the value of an integer-valued option on `self`, as with
     /// `getsockopt()`. (If you need to fetch a non-integer-valued option,
@@ -2377,7 +2393,25 @@
     /// return location for the option value
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_get_option&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_option&quot;</span>)]
-    </span><span class="kw">fn </span>option(<span class="kw-2">&amp;</span><span class="self">self</span>, level: i32, optname: i32) -&gt; <span class="prelude-ty">Result</span>&lt;i32, glib::Error&gt;;
+    </span><span class="kw">fn </span>option(<span class="kw-2">&amp;</span><span class="self">self</span>, level: i32, optname: i32) -&gt; <span class="prelude-ty">Result</span>&lt;i32, glib::Error&gt; {
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span><span class="kw-2">mut </span>value = mem::MaybeUninit::uninit();
+            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
+            <span class="kw">let </span>is_ok = ffi::g_socket_get_option(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                level,
+                optname,
+                value.as_mut_ptr(),
+                <span class="kw-2">&amp;mut </span>error,
+            );
+            <span class="macro">debug_assert_eq!</span>(is_ok == glib::ffi::GFALSE, !error.is_null());
+            <span class="kw">if </span>error.is_null() {
+                <span class="prelude-val">Ok</span>(value.assume_init())
+            } <span class="kw">else </span>{
+                <span class="prelude-val">Err</span>(from_glib_full(error))
+            }
+        }
+    }
 
     <span class="doccomment">/// Gets the socket protocol id the socket was created with.
     /// In case the protocol is unknown, -1 is returned.
@@ -2387,7 +2421,9 @@
     /// a protocol id, or -1 if unknown
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_get_protocol&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_protocol&quot;</span>)]
-    </span><span class="kw">fn </span>protocol(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; SocketProtocol;
+    </span><span class="kw">fn </span>protocol(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; SocketProtocol {
+        <span class="kw">unsafe </span>{ from_glib(ffi::g_socket_get_protocol(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>)) }
+    }
 
     <span class="doccomment">/// Try to get the remote address of a connected socket. This is only
     /// useful for connection oriented sockets that have been connected.
@@ -2398,7 +2434,17 @@
     ///  Free the returned object with `g_object_unref()`.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_get_remote_address&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_remote_address&quot;</span>)]
-    </span><span class="kw">fn </span>remote_address(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;SocketAddress, glib::Error&gt;;
+    </span><span class="kw">fn </span>remote_address(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;SocketAddress, glib::Error&gt; {
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
+            <span class="kw">let </span>ret = ffi::g_socket_get_remote_address(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, <span class="kw-2">&amp;mut </span>error);
+            <span class="kw">if </span>error.is_null() {
+                <span class="prelude-val">Ok</span>(from_glib_full(ret))
+            } <span class="kw">else </span>{
+                <span class="prelude-val">Err</span>(from_glib_full(error))
+            }
+        }
+    }
 
     <span class="doccomment">/// Gets the socket type of the socket.
     ///
@@ -2407,7 +2453,13 @@
     /// a [`SocketType`][crate::SocketType]
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_get_socket_type&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_socket_type&quot;</span>)]
-    </span><span class="kw">fn </span>socket_type(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; SocketType;
+    </span><span class="kw">fn </span>socket_type(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; SocketType {
+        <span class="kw">unsafe </span>{
+            from_glib(ffi::g_socket_get_socket_type(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+            ))
+        }
+    }
 
     <span class="doccomment">/// Gets the timeout setting of the socket. For details on this, see
     /// [`set_timeout()`][Self::set_timeout()].
@@ -2417,7 +2469,9 @@
     /// the timeout in seconds
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_get_timeout&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_timeout&quot;</span>)]
-    </span><span class="kw">fn </span>timeout(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u32;
+    </span><span class="kw">fn </span>timeout(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u32 {
+        <span class="kw">unsafe </span>{ ffi::g_socket_get_timeout(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>) }
+    }
 
     <span class="doccomment">/// Gets the unicast time-to-live setting on `self`; see
     /// [`set_ttl()`][Self::set_ttl()] for more details.
@@ -2427,7 +2481,9 @@
     /// the time-to-live setting on `self`
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_get_ttl&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_ttl&quot;</span>)]
-    </span><span class="kw">fn </span>ttl(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u32;
+    </span><span class="kw">fn </span>ttl(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u32 {
+        <span class="kw">unsafe </span>{ ffi::g_socket_get_ttl(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>) }
+    }
 
     <span class="doccomment">/// Checks whether a socket is closed.
     ///
@@ -2435,7 +2491,9 @@
     ///
     /// [`true`] if socket is closed, [`false`] otherwise
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_is_closed&quot;</span>)]
-    </span><span class="kw">fn </span>is_closed(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool;
+    </span><span class="kw">fn </span>is_closed(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">unsafe </span>{ from_glib(ffi::g_socket_is_closed(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>)) }
+    }
 
     <span class="doccomment">/// Check whether the socket is connected. This is only useful for
     /// connection-oriented sockets.
@@ -2449,7 +2507,9 @@
     ///
     /// [`true`] if socket is connected, [`false`] otherwise.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_is_connected&quot;</span>)]
-    </span><span class="kw">fn </span>is_connected(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool;
+    </span><span class="kw">fn </span>is_connected(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">unsafe </span>{ from_glib(ffi::g_socket_is_connected(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>)) }
+    }
 
     <span class="doccomment">/// Registers `self` to receive multicast messages sent to `group`.
     /// `self` must be a [`SocketType::Datagram`][crate::SocketType::Datagram] socket, and must have
@@ -2481,7 +2541,24 @@
         group: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;InetAddress&gt;,
         source_specific: bool,
         iface: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>str&gt;,
-    ) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt;;
+    ) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt; {
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
+            <span class="kw">let </span>is_ok = ffi::g_socket_join_multicast_group(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                group.as_ref().to_glib_none().<span class="number">0</span>,
+                source_specific.into_glib(),
+                iface.to_glib_none().<span class="number">0</span>,
+                <span class="kw-2">&amp;mut </span>error,
+            );
+            <span class="macro">debug_assert_eq!</span>(is_ok == glib::ffi::GFALSE, !error.is_null());
+            <span class="kw">if </span>error.is_null() {
+                <span class="prelude-val">Ok</span>(())
+            } <span class="kw">else </span>{
+                <span class="prelude-val">Err</span>(from_glib_full(error))
+            }
+        }
+    }
 
     <span class="doccomment">/// Registers `self` to receive multicast messages sent to `group`.
     /// `self` must be a [`SocketType::Datagram`][crate::SocketType::Datagram] socket, and must have
@@ -2515,7 +2592,24 @@
         group: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;InetAddress&gt;,
         source_specific: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;InetAddress&gt;&gt;,
         iface: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>str&gt;,
-    ) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt;;
+    ) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt; {
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
+            <span class="kw">let </span>is_ok = ffi::g_socket_join_multicast_group_ssm(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                group.as_ref().to_glib_none().<span class="number">0</span>,
+                source_specific.map(|p| p.as_ref()).to_glib_none().<span class="number">0</span>,
+                iface.to_glib_none().<span class="number">0</span>,
+                <span class="kw-2">&amp;mut </span>error,
+            );
+            <span class="macro">debug_assert_eq!</span>(is_ok == glib::ffi::GFALSE, !error.is_null());
+            <span class="kw">if </span>error.is_null() {
+                <span class="prelude-val">Ok</span>(())
+            } <span class="kw">else </span>{
+                <span class="prelude-val">Err</span>(from_glib_full(error))
+            }
+        }
+    }
 
     <span class="doccomment">/// Removes `self` from the multicast group defined by `group`, `iface`,
     /// and `source_specific` (which must all have the same values they had
@@ -2542,7 +2636,24 @@
         group: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;InetAddress&gt;,
         source_specific: bool,
         iface: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>str&gt;,
-    ) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt;;
+    ) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt; {
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
+            <span class="kw">let </span>is_ok = ffi::g_socket_leave_multicast_group(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                group.as_ref().to_glib_none().<span class="number">0</span>,
+                source_specific.into_glib(),
+                iface.to_glib_none().<span class="number">0</span>,
+                <span class="kw-2">&amp;mut </span>error,
+            );
+            <span class="macro">debug_assert_eq!</span>(is_ok == glib::ffi::GFALSE, !error.is_null());
+            <span class="kw">if </span>error.is_null() {
+                <span class="prelude-val">Ok</span>(())
+            } <span class="kw">else </span>{
+                <span class="prelude-val">Err</span>(from_glib_full(error))
+            }
+        }
+    }
 
     <span class="doccomment">/// Removes `self` from the multicast group defined by `group`, `iface`,
     /// and `source_specific` (which must all have the same values they had
@@ -2567,7 +2678,24 @@
         group: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;InetAddress&gt;,
         source_specific: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;InetAddress&gt;&gt;,
         iface: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>str&gt;,
-    ) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt;;
+    ) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt; {
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
+            <span class="kw">let </span>is_ok = ffi::g_socket_leave_multicast_group_ssm(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                group.as_ref().to_glib_none().<span class="number">0</span>,
+                source_specific.map(|p| p.as_ref()).to_glib_none().<span class="number">0</span>,
+                iface.to_glib_none().<span class="number">0</span>,
+                <span class="kw-2">&amp;mut </span>error,
+            );
+            <span class="macro">debug_assert_eq!</span>(is_ok == glib::ffi::GFALSE, !error.is_null());
+            <span class="kw">if </span>error.is_null() {
+                <span class="prelude-val">Ok</span>(())
+            } <span class="kw">else </span>{
+                <span class="prelude-val">Err</span>(from_glib_full(error))
+            }
+        }
+    }
 
     <span class="doccomment">/// Marks the socket as a server socket, i.e. a socket that is used
     /// to accept incoming requests using [`accept()`][Self::accept()].
@@ -2582,7 +2710,18 @@
     ///
     /// [`true`] on success, [`false`] on error.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_listen&quot;</span>)]
-    </span><span class="kw">fn </span>listen(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt;;
+    </span><span class="kw">fn </span>listen(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt; {
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
+            <span class="kw">let </span>is_ok = ffi::g_socket_listen(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, <span class="kw-2">&amp;mut </span>error);
+            <span class="macro">debug_assert_eq!</span>(is_ok == glib::ffi::GFALSE, !error.is_null());
+            <span class="kw">if </span>error.is_null() {
+                <span class="prelude-val">Ok</span>(())
+            } <span class="kw">else </span>{
+                <span class="prelude-val">Err</span>(from_glib_full(error))
+            }
+        }
+    }
 
     <span class="doccomment">/// Sets the blocking mode of the socket. In blocking mode
     /// all operations (which don’t take an explicit blocking parameter) block until
@@ -2596,7 +2735,11 @@
     /// ## `blocking`
     /// Whether to use blocking I/O or not.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_set_blocking&quot;</span>)]
-    </span><span class="kw">fn </span>set_blocking(<span class="kw-2">&amp;</span><span class="self">self</span>, blocking: bool);
+    </span><span class="kw">fn </span>set_blocking(<span class="kw-2">&amp;</span><span class="self">self</span>, blocking: bool) {
+        <span class="kw">unsafe </span>{
+            ffi::g_socket_set_blocking(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, blocking.into_glib());
+        }
+    }
 
     <span class="doccomment">/// Sets whether `self` should allow sending to broadcast addresses.
     /// This is [`false`] by default.
@@ -2604,7 +2747,11 @@
     /// whether `self` should allow sending to broadcast
     ///  addresses
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_set_broadcast&quot;</span>)]
-    </span><span class="kw">fn </span>set_broadcast(<span class="kw-2">&amp;</span><span class="self">self</span>, broadcast: bool);
+    </span><span class="kw">fn </span>set_broadcast(<span class="kw-2">&amp;</span><span class="self">self</span>, broadcast: bool) {
+        <span class="kw">unsafe </span>{
+            ffi::g_socket_set_broadcast(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, broadcast.into_glib());
+        }
+    }
 
     <span class="doccomment">/// Sets or unsets the `SO_KEEPALIVE` flag on the underlying socket. When
     /// this flag is set on a socket, the system will attempt to verify that the
@@ -2624,7 +2771,11 @@
     /// ## `keepalive`
     /// Value for the keepalive flag
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_set_keepalive&quot;</span>)]
-    </span><span class="kw">fn </span>set_keepalive(<span class="kw-2">&amp;</span><span class="self">self</span>, keepalive: bool);
+    </span><span class="kw">fn </span>set_keepalive(<span class="kw-2">&amp;</span><span class="self">self</span>, keepalive: bool) {
+        <span class="kw">unsafe </span>{
+            ffi::g_socket_set_keepalive(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, keepalive.into_glib());
+        }
+    }
 
     <span class="doccomment">/// Sets the maximum number of outstanding connections allowed
     /// when listening on this socket. If more clients than this are
@@ -2636,7 +2787,11 @@
     /// ## `backlog`
     /// the maximum number of pending connections.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_set_listen_backlog&quot;</span>)]
-    </span><span class="kw">fn </span>set_listen_backlog(<span class="kw-2">&amp;</span><span class="self">self</span>, backlog: i32);
+    </span><span class="kw">fn </span>set_listen_backlog(<span class="kw-2">&amp;</span><span class="self">self</span>, backlog: i32) {
+        <span class="kw">unsafe </span>{
+            ffi::g_socket_set_listen_backlog(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, backlog);
+        }
+    }
 
     <span class="doccomment">/// Sets whether outgoing multicast packets will be received by sockets
     /// listening on that multicast address on the same host. This is [`true`]
@@ -2645,7 +2800,14 @@
     /// whether `self` should receive messages sent to its
     ///  multicast groups from the local host
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_set_multicast_loopback&quot;</span>)]
-    </span><span class="kw">fn </span>set_multicast_loopback(<span class="kw-2">&amp;</span><span class="self">self</span>, loopback: bool);
+    </span><span class="kw">fn </span>set_multicast_loopback(<span class="kw-2">&amp;</span><span class="self">self</span>, loopback: bool) {
+        <span class="kw">unsafe </span>{
+            ffi::g_socket_set_multicast_loopback(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                loopback.into_glib(),
+            );
+        }
+    }
 
     <span class="doccomment">/// Sets the time-to-live for outgoing multicast datagrams on `self`.
     /// By default, this is 1, meaning that multicast packets will not leave
@@ -2653,7 +2815,11 @@
     /// ## `ttl`
     /// the time-to-live value for all multicast datagrams on `self`
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_set_multicast_ttl&quot;</span>)]
-    </span><span class="kw">fn </span>set_multicast_ttl(<span class="kw-2">&amp;</span><span class="self">self</span>, ttl: u32);
+    </span><span class="kw">fn </span>set_multicast_ttl(<span class="kw-2">&amp;</span><span class="self">self</span>, ttl: u32) {
+        <span class="kw">unsafe </span>{
+            ffi::g_socket_set_multicast_ttl(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, ttl);
+        }
+    }
 
     <span class="doccomment">/// Sets the value of an integer-valued option on `self`, as with
     /// `setsockopt()`. (If you need to set a non-integer-valued option,
@@ -2677,7 +2843,24 @@
     ///  the system error value (`errno` or WSAGetLastError()) will still
     ///  be set to the result of the `setsockopt()` call.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_set_option&quot;</span>)]
-    </span><span class="kw">fn </span>set_option(<span class="kw-2">&amp;</span><span class="self">self</span>, level: i32, optname: i32, value: i32) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt;;
+    </span><span class="kw">fn </span>set_option(<span class="kw-2">&amp;</span><span class="self">self</span>, level: i32, optname: i32, value: i32) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt; {
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
+            <span class="kw">let </span>is_ok = ffi::g_socket_set_option(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                level,
+                optname,
+                value,
+                <span class="kw-2">&amp;mut </span>error,
+            );
+            <span class="macro">debug_assert_eq!</span>(is_ok == glib::ffi::GFALSE, !error.is_null());
+            <span class="kw">if </span>error.is_null() {
+                <span class="prelude-val">Ok</span>(())
+            } <span class="kw">else </span>{
+                <span class="prelude-val">Err</span>(from_glib_full(error))
+            }
+        }
+    }
 
     <span class="doccomment">/// Sets the time in seconds after which I/O operations on `self` will
     /// time out if they have not yet completed.
@@ -2702,14 +2885,22 @@
     /// ## `timeout`
     /// the timeout for `self`, in seconds, or 0 for none
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_set_timeout&quot;</span>)]
-    </span><span class="kw">fn </span>set_timeout(<span class="kw-2">&amp;</span><span class="self">self</span>, timeout: u32);
+    </span><span class="kw">fn </span>set_timeout(<span class="kw-2">&amp;</span><span class="self">self</span>, timeout: u32) {
+        <span class="kw">unsafe </span>{
+            ffi::g_socket_set_timeout(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, timeout);
+        }
+    }
 
     <span class="doccomment">/// Sets the time-to-live for outgoing unicast packets on `self`.
     /// By default the platform-specific default value is used.
     /// ## `ttl`
     /// the time-to-live value for all unicast packets on `self`
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_set_ttl&quot;</span>)]
-    </span><span class="kw">fn </span>set_ttl(<span class="kw-2">&amp;</span><span class="self">self</span>, ttl: u32);
+    </span><span class="kw">fn </span>set_ttl(<span class="kw-2">&amp;</span><span class="self">self</span>, ttl: u32) {
+        <span class="kw">unsafe </span>{
+            ffi::g_socket_set_ttl(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, ttl);
+        }
+    }
 
     <span class="doccomment">/// Shut down part or all of a full-duplex connection.
     ///
@@ -2734,509 +2925,7 @@
     ///
     /// [`true`] on success, [`false`] on error
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_shutdown&quot;</span>)]
-    </span><span class="kw">fn </span>shutdown(<span class="kw-2">&amp;</span><span class="self">self</span>, shutdown_read: bool, shutdown_write: bool) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt;;
-
-    <span class="doccomment">/// Checks if a socket is capable of speaking IPv4.
-    ///
-    /// IPv4 sockets are capable of speaking IPv4. On some operating systems
-    /// and under some combinations of circumstances IPv6 sockets are also
-    /// capable of speaking IPv4. See RFC 3493 section 3.7 for more
-    /// information.
-    ///
-    /// No other types of sockets are currently considered as being capable
-    /// of speaking IPv4.
-    ///
-    /// # Returns
-    ///
-    /// [`true`] if this socket can be used with IPv4.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_speaks_ipv4&quot;</span>)]
-    </span><span class="kw">fn </span>speaks_ipv4(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool;
-
-    <span class="attr">#[doc(alias = <span class="string">&quot;type&quot;</span>)]
-    </span><span class="kw">fn </span>type_(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; SocketType;
-
-    <span class="attr">#[doc(alias = <span class="string">&quot;blocking&quot;</span>)]
-    </span><span class="kw">fn </span>connect_blocking_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId;
-
-    <span class="attr">#[doc(alias = <span class="string">&quot;broadcast&quot;</span>)]
-    </span><span class="kw">fn </span>connect_broadcast_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId;
-
-    <span class="attr">#[doc(alias = <span class="string">&quot;keepalive&quot;</span>)]
-    </span><span class="kw">fn </span>connect_keepalive_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId;
-
-    <span class="attr">#[doc(alias = <span class="string">&quot;listen-backlog&quot;</span>)]
-    </span><span class="kw">fn </span>connect_listen_backlog_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId;
-
-    <span class="attr">#[doc(alias = <span class="string">&quot;local-address&quot;</span>)]
-    </span><span class="kw">fn </span>connect_local_address_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId;
-
-    <span class="attr">#[doc(alias = <span class="string">&quot;multicast-loopback&quot;</span>)]
-    </span><span class="kw">fn </span>connect_multicast_loopback_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId;
-
-    <span class="attr">#[doc(alias = <span class="string">&quot;multicast-ttl&quot;</span>)]
-    </span><span class="kw">fn </span>connect_multicast_ttl_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId;
-
-    <span class="attr">#[doc(alias = <span class="string">&quot;remote-address&quot;</span>)]
-    </span><span class="kw">fn </span>connect_remote_address_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId;
-
-    <span class="attr">#[doc(alias = <span class="string">&quot;timeout&quot;</span>)]
-    </span><span class="kw">fn </span>connect_timeout_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId;
-
-    <span class="attr">#[doc(alias = <span class="string">&quot;ttl&quot;</span>)]
-    </span><span class="kw">fn </span>connect_ttl_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId;
-}
-
-<span class="kw">impl</span>&lt;O: IsA&lt;Socket&gt;&gt; SocketExt <span class="kw">for </span>O {
-    <span class="kw">fn </span>accept(<span class="kw-2">&amp;</span><span class="self">self</span>, cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Cancellable&gt;&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;Socket, glib::Error&gt; {
-        <span class="kw">unsafe </span>{
-            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
-            <span class="kw">let </span>ret = ffi::g_socket_accept(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                cancellable.map(|p| p.as_ref()).to_glib_none().<span class="number">0</span>,
-                <span class="kw-2">&amp;mut </span>error,
-            );
-            <span class="kw">if </span>error.is_null() {
-                <span class="prelude-val">Ok</span>(from_glib_full(ret))
-            } <span class="kw">else </span>{
-                <span class="prelude-val">Err</span>(from_glib_full(error))
-            }
-        }
-    }
-
-    <span class="kw">fn </span>bind(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        address: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;SocketAddress&gt;,
-        allow_reuse: bool,
-    ) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt; {
-        <span class="kw">unsafe </span>{
-            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
-            <span class="kw">let </span>is_ok = ffi::g_socket_bind(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                address.as_ref().to_glib_none().<span class="number">0</span>,
-                allow_reuse.into_glib(),
-                <span class="kw-2">&amp;mut </span>error,
-            );
-            <span class="macro">debug_assert_eq!</span>(is_ok == glib::ffi::GFALSE, !error.is_null());
-            <span class="kw">if </span>error.is_null() {
-                <span class="prelude-val">Ok</span>(())
-            } <span class="kw">else </span>{
-                <span class="prelude-val">Err</span>(from_glib_full(error))
-            }
-        }
-    }
-
-    <span class="kw">fn </span>check_connect_result(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt; {
-        <span class="kw">unsafe </span>{
-            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
-            <span class="kw">let </span>is_ok =
-                ffi::g_socket_check_connect_result(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, <span class="kw-2">&amp;mut </span>error);
-            <span class="macro">debug_assert_eq!</span>(is_ok == glib::ffi::GFALSE, !error.is_null());
-            <span class="kw">if </span>error.is_null() {
-                <span class="prelude-val">Ok</span>(())
-            } <span class="kw">else </span>{
-                <span class="prelude-val">Err</span>(from_glib_full(error))
-            }
-        }
-    }
-
-    <span class="kw">fn </span>close(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt; {
-        <span class="kw">unsafe </span>{
-            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
-            <span class="kw">let </span>is_ok = ffi::g_socket_close(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, <span class="kw-2">&amp;mut </span>error);
-            <span class="macro">debug_assert_eq!</span>(is_ok == glib::ffi::GFALSE, !error.is_null());
-            <span class="kw">if </span>error.is_null() {
-                <span class="prelude-val">Ok</span>(())
-            } <span class="kw">else </span>{
-                <span class="prelude-val">Err</span>(from_glib_full(error))
-            }
-        }
-    }
-
-    <span class="kw">fn </span>condition_check(<span class="kw-2">&amp;</span><span class="self">self</span>, condition: glib::IOCondition) -&gt; glib::IOCondition {
-        <span class="kw">unsafe </span>{
-            from_glib(ffi::g_socket_condition_check(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                condition.into_glib(),
-            ))
-        }
-    }
-
-    <span class="kw">fn </span>condition_timed_wait(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        condition: glib::IOCondition,
-        timeout_us: i64,
-        cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Cancellable&gt;&gt;,
-    ) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt; {
-        <span class="kw">unsafe </span>{
-            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
-            <span class="kw">let </span>is_ok = ffi::g_socket_condition_timed_wait(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                condition.into_glib(),
-                timeout_us,
-                cancellable.map(|p| p.as_ref()).to_glib_none().<span class="number">0</span>,
-                <span class="kw-2">&amp;mut </span>error,
-            );
-            <span class="macro">debug_assert_eq!</span>(is_ok == glib::ffi::GFALSE, !error.is_null());
-            <span class="kw">if </span>error.is_null() {
-                <span class="prelude-val">Ok</span>(())
-            } <span class="kw">else </span>{
-                <span class="prelude-val">Err</span>(from_glib_full(error))
-            }
-        }
-    }
-
-    <span class="kw">fn </span>condition_wait(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        condition: glib::IOCondition,
-        cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Cancellable&gt;&gt;,
-    ) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt; {
-        <span class="kw">unsafe </span>{
-            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
-            <span class="kw">let </span>is_ok = ffi::g_socket_condition_wait(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                condition.into_glib(),
-                cancellable.map(|p| p.as_ref()).to_glib_none().<span class="number">0</span>,
-                <span class="kw-2">&amp;mut </span>error,
-            );
-            <span class="macro">debug_assert_eq!</span>(is_ok == glib::ffi::GFALSE, !error.is_null());
-            <span class="kw">if </span>error.is_null() {
-                <span class="prelude-val">Ok</span>(())
-            } <span class="kw">else </span>{
-                <span class="prelude-val">Err</span>(from_glib_full(error))
-            }
-        }
-    }
-
-    <span class="kw">fn </span>connect(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        address: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;SocketAddress&gt;,
-        cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Cancellable&gt;&gt;,
-    ) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt; {
-        <span class="kw">unsafe </span>{
-            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
-            <span class="kw">let </span>is_ok = ffi::g_socket_connect(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                address.as_ref().to_glib_none().<span class="number">0</span>,
-                cancellable.map(|p| p.as_ref()).to_glib_none().<span class="number">0</span>,
-                <span class="kw-2">&amp;mut </span>error,
-            );
-            <span class="macro">debug_assert_eq!</span>(is_ok == glib::ffi::GFALSE, !error.is_null());
-            <span class="kw">if </span>error.is_null() {
-                <span class="prelude-val">Ok</span>(())
-            } <span class="kw">else </span>{
-                <span class="prelude-val">Err</span>(from_glib_full(error))
-            }
-        }
-    }
-
-    <span class="kw">fn </span>connection_factory_create_connection(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; SocketConnection {
-        <span class="kw">unsafe </span>{
-            from_glib_full(ffi::g_socket_connection_factory_create_connection(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="kw">fn </span>available_bytes(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; isize {
-        <span class="kw">unsafe </span>{ ffi::g_socket_get_available_bytes(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>) }
-    }
-
-    <span class="kw">fn </span>is_blocking(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
-        <span class="kw">unsafe </span>{ from_glib(ffi::g_socket_get_blocking(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>)) }
-    }
-
-    <span class="kw">fn </span>is_broadcast(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
-        <span class="kw">unsafe </span>{ from_glib(ffi::g_socket_get_broadcast(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>)) }
-    }
-
-    <span class="kw">fn </span>credentials(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;Credentials, glib::Error&gt; {
-        <span class="kw">unsafe </span>{
-            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
-            <span class="kw">let </span>ret = ffi::g_socket_get_credentials(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, <span class="kw-2">&amp;mut </span>error);
-            <span class="kw">if </span>error.is_null() {
-                <span class="prelude-val">Ok</span>(from_glib_full(ret))
-            } <span class="kw">else </span>{
-                <span class="prelude-val">Err</span>(from_glib_full(error))
-            }
-        }
-    }
-
-    <span class="kw">fn </span>family(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; SocketFamily {
-        <span class="kw">unsafe </span>{ from_glib(ffi::g_socket_get_family(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>)) }
-    }
-
-    <span class="kw">fn </span>is_keepalive(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
-        <span class="kw">unsafe </span>{ from_glib(ffi::g_socket_get_keepalive(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>)) }
-    }
-
-    <span class="kw">fn </span>listen_backlog(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; i32 {
-        <span class="kw">unsafe </span>{ ffi::g_socket_get_listen_backlog(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>) }
-    }
-
-    <span class="kw">fn </span>local_address(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;SocketAddress, glib::Error&gt; {
-        <span class="kw">unsafe </span>{
-            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
-            <span class="kw">let </span>ret = ffi::g_socket_get_local_address(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, <span class="kw-2">&amp;mut </span>error);
-            <span class="kw">if </span>error.is_null() {
-                <span class="prelude-val">Ok</span>(from_glib_full(ret))
-            } <span class="kw">else </span>{
-                <span class="prelude-val">Err</span>(from_glib_full(error))
-            }
-        }
-    }
-
-    <span class="kw">fn </span>is_multicast_loopback(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
-        <span class="kw">unsafe </span>{
-            from_glib(ffi::g_socket_get_multicast_loopback(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="kw">fn </span>multicast_ttl(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u32 {
-        <span class="kw">unsafe </span>{ ffi::g_socket_get_multicast_ttl(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>) }
-    }
-
-    <span class="kw">fn </span>option(<span class="kw-2">&amp;</span><span class="self">self</span>, level: i32, optname: i32) -&gt; <span class="prelude-ty">Result</span>&lt;i32, glib::Error&gt; {
-        <span class="kw">unsafe </span>{
-            <span class="kw">let </span><span class="kw-2">mut </span>value = mem::MaybeUninit::uninit();
-            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
-            <span class="kw">let </span>is_ok = ffi::g_socket_get_option(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                level,
-                optname,
-                value.as_mut_ptr(),
-                <span class="kw-2">&amp;mut </span>error,
-            );
-            <span class="macro">debug_assert_eq!</span>(is_ok == glib::ffi::GFALSE, !error.is_null());
-            <span class="kw">if </span>error.is_null() {
-                <span class="prelude-val">Ok</span>(value.assume_init())
-            } <span class="kw">else </span>{
-                <span class="prelude-val">Err</span>(from_glib_full(error))
-            }
-        }
-    }
-
-    <span class="kw">fn </span>protocol(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; SocketProtocol {
-        <span class="kw">unsafe </span>{ from_glib(ffi::g_socket_get_protocol(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>)) }
-    }
-
-    <span class="kw">fn </span>remote_address(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;SocketAddress, glib::Error&gt; {
-        <span class="kw">unsafe </span>{
-            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
-            <span class="kw">let </span>ret = ffi::g_socket_get_remote_address(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, <span class="kw-2">&amp;mut </span>error);
-            <span class="kw">if </span>error.is_null() {
-                <span class="prelude-val">Ok</span>(from_glib_full(ret))
-            } <span class="kw">else </span>{
-                <span class="prelude-val">Err</span>(from_glib_full(error))
-            }
-        }
-    }
-
-    <span class="kw">fn </span>socket_type(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; SocketType {
-        <span class="kw">unsafe </span>{
-            from_glib(ffi::g_socket_get_socket_type(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="kw">fn </span>timeout(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u32 {
-        <span class="kw">unsafe </span>{ ffi::g_socket_get_timeout(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>) }
-    }
-
-    <span class="kw">fn </span>ttl(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u32 {
-        <span class="kw">unsafe </span>{ ffi::g_socket_get_ttl(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>) }
-    }
-
-    <span class="kw">fn </span>is_closed(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
-        <span class="kw">unsafe </span>{ from_glib(ffi::g_socket_is_closed(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>)) }
-    }
-
-    <span class="kw">fn </span>is_connected(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
-        <span class="kw">unsafe </span>{ from_glib(ffi::g_socket_is_connected(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>)) }
-    }
-
-    <span class="kw">fn </span>join_multicast_group(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        group: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;InetAddress&gt;,
-        source_specific: bool,
-        iface: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>str&gt;,
-    ) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt; {
-        <span class="kw">unsafe </span>{
-            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
-            <span class="kw">let </span>is_ok = ffi::g_socket_join_multicast_group(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                group.as_ref().to_glib_none().<span class="number">0</span>,
-                source_specific.into_glib(),
-                iface.to_glib_none().<span class="number">0</span>,
-                <span class="kw-2">&amp;mut </span>error,
-            );
-            <span class="macro">debug_assert_eq!</span>(is_ok == glib::ffi::GFALSE, !error.is_null());
-            <span class="kw">if </span>error.is_null() {
-                <span class="prelude-val">Ok</span>(())
-            } <span class="kw">else </span>{
-                <span class="prelude-val">Err</span>(from_glib_full(error))
-            }
-        }
-    }
-
-    <span class="kw">fn </span>join_multicast_group_ssm(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        group: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;InetAddress&gt;,
-        source_specific: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;InetAddress&gt;&gt;,
-        iface: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>str&gt;,
-    ) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt; {
-        <span class="kw">unsafe </span>{
-            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
-            <span class="kw">let </span>is_ok = ffi::g_socket_join_multicast_group_ssm(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                group.as_ref().to_glib_none().<span class="number">0</span>,
-                source_specific.map(|p| p.as_ref()).to_glib_none().<span class="number">0</span>,
-                iface.to_glib_none().<span class="number">0</span>,
-                <span class="kw-2">&amp;mut </span>error,
-            );
-            <span class="macro">debug_assert_eq!</span>(is_ok == glib::ffi::GFALSE, !error.is_null());
-            <span class="kw">if </span>error.is_null() {
-                <span class="prelude-val">Ok</span>(())
-            } <span class="kw">else </span>{
-                <span class="prelude-val">Err</span>(from_glib_full(error))
-            }
-        }
-    }
-
-    <span class="kw">fn </span>leave_multicast_group(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        group: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;InetAddress&gt;,
-        source_specific: bool,
-        iface: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>str&gt;,
-    ) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt; {
-        <span class="kw">unsafe </span>{
-            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
-            <span class="kw">let </span>is_ok = ffi::g_socket_leave_multicast_group(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                group.as_ref().to_glib_none().<span class="number">0</span>,
-                source_specific.into_glib(),
-                iface.to_glib_none().<span class="number">0</span>,
-                <span class="kw-2">&amp;mut </span>error,
-            );
-            <span class="macro">debug_assert_eq!</span>(is_ok == glib::ffi::GFALSE, !error.is_null());
-            <span class="kw">if </span>error.is_null() {
-                <span class="prelude-val">Ok</span>(())
-            } <span class="kw">else </span>{
-                <span class="prelude-val">Err</span>(from_glib_full(error))
-            }
-        }
-    }
-
-    <span class="kw">fn </span>leave_multicast_group_ssm(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        group: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;InetAddress&gt;,
-        source_specific: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;InetAddress&gt;&gt;,
-        iface: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>str&gt;,
-    ) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt; {
-        <span class="kw">unsafe </span>{
-            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
-            <span class="kw">let </span>is_ok = ffi::g_socket_leave_multicast_group_ssm(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                group.as_ref().to_glib_none().<span class="number">0</span>,
-                source_specific.map(|p| p.as_ref()).to_glib_none().<span class="number">0</span>,
-                iface.to_glib_none().<span class="number">0</span>,
-                <span class="kw-2">&amp;mut </span>error,
-            );
-            <span class="macro">debug_assert_eq!</span>(is_ok == glib::ffi::GFALSE, !error.is_null());
-            <span class="kw">if </span>error.is_null() {
-                <span class="prelude-val">Ok</span>(())
-            } <span class="kw">else </span>{
-                <span class="prelude-val">Err</span>(from_glib_full(error))
-            }
-        }
-    }
-
-    <span class="kw">fn </span>listen(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt; {
-        <span class="kw">unsafe </span>{
-            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
-            <span class="kw">let </span>is_ok = ffi::g_socket_listen(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, <span class="kw-2">&amp;mut </span>error);
-            <span class="macro">debug_assert_eq!</span>(is_ok == glib::ffi::GFALSE, !error.is_null());
-            <span class="kw">if </span>error.is_null() {
-                <span class="prelude-val">Ok</span>(())
-            } <span class="kw">else </span>{
-                <span class="prelude-val">Err</span>(from_glib_full(error))
-            }
-        }
-    }
-
-    <span class="kw">fn </span>set_blocking(<span class="kw-2">&amp;</span><span class="self">self</span>, blocking: bool) {
-        <span class="kw">unsafe </span>{
-            ffi::g_socket_set_blocking(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, blocking.into_glib());
-        }
-    }
-
-    <span class="kw">fn </span>set_broadcast(<span class="kw-2">&amp;</span><span class="self">self</span>, broadcast: bool) {
-        <span class="kw">unsafe </span>{
-            ffi::g_socket_set_broadcast(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, broadcast.into_glib());
-        }
-    }
-
-    <span class="kw">fn </span>set_keepalive(<span class="kw-2">&amp;</span><span class="self">self</span>, keepalive: bool) {
-        <span class="kw">unsafe </span>{
-            ffi::g_socket_set_keepalive(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, keepalive.into_glib());
-        }
-    }
-
-    <span class="kw">fn </span>set_listen_backlog(<span class="kw-2">&amp;</span><span class="self">self</span>, backlog: i32) {
-        <span class="kw">unsafe </span>{
-            ffi::g_socket_set_listen_backlog(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, backlog);
-        }
-    }
-
-    <span class="kw">fn </span>set_multicast_loopback(<span class="kw-2">&amp;</span><span class="self">self</span>, loopback: bool) {
-        <span class="kw">unsafe </span>{
-            ffi::g_socket_set_multicast_loopback(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                loopback.into_glib(),
-            );
-        }
-    }
-
-    <span class="kw">fn </span>set_multicast_ttl(<span class="kw-2">&amp;</span><span class="self">self</span>, ttl: u32) {
-        <span class="kw">unsafe </span>{
-            ffi::g_socket_set_multicast_ttl(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, ttl);
-        }
-    }
-
-    <span class="kw">fn </span>set_option(<span class="kw-2">&amp;</span><span class="self">self</span>, level: i32, optname: i32, value: i32) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt; {
-        <span class="kw">unsafe </span>{
-            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
-            <span class="kw">let </span>is_ok = ffi::g_socket_set_option(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                level,
-                optname,
-                value,
-                <span class="kw-2">&amp;mut </span>error,
-            );
-            <span class="macro">debug_assert_eq!</span>(is_ok == glib::ffi::GFALSE, !error.is_null());
-            <span class="kw">if </span>error.is_null() {
-                <span class="prelude-val">Ok</span>(())
-            } <span class="kw">else </span>{
-                <span class="prelude-val">Err</span>(from_glib_full(error))
-            }
-        }
-    }
-
-    <span class="kw">fn </span>set_timeout(<span class="kw-2">&amp;</span><span class="self">self</span>, timeout: u32) {
-        <span class="kw">unsafe </span>{
-            ffi::g_socket_set_timeout(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, timeout);
-        }
-    }
-
-    <span class="kw">fn </span>set_ttl(<span class="kw-2">&amp;</span><span class="self">self</span>, ttl: u32) {
-        <span class="kw">unsafe </span>{
-            ffi::g_socket_set_ttl(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, ttl);
-        }
-    }
-
-    <span class="kw">fn </span>shutdown(<span class="kw-2">&amp;</span><span class="self">self</span>, shutdown_read: bool, shutdown_write: bool) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt; {
+    </span><span class="kw">fn </span>shutdown(<span class="kw-2">&amp;</span><span class="self">self</span>, shutdown_read: bool, shutdown_write: bool) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt; {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
             <span class="kw">let </span>is_ok = ffi::g_socket_shutdown(
@@ -3254,15 +2943,31 @@
         }
     }
 
-    <span class="kw">fn </span>speaks_ipv4(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+    <span class="doccomment">/// Checks if a socket is capable of speaking IPv4.
+    ///
+    /// IPv4 sockets are capable of speaking IPv4. On some operating systems
+    /// and under some combinations of circumstances IPv6 sockets are also
+    /// capable of speaking IPv4. See RFC 3493 section 3.7 for more
+    /// information.
+    ///
+    /// No other types of sockets are currently considered as being capable
+    /// of speaking IPv4.
+    ///
+    /// # Returns
+    ///
+    /// [`true`] if this socket can be used with IPv4.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_socket_speaks_ipv4&quot;</span>)]
+    </span><span class="kw">fn </span>speaks_ipv4(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
         <span class="kw">unsafe </span>{ from_glib(ffi::g_socket_speaks_ipv4(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>)) }
     }
 
-    <span class="kw">fn </span>type_(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; SocketType {
+    <span class="attr">#[doc(alias = <span class="string">&quot;type&quot;</span>)]
+    </span><span class="kw">fn </span>type_(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; SocketType {
         glib::ObjectExt::property(<span class="self">self</span>.as_ref(), <span class="string">&quot;type&quot;</span>)
     }
 
-    <span class="kw">fn </span>connect_blocking_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
+    <span class="attr">#[doc(alias = <span class="string">&quot;blocking&quot;</span>)]
+    </span><span class="kw">fn </span>connect_blocking_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
         <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>notify_blocking_trampoline&lt;P: IsA&lt;Socket&gt;, F: Fn(<span class="kw-2">&amp;</span>P) + <span class="lifetime">&#39;static</span>&gt;(
             this: <span class="kw-2">*mut </span>ffi::GSocket,
             _param_spec: glib::ffi::gpointer,
@@ -3284,7 +2989,8 @@
         }
     }
 
-    <span class="kw">fn </span>connect_broadcast_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
+    <span class="attr">#[doc(alias = <span class="string">&quot;broadcast&quot;</span>)]
+    </span><span class="kw">fn </span>connect_broadcast_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
         <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>notify_broadcast_trampoline&lt;P: IsA&lt;Socket&gt;, F: Fn(<span class="kw-2">&amp;</span>P) + <span class="lifetime">&#39;static</span>&gt;(
             this: <span class="kw-2">*mut </span>ffi::GSocket,
             _param_spec: glib::ffi::gpointer,
@@ -3306,7 +3012,8 @@
         }
     }
 
-    <span class="kw">fn </span>connect_keepalive_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
+    <span class="attr">#[doc(alias = <span class="string">&quot;keepalive&quot;</span>)]
+    </span><span class="kw">fn </span>connect_keepalive_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
         <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>notify_keepalive_trampoline&lt;P: IsA&lt;Socket&gt;, F: Fn(<span class="kw-2">&amp;</span>P) + <span class="lifetime">&#39;static</span>&gt;(
             this: <span class="kw-2">*mut </span>ffi::GSocket,
             _param_spec: glib::ffi::gpointer,
@@ -3328,7 +3035,8 @@
         }
     }
 
-    <span class="kw">fn </span>connect_listen_backlog_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
+    <span class="attr">#[doc(alias = <span class="string">&quot;listen-backlog&quot;</span>)]
+    </span><span class="kw">fn </span>connect_listen_backlog_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
         <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>notify_listen_backlog_trampoline&lt;
             P: IsA&lt;Socket&gt;,
             F: Fn(<span class="kw-2">&amp;</span>P) + <span class="lifetime">&#39;static</span>,
@@ -3353,7 +3061,8 @@
         }
     }
 
-    <span class="kw">fn </span>connect_local_address_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
+    <span class="attr">#[doc(alias = <span class="string">&quot;local-address&quot;</span>)]
+    </span><span class="kw">fn </span>connect_local_address_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
         <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>notify_local_address_trampoline&lt;
             P: IsA&lt;Socket&gt;,
             F: Fn(<span class="kw-2">&amp;</span>P) + <span class="lifetime">&#39;static</span>,
@@ -3378,7 +3087,8 @@
         }
     }
 
-    <span class="kw">fn </span>connect_multicast_loopback_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
+    <span class="attr">#[doc(alias = <span class="string">&quot;multicast-loopback&quot;</span>)]
+    </span><span class="kw">fn </span>connect_multicast_loopback_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
         <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>notify_multicast_loopback_trampoline&lt;
             P: IsA&lt;Socket&gt;,
             F: Fn(<span class="kw-2">&amp;</span>P) + <span class="lifetime">&#39;static</span>,
@@ -3403,7 +3113,8 @@
         }
     }
 
-    <span class="kw">fn </span>connect_multicast_ttl_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
+    <span class="attr">#[doc(alias = <span class="string">&quot;multicast-ttl&quot;</span>)]
+    </span><span class="kw">fn </span>connect_multicast_ttl_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
         <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>notify_multicast_ttl_trampoline&lt;
             P: IsA&lt;Socket&gt;,
             F: Fn(<span class="kw-2">&amp;</span>P) + <span class="lifetime">&#39;static</span>,
@@ -3428,7 +3139,8 @@
         }
     }
 
-    <span class="kw">fn </span>connect_remote_address_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
+    <span class="attr">#[doc(alias = <span class="string">&quot;remote-address&quot;</span>)]
+    </span><span class="kw">fn </span>connect_remote_address_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
         <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>notify_remote_address_trampoline&lt;
             P: IsA&lt;Socket&gt;,
             F: Fn(<span class="kw-2">&amp;</span>P) + <span class="lifetime">&#39;static</span>,
@@ -3453,7 +3165,8 @@
         }
     }
 
-    <span class="kw">fn </span>connect_timeout_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
+    <span class="attr">#[doc(alias = <span class="string">&quot;timeout&quot;</span>)]
+    </span><span class="kw">fn </span>connect_timeout_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
         <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>notify_timeout_trampoline&lt;P: IsA&lt;Socket&gt;, F: Fn(<span class="kw-2">&amp;</span>P) + <span class="lifetime">&#39;static</span>&gt;(
             this: <span class="kw-2">*mut </span>ffi::GSocket,
             _param_spec: glib::ffi::gpointer,
@@ -3475,7 +3188,8 @@
         }
     }
 
-    <span class="kw">fn </span>connect_ttl_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
+    <span class="attr">#[doc(alias = <span class="string">&quot;ttl&quot;</span>)]
+    </span><span class="kw">fn </span>connect_ttl_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
         <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>notify_ttl_trampoline&lt;P: IsA&lt;Socket&gt;, F: Fn(<span class="kw-2">&amp;</span>P) + <span class="lifetime">&#39;static</span>&gt;(
             this: <span class="kw-2">*mut </span>ffi::GSocket,
             _param_spec: glib::ffi::gpointer,
@@ -3497,6 +3211,8 @@
         }
     }
 }
+
+<span class="kw">impl</span>&lt;O: IsA&lt;Socket&gt;&gt; SocketExt <span class="kw">for </span>O {}
 
 <span class="kw">impl </span>fmt::Display <span class="kw">for </span>Socket {
     <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter) -&gt; fmt::Result {

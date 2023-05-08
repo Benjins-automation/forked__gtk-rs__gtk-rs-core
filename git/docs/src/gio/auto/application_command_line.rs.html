@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gio/src/auto/application_command_line.rs`."><title>application_command_line.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (a77c55248 2023-05-06)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gio/src/auto/application_command_line.rs`."><title>application_command_line.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (c4190f2d3 2023-05-07)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -608,34 +608,6 @@
 <a href="#535" id="535">535</a>
 <a href="#536" id="536">536</a>
 <a href="#537" id="537">537</a>
-<a href="#538" id="538">538</a>
-<a href="#539" id="539">539</a>
-<a href="#540" id="540">540</a>
-<a href="#541" id="541">541</a>
-<a href="#542" id="542">542</a>
-<a href="#543" id="543">543</a>
-<a href="#544" id="544">544</a>
-<a href="#545" id="545">545</a>
-<a href="#546" id="546">546</a>
-<a href="#547" id="547">547</a>
-<a href="#548" id="548">548</a>
-<a href="#549" id="549">549</a>
-<a href="#550" id="550">550</a>
-<a href="#551" id="551">551</a>
-<a href="#552" id="552">552</a>
-<a href="#553" id="553">553</a>
-<a href="#554" id="554">554</a>
-<a href="#555" id="555">555</a>
-<a href="#556" id="556">556</a>
-<a href="#557" id="557">557</a>
-<a href="#558" id="558">558</a>
-<a href="#559" id="559">559</a>
-<a href="#560" id="560">560</a>
-<a href="#561" id="561">561</a>
-<a href="#562" id="562">562</a>
-<a href="#563" id="563">563</a>
-<a href="#564" id="564">564</a>
-<a href="#565" id="565">565</a>
 </pre></div><pre class="rust"><code><span class="comment">// This file was generated by gir (https://github.com/gtk-rs/gir)
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
@@ -860,7 +832,7 @@
 /// # Implementors
 ///
 /// [`ApplicationCommandLine`][struct@crate::ApplicationCommandLine]
-</span><span class="kw">pub trait </span>ApplicationCommandLineExt: <span class="lifetime">&#39;static </span>{
+</span><span class="kw">pub trait </span>ApplicationCommandLineExt: IsA&lt;ApplicationCommandLine&gt; + <span class="lifetime">&#39;static </span>{
     <span class="doccomment">/// Creates a [`File`][crate::File] corresponding to a filename that was given as part
     /// of the invocation of `self`.
     ///
@@ -874,7 +846,14 @@
     ///
     /// a new [`File`][crate::File]
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_application_command_line_create_file_for_arg&quot;</span>)]
-    </span><span class="kw">fn </span>create_file_for_arg(<span class="kw-2">&amp;</span><span class="self">self</span>, arg: <span class="kw">impl </span>AsRef&lt;std::ffi::OsStr&gt;) -&gt; File;
+    </span><span class="kw">fn </span>create_file_for_arg(<span class="kw-2">&amp;</span><span class="self">self</span>, arg: <span class="kw">impl </span>AsRef&lt;std::ffi::OsStr&gt;) -&gt; File {
+        <span class="kw">unsafe </span>{
+            from_glib_full(ffi::g_application_command_line_create_file_for_arg(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                arg.as_ref().to_glib_none().<span class="number">0</span>,
+            ))
+        }
+    }
 
     <span class="doccomment">/// Gets the list of arguments that was passed on the command line.
     ///
@@ -894,7 +873,19 @@
     ///  the string array containing the arguments (the argv)
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_application_command_line_get_arguments&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_arguments&quot;</span>)]
-    </span><span class="kw">fn </span>arguments(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;std::ffi::OsString&gt;;
+    </span><span class="kw">fn </span>arguments(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;std::ffi::OsString&gt; {
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span><span class="kw-2">mut </span>argc = mem::MaybeUninit::uninit();
+            <span class="kw">let </span>ret = FromGlibContainer::from_glib_full_num(
+                ffi::g_application_command_line_get_arguments(
+                    <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                    argc.as_mut_ptr(),
+                ),
+                argc.assume_init() <span class="kw">as _</span>,
+            );
+            ret
+        }
+    }
 
     <span class="doccomment">/// Gets the working directory of the command line invocation.
     /// The string may contain non-utf8 data.
@@ -910,7 +901,13 @@
     /// the current directory, or [`None`]
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_application_command_line_get_cwd&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_cwd&quot;</span>)]
-    </span><span class="kw">fn </span>cwd(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;std::path::PathBuf&gt;;
+    </span><span class="kw">fn </span>cwd(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;std::path::PathBuf&gt; {
+        <span class="kw">unsafe </span>{
+            from_glib_none(ffi::g_application_command_line_get_cwd(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+            ))
+        }
+    }
 
     <span class="doccomment">/// Gets the contents of the &#39;environ&#39; variable of the command line
     /// invocation, as would be returned by `g_get_environ()`, ie as a
@@ -934,7 +931,13 @@
     ///  the environment strings, or [`None`] if they were not sent
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_application_command_line_get_environ&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_environ&quot;</span>)]
-    </span><span class="kw">fn </span>environ(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;std::ffi::OsString&gt;;
+    </span><span class="kw">fn </span>environ(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;std::ffi::OsString&gt; {
+        <span class="kw">unsafe </span>{
+            FromGlibPtrContainer::from_glib_none(ffi::g_application_command_line_get_environ(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+            ))
+        }
+    }
 
     <span class="doccomment">/// Gets the exit status of `self`. See
     /// [`set_exit_status()`][Self::set_exit_status()] for more information.
@@ -944,7 +947,9 @@
     /// the exit status
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_application_command_line_get_exit_status&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_exit_status&quot;</span>)]
-    </span><span class="kw">fn </span>exit_status(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; i32;
+    </span><span class="kw">fn </span>exit_status(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; i32 {
+        <span class="kw">unsafe </span>{ ffi::g_application_command_line_get_exit_status(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>) }
+    }
 
     <span class="doccomment">/// Determines if `self` represents a remote invocation.
     ///
@@ -953,7 +958,13 @@
     /// [`true`] if the invocation was remote
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_application_command_line_get_is_remote&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_is_remote&quot;</span>)]
-    </span><span class="kw">fn </span>is_remote(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool;
+    </span><span class="kw">fn </span>is_remote(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">unsafe </span>{
+            from_glib(ffi::g_application_command_line_get_is_remote(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+            ))
+        }
+    }
 
     <span class="doccomment">/// Gets the options that were passed to `g_application_command_line()`.
     ///
@@ -973,7 +984,13 @@
     /// a [`glib::VariantDict`][crate::glib::VariantDict] with the options
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_application_command_line_get_options_dict&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_options_dict&quot;</span>)]
-    </span><span class="kw">fn </span>options_dict(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; glib::VariantDict;
+    </span><span class="kw">fn </span>options_dict(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; glib::VariantDict {
+        <span class="kw">unsafe </span>{
+            from_glib_none(ffi::g_application_command_line_get_options_dict(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+            ))
+        }
+    }
 
     <span class="doccomment">/// Gets the platform data associated with the invocation of `self`.
     ///
@@ -992,7 +1009,13 @@
     /// the platform data, or [`None`]
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_application_command_line_get_platform_data&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_platform_data&quot;</span>)]
-    </span><span class="kw">fn </span>platform_data(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;glib::Variant&gt;;
+    </span><span class="kw">fn </span>platform_data(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;glib::Variant&gt; {
+        <span class="kw">unsafe </span>{
+            from_glib_full(ffi::g_application_command_line_get_platform_data(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+            ))
+        }
+    }
 
     <span class="doccomment">/// Gets the stdin of the invoking process.
     ///
@@ -1010,7 +1033,13 @@
     /// a [`InputStream`][crate::InputStream] for stdin
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_application_command_line_get_stdin&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_stdin&quot;</span>)]
-    </span><span class="kw">fn </span>stdin(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;InputStream&gt;;
+    </span><span class="kw">fn </span>stdin(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;InputStream&gt; {
+        <span class="kw">unsafe </span>{
+            from_glib_full(ffi::g_application_command_line_get_stdin(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+            ))
+        }
+    }
 
     <span class="doccomment">/// Gets the value of a particular environment variable of the command
     /// line invocation, as would be returned by `g_getenv()`. The strings may
@@ -1030,13 +1059,24 @@
     ///
     /// the value of the variable, or [`None`] if unset or unsent
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_application_command_line_getenv&quot;</span>)]
-    </span><span class="kw">fn </span>getenv(<span class="kw-2">&amp;</span><span class="self">self</span>, name: <span class="kw">impl </span>AsRef&lt;std::ffi::OsStr&gt;) -&gt; <span class="prelude-ty">Option</span>&lt;glib::GString&gt;;
+    </span><span class="kw">fn </span>getenv(<span class="kw-2">&amp;</span><span class="self">self</span>, name: <span class="kw">impl </span>AsRef&lt;std::ffi::OsStr&gt;) -&gt; <span class="prelude-ty">Option</span>&lt;glib::GString&gt; {
+        <span class="kw">unsafe </span>{
+            from_glib_none(ffi::g_application_command_line_getenv(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                name.as_ref().to_glib_none().<span class="number">0</span>,
+            ))
+        }
+    }
 
     <span class="comment">//#[doc(alias = &quot;g_application_command_line_print&quot;)]
-    //fn print(&amp;self, format: &amp;str, : /*Unknown conversion*//*Unimplemented*/Basic: VarArgs);
+    //fn print(&amp;self, format: &amp;str, : /*Unknown conversion*//*Unimplemented*/Basic: VarArgs) {
+    //    unsafe { TODO: call ffi:g_application_command_line_print() }
+    //}
 
     //#[doc(alias = &quot;g_application_command_line_printerr&quot;)]
-    //fn printerr(&amp;self, format: &amp;str, : /*Unknown conversion*//*Unimplemented*/Basic: VarArgs);
+    //fn printerr(&amp;self, format: &amp;str, : /*Unknown conversion*//*Unimplemented*/Basic: VarArgs) {
+    //    unsafe { TODO: call ffi:g_application_command_line_printerr() }
+    //}
 
     </span><span class="doccomment">/// Sets the exit status that will be used when the invoking process
     /// exits.
@@ -1062,105 +1102,6 @@
     /// ## `exit_status`
     /// the exit status
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_application_command_line_set_exit_status&quot;</span>)]
-    </span><span class="kw">fn </span>set_exit_status(<span class="kw-2">&amp;</span><span class="self">self</span>, exit_status: i32);
-
-    <span class="attr">#[doc(alias = <span class="string">&quot;is-remote&quot;</span>)]
-    </span><span class="kw">fn </span>connect_is_remote_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId;
-}
-
-<span class="kw">impl</span>&lt;O: IsA&lt;ApplicationCommandLine&gt;&gt; ApplicationCommandLineExt <span class="kw">for </span>O {
-    <span class="kw">fn </span>create_file_for_arg(<span class="kw-2">&amp;</span><span class="self">self</span>, arg: <span class="kw">impl </span>AsRef&lt;std::ffi::OsStr&gt;) -&gt; File {
-        <span class="kw">unsafe </span>{
-            from_glib_full(ffi::g_application_command_line_create_file_for_arg(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                arg.as_ref().to_glib_none().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="kw">fn </span>arguments(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;std::ffi::OsString&gt; {
-        <span class="kw">unsafe </span>{
-            <span class="kw">let </span><span class="kw-2">mut </span>argc = mem::MaybeUninit::uninit();
-            <span class="kw">let </span>ret = FromGlibContainer::from_glib_full_num(
-                ffi::g_application_command_line_get_arguments(
-                    <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                    argc.as_mut_ptr(),
-                ),
-                argc.assume_init() <span class="kw">as _</span>,
-            );
-            ret
-        }
-    }
-
-    <span class="kw">fn </span>cwd(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;std::path::PathBuf&gt; {
-        <span class="kw">unsafe </span>{
-            from_glib_none(ffi::g_application_command_line_get_cwd(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="kw">fn </span>environ(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;std::ffi::OsString&gt; {
-        <span class="kw">unsafe </span>{
-            FromGlibPtrContainer::from_glib_none(ffi::g_application_command_line_get_environ(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="kw">fn </span>exit_status(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; i32 {
-        <span class="kw">unsafe </span>{ ffi::g_application_command_line_get_exit_status(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>) }
-    }
-
-    <span class="kw">fn </span>is_remote(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
-        <span class="kw">unsafe </span>{
-            from_glib(ffi::g_application_command_line_get_is_remote(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="kw">fn </span>options_dict(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; glib::VariantDict {
-        <span class="kw">unsafe </span>{
-            from_glib_none(ffi::g_application_command_line_get_options_dict(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="kw">fn </span>platform_data(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;glib::Variant&gt; {
-        <span class="kw">unsafe </span>{
-            from_glib_full(ffi::g_application_command_line_get_platform_data(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="kw">fn </span>stdin(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;InputStream&gt; {
-        <span class="kw">unsafe </span>{
-            from_glib_full(ffi::g_application_command_line_get_stdin(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="kw">fn </span>getenv(<span class="kw-2">&amp;</span><span class="self">self</span>, name: <span class="kw">impl </span>AsRef&lt;std::ffi::OsStr&gt;) -&gt; <span class="prelude-ty">Option</span>&lt;glib::GString&gt; {
-        <span class="kw">unsafe </span>{
-            from_glib_none(ffi::g_application_command_line_getenv(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                name.as_ref().to_glib_none().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="comment">//fn print(&amp;self, format: &amp;str, : /*Unknown conversion*//*Unimplemented*/Basic: VarArgs) {
-    //    unsafe { TODO: call ffi:g_application_command_line_print() }
-    //}
-
-    //fn printerr(&amp;self, format: &amp;str, : /*Unknown conversion*//*Unimplemented*/Basic: VarArgs) {
-    //    unsafe { TODO: call ffi:g_application_command_line_printerr() }
-    //}
-
     </span><span class="kw">fn </span>set_exit_status(<span class="kw-2">&amp;</span><span class="self">self</span>, exit_status: i32) {
         <span class="kw">unsafe </span>{
             ffi::g_application_command_line_set_exit_status(
@@ -1170,7 +1111,8 @@
         }
     }
 
-    <span class="kw">fn </span>connect_is_remote_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
+    <span class="attr">#[doc(alias = <span class="string">&quot;is-remote&quot;</span>)]
+    </span><span class="kw">fn </span>connect_is_remote_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
         <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>notify_is_remote_trampoline&lt;
             P: IsA&lt;ApplicationCommandLine&gt;,
             F: Fn(<span class="kw-2">&amp;</span>P) + <span class="lifetime">&#39;static</span>,
@@ -1195,6 +1137,8 @@
         }
     }
 }
+
+<span class="kw">impl</span>&lt;O: IsA&lt;ApplicationCommandLine&gt;&gt; ApplicationCommandLineExt <span class="kw">for </span>O {}
 
 <span class="kw">impl </span>fmt::Display <span class="kw">for </span>ApplicationCommandLine {
     <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter) -&gt; fmt::Result {

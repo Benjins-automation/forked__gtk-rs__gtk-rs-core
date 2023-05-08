@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gio/src/auto/output_stream.rs`."><title>output_stream.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (a77c55248 2023-05-06)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gio/src/auto/output_stream.rs`."><title>output_stream.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (c4190f2d3 2023-05-07)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -761,97 +761,6 @@
 <a href="#688" id="688">688</a>
 <a href="#689" id="689">689</a>
 <a href="#690" id="690">690</a>
-<a href="#691" id="691">691</a>
-<a href="#692" id="692">692</a>
-<a href="#693" id="693">693</a>
-<a href="#694" id="694">694</a>
-<a href="#695" id="695">695</a>
-<a href="#696" id="696">696</a>
-<a href="#697" id="697">697</a>
-<a href="#698" id="698">698</a>
-<a href="#699" id="699">699</a>
-<a href="#700" id="700">700</a>
-<a href="#701" id="701">701</a>
-<a href="#702" id="702">702</a>
-<a href="#703" id="703">703</a>
-<a href="#704" id="704">704</a>
-<a href="#705" id="705">705</a>
-<a href="#706" id="706">706</a>
-<a href="#707" id="707">707</a>
-<a href="#708" id="708">708</a>
-<a href="#709" id="709">709</a>
-<a href="#710" id="710">710</a>
-<a href="#711" id="711">711</a>
-<a href="#712" id="712">712</a>
-<a href="#713" id="713">713</a>
-<a href="#714" id="714">714</a>
-<a href="#715" id="715">715</a>
-<a href="#716" id="716">716</a>
-<a href="#717" id="717">717</a>
-<a href="#718" id="718">718</a>
-<a href="#719" id="719">719</a>
-<a href="#720" id="720">720</a>
-<a href="#721" id="721">721</a>
-<a href="#722" id="722">722</a>
-<a href="#723" id="723">723</a>
-<a href="#724" id="724">724</a>
-<a href="#725" id="725">725</a>
-<a href="#726" id="726">726</a>
-<a href="#727" id="727">727</a>
-<a href="#728" id="728">728</a>
-<a href="#729" id="729">729</a>
-<a href="#730" id="730">730</a>
-<a href="#731" id="731">731</a>
-<a href="#732" id="732">732</a>
-<a href="#733" id="733">733</a>
-<a href="#734" id="734">734</a>
-<a href="#735" id="735">735</a>
-<a href="#736" id="736">736</a>
-<a href="#737" id="737">737</a>
-<a href="#738" id="738">738</a>
-<a href="#739" id="739">739</a>
-<a href="#740" id="740">740</a>
-<a href="#741" id="741">741</a>
-<a href="#742" id="742">742</a>
-<a href="#743" id="743">743</a>
-<a href="#744" id="744">744</a>
-<a href="#745" id="745">745</a>
-<a href="#746" id="746">746</a>
-<a href="#747" id="747">747</a>
-<a href="#748" id="748">748</a>
-<a href="#749" id="749">749</a>
-<a href="#750" id="750">750</a>
-<a href="#751" id="751">751</a>
-<a href="#752" id="752">752</a>
-<a href="#753" id="753">753</a>
-<a href="#754" id="754">754</a>
-<a href="#755" id="755">755</a>
-<a href="#756" id="756">756</a>
-<a href="#757" id="757">757</a>
-<a href="#758" id="758">758</a>
-<a href="#759" id="759">759</a>
-<a href="#760" id="760">760</a>
-<a href="#761" id="761">761</a>
-<a href="#762" id="762">762</a>
-<a href="#763" id="763">763</a>
-<a href="#764" id="764">764</a>
-<a href="#765" id="765">765</a>
-<a href="#766" id="766">766</a>
-<a href="#767" id="767">767</a>
-<a href="#768" id="768">768</a>
-<a href="#769" id="769">769</a>
-<a href="#770" id="770">770</a>
-<a href="#771" id="771">771</a>
-<a href="#772" id="772">772</a>
-<a href="#773" id="773">773</a>
-<a href="#774" id="774">774</a>
-<a href="#775" id="775">775</a>
-<a href="#776" id="776">776</a>
-<a href="#777" id="777">777</a>
-<a href="#778" id="778">778</a>
-<a href="#779" id="779">779</a>
-<a href="#780" id="780">780</a>
-<a href="#781" id="781">781</a>
 </pre></div><pre class="rust"><code><span class="comment">// This file was generated by gir (https://github.com/gtk-rs/gir)
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
@@ -895,10 +804,14 @@
 /// # Implementors
 ///
 /// [`FileOutputStream`][struct@crate::FileOutputStream], [`FilterOutputStream`][struct@crate::FilterOutputStream], [`MemoryOutputStream`][struct@crate::MemoryOutputStream], [`OutputStream`][struct@crate::OutputStream], [`PollableOutputStream`][struct@crate::PollableOutputStream], [`UnixOutputStream`][struct@crate::UnixOutputStream]
-</span><span class="kw">pub trait </span>OutputStreamExt: <span class="lifetime">&#39;static </span>{
+</span><span class="kw">pub trait </span>OutputStreamExt: IsA&lt;OutputStream&gt; + <span class="lifetime">&#39;static </span>{
     <span class="doccomment">/// Clears the pending flag on `self`.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_output_stream_clear_pending&quot;</span>)]
-    </span><span class="kw">fn </span>clear_pending(<span class="kw-2">&amp;</span><span class="self">self</span>);
+    </span><span class="kw">fn </span>clear_pending(<span class="kw-2">&amp;</span><span class="self">self</span>) {
+        <span class="kw">unsafe </span>{
+            ffi::g_output_stream_clear_pending(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>);
+        }
+    }
 
     <span class="doccomment">/// Closes the stream, releasing resources related to it.
     ///
@@ -936,7 +849,22 @@
     ///
     /// [`true`] on success, [`false`] on failure
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_output_stream_close&quot;</span>)]
-    </span><span class="kw">fn </span>close(<span class="kw-2">&amp;</span><span class="self">self</span>, cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Cancellable&gt;&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt;;
+    </span><span class="kw">fn </span>close(<span class="kw-2">&amp;</span><span class="self">self</span>, cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Cancellable&gt;&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt; {
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
+            <span class="kw">let </span>is_ok = ffi::g_output_stream_close(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                cancellable.map(|p| p.as_ref()).to_glib_none().<span class="number">0</span>,
+                <span class="kw-2">&amp;mut </span>error,
+            );
+            <span class="macro">debug_assert_eq!</span>(is_ok == glib::ffi::GFALSE, !error.is_null());
+            <span class="kw">if </span>error.is_null() {
+                <span class="prelude-val">Ok</span>(())
+            } <span class="kw">else </span>{
+                <span class="prelude-val">Err</span>(from_glib_full(error))
+            }
+        }
+    }
 
     <span class="doccomment">/// Requests an asynchronous close of the stream, releasing resources
     /// related to it. When the operation is finished `callback` will be
@@ -956,284 +884,6 @@
     /// callback to call when the request is satisfied
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_output_stream_close_async&quot;</span>)]
     </span><span class="kw">fn </span>close_async&lt;P: FnOnce(<span class="prelude-ty">Result</span>&lt;(), glib::Error&gt;) + <span class="lifetime">&#39;static</span>&gt;(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        io_priority: glib::Priority,
-        cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Cancellable&gt;&gt;,
-        callback: P,
-    );
-
-    <span class="kw">fn </span>close_future(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        io_priority: glib::Priority,
-    ) -&gt; Pin&lt;Box_&lt;<span class="kw">dyn </span>std::future::Future&lt;Output = <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt;&gt; + <span class="lifetime">&#39;static</span>&gt;&gt;;
-
-    <span class="doccomment">/// Forces a write of all user-space buffered data for the given
-    /// `self`. Will block during the operation. Closing the stream will
-    /// implicitly cause a flush.
-    ///
-    /// This function is optional for inherited classes.
-    ///
-    /// If `cancellable` is not [`None`], then the operation can be cancelled by
-    /// triggering the cancellable object from another thread. If the operation
-    /// was cancelled, the error [`IOErrorEnum::Cancelled`][crate::IOErrorEnum::Cancelled] will be returned.
-    /// ## `cancellable`
-    /// optional cancellable object
-    ///
-    /// # Returns
-    ///
-    /// [`true`] on success, [`false`] on error
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_output_stream_flush&quot;</span>)]
-    </span><span class="kw">fn </span>flush(<span class="kw-2">&amp;</span><span class="self">self</span>, cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Cancellable&gt;&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt;;
-
-    <span class="doccomment">/// Forces an asynchronous write of all user-space buffered data for
-    /// the given `self`.
-    /// For behaviour details see [`flush()`][Self::flush()].
-    ///
-    /// When the operation is finished `callback` will be
-    /// called. You can then call `g_output_stream_flush_finish()` to get the
-    /// result of the operation.
-    /// ## `io_priority`
-    /// the io priority of the request.
-    /// ## `cancellable`
-    /// optional [`Cancellable`][crate::Cancellable] object, [`None`] to ignore.
-    /// ## `callback`
-    /// a `GAsyncReadyCallback` to call when the request is satisfied
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_output_stream_flush_async&quot;</span>)]
-    </span><span class="kw">fn </span>flush_async&lt;P: FnOnce(<span class="prelude-ty">Result</span>&lt;(), glib::Error&gt;) + <span class="lifetime">&#39;static</span>&gt;(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        io_priority: glib::Priority,
-        cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Cancellable&gt;&gt;,
-        callback: P,
-    );
-
-    <span class="kw">fn </span>flush_future(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        io_priority: glib::Priority,
-    ) -&gt; Pin&lt;Box_&lt;<span class="kw">dyn </span>std::future::Future&lt;Output = <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt;&gt; + <span class="lifetime">&#39;static</span>&gt;&gt;;
-
-    <span class="doccomment">/// Checks if an output stream has pending actions.
-    ///
-    /// # Returns
-    ///
-    /// [`true`] if `self` has pending actions.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_output_stream_has_pending&quot;</span>)]
-    </span><span class="kw">fn </span>has_pending(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool;
-
-    <span class="doccomment">/// Checks if an output stream has already been closed.
-    ///
-    /// # Returns
-    ///
-    /// [`true`] if `self` is closed. [`false`] otherwise.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_output_stream_is_closed&quot;</span>)]
-    </span><span class="kw">fn </span>is_closed(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool;
-
-    <span class="doccomment">/// Checks if an output stream is being closed. This can be
-    /// used inside e.g. a flush implementation to see if the
-    /// flush (or other i/o operation) is called from within
-    /// the closing operation.
-    ///
-    /// # Returns
-    ///
-    /// [`true`] if `self` is being closed. [`false`] otherwise.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_output_stream_is_closing&quot;</span>)]
-    </span><span class="kw">fn </span>is_closing(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool;
-
-    <span class="comment">//#[doc(alias = &quot;g_output_stream_printf&quot;)]
-    //fn printf(&amp;self, cancellable: Option&lt;&amp;impl IsA&lt;Cancellable&gt;&gt;, error: &amp;mut glib::Error, format: &amp;str, : /*Unknown conversion*//*Unimplemented*/Basic: VarArgs) -&gt; Option&lt;usize&gt;;
-
-    </span><span class="doccomment">/// Sets `self` to have actions pending. If the pending flag is
-    /// already set or `self` is closed, it will return [`false`] and set
-    /// `error`.
-    ///
-    /// # Returns
-    ///
-    /// [`true`] if pending was previously unset and is now set.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_output_stream_set_pending&quot;</span>)]
-    </span><span class="kw">fn </span>set_pending(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt;;
-
-    <span class="doccomment">/// Splices an input stream into an output stream.
-    /// ## `source`
-    /// a [`InputStream`][crate::InputStream].
-    /// ## `flags`
-    /// a set of [`OutputStreamSpliceFlags`][crate::OutputStreamSpliceFlags].
-    /// ## `cancellable`
-    /// optional [`Cancellable`][crate::Cancellable] object, [`None`] to ignore.
-    ///
-    /// # Returns
-    ///
-    /// a `gssize` containing the size of the data spliced, or
-    ///  -1 if an error occurred. Note that if the number of bytes
-    ///  spliced is greater than `G_MAXSSIZE`, then that will be
-    ///  returned, and there is no way to determine the actual number
-    ///  of bytes spliced.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_output_stream_splice&quot;</span>)]
-    </span><span class="kw">fn </span>splice(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        source: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;InputStream&gt;,
-        flags: OutputStreamSpliceFlags,
-        cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Cancellable&gt;&gt;,
-    ) -&gt; <span class="prelude-ty">Result</span>&lt;isize, glib::Error&gt;;
-
-    <span class="doccomment">/// Splices a stream asynchronously.
-    /// When the operation is finished `callback` will be called.
-    /// You can then call `g_output_stream_splice_finish()` to get the
-    /// result of the operation.
-    ///
-    /// For the synchronous, blocking version of this function, see
-    /// [`splice()`][Self::splice()].
-    /// ## `source`
-    /// a [`InputStream`][crate::InputStream].
-    /// ## `flags`
-    /// a set of [`OutputStreamSpliceFlags`][crate::OutputStreamSpliceFlags].
-    /// ## `io_priority`
-    /// the io priority of the request.
-    /// ## `cancellable`
-    /// optional [`Cancellable`][crate::Cancellable] object, [`None`] to ignore.
-    /// ## `callback`
-    /// a `GAsyncReadyCallback`.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_output_stream_splice_async&quot;</span>)]
-    </span><span class="kw">fn </span>splice_async&lt;P: FnOnce(<span class="prelude-ty">Result</span>&lt;isize, glib::Error&gt;) + <span class="lifetime">&#39;static</span>&gt;(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        source: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;InputStream&gt;,
-        flags: OutputStreamSpliceFlags,
-        io_priority: glib::Priority,
-        cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Cancellable&gt;&gt;,
-        callback: P,
-    );
-
-    <span class="kw">fn </span>splice_future(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        source: <span class="kw-2">&amp;</span>(<span class="kw">impl </span>IsA&lt;InputStream&gt; + Clone + <span class="lifetime">&#39;static</span>),
-        flags: OutputStreamSpliceFlags,
-        io_priority: glib::Priority,
-    ) -&gt; Pin&lt;Box_&lt;<span class="kw">dyn </span>std::future::Future&lt;Output = <span class="prelude-ty">Result</span>&lt;isize, glib::Error&gt;&gt; + <span class="lifetime">&#39;static</span>&gt;&gt;;
-
-    <span class="comment">//#[doc(alias = &quot;g_output_stream_vprintf&quot;)]
-    //fn vprintf(&amp;self, cancellable: Option&lt;&amp;impl IsA&lt;Cancellable&gt;&gt;, error: &amp;mut glib::Error, format: &amp;str, args: /*Unknown conversion*//*Unimplemented*/Unsupported) -&gt; Option&lt;usize&gt;;
-
-    </span><span class="doccomment">/// Tries to write `count` bytes from `buffer` into the stream. Will block
-    /// during the operation.
-    ///
-    /// If count is 0, returns 0 and does nothing. A value of `count`
-    /// larger than `G_MAXSSIZE` will cause a [`IOErrorEnum::InvalidArgument`][crate::IOErrorEnum::InvalidArgument] error.
-    ///
-    /// On success, the number of bytes written to the stream is returned.
-    /// It is not an error if this is not the same as the requested size, as it
-    /// can happen e.g. on a partial I/O error, or if there is not enough
-    /// storage in the stream. All writes block until at least one byte
-    /// is written or an error occurs; 0 is never returned (unless
-    /// `count` is 0).
-    ///
-    /// If `cancellable` is not [`None`], then the operation can be cancelled by
-    /// triggering the cancellable object from another thread. If the operation
-    /// was cancelled, the error [`IOErrorEnum::Cancelled`][crate::IOErrorEnum::Cancelled] will be returned. If an
-    /// operation was partially finished when the operation was cancelled the
-    /// partial result will be returned, without an error.
-    ///
-    /// On error -1 is returned and `error` is set accordingly.
-    /// ## `buffer`
-    /// the buffer containing the data to write.
-    /// ## `cancellable`
-    /// optional cancellable object
-    ///
-    /// # Returns
-    ///
-    /// Number of bytes written, or -1 on error
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_output_stream_write&quot;</span>)]
-    </span><span class="kw">fn </span>write(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        buffer: <span class="kw-2">&amp;</span>[u8],
-        cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Cancellable&gt;&gt;,
-    ) -&gt; <span class="prelude-ty">Result</span>&lt;isize, glib::Error&gt;;
-
-    <span class="doccomment">/// A wrapper function for [`write()`][Self::write()] which takes a
-    /// [`glib::Bytes`][crate::glib::Bytes] as input. This can be more convenient for use by language
-    /// bindings or in other cases where the refcounted nature of [`glib::Bytes`][crate::glib::Bytes]
-    /// is helpful over a bare pointer interface.
-    ///
-    /// However, note that this function may still perform partial writes,
-    /// just like [`write()`][Self::write()]. If that occurs, to continue
-    /// writing, you will need to create a new [`glib::Bytes`][crate::glib::Bytes] containing just the
-    /// remaining bytes, using [`glib::Bytes::new_from_bytes()`][crate::glib::Bytes::new_from_bytes()]. Passing the same
-    /// [`glib::Bytes`][crate::glib::Bytes] instance multiple times potentially can result in duplicated
-    /// data in the output stream.
-    /// ## `bytes`
-    /// the [`glib::Bytes`][crate::glib::Bytes] to write
-    /// ## `cancellable`
-    /// optional cancellable object
-    ///
-    /// # Returns
-    ///
-    /// Number of bytes written, or -1 on error
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_output_stream_write_bytes&quot;</span>)]
-    </span><span class="kw">fn </span>write_bytes(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        bytes: <span class="kw-2">&amp;</span>glib::Bytes,
-        cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Cancellable&gt;&gt;,
-    ) -&gt; <span class="prelude-ty">Result</span>&lt;isize, glib::Error&gt;;
-
-    <span class="doccomment">/// This function is similar to [`OutputStreamExtManual::write_async()`][crate::prelude::OutputStreamExtManual::write_async()], but
-    /// takes a [`glib::Bytes`][crate::glib::Bytes] as input. Due to the refcounted nature of [`glib::Bytes`][crate::glib::Bytes],
-    /// this allows the stream to avoid taking a copy of the data.
-    ///
-    /// However, note that this function may still perform partial writes,
-    /// just like [`OutputStreamExtManual::write_async()`][crate::prelude::OutputStreamExtManual::write_async()]. If that occurs, to continue
-    /// writing, you will need to create a new [`glib::Bytes`][crate::glib::Bytes] containing just the
-    /// remaining bytes, using [`glib::Bytes::new_from_bytes()`][crate::glib::Bytes::new_from_bytes()]. Passing the same
-    /// [`glib::Bytes`][crate::glib::Bytes] instance multiple times potentially can result in duplicated
-    /// data in the output stream.
-    ///
-    /// For the synchronous, blocking version of this function, see
-    /// [`write_bytes()`][Self::write_bytes()].
-    /// ## `bytes`
-    /// The bytes to write
-    /// ## `io_priority`
-    /// the io priority of the request.
-    /// ## `cancellable`
-    /// optional [`Cancellable`][crate::Cancellable] object, [`None`] to ignore.
-    /// ## `callback`
-    /// callback to call when the request is satisfied
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_output_stream_write_bytes_async&quot;</span>)]
-    </span><span class="kw">fn </span>write_bytes_async&lt;P: FnOnce(<span class="prelude-ty">Result</span>&lt;isize, glib::Error&gt;) + <span class="lifetime">&#39;static</span>&gt;(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        bytes: <span class="kw-2">&amp;</span>glib::Bytes,
-        io_priority: glib::Priority,
-        cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Cancellable&gt;&gt;,
-        callback: P,
-    );
-
-    <span class="kw">fn </span>write_bytes_future(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        bytes: <span class="kw-2">&amp;</span>glib::Bytes,
-        io_priority: glib::Priority,
-    ) -&gt; Pin&lt;Box_&lt;<span class="kw">dyn </span>std::future::Future&lt;Output = <span class="prelude-ty">Result</span>&lt;isize, glib::Error&gt;&gt; + <span class="lifetime">&#39;static</span>&gt;&gt;;
-}
-
-<span class="kw">impl</span>&lt;O: IsA&lt;OutputStream&gt;&gt; OutputStreamExt <span class="kw">for </span>O {
-    <span class="kw">fn </span>clear_pending(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <span class="kw">unsafe </span>{
-            ffi::g_output_stream_clear_pending(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>);
-        }
-    }
-
-    <span class="kw">fn </span>close(<span class="kw-2">&amp;</span><span class="self">self</span>, cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Cancellable&gt;&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt; {
-        <span class="kw">unsafe </span>{
-            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
-            <span class="kw">let </span>is_ok = ffi::g_output_stream_close(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                cancellable.map(|p| p.as_ref()).to_glib_none().<span class="number">0</span>,
-                <span class="kw-2">&amp;mut </span>error,
-            );
-            <span class="macro">debug_assert_eq!</span>(is_ok == glib::ffi::GFALSE, !error.is_null());
-            <span class="kw">if </span>error.is_null() {
-                <span class="prelude-val">Ok</span>(())
-            } <span class="kw">else </span>{
-                <span class="prelude-val">Err</span>(from_glib_full(error))
-            }
-        }
-    }
-
-    <span class="kw">fn </span>close_async&lt;P: FnOnce(<span class="prelude-ty">Result</span>&lt;(), glib::Error&gt;) + <span class="lifetime">&#39;static</span>&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         io_priority: glib::Priority,
         cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Cancellable&gt;&gt;,
@@ -1296,7 +946,23 @@
         ))
     }
 
-    <span class="kw">fn </span>flush(<span class="kw-2">&amp;</span><span class="self">self</span>, cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Cancellable&gt;&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt; {
+    <span class="doccomment">/// Forces a write of all user-space buffered data for the given
+    /// `self`. Will block during the operation. Closing the stream will
+    /// implicitly cause a flush.
+    ///
+    /// This function is optional for inherited classes.
+    ///
+    /// If `cancellable` is not [`None`], then the operation can be cancelled by
+    /// triggering the cancellable object from another thread. If the operation
+    /// was cancelled, the error [`IOErrorEnum::Cancelled`][crate::IOErrorEnum::Cancelled] will be returned.
+    /// ## `cancellable`
+    /// optional cancellable object
+    ///
+    /// # Returns
+    ///
+    /// [`true`] on success, [`false`] on error
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_output_stream_flush&quot;</span>)]
+    </span><span class="kw">fn </span>flush(<span class="kw-2">&amp;</span><span class="self">self</span>, cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Cancellable&gt;&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt; {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
             <span class="kw">let </span>is_ok = ffi::g_output_stream_flush(
@@ -1313,7 +979,21 @@
         }
     }
 
-    <span class="kw">fn </span>flush_async&lt;P: FnOnce(<span class="prelude-ty">Result</span>&lt;(), glib::Error&gt;) + <span class="lifetime">&#39;static</span>&gt;(
+    <span class="doccomment">/// Forces an asynchronous write of all user-space buffered data for
+    /// the given `self`.
+    /// For behaviour details see [`flush()`][Self::flush()].
+    ///
+    /// When the operation is finished `callback` will be
+    /// called. You can then call `g_output_stream_flush_finish()` to get the
+    /// result of the operation.
+    /// ## `io_priority`
+    /// the io priority of the request.
+    /// ## `cancellable`
+    /// optional [`Cancellable`][crate::Cancellable] object, [`None`] to ignore.
+    /// ## `callback`
+    /// a `GAsyncReadyCallback` to call when the request is satisfied
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_output_stream_flush_async&quot;</span>)]
+    </span><span class="kw">fn </span>flush_async&lt;P: FnOnce(<span class="prelude-ty">Result</span>&lt;(), glib::Error&gt;) + <span class="lifetime">&#39;static</span>&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         io_priority: glib::Priority,
         cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Cancellable&gt;&gt;,
@@ -1376,7 +1056,13 @@
         ))
     }
 
-    <span class="kw">fn </span>has_pending(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+    <span class="doccomment">/// Checks if an output stream has pending actions.
+    ///
+    /// # Returns
+    ///
+    /// [`true`] if `self` has pending actions.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_output_stream_has_pending&quot;</span>)]
+    </span><span class="kw">fn </span>has_pending(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
         <span class="kw">unsafe </span>{
             from_glib(ffi::g_output_stream_has_pending(
                 <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
@@ -1384,7 +1070,13 @@
         }
     }
 
-    <span class="kw">fn </span>is_closed(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+    <span class="doccomment">/// Checks if an output stream has already been closed.
+    ///
+    /// # Returns
+    ///
+    /// [`true`] if `self` is closed. [`false`] otherwise.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_output_stream_is_closed&quot;</span>)]
+    </span><span class="kw">fn </span>is_closed(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
         <span class="kw">unsafe </span>{
             from_glib(ffi::g_output_stream_is_closed(
                 <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
@@ -1392,7 +1084,16 @@
         }
     }
 
-    <span class="kw">fn </span>is_closing(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+    <span class="doccomment">/// Checks if an output stream is being closed. This can be
+    /// used inside e.g. a flush implementation to see if the
+    /// flush (or other i/o operation) is called from within
+    /// the closing operation.
+    ///
+    /// # Returns
+    ///
+    /// [`true`] if `self` is being closed. [`false`] otherwise.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_output_stream_is_closing&quot;</span>)]
+    </span><span class="kw">fn </span>is_closing(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
         <span class="kw">unsafe </span>{
             from_glib(ffi::g_output_stream_is_closing(
                 <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
@@ -1400,10 +1101,19 @@
         }
     }
 
-    <span class="comment">//fn printf(&amp;self, cancellable: Option&lt;&amp;impl IsA&lt;Cancellable&gt;&gt;, error: &amp;mut glib::Error, format: &amp;str, : /*Unknown conversion*//*Unimplemented*/Basic: VarArgs) -&gt; Option&lt;usize&gt; {
+    <span class="comment">//#[doc(alias = &quot;g_output_stream_printf&quot;)]
+    //fn printf(&amp;self, cancellable: Option&lt;&amp;impl IsA&lt;Cancellable&gt;&gt;, error: &amp;mut glib::Error, format: &amp;str, : /*Unknown conversion*//*Unimplemented*/Basic: VarArgs) -&gt; Option&lt;usize&gt; {
     //    unsafe { TODO: call ffi:g_output_stream_printf() }
     //}
 
+    </span><span class="doccomment">/// Sets `self` to have actions pending. If the pending flag is
+    /// already set or `self` is closed, it will return [`false`] and set
+    /// `error`.
+    ///
+    /// # Returns
+    ///
+    /// [`true`] if pending was previously unset and is now set.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_output_stream_set_pending&quot;</span>)]
     </span><span class="kw">fn </span>set_pending(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt; {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
@@ -1418,7 +1128,23 @@
         }
     }
 
-    <span class="kw">fn </span>splice(
+    <span class="doccomment">/// Splices an input stream into an output stream.
+    /// ## `source`
+    /// a [`InputStream`][crate::InputStream].
+    /// ## `flags`
+    /// a set of [`OutputStreamSpliceFlags`][crate::OutputStreamSpliceFlags].
+    /// ## `cancellable`
+    /// optional [`Cancellable`][crate::Cancellable] object, [`None`] to ignore.
+    ///
+    /// # Returns
+    ///
+    /// a `gssize` containing the size of the data spliced, or
+    ///  -1 if an error occurred. Note that if the number of bytes
+    ///  spliced is greater than `G_MAXSSIZE`, then that will be
+    ///  returned, and there is no way to determine the actual number
+    ///  of bytes spliced.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_output_stream_splice&quot;</span>)]
+    </span><span class="kw">fn </span>splice(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         source: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;InputStream&gt;,
         flags: OutputStreamSpliceFlags,
@@ -1441,7 +1167,25 @@
         }
     }
 
-    <span class="kw">fn </span>splice_async&lt;P: FnOnce(<span class="prelude-ty">Result</span>&lt;isize, glib::Error&gt;) + <span class="lifetime">&#39;static</span>&gt;(
+    <span class="doccomment">/// Splices a stream asynchronously.
+    /// When the operation is finished `callback` will be called.
+    /// You can then call `g_output_stream_splice_finish()` to get the
+    /// result of the operation.
+    ///
+    /// For the synchronous, blocking version of this function, see
+    /// [`splice()`][Self::splice()].
+    /// ## `source`
+    /// a [`InputStream`][crate::InputStream].
+    /// ## `flags`
+    /// a set of [`OutputStreamSpliceFlags`][crate::OutputStreamSpliceFlags].
+    /// ## `io_priority`
+    /// the io priority of the request.
+    /// ## `cancellable`
+    /// optional [`Cancellable`][crate::Cancellable] object, [`None`] to ignore.
+    /// ## `callback`
+    /// a `GAsyncReadyCallback`.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_output_stream_splice_async&quot;</span>)]
+    </span><span class="kw">fn </span>splice_async&lt;P: FnOnce(<span class="prelude-ty">Result</span>&lt;isize, glib::Error&gt;) + <span class="lifetime">&#39;static</span>&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         source: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;InputStream&gt;,
         flags: OutputStreamSpliceFlags,
@@ -1511,10 +1255,40 @@
         ))
     }
 
-    <span class="comment">//fn vprintf(&amp;self, cancellable: Option&lt;&amp;impl IsA&lt;Cancellable&gt;&gt;, error: &amp;mut glib::Error, format: &amp;str, args: /*Unknown conversion*//*Unimplemented*/Unsupported) -&gt; Option&lt;usize&gt; {
+    <span class="comment">//#[doc(alias = &quot;g_output_stream_vprintf&quot;)]
+    //fn vprintf(&amp;self, cancellable: Option&lt;&amp;impl IsA&lt;Cancellable&gt;&gt;, error: &amp;mut glib::Error, format: &amp;str, args: /*Unknown conversion*//*Unimplemented*/Unsupported) -&gt; Option&lt;usize&gt; {
     //    unsafe { TODO: call ffi:g_output_stream_vprintf() }
     //}
 
+    </span><span class="doccomment">/// Tries to write `count` bytes from `buffer` into the stream. Will block
+    /// during the operation.
+    ///
+    /// If count is 0, returns 0 and does nothing. A value of `count`
+    /// larger than `G_MAXSSIZE` will cause a [`IOErrorEnum::InvalidArgument`][crate::IOErrorEnum::InvalidArgument] error.
+    ///
+    /// On success, the number of bytes written to the stream is returned.
+    /// It is not an error if this is not the same as the requested size, as it
+    /// can happen e.g. on a partial I/O error, or if there is not enough
+    /// storage in the stream. All writes block until at least one byte
+    /// is written or an error occurs; 0 is never returned (unless
+    /// `count` is 0).
+    ///
+    /// If `cancellable` is not [`None`], then the operation can be cancelled by
+    /// triggering the cancellable object from another thread. If the operation
+    /// was cancelled, the error [`IOErrorEnum::Cancelled`][crate::IOErrorEnum::Cancelled] will be returned. If an
+    /// operation was partially finished when the operation was cancelled the
+    /// partial result will be returned, without an error.
+    ///
+    /// On error -1 is returned and `error` is set accordingly.
+    /// ## `buffer`
+    /// the buffer containing the data to write.
+    /// ## `cancellable`
+    /// optional cancellable object
+    ///
+    /// # Returns
+    ///
+    /// Number of bytes written, or -1 on error
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_output_stream_write&quot;</span>)]
     </span><span class="kw">fn </span>write(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         buffer: <span class="kw-2">&amp;</span>[u8],
@@ -1538,7 +1312,27 @@
         }
     }
 
-    <span class="kw">fn </span>write_bytes(
+    <span class="doccomment">/// A wrapper function for [`write()`][Self::write()] which takes a
+    /// [`glib::Bytes`][crate::glib::Bytes] as input. This can be more convenient for use by language
+    /// bindings or in other cases where the refcounted nature of [`glib::Bytes`][crate::glib::Bytes]
+    /// is helpful over a bare pointer interface.
+    ///
+    /// However, note that this function may still perform partial writes,
+    /// just like [`write()`][Self::write()]. If that occurs, to continue
+    /// writing, you will need to create a new [`glib::Bytes`][crate::glib::Bytes] containing just the
+    /// remaining bytes, using [`glib::Bytes::new_from_bytes()`][crate::glib::Bytes::new_from_bytes()]. Passing the same
+    /// [`glib::Bytes`][crate::glib::Bytes] instance multiple times potentially can result in duplicated
+    /// data in the output stream.
+    /// ## `bytes`
+    /// the [`glib::Bytes`][crate::glib::Bytes] to write
+    /// ## `cancellable`
+    /// optional cancellable object
+    ///
+    /// # Returns
+    ///
+    /// Number of bytes written, or -1 on error
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_output_stream_write_bytes&quot;</span>)]
+    </span><span class="kw">fn </span>write_bytes(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         bytes: <span class="kw-2">&amp;</span>glib::Bytes,
         cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Cancellable&gt;&gt;,
@@ -1559,7 +1353,29 @@
         }
     }
 
-    <span class="kw">fn </span>write_bytes_async&lt;P: FnOnce(<span class="prelude-ty">Result</span>&lt;isize, glib::Error&gt;) + <span class="lifetime">&#39;static</span>&gt;(
+    <span class="doccomment">/// This function is similar to [`OutputStreamExtManual::write_async()`][crate::prelude::OutputStreamExtManual::write_async()], but
+    /// takes a [`glib::Bytes`][crate::glib::Bytes] as input. Due to the refcounted nature of [`glib::Bytes`][crate::glib::Bytes],
+    /// this allows the stream to avoid taking a copy of the data.
+    ///
+    /// However, note that this function may still perform partial writes,
+    /// just like [`OutputStreamExtManual::write_async()`][crate::prelude::OutputStreamExtManual::write_async()]. If that occurs, to continue
+    /// writing, you will need to create a new [`glib::Bytes`][crate::glib::Bytes] containing just the
+    /// remaining bytes, using [`glib::Bytes::new_from_bytes()`][crate::glib::Bytes::new_from_bytes()]. Passing the same
+    /// [`glib::Bytes`][crate::glib::Bytes] instance multiple times potentially can result in duplicated
+    /// data in the output stream.
+    ///
+    /// For the synchronous, blocking version of this function, see
+    /// [`write_bytes()`][Self::write_bytes()].
+    /// ## `bytes`
+    /// The bytes to write
+    /// ## `io_priority`
+    /// the io priority of the request.
+    /// ## `cancellable`
+    /// optional [`Cancellable`][crate::Cancellable] object, [`None`] to ignore.
+    /// ## `callback`
+    /// callback to call when the request is satisfied
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_output_stream_write_bytes_async&quot;</span>)]
+    </span><span class="kw">fn </span>write_bytes_async&lt;P: FnOnce(<span class="prelude-ty">Result</span>&lt;isize, glib::Error&gt;) + <span class="lifetime">&#39;static</span>&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         bytes: <span class="kw-2">&amp;</span>glib::Bytes,
         io_priority: glib::Priority,
@@ -1627,6 +1443,8 @@
         ))
     }
 }
+
+<span class="kw">impl</span>&lt;O: IsA&lt;OutputStream&gt;&gt; OutputStreamExt <span class="kw">for </span>O {}
 
 <span class="kw">impl </span>fmt::Display <span class="kw">for </span>OutputStream {
     <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter) -&gt; fmt::Result {

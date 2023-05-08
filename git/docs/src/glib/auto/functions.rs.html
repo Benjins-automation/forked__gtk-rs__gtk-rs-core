@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib/src/auto/functions.rs`."><title>functions.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (a77c55248 2023-05-06)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib/src/auto/functions.rs`."><title>functions.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (c4190f2d3 2023-05-07)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -1475,44 +1475,11 @@
 <a href="#1402" id="1402">1402</a>
 <a href="#1403" id="1403">1403</a>
 <a href="#1404" id="1404">1404</a>
-<a href="#1405" id="1405">1405</a>
-<a href="#1406" id="1406">1406</a>
-<a href="#1407" id="1407">1407</a>
-<a href="#1408" id="1408">1408</a>
-<a href="#1409" id="1409">1409</a>
-<a href="#1410" id="1410">1410</a>
-<a href="#1411" id="1411">1411</a>
-<a href="#1412" id="1412">1412</a>
-<a href="#1413" id="1413">1413</a>
-<a href="#1414" id="1414">1414</a>
-<a href="#1415" id="1415">1415</a>
-<a href="#1416" id="1416">1416</a>
-<a href="#1417" id="1417">1417</a>
-<a href="#1418" id="1418">1418</a>
-<a href="#1419" id="1419">1419</a>
-<a href="#1420" id="1420">1420</a>
-<a href="#1421" id="1421">1421</a>
-<a href="#1422" id="1422">1422</a>
-<a href="#1423" id="1423">1423</a>
-<a href="#1424" id="1424">1424</a>
-<a href="#1425" id="1425">1425</a>
-<a href="#1426" id="1426">1426</a>
-<a href="#1427" id="1427">1427</a>
-<a href="#1428" id="1428">1428</a>
-<a href="#1429" id="1429">1429</a>
-<a href="#1430" id="1430">1430</a>
-<a href="#1431" id="1431">1431</a>
-<a href="#1432" id="1432">1432</a>
-<a href="#1433" id="1433">1433</a>
-<a href="#1434" id="1434">1434</a>
-<a href="#1435" id="1435">1435</a>
-<a href="#1436" id="1436">1436</a>
-<a href="#1437" id="1437">1437</a>
 </pre></div><pre class="rust"><code><span class="comment">// This file was generated by gir (https://github.com/gtk-rs/gir)
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-</span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_66&quot;</span>))]
+</span><span class="attr">#[cfg(feature = <span class="string">&quot;v2_66&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_66&quot;</span>)))]
 </span><span class="kw">use </span><span class="kw">crate</span>::FileSetContentsFlags;
 <span class="kw">use crate</span>::{
@@ -1720,7 +1687,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_66&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_66&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_66&quot;</span>)))]
 #[doc(alias = <span class="string">&quot;g_file_set_contents_full&quot;</span>)]
 </span><span class="kw">pub fn </span>file_set_contents_full(
@@ -1845,7 +1812,7 @@
     <span class="kw">unsafe </span>{ from_glib_full(ffi::g_get_codeset()) }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_62&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_62&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_62&quot;</span>)))]
 #[doc(alias = <span class="string">&quot;g_get_console_charset&quot;</span>)]
 #[doc(alias = <span class="string">&quot;get_console_charset&quot;</span>)]
@@ -1891,7 +1858,7 @@
     <span class="kw">unsafe </span>{ FromGlibPtrContainer::from_glib_none(ffi::g_get_language_names()) }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_58&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_58&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_58&quot;</span>)))]
 #[doc(alias = <span class="string">&quot;g_get_language_names_with_category&quot;</span>)]
 #[doc(alias = <span class="string">&quot;get_language_names_with_category&quot;</span>)]
@@ -1923,7 +1890,7 @@
     <span class="kw">unsafe </span>{ ffi::g_get_num_processors() }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_64&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_64&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_64&quot;</span>)))]
 #[doc(alias = <span class="string">&quot;g_get_os_info&quot;</span>)]
 #[doc(alias = <span class="string">&quot;get_os_info&quot;</span>)]
@@ -1997,7 +1964,7 @@
     <span class="kw">unsafe </span>{ from_glib_none(ffi::g_get_user_special_dir(directory.into_glib())) }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
 #[doc(alias = <span class="string">&quot;g_get_user_state_dir&quot;</span>)]
 #[doc(alias = <span class="string">&quot;get_user_state_dir&quot;</span>)]
@@ -2181,40 +2148,7 @@
     }
 }
 
-<span class="doccomment">/// Quotes a string so that the shell (/bin/sh) will interpret the
-/// quoted string to mean `unquoted_string`.
-///
-/// If you pass a filename to the shell, for example, you should first
-/// quote it with this function.
-///
-/// The return value must be freed with `g_free()`.
-///
-/// The quoting style used is undefined (single or double quotes may be
-/// used).
-/// ## `unquoted_string`
-/// a literal string
-///
-/// # Returns
-///
-/// quoted string
-</span><span class="comment">// rustdoc-stripper-ignore-next-stop
-</span><span class="doccomment">/// Quotes a string so that the shell (/bin/sh) will interpret the
-/// quoted string to mean `unquoted_string`.
-///
-/// If you pass a filename to the shell, for example, you should first
-/// quote it with this function.
-///
-/// The return value must be freed with `g_free()`.
-///
-/// The quoting style used is undefined (single or double quotes may be
-/// used).
-/// ## `unquoted_string`
-/// a literal string
-///
-/// # Returns
-///
-/// quoted string
-</span><span class="attr">#[doc(alias = <span class="string">&quot;g_shell_quote&quot;</span>)]
+<span class="attr">#[doc(alias = <span class="string">&quot;g_shell_quote&quot;</span>)]
 </span><span class="kw">pub fn </span>shell_quote(unquoted_string: <span class="kw">impl </span>AsRef&lt;std::ffi::OsStr&gt;) -&gt; std::ffi::OsString {
     <span class="kw">unsafe </span>{
         from_glib_full(ffi::g_shell_quote(
@@ -2460,7 +2394,7 @@
     }
 }
 
-<span class="comment">//#[cfg(any(feature = &quot;v2_68&quot;))]
+<span class="comment">//#[cfg(feature = &quot;v2_68&quot;)]
 //#[cfg_attr(docsrs, doc(cfg(feature = &quot;v2_68&quot;)))]
 //#[doc(alias = &quot;g_spawn_async_with_pipes_and_fds&quot;)]
 //pub fn spawn_async_with_pipes_and_fds(working_directory: Option&lt;impl AsRef&lt;std::path::Path&gt;&gt;, argv: &amp;[&amp;std::path::Path], envp: &amp;[&amp;std::path::Path], flags: SpawnFlags, child_setup: Option&lt;Box_&lt;dyn FnOnce() + &#39;static&gt;&gt;, stdin_fd: i32, stdout_fd: i32, stderr_fd: i32, source_fds: &amp;[i32], target_fds: &amp;[i32], n_fds: usize) -&gt; Result&lt;(Pid, i32, i32, i32), crate::Error&gt; {
@@ -2615,7 +2549,7 @@
 ///
 /// [`true`] if child exited successfully, [`false`] otherwise (and
 ///  `error` will be set)
-</span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+</span><span class="attr">#[cfg(feature = <span class="string">&quot;v2_70&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
 #[doc(alias = <span class="string">&quot;g_spawn_check_wait_status&quot;</span>)]
 </span><span class="kw">pub fn </span>spawn_check_wait_status(wait_status: i32) -&gt; <span class="prelude-ty">Result</span>&lt;(), <span class="kw">crate</span>::Error&gt; {
@@ -2664,7 +2598,7 @@
 /// # Returns
 ///
 /// [`true`] on success, [`false`] if error is set
-</span><span class="attr">#[cfg(any(unix))]
+</span><span class="attr">#[cfg(unix)]
 #[cfg_attr(docsrs, doc(cfg(unix)))]
 #[doc(alias = <span class="string">&quot;g_spawn_command_line_async&quot;</span>)]
 </span><span class="kw">pub fn </span>spawn_command_line_async(
@@ -2773,9 +2707,9 @@
     <span class="kw">unsafe </span>{ ffi::g_unicode_script_to_iso15924(script.into_glib()) }
 }
 
-<span class="comment">//#[cfg(any(unix))]
+<span class="comment">//#[cfg(unix)]
 //#[cfg_attr(docsrs, doc(cfg(unix)))]
-//#[cfg(any(feature = &quot;v2_64&quot;))]
+//#[cfg(feature = &quot;v2_64&quot;)]
 //#[cfg_attr(docsrs, doc(cfg(feature = &quot;v2_64&quot;)))]
 //#[doc(alias = &quot;g_unix_get_passwd_entry&quot;)]
 //pub fn unix_get_passwd_entry(user_name: &amp;str) -&gt; Result&lt;/*Unimplemented*/Option&lt;Basic: Pointer&gt;, crate::Error&gt; {

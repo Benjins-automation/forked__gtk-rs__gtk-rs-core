@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gio/src/auto/volume_monitor.rs`."><title>volume_monitor.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (a77c55248 2023-05-06)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gio/src/auto/volume_monitor.rs`."><title>volume_monitor.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (c4190f2d3 2023-05-07)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -692,40 +692,6 @@
 <a href="#619" id="619">619</a>
 <a href="#620" id="620">620</a>
 <a href="#621" id="621">621</a>
-<a href="#622" id="622">622</a>
-<a href="#623" id="623">623</a>
-<a href="#624" id="624">624</a>
-<a href="#625" id="625">625</a>
-<a href="#626" id="626">626</a>
-<a href="#627" id="627">627</a>
-<a href="#628" id="628">628</a>
-<a href="#629" id="629">629</a>
-<a href="#630" id="630">630</a>
-<a href="#631" id="631">631</a>
-<a href="#632" id="632">632</a>
-<a href="#633" id="633">633</a>
-<a href="#634" id="634">634</a>
-<a href="#635" id="635">635</a>
-<a href="#636" id="636">636</a>
-<a href="#637" id="637">637</a>
-<a href="#638" id="638">638</a>
-<a href="#639" id="639">639</a>
-<a href="#640" id="640">640</a>
-<a href="#641" id="641">641</a>
-<a href="#642" id="642">642</a>
-<a href="#643" id="643">643</a>
-<a href="#644" id="644">644</a>
-<a href="#645" id="645">645</a>
-<a href="#646" id="646">646</a>
-<a href="#647" id="647">647</a>
-<a href="#648" id="648">648</a>
-<a href="#649" id="649">649</a>
-<a href="#650" id="650">650</a>
-<a href="#651" id="651">651</a>
-<a href="#652" id="652">652</a>
-<a href="#653" id="653">653</a>
-<a href="#654" id="654">654</a>
-<a href="#655" id="655">655</a>
 </pre></div><pre class="rust"><code><span class="comment">// This file was generated by gir (https://github.com/gtk-rs/gir)
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
@@ -859,7 +825,7 @@
 /// # Implementors
 ///
 /// [`VolumeMonitor`][struct@crate::VolumeMonitor]
-</span><span class="kw">pub trait </span>VolumeMonitorExt: <span class="lifetime">&#39;static </span>{
+</span><span class="kw">pub trait </span>VolumeMonitorExt: IsA&lt;VolumeMonitor&gt; + <span class="lifetime">&#39;static </span>{
     <span class="doccomment">/// Gets a list of drives connected to the system.
     ///
     /// The returned list should be freed with `g_list_free()`, after
@@ -870,7 +836,13 @@
     /// a `GList` of connected [`Drive`][crate::Drive] objects.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_volume_monitor_get_connected_drives&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_connected_drives&quot;</span>)]
-    </span><span class="kw">fn </span>connected_drives(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;Drive&gt;;
+    </span><span class="kw">fn </span>connected_drives(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;Drive&gt; {
+        <span class="kw">unsafe </span>{
+            FromGlibPtrContainer::from_glib_full(ffi::g_volume_monitor_get_connected_drives(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+            ))
+        }
+    }
 
     <span class="doccomment">/// Finds a [`Mount`][crate::Mount] object by its UUID (see [`MountExt::uuid()`][crate::prelude::MountExt::uuid()])
     /// ## `uuid`
@@ -882,7 +854,14 @@
     ///  Free the returned object with `g_object_unref()`.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_volume_monitor_get_mount_for_uuid&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_mount_for_uuid&quot;</span>)]
-    </span><span class="kw">fn </span>mount_for_uuid(<span class="kw-2">&amp;</span><span class="self">self</span>, uuid: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Option</span>&lt;Mount&gt;;
+    </span><span class="kw">fn </span>mount_for_uuid(<span class="kw-2">&amp;</span><span class="self">self</span>, uuid: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Option</span>&lt;Mount&gt; {
+        <span class="kw">unsafe </span>{
+            from_glib_full(ffi::g_volume_monitor_get_mount_for_uuid(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                uuid.to_glib_none().<span class="number">0</span>,
+            ))
+        }
+    }
 
     <span class="doccomment">/// Gets a list of the mounts on the system.
     ///
@@ -894,7 +873,13 @@
     /// a `GList` of [`Mount`][crate::Mount] objects.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_volume_monitor_get_mounts&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_mounts&quot;</span>)]
-    </span><span class="kw">fn </span>mounts(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;Mount&gt;;
+    </span><span class="kw">fn </span>mounts(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;Mount&gt; {
+        <span class="kw">unsafe </span>{
+            FromGlibPtrContainer::from_glib_full(ffi::g_volume_monitor_get_mounts(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+            ))
+        }
+    }
 
     <span class="doccomment">/// Finds a [`Volume`][crate::Volume] object by its UUID (see [`VolumeExt::uuid()`][crate::prelude::VolumeExt::uuid()])
     /// ## `uuid`
@@ -906,7 +891,14 @@
     ///  Free the returned object with `g_object_unref()`.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_volume_monitor_get_volume_for_uuid&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_volume_for_uuid&quot;</span>)]
-    </span><span class="kw">fn </span>volume_for_uuid(<span class="kw-2">&amp;</span><span class="self">self</span>, uuid: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Option</span>&lt;Volume&gt;;
+    </span><span class="kw">fn </span>volume_for_uuid(<span class="kw-2">&amp;</span><span class="self">self</span>, uuid: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Option</span>&lt;Volume&gt; {
+        <span class="kw">unsafe </span>{
+            from_glib_full(ffi::g_volume_monitor_get_volume_for_uuid(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                uuid.to_glib_none().<span class="number">0</span>,
+            ))
+        }
+    }
 
     <span class="doccomment">/// Gets a list of the volumes on the system.
     ///
@@ -918,120 +910,7 @@
     /// a `GList` of [`Volume`][crate::Volume] objects.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_volume_monitor_get_volumes&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_volumes&quot;</span>)]
-    </span><span class="kw">fn </span>volumes(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;Volume&gt;;
-
-    <span class="doccomment">/// Emitted when a drive changes.
-    /// ## `drive`
-    /// the drive that changed
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;drive-changed&quot;</span>)]
-    </span><span class="kw">fn </span>connect_drive_changed&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Drive) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId;
-
-    <span class="doccomment">/// Emitted when a drive is connected to the system.
-    /// ## `drive`
-    /// a [`Drive`][crate::Drive] that was connected.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;drive-connected&quot;</span>)]
-    </span><span class="kw">fn </span>connect_drive_connected&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Drive) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId;
-
-    <span class="doccomment">/// Emitted when a drive is disconnected from the system.
-    /// ## `drive`
-    /// a [`Drive`][crate::Drive] that was disconnected.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;drive-disconnected&quot;</span>)]
-    </span><span class="kw">fn </span>connect_drive_disconnected&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Drive) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId;
-
-    <span class="doccomment">/// Emitted when the eject button is pressed on `drive`.
-    /// ## `drive`
-    /// the drive where the eject button was pressed
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;drive-eject-button&quot;</span>)]
-    </span><span class="kw">fn </span>connect_drive_eject_button&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Drive) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId;
-
-    <span class="doccomment">/// Emitted when the stop button is pressed on `drive`.
-    /// ## `drive`
-    /// the drive where the stop button was pressed
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;drive-stop-button&quot;</span>)]
-    </span><span class="kw">fn </span>connect_drive_stop_button&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Drive) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId;
-
-    <span class="doccomment">/// Emitted when a mount is added.
-    /// ## `mount`
-    /// a [`Mount`][crate::Mount] that was added.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;mount-added&quot;</span>)]
-    </span><span class="kw">fn </span>connect_mount_added&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Mount) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId;
-
-    <span class="doccomment">/// Emitted when a mount changes.
-    /// ## `mount`
-    /// a [`Mount`][crate::Mount] that changed.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;mount-changed&quot;</span>)]
-    </span><span class="kw">fn </span>connect_mount_changed&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Mount) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId;
-
-    <span class="doccomment">/// May be emitted when a mount is about to be removed.
-    ///
-    /// This signal depends on the backend and is only emitted if
-    /// GIO was used to unmount.
-    /// ## `mount`
-    /// a [`Mount`][crate::Mount] that is being unmounted.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;mount-pre-unmount&quot;</span>)]
-    </span><span class="kw">fn </span>connect_mount_pre_unmount&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Mount) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId;
-
-    <span class="doccomment">/// Emitted when a mount is removed.
-    /// ## `mount`
-    /// a [`Mount`][crate::Mount] that was removed.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;mount-removed&quot;</span>)]
-    </span><span class="kw">fn </span>connect_mount_removed&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Mount) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId;
-
-    <span class="doccomment">/// Emitted when a mountable volume is added to the system.
-    /// ## `volume`
-    /// a [`Volume`][crate::Volume] that was added.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;volume-added&quot;</span>)]
-    </span><span class="kw">fn </span>connect_volume_added&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Volume) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId;
-
-    <span class="doccomment">/// Emitted when mountable volume is changed.
-    /// ## `volume`
-    /// a [`Volume`][crate::Volume] that changed.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;volume-changed&quot;</span>)]
-    </span><span class="kw">fn </span>connect_volume_changed&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Volume) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId;
-
-    <span class="doccomment">/// Emitted when a mountable volume is removed from the system.
-    /// ## `volume`
-    /// a [`Volume`][crate::Volume] that was removed.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;volume-removed&quot;</span>)]
-    </span><span class="kw">fn </span>connect_volume_removed&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Volume) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId;
-}
-
-<span class="kw">impl</span>&lt;O: IsA&lt;VolumeMonitor&gt;&gt; VolumeMonitorExt <span class="kw">for </span>O {
-    <span class="kw">fn </span>connected_drives(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;Drive&gt; {
-        <span class="kw">unsafe </span>{
-            FromGlibPtrContainer::from_glib_full(ffi::g_volume_monitor_get_connected_drives(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="kw">fn </span>mount_for_uuid(<span class="kw-2">&amp;</span><span class="self">self</span>, uuid: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Option</span>&lt;Mount&gt; {
-        <span class="kw">unsafe </span>{
-            from_glib_full(ffi::g_volume_monitor_get_mount_for_uuid(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                uuid.to_glib_none().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="kw">fn </span>mounts(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;Mount&gt; {
-        <span class="kw">unsafe </span>{
-            FromGlibPtrContainer::from_glib_full(ffi::g_volume_monitor_get_mounts(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="kw">fn </span>volume_for_uuid(<span class="kw-2">&amp;</span><span class="self">self</span>, uuid: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Option</span>&lt;Volume&gt; {
-        <span class="kw">unsafe </span>{
-            from_glib_full(ffi::g_volume_monitor_get_volume_for_uuid(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                uuid.to_glib_none().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="kw">fn </span>volumes(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;Volume&gt; {
+    </span><span class="kw">fn </span>volumes(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;Volume&gt; {
         <span class="kw">unsafe </span>{
             FromGlibPtrContainer::from_glib_full(ffi::g_volume_monitor_get_volumes(
                 <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
@@ -1039,7 +918,11 @@
         }
     }
 
-    <span class="kw">fn </span>connect_drive_changed&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Drive) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
+    <span class="doccomment">/// Emitted when a drive changes.
+    /// ## `drive`
+    /// the drive that changed
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;drive-changed&quot;</span>)]
+    </span><span class="kw">fn </span>connect_drive_changed&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Drive) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
         <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>drive_changed_trampoline&lt;
             P: IsA&lt;VolumeMonitor&gt;,
             F: Fn(<span class="kw-2">&amp;</span>P, <span class="kw-2">&amp;</span>Drive) + <span class="lifetime">&#39;static</span>,
@@ -1067,7 +950,11 @@
         }
     }
 
-    <span class="kw">fn </span>connect_drive_connected&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Drive) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
+    <span class="doccomment">/// Emitted when a drive is connected to the system.
+    /// ## `drive`
+    /// a [`Drive`][crate::Drive] that was connected.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;drive-connected&quot;</span>)]
+    </span><span class="kw">fn </span>connect_drive_connected&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Drive) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
         <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>drive_connected_trampoline&lt;
             P: IsA&lt;VolumeMonitor&gt;,
             F: Fn(<span class="kw-2">&amp;</span>P, <span class="kw-2">&amp;</span>Drive) + <span class="lifetime">&#39;static</span>,
@@ -1095,7 +982,11 @@
         }
     }
 
-    <span class="kw">fn </span>connect_drive_disconnected&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Drive) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
+    <span class="doccomment">/// Emitted when a drive is disconnected from the system.
+    /// ## `drive`
+    /// a [`Drive`][crate::Drive] that was disconnected.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;drive-disconnected&quot;</span>)]
+    </span><span class="kw">fn </span>connect_drive_disconnected&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Drive) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
         <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>drive_disconnected_trampoline&lt;
             P: IsA&lt;VolumeMonitor&gt;,
             F: Fn(<span class="kw-2">&amp;</span>P, <span class="kw-2">&amp;</span>Drive) + <span class="lifetime">&#39;static</span>,
@@ -1123,7 +1014,11 @@
         }
     }
 
-    <span class="kw">fn </span>connect_drive_eject_button&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Drive) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
+    <span class="doccomment">/// Emitted when the eject button is pressed on `drive`.
+    /// ## `drive`
+    /// the drive where the eject button was pressed
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;drive-eject-button&quot;</span>)]
+    </span><span class="kw">fn </span>connect_drive_eject_button&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Drive) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
         <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>drive_eject_button_trampoline&lt;
             P: IsA&lt;VolumeMonitor&gt;,
             F: Fn(<span class="kw-2">&amp;</span>P, <span class="kw-2">&amp;</span>Drive) + <span class="lifetime">&#39;static</span>,
@@ -1151,7 +1046,11 @@
         }
     }
 
-    <span class="kw">fn </span>connect_drive_stop_button&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Drive) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
+    <span class="doccomment">/// Emitted when the stop button is pressed on `drive`.
+    /// ## `drive`
+    /// the drive where the stop button was pressed
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;drive-stop-button&quot;</span>)]
+    </span><span class="kw">fn </span>connect_drive_stop_button&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Drive) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
         <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>drive_stop_button_trampoline&lt;
             P: IsA&lt;VolumeMonitor&gt;,
             F: Fn(<span class="kw-2">&amp;</span>P, <span class="kw-2">&amp;</span>Drive) + <span class="lifetime">&#39;static</span>,
@@ -1179,7 +1078,11 @@
         }
     }
 
-    <span class="kw">fn </span>connect_mount_added&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Mount) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
+    <span class="doccomment">/// Emitted when a mount is added.
+    /// ## `mount`
+    /// a [`Mount`][crate::Mount] that was added.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;mount-added&quot;</span>)]
+    </span><span class="kw">fn </span>connect_mount_added&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Mount) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
         <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>mount_added_trampoline&lt;
             P: IsA&lt;VolumeMonitor&gt;,
             F: Fn(<span class="kw-2">&amp;</span>P, <span class="kw-2">&amp;</span>Mount) + <span class="lifetime">&#39;static</span>,
@@ -1207,7 +1110,11 @@
         }
     }
 
-    <span class="kw">fn </span>connect_mount_changed&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Mount) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
+    <span class="doccomment">/// Emitted when a mount changes.
+    /// ## `mount`
+    /// a [`Mount`][crate::Mount] that changed.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;mount-changed&quot;</span>)]
+    </span><span class="kw">fn </span>connect_mount_changed&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Mount) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
         <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>mount_changed_trampoline&lt;
             P: IsA&lt;VolumeMonitor&gt;,
             F: Fn(<span class="kw-2">&amp;</span>P, <span class="kw-2">&amp;</span>Mount) + <span class="lifetime">&#39;static</span>,
@@ -1235,7 +1142,14 @@
         }
     }
 
-    <span class="kw">fn </span>connect_mount_pre_unmount&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Mount) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
+    <span class="doccomment">/// May be emitted when a mount is about to be removed.
+    ///
+    /// This signal depends on the backend and is only emitted if
+    /// GIO was used to unmount.
+    /// ## `mount`
+    /// a [`Mount`][crate::Mount] that is being unmounted.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;mount-pre-unmount&quot;</span>)]
+    </span><span class="kw">fn </span>connect_mount_pre_unmount&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Mount) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
         <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>mount_pre_unmount_trampoline&lt;
             P: IsA&lt;VolumeMonitor&gt;,
             F: Fn(<span class="kw-2">&amp;</span>P, <span class="kw-2">&amp;</span>Mount) + <span class="lifetime">&#39;static</span>,
@@ -1263,7 +1177,11 @@
         }
     }
 
-    <span class="kw">fn </span>connect_mount_removed&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Mount) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
+    <span class="doccomment">/// Emitted when a mount is removed.
+    /// ## `mount`
+    /// a [`Mount`][crate::Mount] that was removed.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;mount-removed&quot;</span>)]
+    </span><span class="kw">fn </span>connect_mount_removed&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Mount) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
         <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>mount_removed_trampoline&lt;
             P: IsA&lt;VolumeMonitor&gt;,
             F: Fn(<span class="kw-2">&amp;</span>P, <span class="kw-2">&amp;</span>Mount) + <span class="lifetime">&#39;static</span>,
@@ -1291,7 +1209,11 @@
         }
     }
 
-    <span class="kw">fn </span>connect_volume_added&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Volume) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
+    <span class="doccomment">/// Emitted when a mountable volume is added to the system.
+    /// ## `volume`
+    /// a [`Volume`][crate::Volume] that was added.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;volume-added&quot;</span>)]
+    </span><span class="kw">fn </span>connect_volume_added&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Volume) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
         <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>volume_added_trampoline&lt;
             P: IsA&lt;VolumeMonitor&gt;,
             F: Fn(<span class="kw-2">&amp;</span>P, <span class="kw-2">&amp;</span>Volume) + <span class="lifetime">&#39;static</span>,
@@ -1319,7 +1241,11 @@
         }
     }
 
-    <span class="kw">fn </span>connect_volume_changed&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Volume) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
+    <span class="doccomment">/// Emitted when mountable volume is changed.
+    /// ## `volume`
+    /// a [`Volume`][crate::Volume] that changed.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;volume-changed&quot;</span>)]
+    </span><span class="kw">fn </span>connect_volume_changed&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Volume) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
         <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>volume_changed_trampoline&lt;
             P: IsA&lt;VolumeMonitor&gt;,
             F: Fn(<span class="kw-2">&amp;</span>P, <span class="kw-2">&amp;</span>Volume) + <span class="lifetime">&#39;static</span>,
@@ -1347,7 +1273,11 @@
         }
     }
 
-    <span class="kw">fn </span>connect_volume_removed&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Volume) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
+    <span class="doccomment">/// Emitted when a mountable volume is removed from the system.
+    /// ## `volume`
+    /// a [`Volume`][crate::Volume] that was removed.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;volume-removed&quot;</span>)]
+    </span><span class="kw">fn </span>connect_volume_removed&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>Volume) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
         <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>volume_removed_trampoline&lt;
             P: IsA&lt;VolumeMonitor&gt;,
             F: Fn(<span class="kw-2">&amp;</span>P, <span class="kw-2">&amp;</span>Volume) + <span class="lifetime">&#39;static</span>,
@@ -1375,6 +1305,8 @@
         }
     }
 }
+
+<span class="kw">impl</span>&lt;O: IsA&lt;VolumeMonitor&gt;&gt; VolumeMonitorExt <span class="kw">for </span>O {}
 
 <span class="kw">impl </span>fmt::Display <span class="kw">for </span>VolumeMonitor {
     <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter) -&gt; fmt::Result {

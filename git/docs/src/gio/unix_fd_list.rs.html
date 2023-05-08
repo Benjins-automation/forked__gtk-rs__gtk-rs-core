@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gio/src/unix_fd_list.rs`."><title>unix_fd_list.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (a77c55248 2023-05-06)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gio/src/unix_fd_list.rs`."><title>unix_fd_list.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (c4190f2d3 2023-05-07)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -245,14 +245,6 @@
 <a href="#172" id="172">172</a>
 <a href="#173" id="173">173</a>
 <a href="#174" id="174">174</a>
-<a href="#175" id="175">175</a>
-<a href="#176" id="176">176</a>
-<a href="#177" id="177">177</a>
-<a href="#178" id="178">178</a>
-<a href="#179" id="179">179</a>
-<a href="#180" id="180">180</a>
-<a href="#181" id="181">181</a>
-<a href="#182" id="182">182</a>
 </pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 </span><span class="attr">#[cfg(unix)]
@@ -292,7 +284,7 @@
     }
 }
 
-<span class="kw">pub trait </span>UnixFDListExtManual: Sized {
+<span class="kw">pub trait </span>UnixFDListExtManual: IsA&lt;UnixFDList&gt; + Sized {
     <span class="doccomment">/// Adds a file descriptor to `self`.
     ///
     /// The file descriptor is duplicated using `dup()`. You keep your copy
@@ -313,7 +305,21 @@
     /// the index of the appended fd in case of success, else -1
     ///  (and `error` is set)
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_unix_fd_list_append&quot;</span>)]
-    </span><span class="kw">fn </span>append&lt;T: AsRawFd&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, fd: T) -&gt; <span class="prelude-ty">Result</span>&lt;i32, glib::Error&gt;;
+    </span><span class="kw">fn </span>append&lt;T: AsRawFd&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, fd: T) -&gt; <span class="prelude-ty">Result</span>&lt;i32, glib::Error&gt; {
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
+            <span class="kw">let </span>ret = ffi::g_unix_fd_list_append(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                fd.as_raw_fd(),
+                <span class="kw-2">&amp;mut </span>error,
+            );
+            <span class="kw">if </span>error.is_null() {
+                <span class="prelude-val">Ok</span>(ret)
+            } <span class="kw">else </span>{
+                <span class="prelude-val">Err</span>(from_glib_full(error))
+            }
+        }
+    }
 
     <span class="doccomment">/// Gets a file descriptor out of `self`.
     ///
@@ -334,9 +340,21 @@
     ///
     /// the file descriptor, or -1 in case of error
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_unix_fd_list_get&quot;</span>)]
-    </span><span class="kw">fn </span>get(<span class="kw-2">&amp;</span><span class="self">self</span>, index_: i32) -&gt; <span class="prelude-ty">Result</span>&lt;RawFd, glib::Error&gt;;
+    </span><span class="kw">fn </span>get(<span class="kw-2">&amp;</span><span class="self">self</span>, index_: i32) -&gt; <span class="prelude-ty">Result</span>&lt;RawFd, glib::Error&gt; {
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
+            <span class="kw">let </span>ret = ffi::g_unix_fd_list_get(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, index_, <span class="kw-2">&amp;mut </span>error);
+            <span class="kw">if </span>error.is_null() {
+                <span class="prelude-val">Ok</span>(ret)
+            } <span class="kw">else </span>{
+                <span class="prelude-val">Err</span>(from_glib_full(error))
+            }
+        }
+    }
 
-    <span class="doccomment">/// Returns the array of file descriptors that is contained in this
+    <span class="attr">#[doc(alias = <span class="string">&quot;g_unix_fd_list_peek_fds&quot;</span>)]
+
+    </span><span class="doccomment">/// Returns the array of file descriptors that is contained in this
     /// object.
     ///
     /// After this call, the descriptors remain the property of `self`. The
@@ -354,9 +372,16 @@
     ///
     /// an array of file
     ///  descriptors
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_unix_fd_list_peek_fds&quot;</span>)]
-    </span><span class="kw">fn </span>peek_fds(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;RawFd&gt;;
-
+    </span><span class="kw">fn </span>peek_fds(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;RawFd&gt; {
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span><span class="kw-2">mut </span>length = mem::MaybeUninit::uninit();
+            <span class="kw">let </span>ret = FromGlibContainer::from_glib_none_num(
+                ffi::g_unix_fd_list_peek_fds(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, length.as_mut_ptr()),
+                length.assume_init() <span class="kw">as </span>usize,
+            );
+            ret
+        }
+    }
     <span class="doccomment">/// Returns the array of file descriptors that is contained in this
     /// object.
     ///
@@ -381,50 +406,7 @@
     /// an array of file
     ///  descriptors
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_unix_fd_list_steal_fds&quot;</span>)]
-    </span><span class="kw">fn </span>steal_fds(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;RawFd&gt;;
-}
-
-<span class="kw">impl</span>&lt;O: IsA&lt;UnixFDList&gt;&gt; UnixFDListExtManual <span class="kw">for </span>O {
-    <span class="kw">fn </span>append&lt;T: AsRawFd&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, fd: T) -&gt; <span class="prelude-ty">Result</span>&lt;i32, glib::Error&gt; {
-        <span class="kw">unsafe </span>{
-            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
-            <span class="kw">let </span>ret = ffi::g_unix_fd_list_append(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                fd.as_raw_fd(),
-                <span class="kw-2">&amp;mut </span>error,
-            );
-            <span class="kw">if </span>error.is_null() {
-                <span class="prelude-val">Ok</span>(ret)
-            } <span class="kw">else </span>{
-                <span class="prelude-val">Err</span>(from_glib_full(error))
-            }
-        }
-    }
-
-    <span class="kw">fn </span>get(<span class="kw-2">&amp;</span><span class="self">self</span>, index_: i32) -&gt; <span class="prelude-ty">Result</span>&lt;RawFd, glib::Error&gt; {
-        <span class="kw">unsafe </span>{
-            <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
-            <span class="kw">let </span>ret = ffi::g_unix_fd_list_get(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, index_, <span class="kw-2">&amp;mut </span>error);
-            <span class="kw">if </span>error.is_null() {
-                <span class="prelude-val">Ok</span>(ret)
-            } <span class="kw">else </span>{
-                <span class="prelude-val">Err</span>(from_glib_full(error))
-            }
-        }
-    }
-
-    <span class="kw">fn </span>peek_fds(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;RawFd&gt; {
-        <span class="kw">unsafe </span>{
-            <span class="kw">let </span><span class="kw-2">mut </span>length = mem::MaybeUninit::uninit();
-            <span class="kw">let </span>ret = FromGlibContainer::from_glib_none_num(
-                ffi::g_unix_fd_list_peek_fds(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, length.as_mut_ptr()),
-                length.assume_init() <span class="kw">as </span>usize,
-            );
-            ret
-        }
-    }
-
-    <span class="kw">fn </span>steal_fds(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;RawFd&gt; {
+    </span><span class="kw">fn </span>steal_fds(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;RawFd&gt; {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span><span class="kw-2">mut </span>length = mem::MaybeUninit::uninit();
             <span class="kw">let </span>ret = FromGlibContainer::from_glib_full_num(
@@ -435,4 +417,6 @@
         }
     }
 }
+
+<span class="kw">impl</span>&lt;O: IsA&lt;UnixFDList&gt;&gt; UnixFDListExtManual <span class="kw">for </span>O {}
 </code></pre></div></section></main></body></html>

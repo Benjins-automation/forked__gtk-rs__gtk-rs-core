@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gio/src/auto/settings.rs`."><title>settings.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (a77c55248 2023-05-06)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gio/src/auto/settings.rs`."><title>settings.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (c4190f2d3 2023-05-07)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -1781,115 +1781,6 @@
 <a href="#1708" id="1708">1708</a>
 <a href="#1709" id="1709">1709</a>
 <a href="#1710" id="1710">1710</a>
-<a href="#1711" id="1711">1711</a>
-<a href="#1712" id="1712">1712</a>
-<a href="#1713" id="1713">1713</a>
-<a href="#1714" id="1714">1714</a>
-<a href="#1715" id="1715">1715</a>
-<a href="#1716" id="1716">1716</a>
-<a href="#1717" id="1717">1717</a>
-<a href="#1718" id="1718">1718</a>
-<a href="#1719" id="1719">1719</a>
-<a href="#1720" id="1720">1720</a>
-<a href="#1721" id="1721">1721</a>
-<a href="#1722" id="1722">1722</a>
-<a href="#1723" id="1723">1723</a>
-<a href="#1724" id="1724">1724</a>
-<a href="#1725" id="1725">1725</a>
-<a href="#1726" id="1726">1726</a>
-<a href="#1727" id="1727">1727</a>
-<a href="#1728" id="1728">1728</a>
-<a href="#1729" id="1729">1729</a>
-<a href="#1730" id="1730">1730</a>
-<a href="#1731" id="1731">1731</a>
-<a href="#1732" id="1732">1732</a>
-<a href="#1733" id="1733">1733</a>
-<a href="#1734" id="1734">1734</a>
-<a href="#1735" id="1735">1735</a>
-<a href="#1736" id="1736">1736</a>
-<a href="#1737" id="1737">1737</a>
-<a href="#1738" id="1738">1738</a>
-<a href="#1739" id="1739">1739</a>
-<a href="#1740" id="1740">1740</a>
-<a href="#1741" id="1741">1741</a>
-<a href="#1742" id="1742">1742</a>
-<a href="#1743" id="1743">1743</a>
-<a href="#1744" id="1744">1744</a>
-<a href="#1745" id="1745">1745</a>
-<a href="#1746" id="1746">1746</a>
-<a href="#1747" id="1747">1747</a>
-<a href="#1748" id="1748">1748</a>
-<a href="#1749" id="1749">1749</a>
-<a href="#1750" id="1750">1750</a>
-<a href="#1751" id="1751">1751</a>
-<a href="#1752" id="1752">1752</a>
-<a href="#1753" id="1753">1753</a>
-<a href="#1754" id="1754">1754</a>
-<a href="#1755" id="1755">1755</a>
-<a href="#1756" id="1756">1756</a>
-<a href="#1757" id="1757">1757</a>
-<a href="#1758" id="1758">1758</a>
-<a href="#1759" id="1759">1759</a>
-<a href="#1760" id="1760">1760</a>
-<a href="#1761" id="1761">1761</a>
-<a href="#1762" id="1762">1762</a>
-<a href="#1763" id="1763">1763</a>
-<a href="#1764" id="1764">1764</a>
-<a href="#1765" id="1765">1765</a>
-<a href="#1766" id="1766">1766</a>
-<a href="#1767" id="1767">1767</a>
-<a href="#1768" id="1768">1768</a>
-<a href="#1769" id="1769">1769</a>
-<a href="#1770" id="1770">1770</a>
-<a href="#1771" id="1771">1771</a>
-<a href="#1772" id="1772">1772</a>
-<a href="#1773" id="1773">1773</a>
-<a href="#1774" id="1774">1774</a>
-<a href="#1775" id="1775">1775</a>
-<a href="#1776" id="1776">1776</a>
-<a href="#1777" id="1777">1777</a>
-<a href="#1778" id="1778">1778</a>
-<a href="#1779" id="1779">1779</a>
-<a href="#1780" id="1780">1780</a>
-<a href="#1781" id="1781">1781</a>
-<a href="#1782" id="1782">1782</a>
-<a href="#1783" id="1783">1783</a>
-<a href="#1784" id="1784">1784</a>
-<a href="#1785" id="1785">1785</a>
-<a href="#1786" id="1786">1786</a>
-<a href="#1787" id="1787">1787</a>
-<a href="#1788" id="1788">1788</a>
-<a href="#1789" id="1789">1789</a>
-<a href="#1790" id="1790">1790</a>
-<a href="#1791" id="1791">1791</a>
-<a href="#1792" id="1792">1792</a>
-<a href="#1793" id="1793">1793</a>
-<a href="#1794" id="1794">1794</a>
-<a href="#1795" id="1795">1795</a>
-<a href="#1796" id="1796">1796</a>
-<a href="#1797" id="1797">1797</a>
-<a href="#1798" id="1798">1798</a>
-<a href="#1799" id="1799">1799</a>
-<a href="#1800" id="1800">1800</a>
-<a href="#1801" id="1801">1801</a>
-<a href="#1802" id="1802">1802</a>
-<a href="#1803" id="1803">1803</a>
-<a href="#1804" id="1804">1804</a>
-<a href="#1805" id="1805">1805</a>
-<a href="#1806" id="1806">1806</a>
-<a href="#1807" id="1807">1807</a>
-<a href="#1808" id="1808">1808</a>
-<a href="#1809" id="1809">1809</a>
-<a href="#1810" id="1810">1810</a>
-<a href="#1811" id="1811">1811</a>
-<a href="#1812" id="1812">1812</a>
-<a href="#1813" id="1813">1813</a>
-<a href="#1814" id="1814">1814</a>
-<a href="#1815" id="1815">1815</a>
-<a href="#1816" id="1816">1816</a>
-<a href="#1817" id="1817">1817</a>
-<a href="#1818" id="1818">1818</a>
-<a href="#1819" id="1819">1819</a>
 </pre></div><pre class="rust"><code><span class="comment">// This file was generated by gir (https://github.com/gtk-rs/gir)
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
@@ -2336,7 +2227,7 @@
     ///
     /// # Implements
     ///
-    /// [`SettingsExt`][trait@crate::prelude::SettingsExt], [`trait@glib::ObjectExt`]
+    /// [`SettingsExt`][trait@crate::prelude::SettingsExt], [`trait@glib::ObjectExt`], [`SettingsExtManual`][trait@crate::prelude::SettingsExtManual]
     </span><span class="attr">#[doc(alias = <span class="string">&quot;GSettings&quot;</span>)]
     </span><span class="kw">pub struct </span>Settings(Object&lt;ffi::GSettings, ffi::GSettingsClass&gt;);
 
@@ -2549,13 +2440,17 @@
 /// # Implementors
 ///
 /// [`Settings`][struct@crate::Settings]
-</span><span class="kw">pub trait </span>SettingsExt: <span class="lifetime">&#39;static </span>{
+</span><span class="kw">pub trait </span>SettingsExt: IsA&lt;Settings&gt; + <span class="lifetime">&#39;static </span>{
     <span class="doccomment">/// Applies any changes that have been made to the settings. This
     /// function does nothing unless `self` is in &#39;delay-apply&#39; mode;
     /// see [`delay()`][Self::delay()]. In the normal case settings are always
     /// applied immediately.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_settings_apply&quot;</span>)]
-    </span><span class="kw">fn </span>apply(<span class="kw-2">&amp;</span><span class="self">self</span>);
+    </span><span class="kw">fn </span>apply(<span class="kw-2">&amp;</span><span class="self">self</span>) {
+        <span class="kw">unsafe </span>{
+            ffi::g_settings_apply(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>);
+        }
+    }
 
     <span class="doccomment">/// Create a binding between the writability of `key` in the
     /// `self` object and the property `property` of `object`.
@@ -2589,7 +2484,17 @@
         object: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;glib::Object&gt;,
         property: <span class="kw-2">&amp;</span>str,
         inverted: bool,
-    );
+    ) {
+        <span class="kw">unsafe </span>{
+            ffi::g_settings_bind_writable(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                key.to_glib_none().<span class="number">0</span>,
+                object.as_ref().to_glib_none().<span class="number">0</span>,
+                property.to_glib_none().<span class="number">0</span>,
+                inverted.into_glib(),
+            );
+        }
+    }
 
     <span class="doccomment">/// Creates a [`Action`][crate::Action] corresponding to a given [`Settings`][crate::Settings] key.
     ///
@@ -2612,16 +2517,29 @@
     ///
     /// a new [`Action`][crate::Action]
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_settings_create_action&quot;</span>)]
-    </span><span class="kw">fn </span>create_action(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; Action;
+    </span><span class="kw">fn </span>create_action(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; Action {
+        <span class="kw">unsafe </span>{
+            from_glib_full(ffi::g_settings_create_action(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                key.to_glib_none().<span class="number">0</span>,
+            ))
+        }
+    }
 
     <span class="doccomment">/// Changes the [`Settings`][crate::Settings] object into &#39;delay-apply&#39; mode. In this
     /// mode, changes to `self` are not immediately propagated to the
     /// backend, but kept locally until [`apply()`][Self::apply()] is called.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_settings_delay&quot;</span>)]
-    </span><span class="kw">fn </span>delay(<span class="kw-2">&amp;</span><span class="self">self</span>);
+    </span><span class="kw">fn </span>delay(<span class="kw-2">&amp;</span><span class="self">self</span>) {
+        <span class="kw">unsafe </span>{
+            ffi::g_settings_delay(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>);
+        }
+    }
 
     <span class="comment">//#[doc(alias = &quot;g_settings_get&quot;)]
-    //fn get(&amp;self, key: &amp;str, format: &amp;str, : /*Unknown conversion*//*Unimplemented*/Basic: VarArgs);
+    //fn get(&amp;self, key: &amp;str, format: &amp;str, : /*Unknown conversion*//*Unimplemented*/Basic: VarArgs) {
+    //    unsafe { TODO: call ffi:g_settings_get() }
+    //}
 
     </span><span class="doccomment">/// Gets the value that is stored at `key` in `self`.
     ///
@@ -2637,7 +2555,14 @@
     /// a boolean
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_settings_get_boolean&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_boolean&quot;</span>)]
-    </span><span class="kw">fn </span>boolean(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; bool;
+    </span><span class="kw">fn </span>boolean(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; bool {
+        <span class="kw">unsafe </span>{
+            from_glib(ffi::g_settings_get_boolean(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                key.to_glib_none().<span class="number">0</span>,
+            ))
+        }
+    }
 
     <span class="doccomment">/// Creates a child settings object which has a base path of
     /// `base-path/`name``, where `base-path` is the base path of
@@ -2657,7 +2582,14 @@
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_settings_get_child&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_child&quot;</span>)]
     #[must_use]
-    </span><span class="kw">fn </span>child(<span class="kw-2">&amp;</span><span class="self">self</span>, name: <span class="kw-2">&amp;</span>str) -&gt; Settings;
+    </span><span class="kw">fn </span>child(<span class="kw-2">&amp;</span><span class="self">self</span>, name: <span class="kw-2">&amp;</span>str) -&gt; Settings {
+        <span class="kw">unsafe </span>{
+            from_glib_full(ffi::g_settings_get_child(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                name.to_glib_none().<span class="number">0</span>,
+            ))
+        }
+    }
 
     <span class="doccomment">/// Gets the &quot;default value&quot; of a key.
     ///
@@ -2688,7 +2620,14 @@
     /// the default value
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_settings_get_default_value&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_default_value&quot;</span>)]
-    </span><span class="kw">fn </span>default_value(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Option</span>&lt;glib::Variant&gt;;
+    </span><span class="kw">fn </span>default_value(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Option</span>&lt;glib::Variant&gt; {
+        <span class="kw">unsafe </span>{
+            from_glib_full(ffi::g_settings_get_default_value(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                key.to_glib_none().<span class="number">0</span>,
+            ))
+        }
+    }
 
     <span class="doccomment">/// Gets the value that is stored at `key` in `self`.
     ///
@@ -2704,7 +2643,9 @@
     /// a double
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_settings_get_double&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_double&quot;</span>)]
-    </span><span class="kw">fn </span>double(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; f64;
+    </span><span class="kw">fn </span>double(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; f64 {
+        <span class="kw">unsafe </span>{ ffi::g_settings_get_double(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, key.to_glib_none().<span class="number">0</span>) }
+    }
 
     <span class="doccomment">/// Gets the value that is stored in `self` for `key` and converts it
     /// to the enum value that it represents.
@@ -2726,7 +2667,9 @@
     /// the enum value
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_settings_get_enum&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_enum&quot;</span>)]
-    </span><span class="kw">fn </span>enum_(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; i32;
+    </span><span class="kw">fn </span>enum_(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; i32 {
+        <span class="kw">unsafe </span>{ ffi::g_settings_get_enum(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, key.to_glib_none().<span class="number">0</span>) }
+    }
 
     <span class="doccomment">/// Gets the value that is stored in `self` for `key` and converts it
     /// to the flags value that it represents.
@@ -2748,7 +2691,9 @@
     /// the flags value
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_settings_get_flags&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_flags&quot;</span>)]
-    </span><span class="kw">fn </span>flags(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; u32;
+    </span><span class="kw">fn </span>flags(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; u32 {
+        <span class="kw">unsafe </span>{ ffi::g_settings_get_flags(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, key.to_glib_none().<span class="number">0</span>) }
+    }
 
     <span class="doccomment">/// Returns whether the [`Settings`][crate::Settings] object has any unapplied
     /// changes. This can only be the case if it is in &#39;delayed-apply&#39; mode.
@@ -2758,7 +2703,13 @@
     /// [`true`] if `self` has unapplied changes
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_settings_get_has_unapplied&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_has_unapplied&quot;</span>)]
-    </span><span class="kw">fn </span>has_unapplied(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool;
+    </span><span class="kw">fn </span>has_unapplied(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">unsafe </span>{
+            from_glib(ffi::g_settings_get_has_unapplied(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+            ))
+        }
+    }
 
     <span class="doccomment">/// Gets the value that is stored at `key` in `self`.
     ///
@@ -2774,7 +2725,9 @@
     /// an integer
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_settings_get_int&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_int&quot;</span>)]
-    </span><span class="kw">fn </span>int(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; i32;
+    </span><span class="kw">fn </span>int(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; i32 {
+        <span class="kw">unsafe </span>{ ffi::g_settings_get_int(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, key.to_glib_none().<span class="number">0</span>) }
+    }
 
     <span class="doccomment">/// Gets the value that is stored at `key` in `self`.
     ///
@@ -2790,11 +2743,15 @@
     /// a 64-bit integer
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_settings_get_int64&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_int64&quot;</span>)]
-    </span><span class="kw">fn </span>int64(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; i64;
+    </span><span class="kw">fn </span>int64(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; i64 {
+        <span class="kw">unsafe </span>{ ffi::g_settings_get_int64(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, key.to_glib_none().<span class="number">0</span>) }
+    }
 
     <span class="comment">//#[doc(alias = &quot;g_settings_get_mapped&quot;)]
     //#[doc(alias = &quot;get_mapped&quot;)]
-    //fn mapped(&amp;self, key: &amp;str, mapping: /*Unimplemented*/FnMut(&amp;glib::Variant, /*Unimplemented*/Option&lt;Basic: Pointer&gt;) -&gt; bool, user_data: /*Unimplemented*/Option&lt;Basic: Pointer&gt;) -&gt; /*Unimplemented*/Option&lt;Basic: Pointer&gt;;
+    //fn mapped(&amp;self, key: &amp;str, mapping: /*Unimplemented*/FnMut(&amp;glib::Variant, /*Unimplemented*/Option&lt;Basic: Pointer&gt;) -&gt; bool, user_data: /*Unimplemented*/Option&lt;Basic: Pointer&gt;) -&gt; /*Unimplemented*/Option&lt;Basic: Pointer&gt; {
+    //    unsafe { TODO: call ffi:g_settings_get_mapped() }
+    //}
 
     </span><span class="doccomment">/// Gets the value that is stored at `key` in `self`.
     ///
@@ -2810,7 +2767,14 @@
     /// a newly-allocated string
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_settings_get_string&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_string&quot;</span>)]
-    </span><span class="kw">fn </span>string(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; glib::GString;
+    </span><span class="kw">fn </span>string(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; glib::GString {
+        <span class="kw">unsafe </span>{
+            from_glib_full(ffi::g_settings_get_string(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                key.to_glib_none().<span class="number">0</span>,
+            ))
+        }
+    }
 
     <span class="doccomment">/// Gets the value that is stored at `key` in `self`.
     ///
@@ -2827,7 +2791,9 @@
     /// an unsigned integer
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_settings_get_uint&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_uint&quot;</span>)]
-    </span><span class="kw">fn </span>uint(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; u32;
+    </span><span class="kw">fn </span>uint(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; u32 {
+        <span class="kw">unsafe </span>{ ffi::g_settings_get_uint(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, key.to_glib_none().<span class="number">0</span>) }
+    }
 
     <span class="doccomment">/// Gets the value that is stored at `key` in `self`.
     ///
@@ -2844,7 +2810,9 @@
     /// a 64-bit unsigned integer
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_settings_get_uint64&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_uint64&quot;</span>)]
-    </span><span class="kw">fn </span>uint64(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; u64;
+    </span><span class="kw">fn </span>uint64(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; u64 {
+        <span class="kw">unsafe </span>{ ffi::g_settings_get_uint64(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, key.to_glib_none().<span class="number">0</span>) }
+    }
 
     <span class="doccomment">/// Checks the &quot;user value&quot; of a key, if there is one.
     ///
@@ -2872,7 +2840,14 @@
     /// the user&#39;s value, if set
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_settings_get_user_value&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_user_value&quot;</span>)]
-    </span><span class="kw">fn </span>user_value(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Option</span>&lt;glib::Variant&gt;;
+    </span><span class="kw">fn </span>user_value(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Option</span>&lt;glib::Variant&gt; {
+        <span class="kw">unsafe </span>{
+            from_glib_full(ffi::g_settings_get_user_value(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                key.to_glib_none().<span class="number">0</span>,
+            ))
+        }
+    }
 
     <span class="doccomment">/// Gets the value that is stored in `self` for `key`.
     ///
@@ -2886,7 +2861,14 @@
     /// a new [`glib::Variant`][struct@crate::glib::Variant]
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_settings_get_value&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_value&quot;</span>)]
-    </span><span class="kw">fn </span>value(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; glib::Variant;
+    </span><span class="kw">fn </span>value(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; glib::Variant {
+        <span class="kw">unsafe </span>{
+            from_glib_full(ffi::g_settings_get_value(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                key.to_glib_none().<span class="number">0</span>,
+            ))
+        }
+    }
 
     <span class="doccomment">/// Finds out if a key can be written or not
     /// ## `name`
@@ -2896,7 +2878,14 @@
     ///
     /// [`true`] if the key `name` is writable
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_settings_is_writable&quot;</span>)]
-    </span><span class="kw">fn </span>is_writable(<span class="kw-2">&amp;</span><span class="self">self</span>, name: <span class="kw-2">&amp;</span>str) -&gt; bool;
+    </span><span class="kw">fn </span>is_writable(<span class="kw-2">&amp;</span><span class="self">self</span>, name: <span class="kw-2">&amp;</span>str) -&gt; bool {
+        <span class="kw">unsafe </span>{
+            from_glib(ffi::g_settings_is_writable(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                name.to_glib_none().<span class="number">0</span>,
+            ))
+        }
+    }
 
     <span class="doccomment">/// Gets the list of children on `self`.
     ///
@@ -2915,7 +2904,13 @@
     /// a list of the children
     ///  on `self`, in no defined order
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_settings_list_children&quot;</span>)]
-    </span><span class="kw">fn </span>list_children(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;glib::GString&gt;;
+    </span><span class="kw">fn </span>list_children(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;glib::GString&gt; {
+        <span class="kw">unsafe </span>{
+            FromGlibPtrContainer::from_glib_full(ffi::g_settings_list_children(
+                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+            ))
+        }
+    }
 
     <span class="doccomment">/// Resets `key` to its default value.
     ///
@@ -2925,7 +2920,11 @@
     /// ## `key`
     /// the name of a key
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_settings_reset&quot;</span>)]
-    </span><span class="kw">fn </span>reset(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str);
+    </span><span class="kw">fn </span>reset(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) {
+        <span class="kw">unsafe </span>{
+            ffi::g_settings_reset(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, key.to_glib_none().<span class="number">0</span>);
+        }
+    }
 
     <span class="doccomment">/// Reverts all non-applied changes to the settings. This function
     /// does nothing unless `self` is in &#39;delay-apply&#39; mode; see
@@ -2934,10 +2933,16 @@
     ///
     /// Change notifications will be emitted for affected keys.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_settings_revert&quot;</span>)]
-    </span><span class="kw">fn </span>revert(<span class="kw-2">&amp;</span><span class="self">self</span>);
+    </span><span class="kw">fn </span>revert(<span class="kw-2">&amp;</span><span class="self">self</span>) {
+        <span class="kw">unsafe </span>{
+            ffi::g_settings_revert(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>);
+        }
+    }
 
     <span class="comment">//#[doc(alias = &quot;g_settings_set&quot;)]
-    //fn set(&amp;self, key: &amp;str, format: &amp;str, : /*Unknown conversion*//*Unimplemented*/Basic: VarArgs) -&gt; bool;
+    //fn set(&amp;self, key: &amp;str, format: &amp;str, : /*Unknown conversion*//*Unimplemented*/Basic: VarArgs) -&gt; bool {
+    //    unsafe { TODO: call ffi:g_settings_set() }
+    //}
 
     </span><span class="doccomment">/// Sets `key` in `self` to `value`.
     ///
@@ -2955,7 +2960,18 @@
     /// [`true`] if setting the key succeeded,
     ///  [`false`] if the key was not writable
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_settings_set_boolean&quot;</span>)]
-    </span><span class="kw">fn </span>set_boolean(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str, value: bool) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::error::BoolError&gt;;
+    </span><span class="kw">fn </span>set_boolean(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str, value: bool) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::error::BoolError&gt; {
+        <span class="kw">unsafe </span>{
+            <span class="macro">glib::result_from_gboolean!</span>(
+                ffi::g_settings_set_boolean(
+                    <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                    key.to_glib_none().<span class="number">0</span>,
+                    value.into_glib()
+                ),
+                <span class="string">&quot;Can&#39;t set readonly key&quot;
+            </span>)
+        }
+    }
 
     <span class="doccomment">/// Sets `key` in `self` to `value`.
     ///
@@ -2973,7 +2989,18 @@
     /// [`true`] if setting the key succeeded,
     ///  [`false`] if the key was not writable
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_settings_set_double&quot;</span>)]
-    </span><span class="kw">fn </span>set_double(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str, value: f64) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::error::BoolError&gt;;
+    </span><span class="kw">fn </span>set_double(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str, value: f64) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::error::BoolError&gt; {
+        <span class="kw">unsafe </span>{
+            <span class="macro">glib::result_from_gboolean!</span>(
+                ffi::g_settings_set_double(
+                    <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                    key.to_glib_none().<span class="number">0</span>,
+                    value
+                ),
+                <span class="string">&quot;Can&#39;t set readonly key&quot;
+            </span>)
+        }
+    }
 
     <span class="doccomment">/// Looks up the enumerated type nick for `value` and writes it to `key`,
     /// within `self`.
@@ -2994,7 +3021,18 @@
     ///
     /// [`true`], if the set succeeds
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_settings_set_enum&quot;</span>)]
-    </span><span class="kw">fn </span>set_enum(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str, value: i32) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::error::BoolError&gt;;
+    </span><span class="kw">fn </span>set_enum(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str, value: i32) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::error::BoolError&gt; {
+        <span class="kw">unsafe </span>{
+            <span class="macro">glib::result_from_gboolean!</span>(
+                ffi::g_settings_set_enum(
+                    <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                    key.to_glib_none().<span class="number">0</span>,
+                    value
+                ),
+                <span class="string">&quot;Can&#39;t set readonly key&quot;
+            </span>)
+        }
+    }
 
     <span class="doccomment">/// Looks up the flags type nicks for the bits specified by `value`, puts
     /// them in an array of strings and writes the array to `key`, within
@@ -3016,7 +3054,18 @@
     ///
     /// [`true`], if the set succeeds
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_settings_set_flags&quot;</span>)]
-    </span><span class="kw">fn </span>set_flags(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str, value: u32) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::error::BoolError&gt;;
+    </span><span class="kw">fn </span>set_flags(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str, value: u32) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::error::BoolError&gt; {
+        <span class="kw">unsafe </span>{
+            <span class="macro">glib::result_from_gboolean!</span>(
+                ffi::g_settings_set_flags(
+                    <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                    key.to_glib_none().<span class="number">0</span>,
+                    value
+                ),
+                <span class="string">&quot;Can&#39;t set readonly key&quot;
+            </span>)
+        }
+    }
 
     <span class="doccomment">/// Sets `key` in `self` to `value`.
     ///
@@ -3034,7 +3083,18 @@
     /// [`true`] if setting the key succeeded,
     ///  [`false`] if the key was not writable
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_settings_set_int&quot;</span>)]
-    </span><span class="kw">fn </span>set_int(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str, value: i32) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::error::BoolError&gt;;
+    </span><span class="kw">fn </span>set_int(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str, value: i32) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::error::BoolError&gt; {
+        <span class="kw">unsafe </span>{
+            <span class="macro">glib::result_from_gboolean!</span>(
+                ffi::g_settings_set_int(
+                    <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                    key.to_glib_none().<span class="number">0</span>,
+                    value
+                ),
+                <span class="string">&quot;Can&#39;t set readonly key&quot;
+            </span>)
+        }
+    }
 
     <span class="doccomment">/// Sets `key` in `self` to `value`.
     ///
@@ -3052,7 +3112,18 @@
     /// [`true`] if setting the key succeeded,
     ///  [`false`] if the key was not writable
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_settings_set_int64&quot;</span>)]
-    </span><span class="kw">fn </span>set_int64(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str, value: i64) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::error::BoolError&gt;;
+    </span><span class="kw">fn </span>set_int64(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str, value: i64) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::error::BoolError&gt; {
+        <span class="kw">unsafe </span>{
+            <span class="macro">glib::result_from_gboolean!</span>(
+                ffi::g_settings_set_int64(
+                    <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                    key.to_glib_none().<span class="number">0</span>,
+                    value
+                ),
+                <span class="string">&quot;Can&#39;t set readonly key&quot;
+            </span>)
+        }
+    }
 
     <span class="doccomment">/// Sets `key` in `self` to `value`.
     ///
@@ -3070,7 +3141,18 @@
     /// [`true`] if setting the key succeeded,
     ///  [`false`] if the key was not writable
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_settings_set_string&quot;</span>)]
-    </span><span class="kw">fn </span>set_string(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str, value: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::error::BoolError&gt;;
+    </span><span class="kw">fn </span>set_string(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str, value: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::error::BoolError&gt; {
+        <span class="kw">unsafe </span>{
+            <span class="macro">glib::result_from_gboolean!</span>(
+                ffi::g_settings_set_string(
+                    <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                    key.to_glib_none().<span class="number">0</span>,
+                    value.to_glib_none().<span class="number">0
+                </span>),
+                <span class="string">&quot;Can&#39;t set readonly key&quot;
+            </span>)
+        }
+    }
 
     <span class="doccomment">/// Sets `key` in `self` to `value`.
     ///
@@ -3089,7 +3171,18 @@
     /// [`true`] if setting the key succeeded,
     ///  [`false`] if the key was not writable
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_settings_set_uint&quot;</span>)]
-    </span><span class="kw">fn </span>set_uint(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str, value: u32) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::error::BoolError&gt;;
+    </span><span class="kw">fn </span>set_uint(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str, value: u32) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::error::BoolError&gt; {
+        <span class="kw">unsafe </span>{
+            <span class="macro">glib::result_from_gboolean!</span>(
+                ffi::g_settings_set_uint(
+                    <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                    key.to_glib_none().<span class="number">0</span>,
+                    value
+                ),
+                <span class="string">&quot;Can&#39;t set readonly key&quot;
+            </span>)
+        }
+    }
 
     <span class="doccomment">/// Sets `key` in `self` to `value`.
     ///
@@ -3108,7 +3201,18 @@
     /// [`true`] if setting the key succeeded,
     ///  [`false`] if the key was not writable
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_settings_set_uint64&quot;</span>)]
-    </span><span class="kw">fn </span>set_uint64(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str, value: u64) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::error::BoolError&gt;;
+    </span><span class="kw">fn </span>set_uint64(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str, value: u64) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::error::BoolError&gt; {
+        <span class="kw">unsafe </span>{
+            <span class="macro">glib::result_from_gboolean!</span>(
+                ffi::g_settings_set_uint64(
+                    <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                    key.to_glib_none().<span class="number">0</span>,
+                    value
+                ),
+                <span class="string">&quot;Can&#39;t set readonly key&quot;
+            </span>)
+        }
+    }
 
     <span class="doccomment">/// Sets `key` in `self` to `value`.
     ///
@@ -3127,23 +3231,42 @@
     /// [`true`] if setting the key succeeded,
     ///  [`false`] if the key was not writable
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_settings_set_value&quot;</span>)]
-    </span><span class="kw">fn </span>set_value(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str, value: <span class="kw-2">&amp;</span>glib::Variant) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::error::BoolError&gt;;
+    </span><span class="kw">fn </span>set_value(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str, value: <span class="kw-2">&amp;</span>glib::Variant) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::error::BoolError&gt; {
+        <span class="kw">unsafe </span>{
+            <span class="macro">glib::result_from_gboolean!</span>(
+                ffi::g_settings_set_value(
+                    <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
+                    key.to_glib_none().<span class="number">0</span>,
+                    value.to_glib_none().<span class="number">0
+                </span>),
+                <span class="string">&quot;Can&#39;t set readonly key&quot;
+            </span>)
+        }
+    }
 
     <span class="doccomment">/// The name of the context that the settings are stored in.
-    </span><span class="kw">fn </span>backend(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;SettingsBackend&gt;;
+    </span><span class="kw">fn </span>backend(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;SettingsBackend&gt; {
+        glib::ObjectExt::property(<span class="self">self</span>.as_ref(), <span class="string">&quot;backend&quot;</span>)
+    }
 
     <span class="doccomment">/// Whether the [`Settings`][crate::Settings] object is in &#39;delay-apply&#39; mode. See
     /// [`delay()`][Self::delay()] for details.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;delay-apply&quot;</span>)]
-    </span><span class="kw">fn </span>is_delay_apply(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool;
+    </span><span class="kw">fn </span>is_delay_apply(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        glib::ObjectExt::property(<span class="self">self</span>.as_ref(), <span class="string">&quot;delay-apply&quot;</span>)
+    }
 
     <span class="doccomment">/// The path within the backend where the settings are stored.
-    </span><span class="kw">fn </span>path(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;glib::GString&gt;;
+    </span><span class="kw">fn </span>path(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;glib::GString&gt; {
+        glib::ObjectExt::property(<span class="self">self</span>.as_ref(), <span class="string">&quot;path&quot;</span>)
+    }
 
     <span class="doccomment">/// The name of the schema that describes the types of keys
     /// for this [`Settings`][crate::Settings] object.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;schema-id&quot;</span>)]
-    </span><span class="kw">fn </span>schema_id(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;glib::GString&gt;;
+    </span><span class="kw">fn </span>schema_id(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;glib::GString&gt; {
+        glib::ObjectExt::property(<span class="self">self</span>.as_ref(), <span class="string">&quot;schema-id&quot;</span>)
+    }
 
     <span class="doccomment">/// The [`SettingsSchema`][crate::SettingsSchema] describing the types of keys for this
     /// [`Settings`][crate::Settings] object.
@@ -3153,10 +3276,14 @@
     /// &#39;schema&#39; property was used to refer to the ID of the schema rather
     /// than the schema itself. Take care.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;settings-schema&quot;</span>)]
-    </span><span class="kw">fn </span>settings_schema(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;SettingsSchema&gt;;
+    </span><span class="kw">fn </span>settings_schema(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;SettingsSchema&gt; {
+        glib::ObjectExt::property(<span class="self">self</span>.as_ref(), <span class="string">&quot;settings-schema&quot;</span>)
+    }
 
     <span class="comment">//#[doc(alias = &quot;change-event&quot;)]
-    //fn connect_change_event&lt;Unsupported or ignored types&gt;(&amp;self, f: F) -&gt; SignalHandlerId;
+    //fn connect_change_event&lt;Unsupported or ignored types&gt;(&amp;self, f: F) -&gt; SignalHandlerId {
+    //    Unimplemented keys: *.CArray TypeId { ns_id: 2, id: 5 }
+    //}
 
     </span><span class="doccomment">/// The &quot;changed&quot; signal is emitted when a key has potentially changed.
     /// You should call one of the `g_settings_get()` calls to check the new
@@ -3171,391 +3298,6 @@
     /// ## `key`
     /// the name of the key that changed
     </span><span class="attr">#[doc(alias = <span class="string">&quot;changed&quot;</span>)]
-    </span><span class="kw">fn </span>connect_changed&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>str) + <span class="lifetime">&#39;static</span>&gt;(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        detail: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>str&gt;,
-        f: F,
-    ) -&gt; SignalHandlerId;
-
-    <span class="doccomment">/// The &quot;writable-change-event&quot; signal is emitted once per writability
-    /// change event that affects this settings object. You should connect
-    /// to this signal if you are interested in viewing groups of changes
-    /// before they are split out into multiple emissions of the
-    /// &quot;writable-changed&quot; signal. For most use cases it is more
-    /// appropriate to use the &quot;writable-changed&quot; signal.
-    ///
-    /// In the event that the writability change applies only to a single
-    /// key, `key` will be set to the `GQuark` for that key. In the event
-    /// that the writability change affects the entire settings object,
-    /// `key` will be 0.
-    ///
-    /// The default handler for this signal invokes the &quot;writable-changed&quot;
-    /// and &quot;changed&quot; signals for each affected key. This is done because
-    /// changes in writability might also imply changes in value (if for
-    /// example, a new mandatory setting is introduced). If any other
-    /// connected handler returns [`true`] then this default functionality
-    /// will be suppressed.
-    /// ## `key`
-    /// the quark of the key, or 0
-    ///
-    /// # Returns
-    ///
-    /// [`true`] to stop other handlers from being invoked for the
-    ///  event. FALSE to propagate the event further.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;writable-change-event&quot;</span>)]
-    </span><span class="kw">fn </span>connect_writable_change_event&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, u32) -&gt; glib::signal::Inhibit + <span class="lifetime">&#39;static</span>&gt;(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        f: F,
-    ) -&gt; SignalHandlerId;
-
-    <span class="doccomment">/// The &quot;writable-changed&quot; signal is emitted when the writability of a
-    /// key has potentially changed. You should call
-    /// [`is_writable()`][Self::is_writable()] in order to determine the new status.
-    ///
-    /// This signal supports detailed connections. You can connect to the
-    /// detailed signal &quot;writable-changed::x&quot; in order to only receive
-    /// callbacks when the writability of &quot;x&quot; changes.
-    /// ## `key`
-    /// the key
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;writable-changed&quot;</span>)]
-    </span><span class="kw">fn </span>connect_writable_changed&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>str) + <span class="lifetime">&#39;static</span>&gt;(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        detail: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>str&gt;,
-        f: F,
-    ) -&gt; SignalHandlerId;
-
-    <span class="attr">#[doc(alias = <span class="string">&quot;delay-apply&quot;</span>)]
-    </span><span class="kw">fn </span>connect_delay_apply_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId;
-
-    <span class="attr">#[doc(alias = <span class="string">&quot;has-unapplied&quot;</span>)]
-    </span><span class="kw">fn </span>connect_has_unapplied_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId;
-}
-
-<span class="kw">impl</span>&lt;O: IsA&lt;Settings&gt;&gt; SettingsExt <span class="kw">for </span>O {
-    <span class="kw">fn </span>apply(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <span class="kw">unsafe </span>{
-            ffi::g_settings_apply(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>);
-        }
-    }
-
-    <span class="kw">fn </span>bind_writable(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        key: <span class="kw-2">&amp;</span>str,
-        object: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;glib::Object&gt;,
-        property: <span class="kw-2">&amp;</span>str,
-        inverted: bool,
-    ) {
-        <span class="kw">unsafe </span>{
-            ffi::g_settings_bind_writable(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                key.to_glib_none().<span class="number">0</span>,
-                object.as_ref().to_glib_none().<span class="number">0</span>,
-                property.to_glib_none().<span class="number">0</span>,
-                inverted.into_glib(),
-            );
-        }
-    }
-
-    <span class="kw">fn </span>create_action(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; Action {
-        <span class="kw">unsafe </span>{
-            from_glib_full(ffi::g_settings_create_action(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                key.to_glib_none().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="kw">fn </span>delay(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <span class="kw">unsafe </span>{
-            ffi::g_settings_delay(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>);
-        }
-    }
-
-    <span class="comment">//fn get(&amp;self, key: &amp;str, format: &amp;str, : /*Unknown conversion*//*Unimplemented*/Basic: VarArgs) {
-    //    unsafe { TODO: call ffi:g_settings_get() }
-    //}
-
-    </span><span class="kw">fn </span>boolean(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; bool {
-        <span class="kw">unsafe </span>{
-            from_glib(ffi::g_settings_get_boolean(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                key.to_glib_none().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="kw">fn </span>child(<span class="kw-2">&amp;</span><span class="self">self</span>, name: <span class="kw-2">&amp;</span>str) -&gt; Settings {
-        <span class="kw">unsafe </span>{
-            from_glib_full(ffi::g_settings_get_child(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                name.to_glib_none().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="kw">fn </span>default_value(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Option</span>&lt;glib::Variant&gt; {
-        <span class="kw">unsafe </span>{
-            from_glib_full(ffi::g_settings_get_default_value(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                key.to_glib_none().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="kw">fn </span>double(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; f64 {
-        <span class="kw">unsafe </span>{ ffi::g_settings_get_double(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, key.to_glib_none().<span class="number">0</span>) }
-    }
-
-    <span class="kw">fn </span>enum_(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; i32 {
-        <span class="kw">unsafe </span>{ ffi::g_settings_get_enum(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, key.to_glib_none().<span class="number">0</span>) }
-    }
-
-    <span class="kw">fn </span>flags(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; u32 {
-        <span class="kw">unsafe </span>{ ffi::g_settings_get_flags(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, key.to_glib_none().<span class="number">0</span>) }
-    }
-
-    <span class="kw">fn </span>has_unapplied(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
-        <span class="kw">unsafe </span>{
-            from_glib(ffi::g_settings_get_has_unapplied(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="kw">fn </span>int(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; i32 {
-        <span class="kw">unsafe </span>{ ffi::g_settings_get_int(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, key.to_glib_none().<span class="number">0</span>) }
-    }
-
-    <span class="kw">fn </span>int64(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; i64 {
-        <span class="kw">unsafe </span>{ ffi::g_settings_get_int64(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, key.to_glib_none().<span class="number">0</span>) }
-    }
-
-    <span class="comment">//fn mapped(&amp;self, key: &amp;str, mapping: /*Unimplemented*/FnMut(&amp;glib::Variant, /*Unimplemented*/Option&lt;Basic: Pointer&gt;) -&gt; bool, user_data: /*Unimplemented*/Option&lt;Basic: Pointer&gt;) -&gt; /*Unimplemented*/Option&lt;Basic: Pointer&gt; {
-    //    unsafe { TODO: call ffi:g_settings_get_mapped() }
-    //}
-
-    </span><span class="kw">fn </span>string(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; glib::GString {
-        <span class="kw">unsafe </span>{
-            from_glib_full(ffi::g_settings_get_string(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                key.to_glib_none().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="kw">fn </span>uint(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; u32 {
-        <span class="kw">unsafe </span>{ ffi::g_settings_get_uint(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, key.to_glib_none().<span class="number">0</span>) }
-    }
-
-    <span class="kw">fn </span>uint64(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; u64 {
-        <span class="kw">unsafe </span>{ ffi::g_settings_get_uint64(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, key.to_glib_none().<span class="number">0</span>) }
-    }
-
-    <span class="kw">fn </span>user_value(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Option</span>&lt;glib::Variant&gt; {
-        <span class="kw">unsafe </span>{
-            from_glib_full(ffi::g_settings_get_user_value(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                key.to_glib_none().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="kw">fn </span>value(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) -&gt; glib::Variant {
-        <span class="kw">unsafe </span>{
-            from_glib_full(ffi::g_settings_get_value(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                key.to_glib_none().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="kw">fn </span>is_writable(<span class="kw-2">&amp;</span><span class="self">self</span>, name: <span class="kw-2">&amp;</span>str) -&gt; bool {
-        <span class="kw">unsafe </span>{
-            from_glib(ffi::g_settings_is_writable(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                name.to_glib_none().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="kw">fn </span>list_children(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;glib::GString&gt; {
-        <span class="kw">unsafe </span>{
-            FromGlibPtrContainer::from_glib_full(ffi::g_settings_list_children(
-                <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="kw">fn </span>reset(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str) {
-        <span class="kw">unsafe </span>{
-            ffi::g_settings_reset(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>, key.to_glib_none().<span class="number">0</span>);
-        }
-    }
-
-    <span class="kw">fn </span>revert(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-        <span class="kw">unsafe </span>{
-            ffi::g_settings_revert(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>);
-        }
-    }
-
-    <span class="comment">//fn set(&amp;self, key: &amp;str, format: &amp;str, : /*Unknown conversion*//*Unimplemented*/Basic: VarArgs) -&gt; bool {
-    //    unsafe { TODO: call ffi:g_settings_set() }
-    //}
-
-    </span><span class="kw">fn </span>set_boolean(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str, value: bool) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::error::BoolError&gt; {
-        <span class="kw">unsafe </span>{
-            <span class="macro">glib::result_from_gboolean!</span>(
-                ffi::g_settings_set_boolean(
-                    <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                    key.to_glib_none().<span class="number">0</span>,
-                    value.into_glib()
-                ),
-                <span class="string">&quot;Can&#39;t set readonly key&quot;
-            </span>)
-        }
-    }
-
-    <span class="kw">fn </span>set_double(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str, value: f64) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::error::BoolError&gt; {
-        <span class="kw">unsafe </span>{
-            <span class="macro">glib::result_from_gboolean!</span>(
-                ffi::g_settings_set_double(
-                    <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                    key.to_glib_none().<span class="number">0</span>,
-                    value
-                ),
-                <span class="string">&quot;Can&#39;t set readonly key&quot;
-            </span>)
-        }
-    }
-
-    <span class="kw">fn </span>set_enum(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str, value: i32) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::error::BoolError&gt; {
-        <span class="kw">unsafe </span>{
-            <span class="macro">glib::result_from_gboolean!</span>(
-                ffi::g_settings_set_enum(
-                    <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                    key.to_glib_none().<span class="number">0</span>,
-                    value
-                ),
-                <span class="string">&quot;Can&#39;t set readonly key&quot;
-            </span>)
-        }
-    }
-
-    <span class="kw">fn </span>set_flags(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str, value: u32) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::error::BoolError&gt; {
-        <span class="kw">unsafe </span>{
-            <span class="macro">glib::result_from_gboolean!</span>(
-                ffi::g_settings_set_flags(
-                    <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                    key.to_glib_none().<span class="number">0</span>,
-                    value
-                ),
-                <span class="string">&quot;Can&#39;t set readonly key&quot;
-            </span>)
-        }
-    }
-
-    <span class="kw">fn </span>set_int(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str, value: i32) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::error::BoolError&gt; {
-        <span class="kw">unsafe </span>{
-            <span class="macro">glib::result_from_gboolean!</span>(
-                ffi::g_settings_set_int(
-                    <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                    key.to_glib_none().<span class="number">0</span>,
-                    value
-                ),
-                <span class="string">&quot;Can&#39;t set readonly key&quot;
-            </span>)
-        }
-    }
-
-    <span class="kw">fn </span>set_int64(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str, value: i64) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::error::BoolError&gt; {
-        <span class="kw">unsafe </span>{
-            <span class="macro">glib::result_from_gboolean!</span>(
-                ffi::g_settings_set_int64(
-                    <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                    key.to_glib_none().<span class="number">0</span>,
-                    value
-                ),
-                <span class="string">&quot;Can&#39;t set readonly key&quot;
-            </span>)
-        }
-    }
-
-    <span class="kw">fn </span>set_string(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str, value: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::error::BoolError&gt; {
-        <span class="kw">unsafe </span>{
-            <span class="macro">glib::result_from_gboolean!</span>(
-                ffi::g_settings_set_string(
-                    <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                    key.to_glib_none().<span class="number">0</span>,
-                    value.to_glib_none().<span class="number">0
-                </span>),
-                <span class="string">&quot;Can&#39;t set readonly key&quot;
-            </span>)
-        }
-    }
-
-    <span class="kw">fn </span>set_uint(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str, value: u32) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::error::BoolError&gt; {
-        <span class="kw">unsafe </span>{
-            <span class="macro">glib::result_from_gboolean!</span>(
-                ffi::g_settings_set_uint(
-                    <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                    key.to_glib_none().<span class="number">0</span>,
-                    value
-                ),
-                <span class="string">&quot;Can&#39;t set readonly key&quot;
-            </span>)
-        }
-    }
-
-    <span class="kw">fn </span>set_uint64(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str, value: u64) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::error::BoolError&gt; {
-        <span class="kw">unsafe </span>{
-            <span class="macro">glib::result_from_gboolean!</span>(
-                ffi::g_settings_set_uint64(
-                    <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                    key.to_glib_none().<span class="number">0</span>,
-                    value
-                ),
-                <span class="string">&quot;Can&#39;t set readonly key&quot;
-            </span>)
-        }
-    }
-
-    <span class="kw">fn </span>set_value(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>str, value: <span class="kw-2">&amp;</span>glib::Variant) -&gt; <span class="prelude-ty">Result</span>&lt;(), glib::error::BoolError&gt; {
-        <span class="kw">unsafe </span>{
-            <span class="macro">glib::result_from_gboolean!</span>(
-                ffi::g_settings_set_value(
-                    <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
-                    key.to_glib_none().<span class="number">0</span>,
-                    value.to_glib_none().<span class="number">0
-                </span>),
-                <span class="string">&quot;Can&#39;t set readonly key&quot;
-            </span>)
-        }
-    }
-
-    <span class="kw">fn </span>backend(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;SettingsBackend&gt; {
-        glib::ObjectExt::property(<span class="self">self</span>.as_ref(), <span class="string">&quot;backend&quot;</span>)
-    }
-
-    <span class="kw">fn </span>is_delay_apply(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
-        glib::ObjectExt::property(<span class="self">self</span>.as_ref(), <span class="string">&quot;delay-apply&quot;</span>)
-    }
-
-    <span class="kw">fn </span>path(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;glib::GString&gt; {
-        glib::ObjectExt::property(<span class="self">self</span>.as_ref(), <span class="string">&quot;path&quot;</span>)
-    }
-
-    <span class="kw">fn </span>schema_id(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;glib::GString&gt; {
-        glib::ObjectExt::property(<span class="self">self</span>.as_ref(), <span class="string">&quot;schema-id&quot;</span>)
-    }
-
-    <span class="kw">fn </span>settings_schema(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;SettingsSchema&gt; {
-        glib::ObjectExt::property(<span class="self">self</span>.as_ref(), <span class="string">&quot;settings-schema&quot;</span>)
-    }
-
-    <span class="comment">//fn connect_change_event&lt;Unsupported or ignored types&gt;(&amp;self, f: F) -&gt; SignalHandlerId {
-    //    Unimplemented keys: *.CArray TypeId { ns_id: 2, id: 5 }
-    //}
-
     </span><span class="kw">fn </span>connect_changed&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>str) + <span class="lifetime">&#39;static</span>&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         detail: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>str&gt;,
@@ -3589,7 +3331,33 @@
         }
     }
 
-    <span class="kw">fn </span>connect_writable_change_event&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, u32) -&gt; glib::signal::Inhibit + <span class="lifetime">&#39;static</span>&gt;(
+    <span class="doccomment">/// The &quot;writable-change-event&quot; signal is emitted once per writability
+    /// change event that affects this settings object. You should connect
+    /// to this signal if you are interested in viewing groups of changes
+    /// before they are split out into multiple emissions of the
+    /// &quot;writable-changed&quot; signal. For most use cases it is more
+    /// appropriate to use the &quot;writable-changed&quot; signal.
+    ///
+    /// In the event that the writability change applies only to a single
+    /// key, `key` will be set to the `GQuark` for that key. In the event
+    /// that the writability change affects the entire settings object,
+    /// `key` will be 0.
+    ///
+    /// The default handler for this signal invokes the &quot;writable-changed&quot;
+    /// and &quot;changed&quot; signals for each affected key. This is done because
+    /// changes in writability might also imply changes in value (if for
+    /// example, a new mandatory setting is introduced). If any other
+    /// connected handler returns [`true`] then this default functionality
+    /// will be suppressed.
+    /// ## `key`
+    /// the quark of the key, or 0
+    ///
+    /// # Returns
+    ///
+    /// [`true`] to stop other handlers from being invoked for the
+    ///  event. FALSE to propagate the event further.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;writable-change-event&quot;</span>)]
+    </span><span class="kw">fn </span>connect_writable_change_event&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, u32) -&gt; glib::signal::Inhibit + <span class="lifetime">&#39;static</span>&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         f: F,
     ) -&gt; SignalHandlerId {
@@ -3617,7 +3385,17 @@
         }
     }
 
-    <span class="kw">fn </span>connect_writable_changed&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>str) + <span class="lifetime">&#39;static</span>&gt;(
+    <span class="doccomment">/// The &quot;writable-changed&quot; signal is emitted when the writability of a
+    /// key has potentially changed. You should call
+    /// [`is_writable()`][Self::is_writable()] in order to determine the new status.
+    ///
+    /// This signal supports detailed connections. You can connect to the
+    /// detailed signal &quot;writable-changed::x&quot; in order to only receive
+    /// callbacks when the writability of &quot;x&quot; changes.
+    /// ## `key`
+    /// the key
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;writable-changed&quot;</span>)]
+    </span><span class="kw">fn </span>connect_writable_changed&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>str) + <span class="lifetime">&#39;static</span>&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         detail: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>str&gt;,
         f: F,
@@ -3653,7 +3431,8 @@
         }
     }
 
-    <span class="kw">fn </span>connect_delay_apply_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
+    <span class="attr">#[doc(alias = <span class="string">&quot;delay-apply&quot;</span>)]
+    </span><span class="kw">fn </span>connect_delay_apply_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
         <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>notify_delay_apply_trampoline&lt;
             P: IsA&lt;Settings&gt;,
             F: Fn(<span class="kw-2">&amp;</span>P) + <span class="lifetime">&#39;static</span>,
@@ -3678,7 +3457,8 @@
         }
     }
 
-    <span class="kw">fn </span>connect_has_unapplied_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
+    <span class="attr">#[doc(alias = <span class="string">&quot;has-unapplied&quot;</span>)]
+    </span><span class="kw">fn </span>connect_has_unapplied_notify&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
         <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>notify_has_unapplied_trampoline&lt;
             P: IsA&lt;Settings&gt;,
             F: Fn(<span class="kw-2">&amp;</span>P) + <span class="lifetime">&#39;static</span>,
@@ -3703,6 +3483,8 @@
         }
     }
 }
+
+<span class="kw">impl</span>&lt;O: IsA&lt;Settings&gt;&gt; SettingsExt <span class="kw">for </span>O {}
 
 <span class="kw">impl </span>fmt::Display <span class="kw">for </span>Settings {
     <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter) -&gt; fmt::Result {

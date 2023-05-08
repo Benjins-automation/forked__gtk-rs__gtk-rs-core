@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gio/src/auto/enums.rs`."><title>enums.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (a77c55248 2023-05-06)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gio/src/auto/enums.rs`."><title>enums.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (c4190f2d3 2023-05-07)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -5861,7 +5861,7 @@
     </span><span class="attr">#[doc(alias = <span class="string">&quot;G_CREDENTIALS_TYPE_APPLE_XUCRED&quot;</span>)]
     </span>AppleXucred,
     <span class="doccomment">/// The native credentials type is a PID `DWORD`. Added in 2.72.
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
     #[doc(alias = <span class="string">&quot;G_CREDENTIALS_TYPE_WIN32_PID&quot;</span>)]
     </span>Win32Pid,
@@ -5882,7 +5882,7 @@
                 <span class="self">Self</span>::SolarisUcred =&gt; <span class="string">&quot;SolarisUcred&quot;</span>,
                 <span class="self">Self</span>::NetbsdUnpcbid =&gt; <span class="string">&quot;NetbsdUnpcbid&quot;</span>,
                 <span class="self">Self</span>::AppleXucred =&gt; <span class="string">&quot;AppleXucred&quot;</span>,
-                <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+                <span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
                 </span><span class="self">Self</span>::Win32Pid =&gt; <span class="string">&quot;Win32Pid&quot;</span>,
                 <span class="kw">_ </span>=&gt; <span class="string">&quot;Unknown&quot;</span>,
             }
@@ -5904,7 +5904,7 @@
             <span class="self">Self</span>::SolarisUcred =&gt; ffi::G_CREDENTIALS_TYPE_SOLARIS_UCRED,
             <span class="self">Self</span>::NetbsdUnpcbid =&gt; ffi::G_CREDENTIALS_TYPE_NETBSD_UNPCBID,
             <span class="self">Self</span>::AppleXucred =&gt; ffi::G_CREDENTIALS_TYPE_APPLE_XUCRED,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
             </span><span class="self">Self</span>::Win32Pid =&gt; ffi::G_CREDENTIALS_TYPE_WIN32_PID,
             <span class="self">Self</span>::__Unknown(value) =&gt; value,
         }
@@ -5923,7 +5923,7 @@
             ffi::G_CREDENTIALS_TYPE_SOLARIS_UCRED =&gt; <span class="self">Self</span>::SolarisUcred,
             ffi::G_CREDENTIALS_TYPE_NETBSD_UNPCBID =&gt; <span class="self">Self</span>::NetbsdUnpcbid,
             ffi::G_CREDENTIALS_TYPE_APPLE_XUCRED =&gt; <span class="self">Self</span>::AppleXucred,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
             </span>ffi::G_CREDENTIALS_TYPE_WIN32_PID =&gt; <span class="self">Self</span>::Win32Pid,
             value =&gt; <span class="self">Self</span>::__Unknown(value),
         }
@@ -7628,7 +7628,7 @@
     </span><span class="attr">#[doc(alias = <span class="string">&quot;G_IO_ERROR_MESSAGE_TOO_LARGE&quot;</span>)]
     </span>MessageTooLarge,
     <span class="doccomment">/// No such device found. Since 2.74
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
     #[doc(alias = <span class="string">&quot;G_IO_ERROR_NO_SUCH_DEVICE&quot;</span>)]
     </span>NoSuchDevice,
@@ -7689,7 +7689,7 @@
                 <span class="self">Self</span>::BrokenPipe =&gt; <span class="string">&quot;BrokenPipe&quot;</span>,
                 <span class="self">Self</span>::NotConnected =&gt; <span class="string">&quot;NotConnected&quot;</span>,
                 <span class="self">Self</span>::MessageTooLarge =&gt; <span class="string">&quot;MessageTooLarge&quot;</span>,
-                <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+                <span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
                 </span><span class="self">Self</span>::NoSuchDevice =&gt; <span class="string">&quot;NoSuchDevice&quot;</span>,
                 <span class="kw">_ </span>=&gt; <span class="string">&quot;Unknown&quot;</span>,
             }
@@ -7750,7 +7750,7 @@
             <span class="self">Self</span>::BrokenPipe =&gt; ffi::G_IO_ERROR_BROKEN_PIPE,
             <span class="self">Self</span>::NotConnected =&gt; ffi::G_IO_ERROR_NOT_CONNECTED,
             <span class="self">Self</span>::MessageTooLarge =&gt; ffi::G_IO_ERROR_MESSAGE_TOO_LARGE,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
             </span><span class="self">Self</span>::NoSuchDevice =&gt; ffi::G_IO_ERROR_NO_SUCH_DEVICE,
             <span class="self">Self</span>::__Unknown(value) =&gt; value,
         }
@@ -7808,7 +7808,7 @@
             ffi::G_IO_ERROR_BROKEN_PIPE =&gt; <span class="self">Self</span>::BrokenPipe,
             ffi::G_IO_ERROR_NOT_CONNECTED =&gt; <span class="self">Self</span>::NotConnected,
             ffi::G_IO_ERROR_MESSAGE_TOO_LARGE =&gt; <span class="self">Self</span>::MessageTooLarge,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
             </span>ffi::G_IO_ERROR_NO_SUCH_DEVICE =&gt; <span class="self">Self</span>::NoSuchDevice,
             value =&gt; <span class="self">Self</span>::__Unknown(value),
         }
@@ -7901,7 +7901,7 @@
 /// if (warning_level &gt; G_MEMORY_MONITOR_WARNING_LEVEL_LOW)
 ///   drop_caches ();
 /// ```
-</span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_64&quot;</span>))]
+</span><span class="attr">#[cfg(feature = <span class="string">&quot;v2_64&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_64&quot;</span>)))]
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
 #[non_exhaustive]
@@ -7926,7 +7926,7 @@
     </span>__Unknown(i32),
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_64&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_64&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_64&quot;</span>)))]
 </span><span class="kw">impl </span>fmt::Display <span class="kw">for </span>MemoryMonitorWarningLevel {
     <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter) -&gt; fmt::Result {
@@ -7943,7 +7943,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_64&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_64&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_64&quot;</span>)))]
 #[doc(hidden)]
 </span><span class="kw">impl </span>IntoGlib <span class="kw">for </span>MemoryMonitorWarningLevel {
@@ -7960,7 +7960,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_64&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_64&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_64&quot;</span>)))]
 #[doc(hidden)]
 </span><span class="kw">impl </span>FromGlib&lt;ffi::GMemoryMonitorWarningLevel&gt; <span class="kw">for </span>MemoryMonitorWarningLevel {
@@ -7975,7 +7975,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_64&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_64&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_64&quot;</span>)))]
 </span><span class="kw">impl </span>StaticType <span class="kw">for </span>MemoryMonitorWarningLevel {
     <span class="attr">#[inline]
@@ -7984,7 +7984,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_64&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_64&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_64&quot;</span>)))]
 </span><span class="kw">impl </span>glib::HasParamSpec <span class="kw">for </span>MemoryMonitorWarningLevel {
     <span class="kw">type </span>ParamSpec = glib::ParamSpecEnum;
@@ -7996,13 +7996,13 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_64&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_64&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_64&quot;</span>)))]
 </span><span class="kw">impl </span>glib::value::ValueType <span class="kw">for </span>MemoryMonitorWarningLevel {
     <span class="kw">type </span>Type = <span class="self">Self</span>;
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_64&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_64&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_64&quot;</span>)))]
 </span><span class="kw">unsafe impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; FromValue&lt;<span class="lifetime">&#39;a</span>&gt; <span class="kw">for </span>MemoryMonitorWarningLevel {
     <span class="kw">type </span>Checker = glib::value::GenericValueTypeChecker&lt;<span class="self">Self</span>&gt;;
@@ -8013,7 +8013,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_64&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_64&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_64&quot;</span>)))]
 </span><span class="kw">impl </span>ToValue <span class="kw">for </span>MemoryMonitorWarningLevel {
     <span class="attr">#[inline]
@@ -8031,7 +8031,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_64&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_64&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_64&quot;</span>)))]
 </span><span class="kw">impl </span>From&lt;MemoryMonitorWarningLevel&gt; <span class="kw">for </span>glib::Value {
     <span class="attr">#[inline]
@@ -8538,7 +8538,7 @@
 ///
 /// In case of [`Failed`][Self::Failed] a [`glib::Error`][crate::glib::Error] should be set for the
 /// operation to give details about the error that happened.
-</span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+</span><span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
 #[non_exhaustive]
@@ -8557,7 +8557,7 @@
     </span>__Unknown(i32),
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
 </span><span class="kw">impl </span>fmt::Display <span class="kw">for </span>PollableReturn {
     <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter) -&gt; fmt::Result {
@@ -8574,7 +8574,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
 #[doc(hidden)]
 </span><span class="kw">impl </span>IntoGlib <span class="kw">for </span>PollableReturn {
@@ -8591,7 +8591,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
 #[doc(hidden)]
 </span><span class="kw">impl </span>FromGlib&lt;ffi::GPollableReturn&gt; <span class="kw">for </span>PollableReturn {
@@ -8606,7 +8606,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
 </span><span class="kw">impl </span>StaticType <span class="kw">for </span>PollableReturn {
     <span class="attr">#[inline]
@@ -8615,7 +8615,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
 </span><span class="kw">impl </span>glib::HasParamSpec <span class="kw">for </span>PollableReturn {
     <span class="kw">type </span>ParamSpec = glib::ParamSpecEnum;
@@ -8627,13 +8627,13 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
 </span><span class="kw">impl </span>glib::value::ValueType <span class="kw">for </span>PollableReturn {
     <span class="kw">type </span>Type = <span class="self">Self</span>;
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
 </span><span class="kw">unsafe impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; FromValue&lt;<span class="lifetime">&#39;a</span>&gt; <span class="kw">for </span>PollableReturn {
     <span class="kw">type </span>Checker = glib::value::GenericValueTypeChecker&lt;<span class="self">Self</span>&gt;;
@@ -8644,7 +8644,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
 </span><span class="kw">impl </span>ToValue <span class="kw">for </span>PollableReturn {
     <span class="attr">#[inline]
@@ -8662,7 +8662,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
 </span><span class="kw">impl </span>From&lt;PollableReturn&gt; <span class="kw">for </span>glib::Value {
     <span class="attr">#[inline]
@@ -9976,7 +9976,7 @@
 /// or `GDtlsConnection`, as documented by RFC 5929 or RFC 9266. The
 /// [`tls-unique-for-telnet`](https://tools.ietf.org/html/rfc5929`section`-5)
 /// binding type is not currently implemented.
-</span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_66&quot;</span>))]
+</span><span class="attr">#[cfg(feature = <span class="string">&quot;v2_66&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_66&quot;</span>)))]
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
 #[non_exhaustive]
@@ -9992,7 +9992,7 @@
     </span>ServerEndPoint,
     <span class="doccomment">/// [`tls-exporter`](https://www.rfc-editor.org/rfc/rfc9266.html) binding
     ///  type. Since: 2.74
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_74&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v2_74&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_74&quot;</span>)))]
     #[doc(alias = <span class="string">&quot;G_TLS_CHANNEL_BINDING_TLS_EXPORTER&quot;</span>)]
     </span>Exporter,
@@ -10000,7 +10000,7 @@
     </span>__Unknown(i32),
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_66&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_66&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_66&quot;</span>)))]
 </span><span class="kw">impl </span>fmt::Display <span class="kw">for </span>TlsChannelBindingType {
     <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter) -&gt; fmt::Result {
@@ -10010,7 +10010,7 @@
             <span class="kw">match </span><span class="kw-2">*</span><span class="self">self </span>{
                 <span class="self">Self</span>::Unique =&gt; <span class="string">&quot;Unique&quot;</span>,
                 <span class="self">Self</span>::ServerEndPoint =&gt; <span class="string">&quot;ServerEndPoint&quot;</span>,
-                <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_74&quot;</span>))]
+                <span class="attr">#[cfg(feature = <span class="string">&quot;v2_74&quot;</span>)]
                 </span><span class="self">Self</span>::Exporter =&gt; <span class="string">&quot;Exporter&quot;</span>,
                 <span class="kw">_ </span>=&gt; <span class="string">&quot;Unknown&quot;</span>,
             }
@@ -10018,7 +10018,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_66&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_66&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_66&quot;</span>)))]
 #[doc(hidden)]
 </span><span class="kw">impl </span>IntoGlib <span class="kw">for </span>TlsChannelBindingType {
@@ -10029,14 +10029,14 @@
         <span class="kw">match </span><span class="self">self </span>{
             <span class="self">Self</span>::Unique =&gt; ffi::G_TLS_CHANNEL_BINDING_TLS_UNIQUE,
             <span class="self">Self</span>::ServerEndPoint =&gt; ffi::G_TLS_CHANNEL_BINDING_TLS_SERVER_END_POINT,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_74&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v2_74&quot;</span>)]
             </span><span class="self">Self</span>::Exporter =&gt; ffi::G_TLS_CHANNEL_BINDING_TLS_EXPORTER,
             <span class="self">Self</span>::__Unknown(value) =&gt; value,
         }
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_66&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_66&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_66&quot;</span>)))]
 #[doc(hidden)]
 </span><span class="kw">impl </span>FromGlib&lt;ffi::GTlsChannelBindingType&gt; <span class="kw">for </span>TlsChannelBindingType {
@@ -10045,14 +10045,14 @@
         <span class="kw">match </span>value {
             ffi::G_TLS_CHANNEL_BINDING_TLS_UNIQUE =&gt; <span class="self">Self</span>::Unique,
             ffi::G_TLS_CHANNEL_BINDING_TLS_SERVER_END_POINT =&gt; <span class="self">Self</span>::ServerEndPoint,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_74&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v2_74&quot;</span>)]
             </span>ffi::G_TLS_CHANNEL_BINDING_TLS_EXPORTER =&gt; <span class="self">Self</span>::Exporter,
             value =&gt; <span class="self">Self</span>::__Unknown(value),
         }
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_66&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_66&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_66&quot;</span>)))]
 </span><span class="kw">impl </span>StaticType <span class="kw">for </span>TlsChannelBindingType {
     <span class="attr">#[inline]
@@ -10061,7 +10061,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_66&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_66&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_66&quot;</span>)))]
 </span><span class="kw">impl </span>glib::HasParamSpec <span class="kw">for </span>TlsChannelBindingType {
     <span class="kw">type </span>ParamSpec = glib::ParamSpecEnum;
@@ -10073,13 +10073,13 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_66&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_66&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_66&quot;</span>)))]
 </span><span class="kw">impl </span>glib::value::ValueType <span class="kw">for </span>TlsChannelBindingType {
     <span class="kw">type </span>Type = <span class="self">Self</span>;
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_66&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_66&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_66&quot;</span>)))]
 </span><span class="kw">unsafe impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; FromValue&lt;<span class="lifetime">&#39;a</span>&gt; <span class="kw">for </span>TlsChannelBindingType {
     <span class="kw">type </span>Checker = glib::value::GenericValueTypeChecker&lt;<span class="self">Self</span>&gt;;
@@ -10090,7 +10090,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_66&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_66&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_66&quot;</span>)))]
 </span><span class="kw">impl </span>ToValue <span class="kw">for </span>TlsChannelBindingType {
     <span class="attr">#[inline]
@@ -10108,7 +10108,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_66&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_66&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_66&quot;</span>)))]
 </span><span class="kw">impl </span>From&lt;TlsChannelBindingType&gt; <span class="kw">for </span>glib::Value {
     <span class="attr">#[inline]
@@ -10269,7 +10269,7 @@
     </span>InappropriateFallback,
     <span class="doccomment">/// The certificate failed
     ///  to load because a password was incorrect. Since: 2.72
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
     #[doc(alias = <span class="string">&quot;G_TLS_ERROR_BAD_CERTIFICATE_PASSWORD&quot;</span>)]
     </span>BadCertificatePassword,
@@ -10291,7 +10291,7 @@
                 <span class="self">Self</span>::CertificateRequired =&gt; <span class="string">&quot;CertificateRequired&quot;</span>,
                 <span class="self">Self</span>::Eof =&gt; <span class="string">&quot;Eof&quot;</span>,
                 <span class="self">Self</span>::InappropriateFallback =&gt; <span class="string">&quot;InappropriateFallback&quot;</span>,
-                <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+                <span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
                 </span><span class="self">Self</span>::BadCertificatePassword =&gt; <span class="string">&quot;BadCertificatePassword&quot;</span>,
                 <span class="kw">_ </span>=&gt; <span class="string">&quot;Unknown&quot;</span>,
             }
@@ -10314,7 +10314,7 @@
             <span class="self">Self</span>::CertificateRequired =&gt; ffi::G_TLS_ERROR_CERTIFICATE_REQUIRED,
             <span class="self">Self</span>::Eof =&gt; ffi::G_TLS_ERROR_EOF,
             <span class="self">Self</span>::InappropriateFallback =&gt; ffi::G_TLS_ERROR_INAPPROPRIATE_FALLBACK,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
             </span><span class="self">Self</span>::BadCertificatePassword =&gt; ffi::G_TLS_ERROR_BAD_CERTIFICATE_PASSWORD,
             <span class="self">Self</span>::__Unknown(value) =&gt; value,
         }
@@ -10334,7 +10334,7 @@
             ffi::G_TLS_ERROR_CERTIFICATE_REQUIRED =&gt; <span class="self">Self</span>::CertificateRequired,
             ffi::G_TLS_ERROR_EOF =&gt; <span class="self">Self</span>::Eof,
             ffi::G_TLS_ERROR_INAPPROPRIATE_FALLBACK =&gt; <span class="self">Self</span>::InappropriateFallback,
-            <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+            <span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
             </span>ffi::G_TLS_ERROR_BAD_CERTIFICATE_PASSWORD =&gt; <span class="self">Self</span>::BadCertificatePassword,
             value =&gt; <span class="self">Self</span>::__Unknown(value),
         }
@@ -10541,7 +10541,7 @@
 /// protocol version that GLib does not yet know about. This means that
 /// it&#39;s possible for an unknown DTLS protocol version to compare less
 /// than the TLS protocol versions.
-</span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+</span><span class="attr">#[cfg(feature = <span class="string">&quot;v2_70&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
 #[non_exhaustive]
@@ -10575,7 +10575,7 @@
     </span>__Unknown(i32),
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_70&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
 </span><span class="kw">impl </span>fmt::Display <span class="kw">for </span>TlsProtocolVersion {
     <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter) -&gt; fmt::Result {
@@ -10597,7 +10597,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_70&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
 #[doc(hidden)]
 </span><span class="kw">impl </span>IntoGlib <span class="kw">for </span>TlsProtocolVersion {
@@ -10619,7 +10619,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_70&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
 #[doc(hidden)]
 </span><span class="kw">impl </span>FromGlib&lt;ffi::GTlsProtocolVersion&gt; <span class="kw">for </span>TlsProtocolVersion {
@@ -10639,7 +10639,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_70&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
 </span><span class="kw">impl </span>StaticType <span class="kw">for </span>TlsProtocolVersion {
     <span class="attr">#[inline]
@@ -10648,7 +10648,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_70&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
 </span><span class="kw">impl </span>glib::HasParamSpec <span class="kw">for </span>TlsProtocolVersion {
     <span class="kw">type </span>ParamSpec = glib::ParamSpecEnum;
@@ -10660,13 +10660,13 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_70&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
 </span><span class="kw">impl </span>glib::value::ValueType <span class="kw">for </span>TlsProtocolVersion {
     <span class="kw">type </span>Type = <span class="self">Self</span>;
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_70&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
 </span><span class="kw">unsafe impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; FromValue&lt;<span class="lifetime">&#39;a</span>&gt; <span class="kw">for </span>TlsProtocolVersion {
     <span class="kw">type </span>Checker = glib::value::GenericValueTypeChecker&lt;<span class="self">Self</span>&gt;;
@@ -10677,7 +10677,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_70&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
 </span><span class="kw">impl </span>ToValue <span class="kw">for </span>TlsProtocolVersion {
     <span class="attr">#[inline]
@@ -10695,7 +10695,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+<span class="attr">#[cfg(feature = <span class="string">&quot;v2_70&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
 </span><span class="kw">impl </span>From&lt;TlsProtocolVersion&gt; <span class="kw">for </span>glib::Value {
     <span class="attr">#[inline]
@@ -10848,7 +10848,7 @@
 /// However, many programs instead just use a portion of `sun_path`, and
 /// pass an appropriate smaller length to `bind()` or `connect()`. This is
 /// [`Abstract`][Self::Abstract].
-</span><span class="attr">#[cfg(any(unix))]
+</span><span class="attr">#[cfg(unix)]
 #[cfg_attr(docsrs, doc(cfg(unix)))]
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
 #[non_exhaustive]
@@ -10874,7 +10874,7 @@
     </span>__Unknown(i32),
 }
 
-<span class="attr">#[cfg(any(unix))]
+<span class="attr">#[cfg(unix)]
 </span><span class="kw">impl </span>fmt::Display <span class="kw">for </span>UnixSocketAddressType {
     <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter) -&gt; fmt::Result {
         <span class="macro">write!</span>(
@@ -10892,7 +10892,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(unix))]
+<span class="attr">#[cfg(unix)]
 #[doc(hidden)]
 </span><span class="kw">impl </span>IntoGlib <span class="kw">for </span>UnixSocketAddressType {
     <span class="kw">type </span>GlibType = ffi::GUnixSocketAddressType;
@@ -10910,7 +10910,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(unix))]
+<span class="attr">#[cfg(unix)]
 #[doc(hidden)]
 </span><span class="kw">impl </span>FromGlib&lt;ffi::GUnixSocketAddressType&gt; <span class="kw">for </span>UnixSocketAddressType {
     <span class="attr">#[inline]
@@ -10926,7 +10926,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(unix))]
+<span class="attr">#[cfg(unix)]
 </span><span class="kw">impl </span>StaticType <span class="kw">for </span>UnixSocketAddressType {
     <span class="attr">#[inline]
     </span><span class="kw">fn </span>static_type() -&gt; Type {
@@ -10934,7 +10934,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(unix))]
+<span class="attr">#[cfg(unix)]
 </span><span class="kw">impl </span>glib::HasParamSpec <span class="kw">for </span>UnixSocketAddressType {
     <span class="kw">type </span>ParamSpec = glib::ParamSpecEnum;
     <span class="kw">type </span>SetValue = <span class="self">Self</span>;
@@ -10945,12 +10945,12 @@
     }
 }
 
-<span class="attr">#[cfg(any(unix))]
+<span class="attr">#[cfg(unix)]
 </span><span class="kw">impl </span>glib::value::ValueType <span class="kw">for </span>UnixSocketAddressType {
     <span class="kw">type </span>Type = <span class="self">Self</span>;
 }
 
-<span class="attr">#[cfg(any(unix))]
+<span class="attr">#[cfg(unix)]
 </span><span class="kw">unsafe impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; FromValue&lt;<span class="lifetime">&#39;a</span>&gt; <span class="kw">for </span>UnixSocketAddressType {
     <span class="kw">type </span>Checker = glib::value::GenericValueTypeChecker&lt;<span class="self">Self</span>&gt;;
 
@@ -10960,7 +10960,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(unix))]
+<span class="attr">#[cfg(unix)]
 </span><span class="kw">impl </span>ToValue <span class="kw">for </span>UnixSocketAddressType {
     <span class="attr">#[inline]
     </span><span class="kw">fn </span>to_value(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; glib::Value {
@@ -10977,7 +10977,7 @@
     }
 }
 
-<span class="attr">#[cfg(any(unix))]
+<span class="attr">#[cfg(unix)]
 </span><span class="kw">impl </span>From&lt;UnixSocketAddressType&gt; <span class="kw">for </span>glib::Value {
     <span class="attr">#[inline]
     </span><span class="kw">fn </span>from(v: UnixSocketAddressType) -&gt; <span class="self">Self </span>{

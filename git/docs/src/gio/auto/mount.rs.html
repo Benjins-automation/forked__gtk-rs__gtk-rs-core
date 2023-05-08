@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gio/src/auto/mount.rs`."><title>mount.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (a77c55248 2023-05-06)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gio/src/auto/mount.rs`."><title>mount.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (c4190f2d3 2023-05-07)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -837,102 +837,6 @@
 <a href="#764" id="764">764</a>
 <a href="#765" id="765">765</a>
 <a href="#766" id="766">766</a>
-<a href="#767" id="767">767</a>
-<a href="#768" id="768">768</a>
-<a href="#769" id="769">769</a>
-<a href="#770" id="770">770</a>
-<a href="#771" id="771">771</a>
-<a href="#772" id="772">772</a>
-<a href="#773" id="773">773</a>
-<a href="#774" id="774">774</a>
-<a href="#775" id="775">775</a>
-<a href="#776" id="776">776</a>
-<a href="#777" id="777">777</a>
-<a href="#778" id="778">778</a>
-<a href="#779" id="779">779</a>
-<a href="#780" id="780">780</a>
-<a href="#781" id="781">781</a>
-<a href="#782" id="782">782</a>
-<a href="#783" id="783">783</a>
-<a href="#784" id="784">784</a>
-<a href="#785" id="785">785</a>
-<a href="#786" id="786">786</a>
-<a href="#787" id="787">787</a>
-<a href="#788" id="788">788</a>
-<a href="#789" id="789">789</a>
-<a href="#790" id="790">790</a>
-<a href="#791" id="791">791</a>
-<a href="#792" id="792">792</a>
-<a href="#793" id="793">793</a>
-<a href="#794" id="794">794</a>
-<a href="#795" id="795">795</a>
-<a href="#796" id="796">796</a>
-<a href="#797" id="797">797</a>
-<a href="#798" id="798">798</a>
-<a href="#799" id="799">799</a>
-<a href="#800" id="800">800</a>
-<a href="#801" id="801">801</a>
-<a href="#802" id="802">802</a>
-<a href="#803" id="803">803</a>
-<a href="#804" id="804">804</a>
-<a href="#805" id="805">805</a>
-<a href="#806" id="806">806</a>
-<a href="#807" id="807">807</a>
-<a href="#808" id="808">808</a>
-<a href="#809" id="809">809</a>
-<a href="#810" id="810">810</a>
-<a href="#811" id="811">811</a>
-<a href="#812" id="812">812</a>
-<a href="#813" id="813">813</a>
-<a href="#814" id="814">814</a>
-<a href="#815" id="815">815</a>
-<a href="#816" id="816">816</a>
-<a href="#817" id="817">817</a>
-<a href="#818" id="818">818</a>
-<a href="#819" id="819">819</a>
-<a href="#820" id="820">820</a>
-<a href="#821" id="821">821</a>
-<a href="#822" id="822">822</a>
-<a href="#823" id="823">823</a>
-<a href="#824" id="824">824</a>
-<a href="#825" id="825">825</a>
-<a href="#826" id="826">826</a>
-<a href="#827" id="827">827</a>
-<a href="#828" id="828">828</a>
-<a href="#829" id="829">829</a>
-<a href="#830" id="830">830</a>
-<a href="#831" id="831">831</a>
-<a href="#832" id="832">832</a>
-<a href="#833" id="833">833</a>
-<a href="#834" id="834">834</a>
-<a href="#835" id="835">835</a>
-<a href="#836" id="836">836</a>
-<a href="#837" id="837">837</a>
-<a href="#838" id="838">838</a>
-<a href="#839" id="839">839</a>
-<a href="#840" id="840">840</a>
-<a href="#841" id="841">841</a>
-<a href="#842" id="842">842</a>
-<a href="#843" id="843">843</a>
-<a href="#844" id="844">844</a>
-<a href="#845" id="845">845</a>
-<a href="#846" id="846">846</a>
-<a href="#847" id="847">847</a>
-<a href="#848" id="848">848</a>
-<a href="#849" id="849">849</a>
-<a href="#850" id="850">850</a>
-<a href="#851" id="851">851</a>
-<a href="#852" id="852">852</a>
-<a href="#853" id="853">853</a>
-<a href="#854" id="854">854</a>
-<a href="#855" id="855">855</a>
-<a href="#856" id="856">856</a>
-<a href="#857" id="857">857</a>
-<a href="#858" id="858">858</a>
-<a href="#859" id="859">859</a>
-<a href="#860" id="860">860</a>
-<a href="#861" id="861">861</a>
-<a href="#862" id="862">862</a>
 </pre></div><pre class="rust"><code><span class="comment">// This file was generated by gir (https://github.com/gtk-rs/gir)
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
@@ -1016,14 +920,16 @@
 /// # Implementors
 ///
 /// [`Mount`][struct@crate::Mount]
-</span><span class="kw">pub trait </span>MountExt: <span class="lifetime">&#39;static </span>{
+</span><span class="kw">pub trait </span>MountExt: IsA&lt;Mount&gt; + <span class="lifetime">&#39;static </span>{
     <span class="doccomment">/// Checks if `self` can be ejected.
     ///
     /// # Returns
     ///
     /// [`true`] if the `self` can be ejected.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_mount_can_eject&quot;</span>)]
-    </span><span class="kw">fn </span>can_eject(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool;
+    </span><span class="kw">fn </span>can_eject(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">unsafe </span>{ from_glib(ffi::g_mount_can_eject(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>)) }
+    }
 
     <span class="doccomment">/// Checks if `self` can be unmounted.
     ///
@@ -1031,7 +937,9 @@
     ///
     /// [`true`] if the `self` can be unmounted.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_mount_can_unmount&quot;</span>)]
-    </span><span class="kw">fn </span>can_unmount(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool;
+    </span><span class="kw">fn </span>can_unmount(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">unsafe </span>{ from_glib(ffi::g_mount_can_unmount(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>)) }
+    }
 
     <span class="doccomment">/// Ejects a mount. This is an asynchronous operation, and is
     /// finished by calling `g_mount_eject_with_operation_finish()` with the `self`
@@ -1047,320 +955,6 @@
     /// a `GAsyncReadyCallback`, or [`None`].
     </span><span class="attr">#[doc(alias = <span class="string">&quot;g_mount_eject_with_operation&quot;</span>)]
     </span><span class="kw">fn </span>eject_with_operation&lt;P: FnOnce(<span class="prelude-ty">Result</span>&lt;(), glib::Error&gt;) + <span class="lifetime">&#39;static</span>&gt;(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        flags: MountUnmountFlags,
-        mount_operation: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;MountOperation&gt;&gt;,
-        cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Cancellable&gt;&gt;,
-        callback: P,
-    );
-
-    <span class="kw">fn </span>eject_with_operation_future(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        flags: MountUnmountFlags,
-        mount_operation: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>(<span class="kw">impl </span>IsA&lt;MountOperation&gt; + Clone + <span class="lifetime">&#39;static</span>)&gt;,
-    ) -&gt; Pin&lt;Box_&lt;<span class="kw">dyn </span>std::future::Future&lt;Output = <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt;&gt; + <span class="lifetime">&#39;static</span>&gt;&gt;;
-
-    <span class="doccomment">/// Gets the default location of `self`. The default location of the given
-    /// `self` is a path that reflects the main entry point for the user (e.g.
-    /// the home directory, or the root of the volume).
-    ///
-    /// # Returns
-    ///
-    /// a [`File`][crate::File].
-    ///  The returned object should be unreffed with
-    ///  `g_object_unref()` when no longer needed.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_mount_get_default_location&quot;</span>)]
-    #[doc(alias = <span class="string">&quot;get_default_location&quot;</span>)]
-    </span><span class="kw">fn </span>default_location(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; File;
-
-    <span class="doccomment">/// Gets the drive for the `self`.
-    ///
-    /// This is a convenience method for getting the [`Volume`][crate::Volume] and then
-    /// using that object to get the [`Drive`][crate::Drive].
-    ///
-    /// # Returns
-    ///
-    /// a [`Drive`][crate::Drive] or [`None`] if `self` is not
-    ///  associated with a volume or a drive.
-    ///  The returned object should be unreffed with
-    ///  `g_object_unref()` when no longer needed.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_mount_get_drive&quot;</span>)]
-    #[doc(alias = <span class="string">&quot;get_drive&quot;</span>)]
-    </span><span class="kw">fn </span>drive(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;Drive&gt;;
-
-    <span class="doccomment">/// Gets the icon for `self`.
-    ///
-    /// # Returns
-    ///
-    /// a [`Icon`][crate::Icon].
-    ///  The returned object should be unreffed with
-    ///  `g_object_unref()` when no longer needed.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_mount_get_icon&quot;</span>)]
-    #[doc(alias = <span class="string">&quot;get_icon&quot;</span>)]
-    </span><span class="kw">fn </span>icon(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Icon;
-
-    <span class="doccomment">/// Gets the name of `self`.
-    ///
-    /// # Returns
-    ///
-    /// the name for the given `self`.
-    ///  The returned string should be freed with `g_free()`
-    ///  when no longer needed.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_mount_get_name&quot;</span>)]
-    #[doc(alias = <span class="string">&quot;get_name&quot;</span>)]
-    </span><span class="kw">fn </span>name(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; glib::GString;
-
-    <span class="doccomment">/// Gets the root directory on `self`.
-    ///
-    /// # Returns
-    ///
-    /// a [`File`][crate::File].
-    ///  The returned object should be unreffed with
-    ///  `g_object_unref()` when no longer needed.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_mount_get_root&quot;</span>)]
-    #[doc(alias = <span class="string">&quot;get_root&quot;</span>)]
-    </span><span class="kw">fn </span>root(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; File;
-
-    <span class="doccomment">/// Gets the sort key for `self`, if any.
-    ///
-    /// # Returns
-    ///
-    /// Sorting key for `self` or [`None`] if no such key is available.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_mount_get_sort_key&quot;</span>)]
-    #[doc(alias = <span class="string">&quot;get_sort_key&quot;</span>)]
-    </span><span class="kw">fn </span>sort_key(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;glib::GString&gt;;
-
-    <span class="doccomment">/// Gets the symbolic icon for `self`.
-    ///
-    /// # Returns
-    ///
-    /// a [`Icon`][crate::Icon].
-    ///  The returned object should be unreffed with
-    ///  `g_object_unref()` when no longer needed.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_mount_get_symbolic_icon&quot;</span>)]
-    #[doc(alias = <span class="string">&quot;get_symbolic_icon&quot;</span>)]
-    </span><span class="kw">fn </span>symbolic_icon(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Icon;
-
-    <span class="doccomment">/// Gets the UUID for the `self`. The reference is typically based on
-    /// the file system UUID for the mount in question and should be
-    /// considered an opaque string. Returns [`None`] if there is no UUID
-    /// available.
-    ///
-    /// # Returns
-    ///
-    /// the UUID for `self` or [`None`] if no UUID
-    ///  can be computed.
-    ///  The returned string should be freed with `g_free()`
-    ///  when no longer needed.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_mount_get_uuid&quot;</span>)]
-    #[doc(alias = <span class="string">&quot;get_uuid&quot;</span>)]
-    </span><span class="kw">fn </span>uuid(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;glib::GString&gt;;
-
-    <span class="doccomment">/// Gets the volume for the `self`.
-    ///
-    /// # Returns
-    ///
-    /// a [`Volume`][crate::Volume] or [`None`] if `self` is not
-    ///  associated with a volume.
-    ///  The returned object should be unreffed with
-    ///  `g_object_unref()` when no longer needed.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_mount_get_volume&quot;</span>)]
-    #[doc(alias = <span class="string">&quot;get_volume&quot;</span>)]
-    </span><span class="kw">fn </span>volume(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;Volume&gt;;
-
-    <span class="doccomment">/// Tries to guess the type of content stored on `self`. Returns one or
-    /// more textual identifiers of well-known content types (typically
-    /// prefixed with &quot;x-content/&quot;), e.g. x-content/image-dcf for camera
-    /// memory cards. See the
-    /// [shared-mime-info](http://www.freedesktop.org/wiki/Specifications/shared-mime-info-spec)
-    /// specification for more on x-content types.
-    ///
-    /// This is an asynchronous operation (see
-    /// [`guess_content_type_sync()`][Self::guess_content_type_sync()] for the synchronous version), and
-    /// is finished by calling `g_mount_guess_content_type_finish()` with the
-    /// `self` and [`AsyncResult`][crate::AsyncResult] data returned in the `callback`.
-    /// ## `force_rescan`
-    /// Whether to force a rescan of the content.
-    ///  Otherwise a cached result will be used if available
-    /// ## `cancellable`
-    /// optional [`Cancellable`][crate::Cancellable] object, [`None`] to ignore
-    /// ## `callback`
-    /// a `GAsyncReadyCallback`
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_mount_guess_content_type&quot;</span>)]
-    </span><span class="kw">fn </span>guess_content_type&lt;P: FnOnce(<span class="prelude-ty">Result</span>&lt;Vec&lt;glib::GString&gt;, glib::Error&gt;) + <span class="lifetime">&#39;static</span>&gt;(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        force_rescan: bool,
-        cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Cancellable&gt;&gt;,
-        callback: P,
-    );
-
-    <span class="kw">fn </span>guess_content_type_future(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        force_rescan: bool,
-    ) -&gt; Pin&lt;
-        Box_&lt;<span class="kw">dyn </span>std::future::Future&lt;Output = <span class="prelude-ty">Result</span>&lt;Vec&lt;glib::GString&gt;, glib::Error&gt;&gt; + <span class="lifetime">&#39;static</span>&gt;,
-    &gt;;
-
-    <span class="doccomment">/// Tries to guess the type of content stored on `self`. Returns one or
-    /// more textual identifiers of well-known content types (typically
-    /// prefixed with &quot;x-content/&quot;), e.g. x-content/image-dcf for camera
-    /// memory cards. See the
-    /// [shared-mime-info](http://www.freedesktop.org/wiki/Specifications/shared-mime-info-spec)
-    /// specification for more on x-content types.
-    ///
-    /// This is a synchronous operation and as such may block doing IO;
-    /// see [`guess_content_type()`][Self::guess_content_type()] for the asynchronous version.
-    /// ## `force_rescan`
-    /// Whether to force a rescan of the content.
-    ///  Otherwise a cached result will be used if available
-    /// ## `cancellable`
-    /// optional [`Cancellable`][crate::Cancellable] object, [`None`] to ignore
-    ///
-    /// # Returns
-    ///
-    /// a [`None`]-terminated array of content types or [`None`] on error.
-    ///  Caller should free this array with `g_strfreev()` when done with it.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_mount_guess_content_type_sync&quot;</span>)]
-    </span><span class="kw">fn </span>guess_content_type_sync(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        force_rescan: bool,
-        cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Cancellable&gt;&gt;,
-    ) -&gt; <span class="prelude-ty">Result</span>&lt;Vec&lt;glib::GString&gt;, glib::Error&gt;;
-
-    <span class="doccomment">/// Determines if `self` is shadowed. Applications or libraries should
-    /// avoid displaying `self` in the user interface if it is shadowed.
-    ///
-    /// A mount is said to be shadowed if there exists one or more user
-    /// visible objects (currently [`Mount`][crate::Mount] objects) with a root that is
-    /// inside the root of `self`.
-    ///
-    /// One application of shadow mounts is when exposing a single file
-    /// system that is used to address several logical volumes. In this
-    /// situation, a [`VolumeMonitor`][crate::VolumeMonitor] implementation would create two
-    /// [`Volume`][crate::Volume] objects (for example, one for the camera functionality of
-    /// the device and one for a SD card reader on the device) with
-    /// activation URIs `gphoto2://[usb:001,002]/store1/`
-    /// and `gphoto2://[usb:001,002]/store2/`. When the
-    /// underlying mount (with root
-    /// `gphoto2://[usb:001,002]/`) is mounted, said
-    /// [`VolumeMonitor`][crate::VolumeMonitor] implementation would create two [`Mount`][crate::Mount] objects
-    /// (each with their root matching the corresponding volume activation
-    /// root) that would shadow the original mount.
-    ///
-    /// The proxy monitor in GVfs 2.26 and later, automatically creates and
-    /// manage shadow mounts (and shadows the underlying mount) if the
-    /// activation root on a [`Volume`][crate::Volume] is set.
-    ///
-    /// # Returns
-    ///
-    /// [`true`] if `self` is shadowed.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_mount_is_shadowed&quot;</span>)]
-    </span><span class="kw">fn </span>is_shadowed(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool;
-
-    <span class="doccomment">/// Remounts a mount. This is an asynchronous operation, and is
-    /// finished by calling `g_mount_remount_finish()` with the `self`
-    /// and `GAsyncResults` data returned in the `callback`.
-    ///
-    /// Remounting is useful when some setting affecting the operation
-    /// of the volume has been changed, as these may need a remount to
-    /// take affect. While this is semantically equivalent with unmounting
-    /// and then remounting not all backends might need to actually be
-    /// unmounted.
-    /// ## `flags`
-    /// flags affecting the operation
-    /// ## `mount_operation`
-    /// a [`MountOperation`][crate::MountOperation] or [`None`] to avoid
-    ///  user interaction.
-    /// ## `cancellable`
-    /// optional [`Cancellable`][crate::Cancellable] object, [`None`] to ignore.
-    /// ## `callback`
-    /// a `GAsyncReadyCallback`, or [`None`].
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_mount_remount&quot;</span>)]
-    </span><span class="kw">fn </span>remount&lt;P: FnOnce(<span class="prelude-ty">Result</span>&lt;(), glib::Error&gt;) + <span class="lifetime">&#39;static</span>&gt;(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        flags: MountMountFlags,
-        mount_operation: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;MountOperation&gt;&gt;,
-        cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Cancellable&gt;&gt;,
-        callback: P,
-    );
-
-    <span class="kw">fn </span>remount_future(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        flags: MountMountFlags,
-        mount_operation: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>(<span class="kw">impl </span>IsA&lt;MountOperation&gt; + Clone + <span class="lifetime">&#39;static</span>)&gt;,
-    ) -&gt; Pin&lt;Box_&lt;<span class="kw">dyn </span>std::future::Future&lt;Output = <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt;&gt; + <span class="lifetime">&#39;static</span>&gt;&gt;;
-
-    <span class="doccomment">/// Increments the shadow count on `self`. Usually used by
-    /// [`VolumeMonitor`][crate::VolumeMonitor] implementations when creating a shadow mount for
-    /// `self`, see [`is_shadowed()`][Self::is_shadowed()] for more information. The caller
-    /// will need to emit the [`changed`][struct@crate::Mount#changed] signal on `self` manually.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_mount_shadow&quot;</span>)]
-    </span><span class="kw">fn </span>shadow(<span class="kw-2">&amp;</span><span class="self">self</span>);
-
-    <span class="doccomment">/// Unmounts a mount. This is an asynchronous operation, and is
-    /// finished by calling `g_mount_unmount_with_operation_finish()` with the `self`
-    /// and [`AsyncResult`][crate::AsyncResult] data returned in the `callback`.
-    /// ## `flags`
-    /// flags affecting the operation
-    /// ## `mount_operation`
-    /// a [`MountOperation`][crate::MountOperation] or [`None`] to avoid
-    ///  user interaction.
-    /// ## `cancellable`
-    /// optional [`Cancellable`][crate::Cancellable] object, [`None`] to ignore.
-    /// ## `callback`
-    /// a `GAsyncReadyCallback`, or [`None`].
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_mount_unmount_with_operation&quot;</span>)]
-    </span><span class="kw">fn </span>unmount_with_operation&lt;P: FnOnce(<span class="prelude-ty">Result</span>&lt;(), glib::Error&gt;) + <span class="lifetime">&#39;static</span>&gt;(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        flags: MountUnmountFlags,
-        mount_operation: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;MountOperation&gt;&gt;,
-        cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Cancellable&gt;&gt;,
-        callback: P,
-    );
-
-    <span class="kw">fn </span>unmount_with_operation_future(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        flags: MountUnmountFlags,
-        mount_operation: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>(<span class="kw">impl </span>IsA&lt;MountOperation&gt; + Clone + <span class="lifetime">&#39;static</span>)&gt;,
-    ) -&gt; Pin&lt;Box_&lt;<span class="kw">dyn </span>std::future::Future&lt;Output = <span class="prelude-ty">Result</span>&lt;(), glib::Error&gt;&gt; + <span class="lifetime">&#39;static</span>&gt;&gt;;
-
-    <span class="doccomment">/// Decrements the shadow count on `self`. Usually used by
-    /// [`VolumeMonitor`][crate::VolumeMonitor] implementations when destroying a shadow mount for
-    /// `self`, see [`is_shadowed()`][Self::is_shadowed()] for more information. The caller
-    /// will need to emit the [`changed`][struct@crate::Mount#changed] signal on `self` manually.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_mount_unshadow&quot;</span>)]
-    </span><span class="kw">fn </span>unshadow(<span class="kw-2">&amp;</span><span class="self">self</span>);
-
-    <span class="doccomment">/// Emitted when the mount has been changed.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;changed&quot;</span>)]
-    </span><span class="kw">fn </span>connect_changed&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId;
-
-    <span class="doccomment">/// This signal may be emitted when the [`Mount`][crate::Mount] is about to be
-    /// unmounted.
-    ///
-    /// This signal depends on the backend and is only emitted if
-    /// GIO was used to unmount.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;pre-unmount&quot;</span>)]
-    </span><span class="kw">fn </span>connect_pre_unmount&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId;
-
-    <span class="doccomment">/// This signal is emitted when the [`Mount`][crate::Mount] have been
-    /// unmounted. If the recipient is holding references to the
-    /// object they should release them so the object can be
-    /// finalized.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;unmounted&quot;</span>)]
-    </span><span class="kw">fn </span>connect_unmounted&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId;
-}
-
-<span class="kw">impl</span>&lt;O: IsA&lt;Mount&gt;&gt; MountExt <span class="kw">for </span>O {
-    <span class="kw">fn </span>can_eject(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
-        <span class="kw">unsafe </span>{ from_glib(ffi::g_mount_can_eject(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>)) }
-    }
-
-    <span class="kw">fn </span>can_unmount(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
-        <span class="kw">unsafe </span>{ from_glib(ffi::g_mount_can_unmount(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>)) }
-    }
-
-    <span class="kw">fn </span>eject_with_operation&lt;P: FnOnce(<span class="prelude-ty">Result</span>&lt;(), glib::Error&gt;) + <span class="lifetime">&#39;static</span>&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         flags: MountUnmountFlags,
         mount_operation: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;MountOperation&gt;&gt;,
@@ -1433,7 +1027,18 @@
         ))
     }
 
-    <span class="kw">fn </span>default_location(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; File {
+    <span class="doccomment">/// Gets the default location of `self`. The default location of the given
+    /// `self` is a path that reflects the main entry point for the user (e.g.
+    /// the home directory, or the root of the volume).
+    ///
+    /// # Returns
+    ///
+    /// a [`File`][crate::File].
+    ///  The returned object should be unreffed with
+    ///  `g_object_unref()` when no longer needed.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_mount_get_default_location&quot;</span>)]
+    #[doc(alias = <span class="string">&quot;get_default_location&quot;</span>)]
+    </span><span class="kw">fn </span>default_location(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; File {
         <span class="kw">unsafe </span>{
             from_glib_full(ffi::g_mount_get_default_location(
                 <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
@@ -1441,27 +1046,83 @@
         }
     }
 
-    <span class="kw">fn </span>drive(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;Drive&gt; {
+    <span class="doccomment">/// Gets the drive for the `self`.
+    ///
+    /// This is a convenience method for getting the [`Volume`][crate::Volume] and then
+    /// using that object to get the [`Drive`][crate::Drive].
+    ///
+    /// # Returns
+    ///
+    /// a [`Drive`][crate::Drive] or [`None`] if `self` is not
+    ///  associated with a volume or a drive.
+    ///  The returned object should be unreffed with
+    ///  `g_object_unref()` when no longer needed.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_mount_get_drive&quot;</span>)]
+    #[doc(alias = <span class="string">&quot;get_drive&quot;</span>)]
+    </span><span class="kw">fn </span>drive(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;Drive&gt; {
         <span class="kw">unsafe </span>{ from_glib_full(ffi::g_mount_get_drive(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>)) }
     }
 
-    <span class="kw">fn </span>icon(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Icon {
+    <span class="doccomment">/// Gets the icon for `self`.
+    ///
+    /// # Returns
+    ///
+    /// a [`Icon`][crate::Icon].
+    ///  The returned object should be unreffed with
+    ///  `g_object_unref()` when no longer needed.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_mount_get_icon&quot;</span>)]
+    #[doc(alias = <span class="string">&quot;get_icon&quot;</span>)]
+    </span><span class="kw">fn </span>icon(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Icon {
         <span class="kw">unsafe </span>{ from_glib_full(ffi::g_mount_get_icon(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>)) }
     }
 
-    <span class="kw">fn </span>name(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; glib::GString {
+    <span class="doccomment">/// Gets the name of `self`.
+    ///
+    /// # Returns
+    ///
+    /// the name for the given `self`.
+    ///  The returned string should be freed with `g_free()`
+    ///  when no longer needed.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_mount_get_name&quot;</span>)]
+    #[doc(alias = <span class="string">&quot;get_name&quot;</span>)]
+    </span><span class="kw">fn </span>name(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; glib::GString {
         <span class="kw">unsafe </span>{ from_glib_full(ffi::g_mount_get_name(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>)) }
     }
 
-    <span class="kw">fn </span>root(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; File {
+    <span class="doccomment">/// Gets the root directory on `self`.
+    ///
+    /// # Returns
+    ///
+    /// a [`File`][crate::File].
+    ///  The returned object should be unreffed with
+    ///  `g_object_unref()` when no longer needed.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_mount_get_root&quot;</span>)]
+    #[doc(alias = <span class="string">&quot;get_root&quot;</span>)]
+    </span><span class="kw">fn </span>root(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; File {
         <span class="kw">unsafe </span>{ from_glib_full(ffi::g_mount_get_root(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>)) }
     }
 
-    <span class="kw">fn </span>sort_key(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;glib::GString&gt; {
+    <span class="doccomment">/// Gets the sort key for `self`, if any.
+    ///
+    /// # Returns
+    ///
+    /// Sorting key for `self` or [`None`] if no such key is available.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_mount_get_sort_key&quot;</span>)]
+    #[doc(alias = <span class="string">&quot;get_sort_key&quot;</span>)]
+    </span><span class="kw">fn </span>sort_key(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;glib::GString&gt; {
         <span class="kw">unsafe </span>{ from_glib_none(ffi::g_mount_get_sort_key(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>)) }
     }
 
-    <span class="kw">fn </span>symbolic_icon(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Icon {
+    <span class="doccomment">/// Gets the symbolic icon for `self`.
+    ///
+    /// # Returns
+    ///
+    /// a [`Icon`][crate::Icon].
+    ///  The returned object should be unreffed with
+    ///  `g_object_unref()` when no longer needed.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_mount_get_symbolic_icon&quot;</span>)]
+    #[doc(alias = <span class="string">&quot;get_symbolic_icon&quot;</span>)]
+    </span><span class="kw">fn </span>symbolic_icon(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Icon {
         <span class="kw">unsafe </span>{
             from_glib_full(ffi::g_mount_get_symbolic_icon(
                 <span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>,
@@ -1469,15 +1130,57 @@
         }
     }
 
-    <span class="kw">fn </span>uuid(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;glib::GString&gt; {
+    <span class="doccomment">/// Gets the UUID for the `self`. The reference is typically based on
+    /// the file system UUID for the mount in question and should be
+    /// considered an opaque string. Returns [`None`] if there is no UUID
+    /// available.
+    ///
+    /// # Returns
+    ///
+    /// the UUID for `self` or [`None`] if no UUID
+    ///  can be computed.
+    ///  The returned string should be freed with `g_free()`
+    ///  when no longer needed.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_mount_get_uuid&quot;</span>)]
+    #[doc(alias = <span class="string">&quot;get_uuid&quot;</span>)]
+    </span><span class="kw">fn </span>uuid(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;glib::GString&gt; {
         <span class="kw">unsafe </span>{ from_glib_full(ffi::g_mount_get_uuid(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>)) }
     }
 
-    <span class="kw">fn </span>volume(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;Volume&gt; {
+    <span class="doccomment">/// Gets the volume for the `self`.
+    ///
+    /// # Returns
+    ///
+    /// a [`Volume`][crate::Volume] or [`None`] if `self` is not
+    ///  associated with a volume.
+    ///  The returned object should be unreffed with
+    ///  `g_object_unref()` when no longer needed.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_mount_get_volume&quot;</span>)]
+    #[doc(alias = <span class="string">&quot;get_volume&quot;</span>)]
+    </span><span class="kw">fn </span>volume(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;Volume&gt; {
         <span class="kw">unsafe </span>{ from_glib_full(ffi::g_mount_get_volume(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>)) }
     }
 
-    <span class="kw">fn </span>guess_content_type&lt;P: FnOnce(<span class="prelude-ty">Result</span>&lt;Vec&lt;glib::GString&gt;, glib::Error&gt;) + <span class="lifetime">&#39;static</span>&gt;(
+    <span class="doccomment">/// Tries to guess the type of content stored on `self`. Returns one or
+    /// more textual identifiers of well-known content types (typically
+    /// prefixed with &quot;x-content/&quot;), e.g. x-content/image-dcf for camera
+    /// memory cards. See the
+    /// [shared-mime-info](http://www.freedesktop.org/wiki/Specifications/shared-mime-info-spec)
+    /// specification for more on x-content types.
+    ///
+    /// This is an asynchronous operation (see
+    /// [`guess_content_type_sync()`][Self::guess_content_type_sync()] for the synchronous version), and
+    /// is finished by calling `g_mount_guess_content_type_finish()` with the
+    /// `self` and [`AsyncResult`][crate::AsyncResult] data returned in the `callback`.
+    /// ## `force_rescan`
+    /// Whether to force a rescan of the content.
+    ///  Otherwise a cached result will be used if available
+    /// ## `cancellable`
+    /// optional [`Cancellable`][crate::Cancellable] object, [`None`] to ignore
+    /// ## `callback`
+    /// a `GAsyncReadyCallback`
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_mount_guess_content_type&quot;</span>)]
+    </span><span class="kw">fn </span>guess_content_type&lt;P: FnOnce(<span class="prelude-ty">Result</span>&lt;Vec&lt;glib::GString&gt;, glib::Error&gt;) + <span class="lifetime">&#39;static</span>&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         force_rescan: bool,
         cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Cancellable&gt;&gt;,
@@ -1543,7 +1246,27 @@
         ))
     }
 
-    <span class="kw">fn </span>guess_content_type_sync(
+    <span class="doccomment">/// Tries to guess the type of content stored on `self`. Returns one or
+    /// more textual identifiers of well-known content types (typically
+    /// prefixed with &quot;x-content/&quot;), e.g. x-content/image-dcf for camera
+    /// memory cards. See the
+    /// [shared-mime-info](http://www.freedesktop.org/wiki/Specifications/shared-mime-info-spec)
+    /// specification for more on x-content types.
+    ///
+    /// This is a synchronous operation and as such may block doing IO;
+    /// see [`guess_content_type()`][Self::guess_content_type()] for the asynchronous version.
+    /// ## `force_rescan`
+    /// Whether to force a rescan of the content.
+    ///  Otherwise a cached result will be used if available
+    /// ## `cancellable`
+    /// optional [`Cancellable`][crate::Cancellable] object, [`None`] to ignore
+    ///
+    /// # Returns
+    ///
+    /// a [`None`]-terminated array of content types or [`None`] on error.
+    ///  Caller should free this array with `g_strfreev()` when done with it.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_mount_guess_content_type_sync&quot;</span>)]
+    </span><span class="kw">fn </span>guess_content_type_sync(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         force_rescan: bool,
         cancellable: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;Cancellable&gt;&gt;,
@@ -1564,11 +1287,58 @@
         }
     }
 
-    <span class="kw">fn </span>is_shadowed(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+    <span class="doccomment">/// Determines if `self` is shadowed. Applications or libraries should
+    /// avoid displaying `self` in the user interface if it is shadowed.
+    ///
+    /// A mount is said to be shadowed if there exists one or more user
+    /// visible objects (currently [`Mount`][crate::Mount] objects) with a root that is
+    /// inside the root of `self`.
+    ///
+    /// One application of shadow mounts is when exposing a single file
+    /// system that is used to address several logical volumes. In this
+    /// situation, a [`VolumeMonitor`][crate::VolumeMonitor] implementation would create two
+    /// [`Volume`][crate::Volume] objects (for example, one for the camera functionality of
+    /// the device and one for a SD card reader on the device) with
+    /// activation URIs `gphoto2://[usb:001,002]/store1/`
+    /// and `gphoto2://[usb:001,002]/store2/`. When the
+    /// underlying mount (with root
+    /// `gphoto2://[usb:001,002]/`) is mounted, said
+    /// [`VolumeMonitor`][crate::VolumeMonitor] implementation would create two [`Mount`][crate::Mount] objects
+    /// (each with their root matching the corresponding volume activation
+    /// root) that would shadow the original mount.
+    ///
+    /// The proxy monitor in GVfs 2.26 and later, automatically creates and
+    /// manage shadow mounts (and shadows the underlying mount) if the
+    /// activation root on a [`Volume`][crate::Volume] is set.
+    ///
+    /// # Returns
+    ///
+    /// [`true`] if `self` is shadowed.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_mount_is_shadowed&quot;</span>)]
+    </span><span class="kw">fn </span>is_shadowed(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
         <span class="kw">unsafe </span>{ from_glib(ffi::g_mount_is_shadowed(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>)) }
     }
 
-    <span class="kw">fn </span>remount&lt;P: FnOnce(<span class="prelude-ty">Result</span>&lt;(), glib::Error&gt;) + <span class="lifetime">&#39;static</span>&gt;(
+    <span class="doccomment">/// Remounts a mount. This is an asynchronous operation, and is
+    /// finished by calling `g_mount_remount_finish()` with the `self`
+    /// and `GAsyncResults` data returned in the `callback`.
+    ///
+    /// Remounting is useful when some setting affecting the operation
+    /// of the volume has been changed, as these may need a remount to
+    /// take affect. While this is semantically equivalent with unmounting
+    /// and then remounting not all backends might need to actually be
+    /// unmounted.
+    /// ## `flags`
+    /// flags affecting the operation
+    /// ## `mount_operation`
+    /// a [`MountOperation`][crate::MountOperation] or [`None`] to avoid
+    ///  user interaction.
+    /// ## `cancellable`
+    /// optional [`Cancellable`][crate::Cancellable] object, [`None`] to ignore.
+    /// ## `callback`
+    /// a `GAsyncReadyCallback`, or [`None`].
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_mount_remount&quot;</span>)]
+    </span><span class="kw">fn </span>remount&lt;P: FnOnce(<span class="prelude-ty">Result</span>&lt;(), glib::Error&gt;) + <span class="lifetime">&#39;static</span>&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         flags: MountMountFlags,
         mount_operation: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;MountOperation&gt;&gt;,
@@ -1638,13 +1408,31 @@
         ))
     }
 
-    <span class="kw">fn </span>shadow(<span class="kw-2">&amp;</span><span class="self">self</span>) {
+    <span class="doccomment">/// Increments the shadow count on `self`. Usually used by
+    /// [`VolumeMonitor`][crate::VolumeMonitor] implementations when creating a shadow mount for
+    /// `self`, see [`is_shadowed()`][Self::is_shadowed()] for more information. The caller
+    /// will need to emit the [`changed`][struct@crate::Mount#changed] signal on `self` manually.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_mount_shadow&quot;</span>)]
+    </span><span class="kw">fn </span>shadow(<span class="kw-2">&amp;</span><span class="self">self</span>) {
         <span class="kw">unsafe </span>{
             ffi::g_mount_shadow(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>);
         }
     }
 
-    <span class="kw">fn </span>unmount_with_operation&lt;P: FnOnce(<span class="prelude-ty">Result</span>&lt;(), glib::Error&gt;) + <span class="lifetime">&#39;static</span>&gt;(
+    <span class="doccomment">/// Unmounts a mount. This is an asynchronous operation, and is
+    /// finished by calling `g_mount_unmount_with_operation_finish()` with the `self`
+    /// and [`AsyncResult`][crate::AsyncResult] data returned in the `callback`.
+    /// ## `flags`
+    /// flags affecting the operation
+    /// ## `mount_operation`
+    /// a [`MountOperation`][crate::MountOperation] or [`None`] to avoid
+    ///  user interaction.
+    /// ## `cancellable`
+    /// optional [`Cancellable`][crate::Cancellable] object, [`None`] to ignore.
+    /// ## `callback`
+    /// a `GAsyncReadyCallback`, or [`None`].
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_mount_unmount_with_operation&quot;</span>)]
+    </span><span class="kw">fn </span>unmount_with_operation&lt;P: FnOnce(<span class="prelude-ty">Result</span>&lt;(), glib::Error&gt;) + <span class="lifetime">&#39;static</span>&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         flags: MountUnmountFlags,
         mount_operation: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;MountOperation&gt;&gt;,
@@ -1720,13 +1508,20 @@
         ))
     }
 
-    <span class="kw">fn </span>unshadow(<span class="kw-2">&amp;</span><span class="self">self</span>) {
+    <span class="doccomment">/// Decrements the shadow count on `self`. Usually used by
+    /// [`VolumeMonitor`][crate::VolumeMonitor] implementations when destroying a shadow mount for
+    /// `self`, see [`is_shadowed()`][Self::is_shadowed()] for more information. The caller
+    /// will need to emit the [`changed`][struct@crate::Mount#changed] signal on `self` manually.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_mount_unshadow&quot;</span>)]
+    </span><span class="kw">fn </span>unshadow(<span class="kw-2">&amp;</span><span class="self">self</span>) {
         <span class="kw">unsafe </span>{
             ffi::g_mount_unshadow(<span class="self">self</span>.as_ref().to_glib_none().<span class="number">0</span>);
         }
     }
 
-    <span class="kw">fn </span>connect_changed&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
+    <span class="doccomment">/// Emitted when the mount has been changed.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;changed&quot;</span>)]
+    </span><span class="kw">fn </span>connect_changed&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
         <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>changed_trampoline&lt;P: IsA&lt;Mount&gt;, F: Fn(<span class="kw-2">&amp;</span>P) + <span class="lifetime">&#39;static</span>&gt;(
             this: <span class="kw-2">*mut </span>ffi::GMount,
             f: glib::ffi::gpointer,
@@ -1747,7 +1542,13 @@
         }
     }
 
-    <span class="kw">fn </span>connect_pre_unmount&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
+    <span class="doccomment">/// This signal may be emitted when the [`Mount`][crate::Mount] is about to be
+    /// unmounted.
+    ///
+    /// This signal depends on the backend and is only emitted if
+    /// GIO was used to unmount.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;pre-unmount&quot;</span>)]
+    </span><span class="kw">fn </span>connect_pre_unmount&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
         <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>pre_unmount_trampoline&lt;P: IsA&lt;Mount&gt;, F: Fn(<span class="kw-2">&amp;</span>P) + <span class="lifetime">&#39;static</span>&gt;(
             this: <span class="kw-2">*mut </span>ffi::GMount,
             f: glib::ffi::gpointer,
@@ -1768,7 +1569,12 @@
         }
     }
 
-    <span class="kw">fn </span>connect_unmounted&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
+    <span class="doccomment">/// This signal is emitted when the [`Mount`][crate::Mount] have been
+    /// unmounted. If the recipient is holding references to the
+    /// object they should release them so the object can be
+    /// finalized.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;unmounted&quot;</span>)]
+    </span><span class="kw">fn </span>connect_unmounted&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>) + <span class="lifetime">&#39;static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, f: F) -&gt; SignalHandlerId {
         <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>unmounted_trampoline&lt;P: IsA&lt;Mount&gt;, F: Fn(<span class="kw-2">&amp;</span>P) + <span class="lifetime">&#39;static</span>&gt;(
             this: <span class="kw-2">*mut </span>ffi::GMount,
             f: glib::ffi::gpointer,
@@ -1789,6 +1595,8 @@
         }
     }
 }
+
+<span class="kw">impl</span>&lt;O: IsA&lt;Mount&gt;&gt; MountExt <span class="kw">for </span>O {}
 
 <span class="kw">impl </span>fmt::Display <span class="kw">for </span>Mount {
     <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter) -&gt; fmt::Result {

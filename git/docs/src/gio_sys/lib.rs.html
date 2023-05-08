@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gio/sys/src/lib.rs`."><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gio_sys" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (a77c55248 2023-05-06)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gio/sys/src/lib.rs`."><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gio_sys" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (c4190f2d3 2023-05-07)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -26375,7 +26375,7 @@
     <span class="comment">//=========================================================================
     // GMemoryMonitorWarningLevel
     //=========================================================================
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_64&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v2_64&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_64&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_memory_monitor_warning_level_get_type() -&gt; GType;
 
@@ -26402,7 +26402,7 @@
     <span class="comment">//=========================================================================
     // GPollableReturn
     //=========================================================================
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_pollable_return_get_type() -&gt; GType;
 
@@ -26461,17 +26461,17 @@
     <span class="comment">//=========================================================================
     // GTlsChannelBindingError
     //=========================================================================
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_66&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v2_66&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_66&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_tls_channel_binding_error_get_type() -&gt; GType;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_66&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_66&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_66&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_tls_channel_binding_error_quark() -&gt; glib::GQuark;
 
     <span class="comment">//=========================================================================
     // GTlsChannelBindingType
     //=========================================================================
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_66&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v2_66&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_66&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_tls_channel_binding_type_get_type() -&gt; GType;
 
@@ -26494,7 +26494,7 @@
     <span class="comment">//=========================================================================
     // GTlsProtocolVersion
     //=========================================================================
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v2_70&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_tls_protocol_version_get_type() -&gt; GType;
 
@@ -26661,7 +26661,7 @@
     <span class="comment">//=========================================================================
     // GResolverNameLookupFlags
     //=========================================================================
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_resolver_name_lookup_flags_get_type() -&gt; GType;
 
@@ -27061,7 +27061,7 @@
     <span class="kw">pub fn </span>g_unix_mount_point_is_loopback(mount_point: <span class="kw-2">*mut </span>GUnixMountPoint) -&gt; gboolean;
     <span class="kw">pub fn </span>g_unix_mount_point_is_readonly(mount_point: <span class="kw-2">*mut </span>GUnixMountPoint) -&gt; gboolean;
     <span class="kw">pub fn </span>g_unix_mount_point_is_user_mountable(mount_point: <span class="kw-2">*mut </span>GUnixMountPoint) -&gt; gboolean;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_66&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_66&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_66&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_unix_mount_point_at(
         mount_path: <span class="kw-2">*const </span>c_char,
@@ -27640,7 +27640,7 @@
         connection: <span class="kw-2">*mut </span>GDBusConnection,
     ) -&gt; GDBusCapabilityFlags;
     <span class="kw">pub fn </span>g_dbus_connection_get_exit_on_close(connection: <span class="kw-2">*mut </span>GDBusConnection) -&gt; gboolean;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_dbus_connection_get_flags(connection: <span class="kw-2">*mut </span>GDBusConnection) -&gt; GDBusConnectionFlags;
     <span class="kw">pub fn </span>g_dbus_connection_get_guid(connection: <span class="kw-2">*mut </span>GDBusConnection) -&gt; <span class="kw-2">*const </span>c_char;
@@ -28455,17 +28455,17 @@
     <span class="comment">//=========================================================================
     // GDebugControllerDBus
     //=========================================================================
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_debug_controller_dbus_get_type() -&gt; GType;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_debug_controller_dbus_new(
         connection: <span class="kw-2">*mut </span>GDBusConnection,
         cancellable: <span class="kw-2">*mut </span>GCancellable,
         error: <span class="kw-2">*mut *mut </span>glib::GError,
     ) -&gt; <span class="kw-2">*mut </span>GDebugControllerDBus;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_debug_controller_dbus_stop(self_: <span class="kw-2">*mut </span>GDebugControllerDBus);
 
@@ -28508,7 +28508,7 @@
         info: <span class="kw-2">*mut </span>GDesktopAppInfo,
         key: <span class="kw-2">*const </span>c_char,
     ) -&gt; <span class="kw-2">*mut </span>c_char;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_desktop_app_info_get_string_list(
         info: <span class="kw-2">*mut </span>GDesktopAppInfo,
@@ -28532,7 +28532,7 @@
         pid_callback_data: gpointer,
         error: <span class="kw-2">*mut *mut </span>glib::GError,
     ) -&gt; gboolean;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_58&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_58&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_58&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_desktop_app_info_launch_uris_as_manager_with_fds(
         appinfo: <span class="kw-2">*mut </span>GDesktopAppInfo,
@@ -28664,7 +28664,7 @@
     <span class="kw">pub fn </span>g_file_info_clear_status(info: <span class="kw-2">*mut </span>GFileInfo);
     <span class="kw">pub fn </span>g_file_info_copy_into(src_info: <span class="kw-2">*mut </span>GFileInfo, dest_info: <span class="kw-2">*mut </span>GFileInfo);
     <span class="kw">pub fn </span>g_file_info_dup(other: <span class="kw-2">*mut </span>GFileInfo) -&gt; <span class="kw-2">*mut </span>GFileInfo;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_70&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_file_info_get_access_date_time(info: <span class="kw-2">*mut </span>GFileInfo) -&gt; <span class="kw-2">*mut </span>glib::GDateTime;
     <span class="kw">pub fn </span>g_file_info_get_attribute_as_string(
@@ -28711,7 +28711,7 @@
     <span class="kw">pub fn </span>g_file_info_get_attribute_uint32(info: <span class="kw-2">*mut </span>GFileInfo, attribute: <span class="kw-2">*const </span>c_char) -&gt; u32;
     <span class="kw">pub fn </span>g_file_info_get_attribute_uint64(info: <span class="kw-2">*mut </span>GFileInfo, attribute: <span class="kw-2">*const </span>c_char) -&gt; u64;
     <span class="kw">pub fn </span>g_file_info_get_content_type(info: <span class="kw-2">*mut </span>GFileInfo) -&gt; <span class="kw-2">*const </span>c_char;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_70&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_file_info_get_creation_date_time(info: <span class="kw-2">*mut </span>GFileInfo) -&gt; <span class="kw-2">*mut </span>glib::GDateTime;
     <span class="kw">pub fn </span>g_file_info_get_deletion_date(info: <span class="kw-2">*mut </span>GFileInfo) -&gt; <span class="kw-2">*mut </span>glib::GDateTime;
@@ -28723,7 +28723,7 @@
     <span class="kw">pub fn </span>g_file_info_get_is_backup(info: <span class="kw-2">*mut </span>GFileInfo) -&gt; gboolean;
     <span class="kw">pub fn </span>g_file_info_get_is_hidden(info: <span class="kw-2">*mut </span>GFileInfo) -&gt; gboolean;
     <span class="kw">pub fn </span>g_file_info_get_is_symlink(info: <span class="kw-2">*mut </span>GFileInfo) -&gt; gboolean;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_62&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_62&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_62&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_file_info_get_modification_date_time(info: <span class="kw-2">*mut </span>GFileInfo) -&gt; <span class="kw-2">*mut </span>glib::GDateTime;
     <span class="kw">pub fn </span>g_file_info_get_modification_time(info: <span class="kw-2">*mut </span>GFileInfo, result: <span class="kw-2">*mut </span>glib::GTimeVal);
@@ -28739,7 +28739,7 @@
         name_space: <span class="kw-2">*const </span>c_char,
     ) -&gt; <span class="kw-2">*mut *mut </span>c_char;
     <span class="kw">pub fn </span>g_file_info_remove_attribute(info: <span class="kw-2">*mut </span>GFileInfo, attribute: <span class="kw-2">*const </span>c_char);
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_70&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_file_info_set_access_date_time(info: <span class="kw-2">*mut </span>GFileInfo, atime: <span class="kw-2">*mut </span>glib::GDateTime);
     <span class="kw">pub fn </span>g_file_info_set_attribute(
@@ -28800,7 +28800,7 @@
         attr_value: u64,
     );
     <span class="kw">pub fn </span>g_file_info_set_content_type(info: <span class="kw-2">*mut </span>GFileInfo, content_type: <span class="kw-2">*const </span>c_char);
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_70&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_file_info_set_creation_date_time(
         info: <span class="kw-2">*mut </span>GFileInfo,
@@ -28812,7 +28812,7 @@
     <span class="kw">pub fn </span>g_file_info_set_icon(info: <span class="kw-2">*mut </span>GFileInfo, icon: <span class="kw-2">*mut </span>GIcon);
     <span class="kw">pub fn </span>g_file_info_set_is_hidden(info: <span class="kw-2">*mut </span>GFileInfo, is_hidden: gboolean);
     <span class="kw">pub fn </span>g_file_info_set_is_symlink(info: <span class="kw-2">*mut </span>GFileInfo, is_symlink: gboolean);
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_62&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_62&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_62&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_file_info_set_modification_date_time(
         info: <span class="kw-2">*mut </span>GFileInfo,
@@ -29177,14 +29177,14 @@
     </span><span class="kw">pub fn </span>g_list_store_get_type() -&gt; GType;
     <span class="kw">pub fn </span>g_list_store_new(item_type: GType) -&gt; <span class="kw-2">*mut </span>GListStore;
     <span class="kw">pub fn </span>g_list_store_append(store: <span class="kw-2">*mut </span>GListStore, item: <span class="kw-2">*mut </span>gobject::GObject);
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_64&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_64&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_64&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_list_store_find(
         store: <span class="kw-2">*mut </span>GListStore,
         item: <span class="kw-2">*mut </span>gobject::GObject,
         position: <span class="kw-2">*mut </span>c_uint,
     ) -&gt; gboolean;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_64&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_64&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_64&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_list_store_find_with_equal_func(
         store: <span class="kw-2">*mut </span>GListStore,
@@ -29192,7 +29192,7 @@
         equal_func: glib::GEqualFunc,
         position: <span class="kw-2">*mut </span>c_uint,
     ) -&gt; gboolean;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_74&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_74&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_74&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_list_store_find_with_equal_func_full(
         store: <span class="kw-2">*mut </span>GListStore,
@@ -29439,15 +29439,15 @@
     <span class="kw">pub fn </span>g_mount_operation_get_anonymous(op: <span class="kw-2">*mut </span>GMountOperation) -&gt; gboolean;
     <span class="kw">pub fn </span>g_mount_operation_get_choice(op: <span class="kw-2">*mut </span>GMountOperation) -&gt; c_int;
     <span class="kw">pub fn </span>g_mount_operation_get_domain(op: <span class="kw-2">*mut </span>GMountOperation) -&gt; <span class="kw-2">*const </span>c_char;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_58&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_58&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_58&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_mount_operation_get_is_tcrypt_hidden_volume(op: <span class="kw-2">*mut </span>GMountOperation) -&gt; gboolean;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_58&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_58&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_58&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_mount_operation_get_is_tcrypt_system_volume(op: <span class="kw-2">*mut </span>GMountOperation) -&gt; gboolean;
     <span class="kw">pub fn </span>g_mount_operation_get_password(op: <span class="kw-2">*mut </span>GMountOperation) -&gt; <span class="kw-2">*const </span>c_char;
     <span class="kw">pub fn </span>g_mount_operation_get_password_save(op: <span class="kw-2">*mut </span>GMountOperation) -&gt; GPasswordSave;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_58&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_58&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_58&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_mount_operation_get_pim(op: <span class="kw-2">*mut </span>GMountOperation) -&gt; c_uint;
     <span class="kw">pub fn </span>g_mount_operation_get_username(op: <span class="kw-2">*mut </span>GMountOperation) -&gt; <span class="kw-2">*const </span>c_char;
@@ -29455,13 +29455,13 @@
     <span class="kw">pub fn </span>g_mount_operation_set_anonymous(op: <span class="kw-2">*mut </span>GMountOperation, anonymous: gboolean);
     <span class="kw">pub fn </span>g_mount_operation_set_choice(op: <span class="kw-2">*mut </span>GMountOperation, choice: c_int);
     <span class="kw">pub fn </span>g_mount_operation_set_domain(op: <span class="kw-2">*mut </span>GMountOperation, domain: <span class="kw-2">*const </span>c_char);
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_58&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_58&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_58&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_mount_operation_set_is_tcrypt_hidden_volume(
         op: <span class="kw-2">*mut </span>GMountOperation,
         hidden_volume: gboolean,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_58&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_58&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_58&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_mount_operation_set_is_tcrypt_system_volume(
         op: <span class="kw-2">*mut </span>GMountOperation,
@@ -29469,7 +29469,7 @@
     );
     <span class="kw">pub fn </span>g_mount_operation_set_password(op: <span class="kw-2">*mut </span>GMountOperation, password: <span class="kw-2">*const </span>c_char);
     <span class="kw">pub fn </span>g_mount_operation_set_password_save(op: <span class="kw-2">*mut </span>GMountOperation, save: GPasswordSave);
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_58&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_58&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_58&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_mount_operation_set_pim(op: <span class="kw-2">*mut </span>GMountOperation, pim: c_uint);
     <span class="kw">pub fn </span>g_mount_operation_set_username(op: <span class="kw-2">*mut </span>GMountOperation, username: <span class="kw-2">*const </span>c_char);
@@ -29544,7 +29544,7 @@
         target: <span class="kw-2">*mut </span>glib::GVariant,
     );
     <span class="kw">pub fn </span>g_notification_set_body(notification: <span class="kw-2">*mut </span>GNotification, body: <span class="kw-2">*const </span>c_char);
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_70&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_notification_set_category(notification: <span class="kw-2">*mut </span>GNotification, category: <span class="kw-2">*const </span>c_char);
     <span class="kw">pub fn </span>g_notification_set_default_action(
@@ -29709,7 +29709,7 @@
         result: <span class="kw-2">*mut </span>GAsyncResult,
         error: <span class="kw-2">*mut *mut </span>glib::GError,
     ) -&gt; ssize_t;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_output_stream_writev(
         stream: <span class="kw-2">*mut </span>GOutputStream,
@@ -29719,7 +29719,7 @@
         cancellable: <span class="kw-2">*mut </span>GCancellable,
         error: <span class="kw-2">*mut *mut </span>glib::GError,
     ) -&gt; gboolean;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_output_stream_writev_all(
         stream: <span class="kw-2">*mut </span>GOutputStream,
@@ -29729,7 +29729,7 @@
         cancellable: <span class="kw-2">*mut </span>GCancellable,
         error: <span class="kw-2">*mut *mut </span>glib::GError,
     ) -&gt; gboolean;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_output_stream_writev_all_async(
         stream: <span class="kw-2">*mut </span>GOutputStream,
@@ -29740,7 +29740,7 @@
         callback: GAsyncReadyCallback,
         user_data: gpointer,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_output_stream_writev_all_finish(
         stream: <span class="kw-2">*mut </span>GOutputStream,
@@ -29748,7 +29748,7 @@
         bytes_written: <span class="kw-2">*mut </span>size_t,
         error: <span class="kw-2">*mut *mut </span>glib::GError,
     ) -&gt; gboolean;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_output_stream_writev_async(
         stream: <span class="kw-2">*mut </span>GOutputStream,
@@ -29759,7 +29759,7 @@
         callback: GAsyncReadyCallback,
         user_data: gpointer,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_output_stream_writev_finish(
         stream: <span class="kw-2">*mut </span>GOutputStream,
@@ -29893,7 +29893,7 @@
         result: <span class="kw-2">*mut </span>GAsyncResult,
         error: <span class="kw-2">*mut *mut </span>glib::GError,
     ) -&gt; <span class="kw-2">*mut </span>glib::GList;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_resolver_lookup_by_name_with_flags(
         resolver: <span class="kw-2">*mut </span>GResolver,
@@ -29902,7 +29902,7 @@
         cancellable: <span class="kw-2">*mut </span>GCancellable,
         error: <span class="kw-2">*mut *mut </span>glib::GError,
     ) -&gt; <span class="kw-2">*mut </span>glib::GList;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_resolver_lookup_by_name_with_flags_async(
         resolver: <span class="kw-2">*mut </span>GResolver,
@@ -29912,7 +29912,7 @@
         callback: GAsyncReadyCallback,
         user_data: gpointer,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_resolver_lookup_by_name_with_flags_finish(
         resolver: <span class="kw-2">*mut </span>GResolver,
@@ -30512,7 +30512,7 @@
         cancellable: <span class="kw-2">*mut </span>GCancellable,
         error: <span class="kw-2">*mut *mut </span>glib::GError,
     ) -&gt; ssize_t;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_socket_send_message_with_timeout(
         socket: <span class="kw-2">*mut </span>GSocket,
@@ -30973,16 +30973,16 @@
     //=========================================================================
     </span><span class="kw">pub fn </span>g_subprocess_launcher_get_type() -&gt; GType;
     <span class="kw">pub fn </span>g_subprocess_launcher_new(flags: GSubprocessFlags) -&gt; <span class="kw-2">*mut </span>GSubprocessLauncher;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_68&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_68&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_68&quot;</span>)))]
-    #[cfg(any(unix))]
+    #[cfg(unix)]
     #[cfg_attr(docsrs, doc(cfg(unix)))]
     </span><span class="kw">pub fn </span>g_subprocess_launcher_close(self_: <span class="kw-2">*mut </span>GSubprocessLauncher);
     <span class="kw">pub fn </span>g_subprocess_launcher_getenv(
         self_: <span class="kw-2">*mut </span>GSubprocessLauncher,
         variable: <span class="kw-2">*const </span>c_char,
     ) -&gt; <span class="kw-2">*const </span>c_char;
-    <span class="attr">#[cfg(any(unix))]
+    <span class="attr">#[cfg(unix)]
     #[cfg_attr(docsrs, doc(cfg(unix)))]
     </span><span class="kw">pub fn </span>g_subprocess_launcher_set_child_setup(
         self_: <span class="kw-2">*mut </span>GSubprocessLauncher,
@@ -30999,19 +30999,19 @@
         self_: <span class="kw-2">*mut </span>GSubprocessLauncher,
         flags: GSubprocessFlags,
     );
-    <span class="attr">#[cfg(any(unix))]
+    <span class="attr">#[cfg(unix)]
     #[cfg_attr(docsrs, doc(cfg(unix)))]
     </span><span class="kw">pub fn </span>g_subprocess_launcher_set_stderr_file_path(
         self_: <span class="kw-2">*mut </span>GSubprocessLauncher,
         path: <span class="kw-2">*const </span>c_char,
     );
-    <span class="attr">#[cfg(any(unix))]
+    <span class="attr">#[cfg(unix)]
     #[cfg_attr(docsrs, doc(cfg(unix)))]
     </span><span class="kw">pub fn </span>g_subprocess_launcher_set_stdin_file_path(
         self_: <span class="kw-2">*mut </span>GSubprocessLauncher,
         path: <span class="kw-2">*const </span>c_char,
     );
-    <span class="attr">#[cfg(any(unix))]
+    <span class="attr">#[cfg(unix)]
     #[cfg_attr(docsrs, doc(cfg(unix)))]
     </span><span class="kw">pub fn </span>g_subprocess_launcher_set_stdout_file_path(
         self_: <span class="kw-2">*mut </span>GSubprocessLauncher,
@@ -31034,20 +31034,20 @@
         argv: <span class="kw-2">*const *const </span>c_char,
         error: <span class="kw-2">*mut *mut </span>glib::GError,
     ) -&gt; <span class="kw-2">*mut </span>GSubprocess;
-    <span class="attr">#[cfg(any(unix))]
+    <span class="attr">#[cfg(unix)]
     #[cfg_attr(docsrs, doc(cfg(unix)))]
     </span><span class="kw">pub fn </span>g_subprocess_launcher_take_fd(
         self_: <span class="kw-2">*mut </span>GSubprocessLauncher,
         source_fd: c_int,
         target_fd: c_int,
     );
-    <span class="attr">#[cfg(any(unix))]
+    <span class="attr">#[cfg(unix)]
     #[cfg_attr(docsrs, doc(cfg(unix)))]
     </span><span class="kw">pub fn </span>g_subprocess_launcher_take_stderr_fd(self_: <span class="kw-2">*mut </span>GSubprocessLauncher, fd: c_int);
-    <span class="attr">#[cfg(any(unix))]
+    <span class="attr">#[cfg(unix)]
     #[cfg_attr(docsrs, doc(cfg(unix)))]
     </span><span class="kw">pub fn </span>g_subprocess_launcher_take_stdin_fd(self_: <span class="kw-2">*mut </span>GSubprocessLauncher, fd: c_int);
-    <span class="attr">#[cfg(any(unix))]
+    <span class="attr">#[cfg(unix)]
     #[cfg_attr(docsrs, doc(cfg(unix)))]
     </span><span class="kw">pub fn </span>g_subprocess_launcher_take_stdout_fd(self_: <span class="kw-2">*mut </span>GSubprocessLauncher, fd: c_int);
     <span class="kw">pub fn </span>g_subprocess_launcher_unsetenv(self_: <span class="kw-2">*mut </span>GSubprocessLauncher, variable: <span class="kw-2">*const </span>c_char);
@@ -31092,7 +31092,7 @@
     <span class="kw">pub fn </span>g_task_get_check_cancellable(task: <span class="kw-2">*mut </span>GTask) -&gt; gboolean;
     <span class="kw">pub fn </span>g_task_get_completed(task: <span class="kw-2">*mut </span>GTask) -&gt; gboolean;
     <span class="kw">pub fn </span>g_task_get_context(task: <span class="kw-2">*mut </span>GTask) -&gt; <span class="kw-2">*mut </span>glib::GMainContext;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_task_get_name(task: <span class="kw-2">*mut </span>GTask) -&gt; <span class="kw-2">*const </span>c_char;
     <span class="kw">pub fn </span>g_task_get_priority(task: <span class="kw-2">*mut </span>GTask) -&gt; c_int;
@@ -31104,7 +31104,7 @@
     <span class="kw">pub fn </span>g_task_propagate_boolean(task: <span class="kw-2">*mut </span>GTask, error: <span class="kw-2">*mut *mut </span>glib::GError) -&gt; gboolean;
     <span class="kw">pub fn </span>g_task_propagate_int(task: <span class="kw-2">*mut </span>GTask, error: <span class="kw-2">*mut *mut </span>glib::GError) -&gt; ssize_t;
     <span class="kw">pub fn </span>g_task_propagate_pointer(task: <span class="kw-2">*mut </span>GTask, error: <span class="kw-2">*mut *mut </span>glib::GError) -&gt; gpointer;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_64&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_64&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_64&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_task_propagate_value(
         task: <span class="kw-2">*mut </span>GTask,
@@ -31127,19 +31127,19 @@
         result: gpointer,
         result_destroy: glib::GDestroyNotify,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_64&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_64&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_64&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_task_return_value(task: <span class="kw-2">*mut </span>GTask, result: <span class="kw-2">*mut </span>gobject::GValue);
     <span class="kw">pub fn </span>g_task_run_in_thread(task: <span class="kw-2">*mut </span>GTask, task_func: GTaskThreadFunc);
     <span class="kw">pub fn </span>g_task_run_in_thread_sync(task: <span class="kw-2">*mut </span>GTask, task_func: GTaskThreadFunc);
     <span class="kw">pub fn </span>g_task_set_check_cancellable(task: <span class="kw-2">*mut </span>GTask, check_cancellable: gboolean);
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_task_set_name(task: <span class="kw-2">*mut </span>GTask, name: <span class="kw-2">*const </span>c_char);
     <span class="kw">pub fn </span>g_task_set_priority(task: <span class="kw-2">*mut </span>GTask, priority: c_int);
     <span class="kw">pub fn </span>g_task_set_return_on_cancel(task: <span class="kw-2">*mut </span>GTask, return_on_cancel: gboolean) -&gt; gboolean;
     <span class="kw">pub fn </span>g_task_set_source_tag(task: <span class="kw-2">*mut </span>GTask, source_tag: gpointer);
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_76&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_76&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_76&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_task_set_static_name(task: <span class="kw-2">*mut </span>GTask, name: <span class="kw-2">*const </span>c_char);
     <span class="kw">pub fn </span>g_task_set_task_data(
@@ -31211,7 +31211,7 @@
         file: <span class="kw-2">*const </span>c_char,
         error: <span class="kw-2">*mut *mut </span>glib::GError,
     ) -&gt; <span class="kw-2">*mut </span>GTlsCertificate;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_tls_certificate_new_from_file_with_password(
         file: <span class="kw-2">*const </span>c_char,
@@ -31228,14 +31228,14 @@
         length: ssize_t,
         error: <span class="kw-2">*mut *mut </span>glib::GError,
     ) -&gt; <span class="kw-2">*mut </span>GTlsCertificate;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_68&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_68&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_68&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_tls_certificate_new_from_pkcs11_uris(
         pkcs11_uri: <span class="kw-2">*const </span>c_char,
         private_key_pkcs11_uri: <span class="kw-2">*const </span>c_char,
         error: <span class="kw-2">*mut *mut </span>glib::GError,
     ) -&gt; <span class="kw-2">*mut </span>GTlsCertificate;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_tls_certificate_new_from_pkcs12(
         data: <span class="kw-2">*const </span>u8,
@@ -31247,27 +31247,27 @@
         file: <span class="kw-2">*const </span>c_char,
         error: <span class="kw-2">*mut *mut </span>glib::GError,
     ) -&gt; <span class="kw-2">*mut </span>glib::GList;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_70&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_tls_certificate_get_dns_names(cert: <span class="kw-2">*mut </span>GTlsCertificate) -&gt; <span class="kw-2">*mut </span>glib::GPtrArray;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_70&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_tls_certificate_get_ip_addresses(cert: <span class="kw-2">*mut </span>GTlsCertificate) -&gt; <span class="kw-2">*mut </span>glib::GPtrArray;
     <span class="kw">pub fn </span>g_tls_certificate_get_issuer(cert: <span class="kw-2">*mut </span>GTlsCertificate) -&gt; <span class="kw-2">*mut </span>GTlsCertificate;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_70&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_tls_certificate_get_issuer_name(cert: <span class="kw-2">*mut </span>GTlsCertificate) -&gt; <span class="kw-2">*mut </span>c_char;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_70&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_tls_certificate_get_not_valid_after(
         cert: <span class="kw-2">*mut </span>GTlsCertificate,
     ) -&gt; <span class="kw-2">*mut </span>glib::GDateTime;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_70&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_tls_certificate_get_not_valid_before(
         cert: <span class="kw-2">*mut </span>GTlsCertificate,
     ) -&gt; <span class="kw-2">*mut </span>glib::GDateTime;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_70&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_tls_certificate_get_subject_name(cert: <span class="kw-2">*mut </span>GTlsCertificate) -&gt; <span class="kw-2">*mut </span>c_char;
     <span class="kw">pub fn </span>g_tls_certificate_is_same(
@@ -31290,7 +31290,7 @@
         errors: GTlsCertificateFlags,
     ) -&gt; gboolean;
     <span class="kw">pub fn </span>g_tls_connection_get_certificate(conn: <span class="kw-2">*mut </span>GTlsConnection) -&gt; <span class="kw-2">*mut </span>GTlsCertificate;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_66&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_66&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_66&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_tls_connection_get_channel_binding_data(
         conn: <span class="kw-2">*mut </span>GTlsConnection,
@@ -31298,12 +31298,12 @@
         data: <span class="kw-2">*mut </span>glib::GByteArray,
         error: <span class="kw-2">*mut *mut </span>glib::GError,
     ) -&gt; gboolean;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_70&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_tls_connection_get_ciphersuite_name(conn: <span class="kw-2">*mut </span>GTlsConnection) -&gt; <span class="kw-2">*mut </span>c_char;
     <span class="kw">pub fn </span>g_tls_connection_get_database(conn: <span class="kw-2">*mut </span>GTlsConnection) -&gt; <span class="kw-2">*mut </span>GTlsDatabase;
     <span class="kw">pub fn </span>g_tls_connection_get_interaction(conn: <span class="kw-2">*mut </span>GTlsConnection) -&gt; <span class="kw-2">*mut </span>GTlsInteraction;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_tls_connection_get_negotiated_protocol(conn: <span class="kw-2">*mut </span>GTlsConnection) -&gt; <span class="kw-2">*const </span>c_char;
     <span class="kw">pub fn </span>g_tls_connection_get_peer_certificate(conn: <span class="kw-2">*mut </span>GTlsConnection)
@@ -31311,7 +31311,7 @@
     <span class="kw">pub fn </span>g_tls_connection_get_peer_certificate_errors(
         conn: <span class="kw-2">*mut </span>GTlsConnection,
     ) -&gt; GTlsCertificateFlags;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_70&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_tls_connection_get_protocol_version(conn: <span class="kw-2">*mut </span>GTlsConnection) -&gt; GTlsProtocolVersion;
     <span class="kw">pub fn </span>g_tls_connection_get_rehandshake_mode(conn: <span class="kw-2">*mut </span>GTlsConnection) -&gt; GTlsRehandshakeMode;
@@ -31334,7 +31334,7 @@
         result: <span class="kw-2">*mut </span>GAsyncResult,
         error: <span class="kw-2">*mut *mut </span>glib::GError,
     ) -&gt; gboolean;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_tls_connection_set_advertised_protocols(
         conn: <span class="kw-2">*mut </span>GTlsConnection,
@@ -31880,7 +31880,7 @@
         content_type: <span class="kw-2">*const </span>c_char,
         must_support_uris: gboolean,
     ) -&gt; <span class="kw-2">*mut </span>GAppInfo;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_74&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_74&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_74&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_app_info_get_default_for_type_async(
         content_type: <span class="kw-2">*const </span>c_char,
@@ -31889,14 +31889,14 @@
         callback: GAsyncReadyCallback,
         user_data: gpointer,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_74&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_74&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_74&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_app_info_get_default_for_type_finish(
         result: <span class="kw-2">*mut </span>GAsyncResult,
         error: <span class="kw-2">*mut *mut </span>glib::GError,
     ) -&gt; <span class="kw-2">*mut </span>GAppInfo;
     <span class="kw">pub fn </span>g_app_info_get_default_for_uri_scheme(uri_scheme: <span class="kw-2">*const </span>c_char) -&gt; <span class="kw-2">*mut </span>GAppInfo;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_74&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_74&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_74&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_app_info_get_default_for_uri_scheme_async(
         uri_scheme: <span class="kw-2">*const </span>c_char,
@@ -31904,7 +31904,7 @@
         callback: GAsyncReadyCallback,
         user_data: gpointer,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_74&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_74&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_74&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_app_info_get_default_for_uri_scheme_finish(
         result: <span class="kw-2">*mut </span>GAsyncResult,
@@ -31959,7 +31959,7 @@
         context: <span class="kw-2">*mut </span>GAppLaunchContext,
         error: <span class="kw-2">*mut *mut </span>glib::GError,
     ) -&gt; gboolean;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_app_info_launch_uris_async(
         appinfo: <span class="kw-2">*mut </span>GAppInfo,
@@ -31969,7 +31969,7 @@
         callback: GAsyncReadyCallback,
         user_data: gpointer,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_app_info_launch_uris_finish(
         appinfo: <span class="kw-2">*mut </span>GAppInfo,
@@ -32149,13 +32149,13 @@
     <span class="comment">//=========================================================================
     // GDebugController
     //=========================================================================
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_debug_controller_get_type() -&gt; GType;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_debug_controller_get_debug_enabled(self_: <span class="kw-2">*mut </span>GDebugController) -&gt; gboolean;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_debug_controller_set_debug_enabled(
         self_: <span class="kw-2">*mut </span>GDebugController,
@@ -32310,7 +32310,7 @@
         errors: GTlsCertificateFlags,
     ) -&gt; gboolean;
     <span class="kw">pub fn </span>g_dtls_connection_get_certificate(conn: <span class="kw-2">*mut </span>GDtlsConnection) -&gt; <span class="kw-2">*mut </span>GTlsCertificate;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_66&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_66&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_66&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_dtls_connection_get_channel_binding_data(
         conn: <span class="kw-2">*mut </span>GDtlsConnection,
@@ -32318,12 +32318,12 @@
         data: <span class="kw-2">*mut </span>glib::GByteArray,
         error: <span class="kw-2">*mut *mut </span>glib::GError,
     ) -&gt; gboolean;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_70&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_dtls_connection_get_ciphersuite_name(conn: <span class="kw-2">*mut </span>GDtlsConnection) -&gt; <span class="kw-2">*mut </span>c_char;
     <span class="kw">pub fn </span>g_dtls_connection_get_database(conn: <span class="kw-2">*mut </span>GDtlsConnection) -&gt; <span class="kw-2">*mut </span>GTlsDatabase;
     <span class="kw">pub fn </span>g_dtls_connection_get_interaction(conn: <span class="kw-2">*mut </span>GDtlsConnection) -&gt; <span class="kw-2">*mut </span>GTlsInteraction;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_dtls_connection_get_negotiated_protocol(conn: <span class="kw-2">*mut </span>GDtlsConnection) -&gt; <span class="kw-2">*const </span>c_char;
     <span class="kw">pub fn </span>g_dtls_connection_get_peer_certificate(
@@ -32332,7 +32332,7 @@
     <span class="kw">pub fn </span>g_dtls_connection_get_peer_certificate_errors(
         conn: <span class="kw-2">*mut </span>GDtlsConnection,
     ) -&gt; GTlsCertificateFlags;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_70&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_dtls_connection_get_protocol_version(
         conn: <span class="kw-2">*mut </span>GDtlsConnection,
@@ -32358,7 +32358,7 @@
         result: <span class="kw-2">*mut </span>GAsyncResult,
         error: <span class="kw-2">*mut *mut </span>glib::GError,
     ) -&gt; gboolean;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_dtls_connection_set_advertised_protocols(
         conn: <span class="kw-2">*mut </span>GDtlsConnection,
@@ -32430,7 +32430,7 @@
         iostream: <span class="kw-2">*mut *mut </span>GFileIOStream,
         error: <span class="kw-2">*mut *mut </span>glib::GError,
     ) -&gt; <span class="kw-2">*mut </span>GFile;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_74&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_74&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_74&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_file_new_tmp_async(
         tmpl: <span class="kw-2">*const </span>c_char,
@@ -32439,7 +32439,7 @@
         callback: GAsyncReadyCallback,
         user_data: gpointer,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_74&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_74&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_74&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_file_new_tmp_dir_async(
         tmpl: <span class="kw-2">*const </span>c_char,
@@ -32448,13 +32448,13 @@
         callback: GAsyncReadyCallback,
         user_data: gpointer,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_74&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_74&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_74&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_file_new_tmp_dir_finish(
         result: <span class="kw-2">*mut </span>GAsyncResult,
         error: <span class="kw-2">*mut *mut </span>glib::GError,
     ) -&gt; <span class="kw-2">*mut </span>GFile;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_74&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_74&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_74&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_file_new_tmp_finish(
         result: <span class="kw-2">*mut </span>GAsyncResult,
@@ -32481,7 +32481,7 @@
         res: <span class="kw-2">*mut </span>GAsyncResult,
         error: <span class="kw-2">*mut *mut </span>glib::GError,
     ) -&gt; <span class="kw-2">*mut </span>GFileOutputStream;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_68&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_68&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_68&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_file_build_attribute_list_for_copy(
         file: <span class="kw-2">*mut </span>GFile,
@@ -32742,7 +32742,7 @@
         cancellable: <span class="kw-2">*mut </span>GCancellable,
         error: <span class="kw-2">*mut *mut </span>glib::GError,
     ) -&gt; gboolean;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_74&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_74&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_74&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_file_make_symbolic_link_async(
         file: <span class="kw-2">*mut </span>GFile,
@@ -32752,7 +32752,7 @@
         callback: GAsyncReadyCallback,
         user_data: gpointer,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_74&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_74&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_74&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_file_make_symbolic_link_finish(
         file: <span class="kw-2">*mut </span>GFile,
@@ -32841,7 +32841,7 @@
         progress_callback_data: gpointer,
         error: <span class="kw-2">*mut *mut </span>glib::GError,
     ) -&gt; gboolean;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_file_move_async(
         source: <span class="kw-2">*mut </span>GFile,
@@ -32854,7 +32854,7 @@
         callback: GAsyncReadyCallback,
         user_data: gpointer,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_file_move_finish(
         file: <span class="kw-2">*mut </span>GFile,
@@ -32895,7 +32895,7 @@
         cancellable: <span class="kw-2">*mut </span>GCancellable,
         error: <span class="kw-2">*mut *mut </span>glib::GError,
     ) -&gt; <span class="kw-2">*mut </span>GAppInfo;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_file_query_default_handler_async(
         file: <span class="kw-2">*mut </span>GFile,
@@ -32904,7 +32904,7 @@
         callback: GAsyncReadyCallback,
         user_data: gpointer,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_file_query_default_handler_finish(
         file: <span class="kw-2">*mut </span>GFile,
@@ -33328,10 +33328,10 @@
     <span class="comment">//=========================================================================
     // GMemoryMonitor
     //=========================================================================
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_64&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v2_64&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_64&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_memory_monitor_get_type() -&gt; GType;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_64&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_64&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_64&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_memory_monitor_dup_default() -&gt; <span class="kw-2">*mut </span>GMemoryMonitor;
 
@@ -33499,7 +33499,7 @@
         cancellable: <span class="kw-2">*mut </span>GCancellable,
         error: <span class="kw-2">*mut *mut </span>glib::GError,
     ) -&gt; ssize_t;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_pollable_output_stream_writev_nonblocking(
         stream: <span class="kw-2">*mut </span>GPollableOutputStream,
@@ -33513,13 +33513,13 @@
     <span class="comment">//=========================================================================
     // GPowerProfileMonitor
     //=========================================================================
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v2_70&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_power_profile_monitor_get_type() -&gt; GType;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_70&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_power_profile_monitor_dup_default() -&gt; <span class="kw-2">*mut </span>GPowerProfileMonitor;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_70&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_power_profile_monitor_get_power_saver_enabled(
         monitor: <span class="kw-2">*mut </span>GPowerProfileMonitor,
@@ -33639,7 +33639,7 @@
     <span class="kw">pub fn </span>g_tls_backend_get_dtls_server_connection_type(backend: <span class="kw-2">*mut </span>GTlsBackend) -&gt; GType;
     <span class="kw">pub fn </span>g_tls_backend_get_file_database_type(backend: <span class="kw-2">*mut </span>GTlsBackend) -&gt; GType;
     <span class="kw">pub fn </span>g_tls_backend_get_server_connection_type(backend: <span class="kw-2">*mut </span>GTlsBackend) -&gt; GType;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_tls_backend_set_default_database(
         backend: <span class="kw-2">*mut </span>GTlsBackend,
@@ -33851,7 +33851,7 @@
     <span class="kw">pub fn </span>g_content_type_get_description(type_: <span class="kw-2">*const </span>c_char) -&gt; <span class="kw-2">*mut </span>c_char;
     <span class="kw">pub fn </span>g_content_type_get_generic_icon_name(type_: <span class="kw-2">*const </span>c_char) -&gt; <span class="kw-2">*mut </span>c_char;
     <span class="kw">pub fn </span>g_content_type_get_icon(type_: <span class="kw-2">*const </span>c_char) -&gt; <span class="kw-2">*mut </span>GIcon;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_content_type_get_mime_dirs() -&gt; <span class="kw-2">*const *const </span>c_char;
     <span class="kw">pub fn </span>g_content_type_get_mime_type(type_: <span class="kw-2">*const </span>c_char) -&gt; <span class="kw-2">*mut </span>c_char;
@@ -33866,7 +33866,7 @@
     <span class="kw">pub fn </span>g_content_type_is_a(type_: <span class="kw-2">*const </span>c_char, supertype: <span class="kw-2">*const </span>c_char) -&gt; gboolean;
     <span class="kw">pub fn </span>g_content_type_is_mime_type(type_: <span class="kw-2">*const </span>c_char, mime_type: <span class="kw-2">*const </span>c_char) -&gt; gboolean;
     <span class="kw">pub fn </span>g_content_type_is_unknown(type_: <span class="kw-2">*const </span>c_char) -&gt; gboolean;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_content_type_set_mime_dirs(dirs: <span class="kw-2">*const *const </span>c_char);
     <span class="kw">pub fn </span>g_content_types_get_registered() -&gt; <span class="kw-2">*mut </span>glib::GList;
@@ -33893,10 +33893,10 @@
         cancellable: <span class="kw-2">*mut </span>GCancellable,
         error: <span class="kw-2">*mut *mut </span>glib::GError,
     ) -&gt; <span class="kw-2">*mut </span>GIOStream;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_68&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_68&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_68&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_dbus_escape_object_path(s: <span class="kw-2">*const </span>c_char) -&gt; <span class="kw-2">*mut </span>c_char;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_68&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_68&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_68&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_dbus_escape_object_path_bytestring(bytes: <span class="kw-2">*const </span>u8) -&gt; <span class="kw-2">*mut </span>c_char;
     <span class="kw">pub fn </span>g_dbus_generate_guid() -&gt; <span class="kw-2">*mut </span>c_char;
@@ -33906,7 +33906,7 @@
     ) -&gt; <span class="kw-2">*mut </span>glib::GVariant;
     <span class="kw">pub fn </span>g_dbus_gvariant_to_gvalue(value: <span class="kw-2">*mut </span>glib::GVariant, out_gvalue: <span class="kw-2">*mut </span>gobject::GValue);
     <span class="kw">pub fn </span>g_dbus_is_address(string: <span class="kw-2">*const </span>c_char) -&gt; gboolean;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_70&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_dbus_is_error_name(string: <span class="kw-2">*const </span>c_char) -&gt; gboolean;
     <span class="kw">pub fn </span>g_dbus_is_guid(string: <span class="kw-2">*const </span>c_char) -&gt; gboolean;
@@ -33918,11 +33918,11 @@
         error: <span class="kw-2">*mut *mut </span>glib::GError,
     ) -&gt; gboolean;
     <span class="kw">pub fn </span>g_dbus_is_unique_name(string: <span class="kw-2">*const </span>c_char) -&gt; gboolean;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_68&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_68&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_68&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_dbus_unescape_object_path(s: <span class="kw-2">*const </span>c_char) -&gt; <span class="kw-2">*mut </span>u8;
     <span class="kw">pub fn </span>g_io_error_from_errno(err_no: c_int) -&gt; GIOErrorEnum;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_74&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_74&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_74&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_io_error_from_file_error(file_error: glib::GFileError) -&gt; GIOErrorEnum;
     <span class="kw">pub fn </span>g_io_error_quark() -&gt; glib::GQuark;
@@ -34042,10 +34042,10 @@
     <span class="kw">pub fn </span>g_unix_mount_get_device_path(mount_entry: <span class="kw-2">*mut </span>GUnixMountEntry) -&gt; <span class="kw-2">*const </span>c_char;
     <span class="kw">pub fn </span>g_unix_mount_get_fs_type(mount_entry: <span class="kw-2">*mut </span>GUnixMountEntry) -&gt; <span class="kw-2">*const </span>c_char;
     <span class="kw">pub fn </span>g_unix_mount_get_mount_path(mount_entry: <span class="kw-2">*mut </span>GUnixMountEntry) -&gt; <span class="kw-2">*const </span>c_char;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_58&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_58&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_58&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_unix_mount_get_options(mount_entry: <span class="kw-2">*mut </span>GUnixMountEntry) -&gt; <span class="kw-2">*const </span>c_char;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_60&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_unix_mount_get_root_path(mount_entry: <span class="kw-2">*mut </span>GUnixMountEntry) -&gt; <span class="kw-2">*const </span>c_char;
     <span class="kw">pub fn </span>g_unix_mount_guess_can_eject(mount_entry: <span class="kw-2">*mut </span>GUnixMountEntry) -&gt; gboolean;

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gio/src/auto/file_info.rs`."><title>file_info.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (a77c55248 2023-05-06)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gio/src/auto/file_info.rs`."><title>file_info.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (c4190f2d3 2023-05-07)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -1076,6 +1076,56 @@
 <a href="#1003" id="1003">1003</a>
 <a href="#1004" id="1004">1004</a>
 <a href="#1005" id="1005">1005</a>
+<a href="#1006" id="1006">1006</a>
+<a href="#1007" id="1007">1007</a>
+<a href="#1008" id="1008">1008</a>
+<a href="#1009" id="1009">1009</a>
+<a href="#1010" id="1010">1010</a>
+<a href="#1011" id="1011">1011</a>
+<a href="#1012" id="1012">1012</a>
+<a href="#1013" id="1013">1013</a>
+<a href="#1014" id="1014">1014</a>
+<a href="#1015" id="1015">1015</a>
+<a href="#1016" id="1016">1016</a>
+<a href="#1017" id="1017">1017</a>
+<a href="#1018" id="1018">1018</a>
+<a href="#1019" id="1019">1019</a>
+<a href="#1020" id="1020">1020</a>
+<a href="#1021" id="1021">1021</a>
+<a href="#1022" id="1022">1022</a>
+<a href="#1023" id="1023">1023</a>
+<a href="#1024" id="1024">1024</a>
+<a href="#1025" id="1025">1025</a>
+<a href="#1026" id="1026">1026</a>
+<a href="#1027" id="1027">1027</a>
+<a href="#1028" id="1028">1028</a>
+<a href="#1029" id="1029">1029</a>
+<a href="#1030" id="1030">1030</a>
+<a href="#1031" id="1031">1031</a>
+<a href="#1032" id="1032">1032</a>
+<a href="#1033" id="1033">1033</a>
+<a href="#1034" id="1034">1034</a>
+<a href="#1035" id="1035">1035</a>
+<a href="#1036" id="1036">1036</a>
+<a href="#1037" id="1037">1037</a>
+<a href="#1038" id="1038">1038</a>
+<a href="#1039" id="1039">1039</a>
+<a href="#1040" id="1040">1040</a>
+<a href="#1041" id="1041">1041</a>
+<a href="#1042" id="1042">1042</a>
+<a href="#1043" id="1043">1043</a>
+<a href="#1044" id="1044">1044</a>
+<a href="#1045" id="1045">1045</a>
+<a href="#1046" id="1046">1046</a>
+<a href="#1047" id="1047">1047</a>
+<a href="#1048" id="1048">1048</a>
+<a href="#1049" id="1049">1049</a>
+<a href="#1050" id="1050">1050</a>
+<a href="#1051" id="1051">1051</a>
+<a href="#1052" id="1052">1052</a>
+<a href="#1053" id="1053">1053</a>
+<a href="#1054" id="1054">1054</a>
+<a href="#1055" id="1055">1055</a>
 </pre></div><pre class="rust"><code><span class="comment">// This file was generated by gir (https://github.com/gtk-rs/gir)
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
@@ -1112,6 +1162,11 @@
     /// optimized than the generic attribute accessors, such as
     /// [`attribute_byte_string()`][Self::attribute_byte_string()].This optimization will matter
     /// only if calling the API in a tight loop.
+    ///
+    /// It is an error to call these accessors without specifying their required file
+    /// attributes when creating the [`FileInfo`][crate::FileInfo]. Use [`has_attribute()`][Self::has_attribute()] or
+    /// [`list_attributes()`][Self::list_attributes()] to check what attributes are specified for a
+    /// [`FileInfo`][crate::FileInfo].
     ///
     /// [`FileAttributeMatcher`][crate::FileAttributeMatcher] allows for searching through a [`FileInfo`][crate::FileInfo] for
     /// attributes.
@@ -1171,9 +1226,10 @@
     <span class="doccomment">/// Gets the access time of the current `self` and returns it as a
     /// [`glib::DateTime`][crate::glib::DateTime].
     ///
-    /// This requires the [`FILE_ATTRIBUTE_TIME_ACCESS`][crate::FILE_ATTRIBUTE_TIME_ACCESS] attribute. If
-    /// [`FILE_ATTRIBUTE_TIME_ACCESS_USEC`][crate::FILE_ATTRIBUTE_TIME_ACCESS_USEC] is provided, the resulting [`glib::DateTime`][crate::glib::DateTime]
-    /// will have microsecond precision.
+    /// It is an error to call this if the [`FileInfo`][crate::FileInfo] does not contain
+    /// [`FILE_ATTRIBUTE_TIME_ACCESS`][crate::FILE_ATTRIBUTE_TIME_ACCESS]. If [`FILE_ATTRIBUTE_TIME_ACCESS_USEC`][crate::FILE_ATTRIBUTE_TIME_ACCESS_USEC] is
+    /// provided, the resulting [`glib::DateTime`][crate::glib::DateTime] will additionally have microsecond
+    /// precision.
     ///
     /// If nanosecond precision is needed, [`FILE_ATTRIBUTE_TIME_ACCESS_NSEC`][crate::FILE_ATTRIBUTE_TIME_ACCESS_NSEC] must
     /// be queried separately using [`attribute_uint32()`][Self::attribute_uint32()].
@@ -1181,7 +1237,7 @@
     /// # Returns
     ///
     /// access time, or [`None`] if unknown
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v2_70&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
     #[doc(alias = <span class="string">&quot;g_file_info_get_access_date_time&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_access_date_time&quot;</span>)]
@@ -1189,7 +1245,7 @@
         <span class="kw">unsafe </span>{ from_glib_full(ffi::g_file_info_get_access_date_time(<span class="self">self</span>.to_glib_none().<span class="number">0</span>)) }
     }
 
-    <span class="doccomment">/// Gets the value of a attribute, formatted as a string.
+    <span class="doccomment">/// Gets the value of an attribute, formatted as a string.
     /// This escapes things as needed to make the string valid
     /// UTF-8.
     /// ## `attribute`
@@ -1404,6 +1460,9 @@
 
     <span class="doccomment">/// Gets the file&#39;s content type.
     ///
+    /// It is an error to call this if the [`FileInfo`][crate::FileInfo] does not contain
+    /// [`FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE`][crate::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE].
+    ///
     /// # Returns
     ///
     /// a string containing the file&#39;s content type,
@@ -1417,9 +1476,10 @@
     <span class="doccomment">/// Gets the creation time of the current `self` and returns it as a
     /// [`glib::DateTime`][crate::glib::DateTime].
     ///
-    /// This requires the [`FILE_ATTRIBUTE_TIME_CREATED`][crate::FILE_ATTRIBUTE_TIME_CREATED] attribute. If
-    /// [`FILE_ATTRIBUTE_TIME_CREATED_USEC`][crate::FILE_ATTRIBUTE_TIME_CREATED_USEC] is provided, the resulting [`glib::DateTime`][crate::glib::DateTime]
-    /// will have microsecond precision.
+    /// It is an error to call this if the [`FileInfo`][crate::FileInfo] does not contain
+    /// [`FILE_ATTRIBUTE_TIME_CREATED`][crate::FILE_ATTRIBUTE_TIME_CREATED]. If [`FILE_ATTRIBUTE_TIME_CREATED_USEC`][crate::FILE_ATTRIBUTE_TIME_CREATED_USEC] is
+    /// provided, the resulting [`glib::DateTime`][crate::glib::DateTime] will additionally have microsecond
+    /// precision.
     ///
     /// If nanosecond precision is needed, [`FILE_ATTRIBUTE_TIME_CREATED_NSEC`][crate::FILE_ATTRIBUTE_TIME_CREATED_NSEC] must
     /// be queried separately using [`attribute_uint32()`][Self::attribute_uint32()].
@@ -1427,7 +1487,7 @@
     /// # Returns
     ///
     /// creation time, or [`None`] if unknown
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v2_70&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
     #[doc(alias = <span class="string">&quot;g_file_info_get_creation_date_time&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_creation_date_time&quot;</span>)]
@@ -1440,8 +1500,8 @@
     }
 
     <span class="doccomment">/// Returns the [`glib::DateTime`][crate::glib::DateTime] representing the deletion date of the file, as
-    /// available in G_FILE_ATTRIBUTE_TRASH_DELETION_DATE. If the
-    /// G_FILE_ATTRIBUTE_TRASH_DELETION_DATE attribute is unset, [`None`] is returned.
+    /// available in [`FILE_ATTRIBUTE_TRASH_DELETION_DATE`][crate::FILE_ATTRIBUTE_TRASH_DELETION_DATE]. If the
+    /// [`FILE_ATTRIBUTE_TRASH_DELETION_DATE`][crate::FILE_ATTRIBUTE_TRASH_DELETION_DATE] attribute is unset, [`None`] is returned.
     ///
     /// # Returns
     ///
@@ -1454,6 +1514,9 @@
 
     <span class="doccomment">/// Gets a display name for a file. This is guaranteed to always be set.
     ///
+    /// It is an error to call this if the [`FileInfo`][crate::FileInfo] does not contain
+    /// [`FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME`][crate::FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME].
+    ///
     /// # Returns
     ///
     /// a string containing the display name.
@@ -1464,6 +1527,9 @@
     }
 
     <span class="doccomment">/// Gets the edit name for a file.
+    ///
+    /// It is an error to call this if the [`FileInfo`][crate::FileInfo] does not contain
+    /// [`FILE_ATTRIBUTE_STANDARD_EDIT_NAME`][crate::FILE_ATTRIBUTE_STANDARD_EDIT_NAME].
     ///
     /// # Returns
     ///
@@ -1477,6 +1543,9 @@
     <span class="doccomment">/// Gets the [entity tag][gfile-etag] for a given
     /// [`FileInfo`][crate::FileInfo]. See [`FILE_ATTRIBUTE_ETAG_VALUE`][crate::FILE_ATTRIBUTE_ETAG_VALUE].
     ///
+    /// It is an error to call this if the [`FileInfo`][crate::FileInfo] does not contain
+    /// [`FILE_ATTRIBUTE_ETAG_VALUE`][crate::FILE_ATTRIBUTE_ETAG_VALUE].
+    ///
     /// # Returns
     ///
     /// a string containing the value of the &quot;etag:value&quot; attribute.
@@ -1489,6 +1558,9 @@
     <span class="doccomment">/// Gets a file&#39;s type (whether it is a regular file, symlink, etc).
     /// This is different from the file&#39;s content type, see [`content_type()`][Self::content_type()].
     ///
+    /// It is an error to call this if the [`FileInfo`][crate::FileInfo] does not contain
+    /// [`FILE_ATTRIBUTE_STANDARD_TYPE`][crate::FILE_ATTRIBUTE_STANDARD_TYPE].
+    ///
     /// # Returns
     ///
     /// a [`FileType`][crate::FileType] for the given file.
@@ -1499,6 +1571,9 @@
     }
 
     <span class="doccomment">/// Gets the icon for a file.
+    ///
+    /// It is an error to call this if the [`FileInfo`][crate::FileInfo] does not contain
+    /// [`FILE_ATTRIBUTE_STANDARD_ICON`][crate::FILE_ATTRIBUTE_STANDARD_ICON].
     ///
     /// # Returns
     ///
@@ -1511,6 +1586,9 @@
 
     <span class="doccomment">/// Checks if a file is a backup file.
     ///
+    /// It is an error to call this if the [`FileInfo`][crate::FileInfo] does not contain
+    /// [`FILE_ATTRIBUTE_STANDARD_IS_BACKUP`][crate::FILE_ATTRIBUTE_STANDARD_IS_BACKUP].
+    ///
     /// # Returns
     ///
     /// [`true`] if file is a backup file, [`false`] otherwise.
@@ -1522,6 +1600,9 @@
 
     <span class="doccomment">/// Checks if a file is hidden.
     ///
+    /// It is an error to call this if the [`FileInfo`][crate::FileInfo] does not contain
+    /// [`FILE_ATTRIBUTE_STANDARD_IS_HIDDEN`][crate::FILE_ATTRIBUTE_STANDARD_IS_HIDDEN].
+    ///
     /// # Returns
     ///
     /// [`true`] if the file is a hidden file, [`false`] otherwise.
@@ -1532,6 +1613,9 @@
     }
 
     <span class="doccomment">/// Checks if a file is a symlink.
+    ///
+    /// It is an error to call this if the [`FileInfo`][crate::FileInfo] does not contain
+    /// [`FILE_ATTRIBUTE_STANDARD_IS_SYMLINK`][crate::FILE_ATTRIBUTE_STANDARD_IS_SYMLINK].
     ///
     /// # Returns
     ///
@@ -1545,9 +1629,10 @@
     <span class="doccomment">/// Gets the modification time of the current `self` and returns it as a
     /// [`glib::DateTime`][crate::glib::DateTime].
     ///
-    /// This requires the [`FILE_ATTRIBUTE_TIME_MODIFIED`][crate::FILE_ATTRIBUTE_TIME_MODIFIED] attribute. If
-    /// [`FILE_ATTRIBUTE_TIME_MODIFIED_USEC`][crate::FILE_ATTRIBUTE_TIME_MODIFIED_USEC] is provided, the resulting [`glib::DateTime`][crate::glib::DateTime]
-    /// will have microsecond precision.
+    /// It is an error to call this if the [`FileInfo`][crate::FileInfo] does not contain
+    /// [`FILE_ATTRIBUTE_TIME_MODIFIED`][crate::FILE_ATTRIBUTE_TIME_MODIFIED]. If [`FILE_ATTRIBUTE_TIME_MODIFIED_USEC`][crate::FILE_ATTRIBUTE_TIME_MODIFIED_USEC] is
+    /// provided, the resulting [`glib::DateTime`][crate::glib::DateTime] will additionally have microsecond
+    /// precision.
     ///
     /// If nanosecond precision is needed, [`FILE_ATTRIBUTE_TIME_MODIFIED_NSEC`][crate::FILE_ATTRIBUTE_TIME_MODIFIED_NSEC] must
     /// be queried separately using [`attribute_uint32()`][Self::attribute_uint32()].
@@ -1555,7 +1640,7 @@
     /// # Returns
     ///
     /// modification time, or [`None`] if unknown
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_62&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v2_62&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_62&quot;</span>)))]
     #[doc(alias = <span class="string">&quot;g_file_info_get_modification_date_time&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_modification_date_time&quot;</span>)]
@@ -1568,6 +1653,9 @@
     }
 
     <span class="doccomment">/// Gets the name for a file. This is guaranteed to always be set.
+    ///
+    /// It is an error to call this if the [`FileInfo`][crate::FileInfo] does not contain
+    /// [`FILE_ATTRIBUTE_STANDARD_NAME`][crate::FILE_ATTRIBUTE_STANDARD_NAME].
     ///
     /// # Returns
     ///
@@ -1582,6 +1670,9 @@
     /// the [`FILE_ATTRIBUTE_STANDARD_SIZE`][crate::FILE_ATTRIBUTE_STANDARD_SIZE] attribute and is converted
     /// from `guint64` to `goffset` before returning the result.
     ///
+    /// It is an error to call this if the [`FileInfo`][crate::FileInfo] does not contain
+    /// [`FILE_ATTRIBUTE_STANDARD_SIZE`][crate::FILE_ATTRIBUTE_STANDARD_SIZE].
+    ///
     /// # Returns
     ///
     /// a `goffset` containing the file&#39;s size (in bytes).
@@ -1594,6 +1685,9 @@
     <span class="doccomment">/// Gets the value of the sort_order attribute from the [`FileInfo`][crate::FileInfo].
     /// See [`FILE_ATTRIBUTE_STANDARD_SORT_ORDER`][crate::FILE_ATTRIBUTE_STANDARD_SORT_ORDER].
     ///
+    /// It is an error to call this if the [`FileInfo`][crate::FileInfo] does not contain
+    /// [`FILE_ATTRIBUTE_STANDARD_SORT_ORDER`][crate::FILE_ATTRIBUTE_STANDARD_SORT_ORDER].
+    ///
     /// # Returns
     ///
     /// a `gint32` containing the value of the &quot;standard::sort_order&quot; attribute.
@@ -1605,6 +1699,9 @@
 
     <span class="doccomment">/// Gets the symbolic icon for a file.
     ///
+    /// It is an error to call this if the [`FileInfo`][crate::FileInfo] does not contain
+    /// [`FILE_ATTRIBUTE_STANDARD_SYMBOLIC_ICON`][crate::FILE_ATTRIBUTE_STANDARD_SYMBOLIC_ICON].
+    ///
     /// # Returns
     ///
     /// [`Icon`][crate::Icon] for the given `self`.
@@ -1615,6 +1712,9 @@
     }
 
     <span class="doccomment">/// Gets the symlink target for a given [`FileInfo`][crate::FileInfo].
+    ///
+    /// It is an error to call this if the [`FileInfo`][crate::FileInfo] does not contain
+    /// [`FILE_ATTRIBUTE_STANDARD_SYMLINK_TARGET`][crate::FILE_ATTRIBUTE_STANDARD_SYMLINK_TARGET].
     ///
     /// # Returns
     ///
@@ -1699,7 +1799,7 @@
     /// [`FILE_ATTRIBUTE_TIME_ACCESS_NSEC`][crate::FILE_ATTRIBUTE_TIME_ACCESS_NSEC] will be cleared.
     /// ## `atime`
     /// a [`glib::DateTime`][crate::glib::DateTime].
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v2_70&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
     #[doc(alias = <span class="string">&quot;g_file_info_set_access_date_time&quot;</span>)]
     </span><span class="kw">pub fn </span>set_access_date_time(<span class="kw-2">&amp;</span><span class="self">self</span>, atime: <span class="kw-2">&amp;</span>glib::DateTime) {
@@ -1902,7 +2002,7 @@
     /// [`FILE_ATTRIBUTE_TIME_CREATED_NSEC`][crate::FILE_ATTRIBUTE_TIME_CREATED_NSEC] will be cleared.
     /// ## `creation_time`
     /// a [`glib::DateTime`][crate::glib::DateTime].
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v2_70&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
     #[doc(alias = <span class="string">&quot;g_file_info_set_creation_date_time&quot;</span>)]
     </span><span class="kw">pub fn </span>set_creation_date_time(<span class="kw-2">&amp;</span><span class="self">self</span>, creation_time: <span class="kw-2">&amp;</span>glib::DateTime) {
@@ -1987,7 +2087,7 @@
     /// [`FILE_ATTRIBUTE_TIME_MODIFIED_NSEC`][crate::FILE_ATTRIBUTE_TIME_MODIFIED_NSEC] will be cleared.
     /// ## `mtime`
     /// a [`glib::DateTime`][crate::glib::DateTime].
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_62&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v2_62&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_62&quot;</span>)))]
     #[doc(alias = <span class="string">&quot;g_file_info_set_modification_date_time&quot;</span>)]
     </span><span class="kw">pub fn </span>set_modification_date_time(<span class="kw-2">&amp;</span><span class="self">self</span>, mtime: <span class="kw-2">&amp;</span>glib::DateTime) {

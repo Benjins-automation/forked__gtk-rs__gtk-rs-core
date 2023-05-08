@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib/gobject-sys/src/lib.rs`."><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gobject_sys" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (a77c55248 2023-05-06)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib/gobject-sys/src/lib.rs`."><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gobject_sys" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (c4190f2d3 2023-05-07)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -4618,7 +4618,7 @@
         instance_type: GType,
         interface_type: GType,
     ) -&gt; <span class="kw-2">*mut </span>GTypePlugin;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_68&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_68&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_68&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_type_interface_instantiatable_prerequisite(interface_type: GType) -&gt; GType;
     <span class="kw">pub fn </span>g_type_interface_peek(instance_class: gpointer, iface_type: GType) -&gt; gpointer;
@@ -4680,7 +4680,7 @@
     <span class="kw">pub fn </span>g_value_set_instance(value: <span class="kw-2">*mut </span>GValue, instance: gpointer);
     <span class="kw">pub fn </span>g_value_set_int(value: <span class="kw-2">*mut </span>GValue, v_int: c_int);
     <span class="kw">pub fn </span>g_value_set_int64(value: <span class="kw-2">*mut </span>GValue, v_int64: i64);
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_66&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_66&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_66&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_value_set_interned_string(value: <span class="kw-2">*mut </span>GValue, v_string: <span class="kw-2">*const </span>c_char);
     <span class="kw">pub fn </span>g_value_set_long(value: <span class="kw-2">*mut </span>GValue, v_long: c_long);
@@ -4758,10 +4758,10 @@
     // GBinding
     //=========================================================================
     </span><span class="kw">pub fn </span>g_binding_get_type() -&gt; GType;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_68&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_68&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_68&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_binding_dup_source(binding: <span class="kw-2">*mut </span>GBinding) -&gt; <span class="kw-2">*mut </span>GObject;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_68&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_68&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_68&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_binding_dup_target(binding: <span class="kw-2">*mut </span>GBinding) -&gt; <span class="kw-2">*mut </span>GObject;
     <span class="kw">pub fn </span>g_binding_get_flags(binding: <span class="kw-2">*mut </span>GBinding) -&gt; GBindingFlags;
@@ -4774,13 +4774,13 @@
     <span class="comment">//=========================================================================
     // GBindingGroup
     //=========================================================================
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_binding_group_get_type() -&gt; GType;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_binding_group_new() -&gt; <span class="kw-2">*mut </span>GBindingGroup;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_binding_group_bind(
         self_: <span class="kw-2">*mut </span>GBindingGroup,
@@ -4789,7 +4789,7 @@
         target_property: <span class="kw-2">*const </span>c_char,
         flags: GBindingFlags,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_binding_group_bind_full(
         self_: <span class="kw-2">*mut </span>GBindingGroup,
@@ -4802,7 +4802,7 @@
         user_data: gpointer,
         user_data_destroy: glib::GDestroyNotify,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_binding_group_bind_with_closures(
         self_: <span class="kw-2">*mut </span>GBindingGroup,
@@ -4813,10 +4813,10 @@
         transform_to: <span class="kw-2">*mut </span>GClosure,
         transform_from: <span class="kw-2">*mut </span>GClosure,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_binding_group_dup_source(self_: <span class="kw-2">*mut </span>GBindingGroup) -&gt; <span class="kw-2">*mut </span>GObject;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_binding_group_set_source(self_: <span class="kw-2">*mut </span>GBindingGroup, source: <span class="kw-2">*mut </span>GObject);
 
@@ -4969,7 +4969,7 @@
     );
     <span class="kw">pub fn </span>g_object_steal_data(object: <span class="kw-2">*mut </span>GObject, key: <span class="kw-2">*const </span>c_char) -&gt; gpointer;
     <span class="kw">pub fn </span>g_object_steal_qdata(object: <span class="kw-2">*mut </span>GObject, quark: glib::GQuark) -&gt; gpointer;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_70&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_70&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_70&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_object_take_ref(object: <span class="kw-2">*mut </span>GObject) -&gt; <span class="kw-2">*mut </span>GObject;
     <span class="kw">pub fn </span>g_object_thaw_notify(object: <span class="kw-2">*mut </span>GObject);
@@ -4988,7 +4988,7 @@
         blurb: <span class="kw-2">*const </span>c_char,
         flags: GParamFlags,
     ) -&gt; <span class="kw-2">*mut </span>GParamSpec;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_66&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_66&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_66&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_param_spec_is_valid_name(name: <span class="kw-2">*const </span>c_char) -&gt; gboolean;
     <span class="kw">pub fn </span>g_param_spec_get_blurb(pspec: <span class="kw-2">*mut </span>GParamSpec) -&gt; <span class="kw-2">*const </span>c_char;
@@ -5014,16 +5014,16 @@
     <span class="comment">//=========================================================================
     // GSignalGroup
     //=========================================================================
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+    </span><span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_signal_group_get_type() -&gt; GType;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_signal_group_new(target_type: GType) -&gt; <span class="kw-2">*mut </span>GSignalGroup;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_signal_group_block(self_: <span class="kw-2">*mut </span>GSignalGroup);
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_signal_group_connect(
         self_: <span class="kw-2">*mut </span>GSignalGroup,
@@ -5031,7 +5031,7 @@
         c_handler: GCallback,
         data: gpointer,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_signal_group_connect_after(
         self_: <span class="kw-2">*mut </span>GSignalGroup,
@@ -5039,7 +5039,7 @@
         c_handler: GCallback,
         data: gpointer,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_74&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_74&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_74&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_signal_group_connect_closure(
         self_: <span class="kw-2">*mut </span>GSignalGroup,
@@ -5047,7 +5047,7 @@
         closure: <span class="kw-2">*mut </span>GClosure,
         after: gboolean,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_signal_group_connect_data(
         self_: <span class="kw-2">*mut </span>GSignalGroup,
@@ -5057,7 +5057,7 @@
         notify: GClosureNotify,
         flags: GConnectFlags,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_signal_group_connect_object(
         self_: <span class="kw-2">*mut </span>GSignalGroup,
@@ -5066,7 +5066,7 @@
         object: gpointer,
         flags: GConnectFlags,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_signal_group_connect_swapped(
         self_: <span class="kw-2">*mut </span>GSignalGroup,
@@ -5074,13 +5074,13 @@
         c_handler: GCallback,
         data: gpointer,
     );
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_signal_group_dup_target(self_: <span class="kw-2">*mut </span>GSignalGroup) -&gt; <span class="kw-2">*mut </span>GObject;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_signal_group_set_target(self_: <span class="kw-2">*mut </span>GSignalGroup, target: <span class="kw-2">*mut </span>GObject);
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_72&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_signal_group_unblock(self_: <span class="kw-2">*mut </span>GSignalGroup);
 
@@ -5145,7 +5145,7 @@
         boxed_free: GBoxedFreeFunc,
     ) -&gt; GType;
     <span class="kw">pub fn </span>g_clear_object(object_ptr: <span class="kw-2">*mut *mut </span>GObject);
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_62&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_62&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_62&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_clear_signal_handler(handler_id_ptr: <span class="kw-2">*mut </span>c_ulong, instance: <span class="kw-2">*mut </span>GObject);
     <span class="kw">pub fn </span>g_enum_complete_type_info(
@@ -5381,7 +5381,7 @@
         strict_validation: gboolean,
     ) -&gt; gboolean;
     <span class="kw">pub fn </span>g_param_value_defaults(pspec: <span class="kw-2">*mut </span>GParamSpec, value: <span class="kw-2">*const </span>GValue) -&gt; gboolean;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_74&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_74&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_74&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_param_value_is_valid(pspec: <span class="kw-2">*mut </span>GParamSpec, value: <span class="kw-2">*const </span>GValue) -&gt; gboolean;
     <span class="kw">pub fn </span>g_param_value_set_default(pspec: <span class="kw-2">*mut </span>GParamSpec, value: <span class="kw-2">*mut </span>GValue);
@@ -5501,7 +5501,7 @@
         detail: glib::GQuark,
         may_be_blocked: gboolean,
     ) -&gt; gboolean;
-    <span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_66&quot;</span>))]
+    <span class="attr">#[cfg(feature = <span class="string">&quot;v2_66&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_66&quot;</span>)))]
     </span><span class="kw">pub fn </span>g_signal_is_valid_name(name: <span class="kw-2">*const </span>c_char) -&gt; gboolean;
     <span class="kw">pub fn </span>g_signal_list_ids(itype: GType, n_ids: <span class="kw-2">*mut </span>c_uint) -&gt; <span class="kw-2">*mut </span>c_uint;
