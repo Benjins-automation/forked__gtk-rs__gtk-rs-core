@@ -164,27 +164,6 @@
 <a href="#91" id="91">91</a>
 <a href="#92" id="92">92</a>
 <a href="#93" id="93">93</a>
-<a href="#94" id="94">94</a>
-<a href="#95" id="95">95</a>
-<a href="#96" id="96">96</a>
-<a href="#97" id="97">97</a>
-<a href="#98" id="98">98</a>
-<a href="#99" id="99">99</a>
-<a href="#100" id="100">100</a>
-<a href="#101" id="101">101</a>
-<a href="#102" id="102">102</a>
-<a href="#103" id="103">103</a>
-<a href="#104" id="104">104</a>
-<a href="#105" id="105">105</a>
-<a href="#106" id="106">106</a>
-<a href="#107" id="107">107</a>
-<a href="#108" id="108">108</a>
-<a href="#109" id="109">109</a>
-<a href="#110" id="110">110</a>
-<a href="#111" id="111">111</a>
-<a href="#112" id="112">112</a>
-<a href="#113" id="113">113</a>
-<a href="#114" id="114">114</a>
 </pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 </span><span class="kw">use </span>std::vec::Vec;
@@ -195,14 +174,6 @@
 
 <span class="kw">impl </span>Checksum {
     <span class="doccomment">/// Gets the digest from `self` as a raw binary vector and places it
-    /// into `buffer`. The size of the digest depends on the type of checksum.
-    ///
-    /// Once this function has been called, the [`Checksum`][crate::Checksum] is closed and can
-    /// no longer be updated with [`update()`][Self::update()].
-    /// ## `buffer`
-    /// output buffer
-    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
-    </span><span class="doccomment">/// Gets the digest from `self` as a raw binary vector and places it
     /// into `buffer`. The size of the digest depends on the type of checksum.
     ///
     /// Once this function has been called, the [`Checksum`][crate::Checksum] is closed and can
@@ -229,19 +200,6 @@
     }
 
     <span class="doccomment">/// Gets the digest as a hexadecimal string.
-    ///
-    /// Once this function has been called the [`Checksum`][crate::Checksum] can no longer be
-    /// updated with [`update()`][Self::update()].
-    ///
-    /// The hexadecimal characters will be lower case.
-    ///
-    /// # Returns
-    ///
-    /// the hexadecimal representation of the checksum. The
-    ///  returned string is owned by the checksum and should not be modified
-    ///  or freed.
-    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
-    </span><span class="doccomment">/// Gets the digest as a hexadecimal string.
     ///
     /// Once this function has been called the [`Checksum`][crate::Checksum] can no longer be
     /// updated with [`update()`][Self::update()].
