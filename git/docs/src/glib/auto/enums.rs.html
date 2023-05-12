@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib/src/auto/enums.rs`."><title>enums.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (c4190f2d3 2023-05-07)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib/src/auto/enums.rs`."><title>enums.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (2a8221dbd 2023-05-11)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -2705,6 +2705,74 @@
 <a href="#2632" id="2632">2632</a>
 <a href="#2633" id="2633">2633</a>
 <a href="#2634" id="2634">2634</a>
+<a href="#2635" id="2635">2635</a>
+<a href="#2636" id="2636">2636</a>
+<a href="#2637" id="2637">2637</a>
+<a href="#2638" id="2638">2638</a>
+<a href="#2639" id="2639">2639</a>
+<a href="#2640" id="2640">2640</a>
+<a href="#2641" id="2641">2641</a>
+<a href="#2642" id="2642">2642</a>
+<a href="#2643" id="2643">2643</a>
+<a href="#2644" id="2644">2644</a>
+<a href="#2645" id="2645">2645</a>
+<a href="#2646" id="2646">2646</a>
+<a href="#2647" id="2647">2647</a>
+<a href="#2648" id="2648">2648</a>
+<a href="#2649" id="2649">2649</a>
+<a href="#2650" id="2650">2650</a>
+<a href="#2651" id="2651">2651</a>
+<a href="#2652" id="2652">2652</a>
+<a href="#2653" id="2653">2653</a>
+<a href="#2654" id="2654">2654</a>
+<a href="#2655" id="2655">2655</a>
+<a href="#2656" id="2656">2656</a>
+<a href="#2657" id="2657">2657</a>
+<a href="#2658" id="2658">2658</a>
+<a href="#2659" id="2659">2659</a>
+<a href="#2660" id="2660">2660</a>
+<a href="#2661" id="2661">2661</a>
+<a href="#2662" id="2662">2662</a>
+<a href="#2663" id="2663">2663</a>
+<a href="#2664" id="2664">2664</a>
+<a href="#2665" id="2665">2665</a>
+<a href="#2666" id="2666">2666</a>
+<a href="#2667" id="2667">2667</a>
+<a href="#2668" id="2668">2668</a>
+<a href="#2669" id="2669">2669</a>
+<a href="#2670" id="2670">2670</a>
+<a href="#2671" id="2671">2671</a>
+<a href="#2672" id="2672">2672</a>
+<a href="#2673" id="2673">2673</a>
+<a href="#2674" id="2674">2674</a>
+<a href="#2675" id="2675">2675</a>
+<a href="#2676" id="2676">2676</a>
+<a href="#2677" id="2677">2677</a>
+<a href="#2678" id="2678">2678</a>
+<a href="#2679" id="2679">2679</a>
+<a href="#2680" id="2680">2680</a>
+<a href="#2681" id="2681">2681</a>
+<a href="#2682" id="2682">2682</a>
+<a href="#2683" id="2683">2683</a>
+<a href="#2684" id="2684">2684</a>
+<a href="#2685" id="2685">2685</a>
+<a href="#2686" id="2686">2686</a>
+<a href="#2687" id="2687">2687</a>
+<a href="#2688" id="2688">2688</a>
+<a href="#2689" id="2689">2689</a>
+<a href="#2690" id="2690">2690</a>
+<a href="#2691" id="2691">2691</a>
+<a href="#2692" id="2692">2692</a>
+<a href="#2693" id="2693">2693</a>
+<a href="#2694" id="2694">2694</a>
+<a href="#2695" id="2695">2695</a>
+<a href="#2696" id="2696">2696</a>
+<a href="#2697" id="2697">2697</a>
+<a href="#2698" id="2698">2698</a>
+<a href="#2699" id="2699">2699</a>
+<a href="#2700" id="2700">2700</a>
+<a href="#2701" id="2701">2701</a>
+<a href="#2702" id="2702">2702</a>
 </pre></div><pre class="rust"><code><span class="comment">// This file was generated by gir (https://github.com/gtk-rs/gir)
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
@@ -2717,23 +2785,39 @@
 ///
 /// Note that the [`ChecksumType`][crate::ChecksumType] enumeration may be extended at a later
 /// date to include new hashing algorithm types.
+</span><span class="comment">// rustdoc-stripper-ignore-next-stop
+</span><span class="doccomment">/// The hashing algorithm to be used by [`Checksum`][crate::Checksum] when performing the
+/// digest of some data.
+///
+/// Note that the [`ChecksumType`][crate::ChecksumType] enumeration may be extended at a later
+/// date to include new hashing algorithm types.
 </span><span class="attr">#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
 #[non_exhaustive]
 #[doc(alias = <span class="string">&quot;GChecksumType&quot;</span>)]
 </span><span class="kw">pub enum </span>ChecksumType {
     <span class="doccomment">/// Use the MD5 hashing algorithm
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// Use the MD5 hashing algorithm
     </span><span class="attr">#[doc(alias = <span class="string">&quot;G_CHECKSUM_MD5&quot;</span>)]
     </span>Md5,
     <span class="doccomment">/// Use the SHA-1 hashing algorithm
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// Use the SHA-1 hashing algorithm
     </span><span class="attr">#[doc(alias = <span class="string">&quot;G_CHECKSUM_SHA1&quot;</span>)]
     </span>Sha1,
     <span class="doccomment">/// Use the SHA-256 hashing algorithm
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// Use the SHA-256 hashing algorithm
     </span><span class="attr">#[doc(alias = <span class="string">&quot;G_CHECKSUM_SHA256&quot;</span>)]
     </span>Sha256,
     <span class="doccomment">/// Use the SHA-512 hashing algorithm (Since: 2.36)
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// Use the SHA-512 hashing algorithm (Since: 2.36)
     </span><span class="attr">#[doc(alias = <span class="string">&quot;G_CHECKSUM_SHA512&quot;</span>)]
     </span>Sha512,
     <span class="doccomment">/// Use the SHA-384 hashing algorithm (Since: 2.51)
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// Use the SHA-384 hashing algorithm (Since: 2.51)
     </span><span class="attr">#[doc(alias = <span class="string">&quot;G_CHECKSUM_SHA384&quot;</span>)]
     </span>Sha384,
     <span class="attr">#[doc(hidden)]
@@ -2790,35 +2874,58 @@
 }
 
 <span class="doccomment">/// Error codes returned by character set conversion routines.
+</span><span class="comment">// rustdoc-stripper-ignore-next-stop
+</span><span class="doccomment">/// Error codes returned by character set conversion routines.
 </span><span class="attr">#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
 #[non_exhaustive]
 #[doc(alias = <span class="string">&quot;GConvertError&quot;</span>)]
 </span><span class="kw">pub enum </span>ConvertError {
     <span class="doccomment">/// Conversion between the requested character
     ///  sets is not supported.
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// Conversion between the requested character
+    ///  sets is not supported.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;G_CONVERT_ERROR_NO_CONVERSION&quot;</span>)]
     </span>NoConversion,
     <span class="doccomment">/// Invalid byte sequence in conversion input;
     ///  or the character sequence could not be represented in the target
     ///  character set.
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// Invalid byte sequence in conversion input;
+    ///  or the character sequence could not be represented in the target
+    ///  character set.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;G_CONVERT_ERROR_ILLEGAL_SEQUENCE&quot;</span>)]
     </span>IllegalSequence,
     <span class="doccomment">/// Conversion failed for some reason.
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// Conversion failed for some reason.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;G_CONVERT_ERROR_FAILED&quot;</span>)]
     </span>Failed,
     <span class="doccomment">/// Partial character sequence at end of input.
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// Partial character sequence at end of input.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;G_CONVERT_ERROR_PARTIAL_INPUT&quot;</span>)]
     </span>PartialInput,
     <span class="doccomment">/// URI is invalid.
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// URI is invalid.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;G_CONVERT_ERROR_BAD_URI&quot;</span>)]
     </span>BadUri,
     <span class="doccomment">/// Pathname is not an absolute path.
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// Pathname is not an absolute path.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;G_CONVERT_ERROR_NOT_ABSOLUTE_PATH&quot;</span>)]
     </span>NotAbsolutePath,
     <span class="doccomment">/// No memory available. Since: 2.40
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// No memory available. Since: 2.40
     </span><span class="attr">#[doc(alias = <span class="string">&quot;G_CONVERT_ERROR_NO_MEMORY&quot;</span>)]
     </span>NoMemory,
     <span class="doccomment">/// An embedded NUL character is present in
+    ///  conversion output where a NUL-terminated string is expected.
+    ///  Since: 2.56
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// An embedded NUL character is present in
     ///  conversion output where a NUL-terminated string is expected.
     ///  Since: 2.56
     </span><span class="attr">#[doc(alias = <span class="string">&quot;G_CONVERT_ERROR_EMBEDDED_NUL&quot;</span>)]
@@ -2908,47 +3015,76 @@
 
 <span class="doccomment">/// Enumeration representing a month; values are [`January`][Self::January],
 /// [`February`][Self::February], etc. [`BadMonth`][Self::BadMonth] is the invalid value.
+</span><span class="comment">// rustdoc-stripper-ignore-next-stop
+</span><span class="doccomment">/// Enumeration representing a month; values are [`January`][Self::January],
+/// [`February`][Self::February], etc. [`BadMonth`][Self::BadMonth] is the invalid value.
 </span><span class="attr">#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
 #[non_exhaustive]
 #[doc(alias = <span class="string">&quot;GDateMonth&quot;</span>)]
 </span><span class="kw">pub enum </span>DateMonth {
     <span class="doccomment">/// invalid value
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// invalid value
     </span><span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_BAD_MONTH&quot;</span>)]
     </span>BadMonth,
     <span class="doccomment">/// January
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// January
     </span><span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_JANUARY&quot;</span>)]
     </span>January,
     <span class="doccomment">/// February
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// February
     </span><span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_FEBRUARY&quot;</span>)]
     </span>February,
     <span class="doccomment">/// March
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// March
     </span><span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_MARCH&quot;</span>)]
     </span>March,
     <span class="doccomment">/// April
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// April
     </span><span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_APRIL&quot;</span>)]
     </span>April,
     <span class="doccomment">/// May
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// May
     </span><span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_MAY&quot;</span>)]
     </span>May,
     <span class="doccomment">/// June
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// June
     </span><span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_JUNE&quot;</span>)]
     </span>June,
     <span class="doccomment">/// July
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// July
     </span><span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_JULY&quot;</span>)]
     </span>July,
     <span class="doccomment">/// August
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// August
     </span><span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_AUGUST&quot;</span>)]
     </span>August,
     <span class="doccomment">/// September
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// September
     </span><span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_SEPTEMBER&quot;</span>)]
     </span>September,
     <span class="doccomment">/// October
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// October
     </span><span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_OCTOBER&quot;</span>)]
     </span>October,
     <span class="doccomment">/// November
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// November
     </span><span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_NOVEMBER&quot;</span>)]
     </span>November,
     <span class="doccomment">/// December
+    </span><span class="comment">// rustdoc-stripper-ignore-next-stop
+    </span><span class="doccomment">/// December
     </span><span class="attr">#[doc(alias = <span class="string">&quot;G_DATE_DECEMBER&quot;</span>)]
     </span>December,
     <span class="attr">#[doc(hidden)]
